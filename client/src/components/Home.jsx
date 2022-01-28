@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
+
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
+import Header from "./Header.jsx";
+import LeftComponent from "./LeftComponent.jsx";
+import CenterComponent from "./CenterComponent.jsx";
+import RightComponent from "./RightComponent.jsx";
+import Footer from "./Footer.jsx";
 
-const Home = () => {
+export default function Home () {
 
   const [authStatus, setAuthStatus] = useState(false);
 
@@ -21,13 +27,22 @@ const Home = () => {
 
   return (
     <>
+      <div className = "Home">
       <h2>Home</h2>
-      <nav>
-        <Link to="/login">Login</Link>
-      </nav>
-      <p>Protect me! >:|</p>
+        <p>Protect me! >:|</p>
+        <Header/>
+        <div className = "bodyContainer">
+          <LeftComponent/>
+          <CenterComponent/>
+          <RightComponent/>
+        </div>
+        <Footer/>
+      </div>
+      <div>
+        <nav>
+          <Link to="/login">Login</Link>
+        </nav>
+      </div>
     </>
-  )
+  );
 }
-
-export default Home;

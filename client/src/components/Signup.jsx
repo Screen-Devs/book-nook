@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = () => {
-
+export default function Signup () {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
 
+  // TODO: finalize logic
   const handleSignup = (e) => {
     e.preventDefault();
     axios.post('/authenticate/signup', {
@@ -42,5 +42,3 @@ const Signup = () => {
     </>
   )
 }
-
-export default Signup;

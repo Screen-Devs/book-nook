@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
-const Login = () => {
+export default function Login () {
   return (
     <>
       <h2>Login</h2>
@@ -18,5 +18,3 @@ const Login = () => {
     </>
   )
 }
-
-export default Login;

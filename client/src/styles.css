@@ -1,0 +1,168 @@
+/*##########################################################
+~~~~~~~~~~~APP BODY SETTINGS -- DO NOT CHANGE ~~~~~~~~~~~~~
+##########################################################*/
+
+body {
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~DEV CONTAINER SETTINGS -- DO NOT CHANGE ~~~~~~~~~~
+##########################################################*/
+
+.placeHolderContainer {
+  height: 200px;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.commentContainer {
+  height: 90px;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.header {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  border-bottom: solid 5px;
+  border-color: white;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headerLogo{
+  font-weight: bold;
+  justify-content: baseline;
+  margin-top: 5px;
+  margin-left: 10px;
+  height: 40px;
+  width: 205px;
+}
+
+.searchBar {
+  width: 200px;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 80px;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ LEFT COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.leftComponent {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: green;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ CENTER COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.centerComponent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 450px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: blue;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ RIGHT COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.rightComponent {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: orange;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~ FOOTER COMPONENT ~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at top, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+}
