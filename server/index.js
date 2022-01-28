@@ -6,9 +6,11 @@ const path = require('path');
 const morgan = require('morgan');
 
 const app = express();
-const port = 3000;
+const port = 3010;
 
-const clientPath = path.resolve(__dirname, '../client/dist');
+console.log("DIR NAME: ", __dirname)
+
+const clientPath = path.resolve(__dirname, '../dist');
 
 app.use(express.static(clientPath));
 app.use(morgan('dev')); // TODO: change in production
