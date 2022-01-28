@@ -1,3 +1,5 @@
+const connect = require('../');
+
 const getUsers = async (req, res) => {
   try{
     req.session.isAuth = true;
