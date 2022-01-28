@@ -1,4 +1,4 @@
-const connect = require('../');
+const { insertOne } = require('../../database/models/user');
 
 const getUsers = async (req, res) => {
   try{
@@ -16,9 +16,14 @@ const login = async (req, res) => {
 }
 
 const signup = async (req, res) => {
-  console.log(req.body)
   const { username, password } = req.body;
-  res.send('exists');
+  const dataToInsert = {
+    username,
+    password,
+  };
+  const result = await insertOne(dataToInsert);
+  console.log(result);
+  res.send(result);
 }
 
 module.exports = {
