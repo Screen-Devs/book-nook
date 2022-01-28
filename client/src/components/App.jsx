@@ -1,19 +1,15 @@
 import React from "react";
+import ReactDOM from "react-dom"
+import Home from "./home.jsx";
+// import Dark from "../stylesDark.css";
+import Light from "../styles.css";
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      message: "Check out this bundle.js"
-    }
-  }
-  render(){
-    return(
-      <div className="App">
-        <h1>{this.state.message}</h1>
-      </div>
-    );
-  }
+
+export default function App() {
+
+  return (
+    <div className = "App">
+      <Home/>
+    </div>
+  );
 }
-
-export default App;
