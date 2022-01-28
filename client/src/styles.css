@@ -1,5 +1,9 @@
+/*##########################################################
+~~~~~~~~~~~APP BODY SETTINGS -- DO NOT CHANGE ~~~~~~~~~~~~~
+##########################################################*/
+
 body {
-  margin: 0;   /* Remove body margins */
+  margin: 0;
 }
 
 .App {
@@ -15,6 +19,13 @@ body {
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+
+
+
+/*##########################################################
+~~~~~~~~~DEV CONTAINER SETTINGS -- DO NOT CHANGE ~~~~~~~~~~
+##########################################################*/
 
 .placeHolderContainer {
   height: 200px;
@@ -44,30 +55,34 @@ body {
 ##########################################################*/
 
 .header {
-  /* display: flex;
-  flex-direction: row; */
   width: 100%;
-  height: 50px;
+  height: 70px;
   position: fixed;
   background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
-  padding-bottom: 50px;
+  padding-bottom: 5px;
+  padding-right: 10px;
   border-bottom: solid 5px;
   border-color: white;
-  /* background-image: ) */
-/* background: linear-gradient(to bottom, 0%, #ffffff8c 91%, #ffffff8c 100%); */
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.headerText {
-  /* color: blue; */
+.headerLogo{
   font-weight: bold;
   justify-content: baseline;
   margin-top: 5px;
   margin-left: 10px;
-  /* box-shadow: 0px 0px 15px 4px rgba(0,0,0,0.66); */
-  /* background-color: rgb(255, 255, 255,0.1); */
+  height: 40px;
+  width: 205px;
+}
+
+.searchBar {
+  width: 200px;
 }
 
 
@@ -81,7 +96,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 
