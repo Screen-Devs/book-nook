@@ -1,19 +1,17 @@
 import React from "react";
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      message: "Check out this bundle.js"
-    }
-  }
-  render(){
-    return(
-      <div className="App">
-        <h1>{this.state.message}</h1>
-      </div>
-    );
-  }
+export default function App() {
+  return ( <
+    div className = "App" >
+    <
+    div className = "header" > < h1 className = "headerText" > Book Nook < /h1> < /div > <
+    div className = "bodyContainer" >
+    <
+    div className = "leftComponent" > LEFT COMPONENT < /div> <
+    div className = "centerComponent" > CENTER COMPONENT < /div> <
+    div className = "rightComponent" > RIGHT COMPONENT < /div> < /
+    div > <
+    div className = "footer" > FOOTER < /div> < /
+    div >
+  );
 }
-
-export default App;

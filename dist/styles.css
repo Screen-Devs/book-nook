@@ -1,0 +1,110 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.header {
+  /* display: flex;
+  flex-direction: row; */
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  background-image: url("./images/bookBannerLight.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.headerText {
+  color:white;
+  font-weight: bold;
+  justify-content: baseline;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 60px;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ LEFT COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.leftComponent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: green;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ CENTER COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.centerComponent {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: blue;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~~ RIGHT COMPONENT ~~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.rightComponent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: orange;
+}
+
+
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~ FOOTER COMPONENT ~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  background-image: url("./images/bookBannerLight.png");
+  background-size: cover;
+  background-position: center;
+}
