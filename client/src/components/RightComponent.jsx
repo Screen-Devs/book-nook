@@ -4,7 +4,11 @@ import ReactDOM from "react-dom"
 export default function RightComponent() {
   return (
     <div className = "rightComponent" >
-      RIGHT COMPONENT
+      <div className="placeHolderContainer">Place Holder Container</div>
+      <div className="placeHolderContainer">Place Holder Container</div>
+      <div className="placeHolderContainer">Place Holder Container</div>
+      <div className="placeHolderContainer">Place Holder Container</div>
+      <div className="placeHolderContainer">Place Holder Container</div>
     </div>
   );
 }
