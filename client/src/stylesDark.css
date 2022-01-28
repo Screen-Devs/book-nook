@@ -65,7 +65,7 @@ body {
   background-size: cover;
   background-position: center;
   padding-bottom: 5px;
-  padding-right: 10px;
+  padding-right: 20px;
   border-bottom: solid 5px;
   border-color: black;
   justify-content: space-between;
@@ -78,7 +78,7 @@ body {
   font-weight: bold;
   justify-content: baseline;
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 20px;
   height: 40px;
   width: 205px;
 }

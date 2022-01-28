@@ -63,7 +63,7 @@ body {
   background-size: cover;
   background-position: center;
   padding-bottom: 5px;
-  padding-right: 10px;
+  padding-right: 20px;
   border-bottom: solid 5px;
   border-color: white;
   justify-content: space-between;
@@ -76,7 +76,7 @@ body {
   font-weight: bold;
   justify-content: baseline;
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 20px;
   height: 40px;
   width: 205px;
 }
@@ -148,6 +148,36 @@ body {
   background-color: orange;
 }
 
+.NYTbookImage {
+  margin-top: 10px;
+  height: 110px;
+}
+.NYTbookImage:hover {
+  opacity: 1;
+}
+
+/* square buttons */
+.rec.rec-arrow {
+  border-radius: 0;
+  background-color: white;
+}
+/* round buttons on hover */
+.rec.rec-arrow:hover {
+  border-radius: 50%;
+  /* background-color: white; */
+}
+/* hide disabled buttons */
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+/* disable default outline on focused items */
+/* add custom outline on focused items */
+.rec-carousel-item:focus {
+  outline: none;
+  box-shadow: inset 0 0 1px 1px lightgrey;
+  /* background-color: white; */
+}
+
 
 
 
@@ -166,3 +196,11 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+
+
+
+
+
+
+
