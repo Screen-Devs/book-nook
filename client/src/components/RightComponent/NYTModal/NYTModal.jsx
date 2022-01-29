@@ -5,6 +5,22 @@ import sample2 from './sample.js'
 import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
 
+const Container = styled.div`
+  margin: 10px;
+`;
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 1000,
+  height: 500,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const NYTModal = () => {
   const [show, setShow] = useState(false);
@@ -18,22 +34,6 @@ const NYTModal = () => {
     setShow((prev) => !prev);
   };
 
-  const Container = styled.div`
-    margin: 10px;
-  `;
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 1000,
-    height: 500,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
   let result = sample2.results
 
