@@ -72,6 +72,8 @@ h5 {
 
 
 
+
+
 /*##########################################################
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~
 ##########################################################*/
@@ -189,6 +191,14 @@ h5 {
   flex-direction: column;
   background-color: rgb(154, 154, 154);
   margin-top: 10px;
+  border-radius: 20px;
+}
+
+.commentModule {
+  padding: 8px;
+}
+
+.commentModuleBody {
   border-radius: 20px;
 }
 
