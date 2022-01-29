@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+h4 {
+  margin-top: 5px;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -191,7 +195,13 @@ body {
   background-color: #008CBA;
 }
 
-
+.containerDescription {
+  font-weight: 400;
+  font-size: small;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 
 /*##########################################################
