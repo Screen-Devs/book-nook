@@ -11,6 +11,7 @@ import Light from "../styles.css";
 export default function App() {
 
   const [authStatus, setAuthStatus] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   // if user is not authenticated, redirect to login
   useEffect(() => {
     authenticate();
@@ -20,6 +21,7 @@ export default function App() {
     axios.get('/authenticate')
       .then((response) => {
         setAuthStatus(response.data.isAuthenticated);
+        setCurrentUser(response.data.username);
       })
       .catch((error) => {
         console.error(error);
@@ -29,7 +31,7 @@ export default function App() {
   return(
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home authenticate={authenticate} authStatus={authStatus}/>} />
+        <Route path="/" element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
         <Route path="/login" element={<Login authenticate={authenticate} authStatus={authStatus}/>} />
         <Route path="/signup" element={<Signup authStatus={authStatus}/>} />
         <Route path="*" element={<Home />} />
