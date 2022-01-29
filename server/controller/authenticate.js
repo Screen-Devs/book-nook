@@ -1,4 +1,4 @@
-const { insertOne } = require('../../database/models/user');
+const { insertUser } = require('../../database/models/user');
 
 const getUsers = async (req, res) => {
   try{
@@ -12,7 +12,8 @@ const getUsers = async (req, res) => {
 }
 
 const login = async (req, res) => {
-
+  // check login credentials against db
+  // get this user's info
 }
 
 const signup = async (req, res) => {
@@ -21,7 +22,7 @@ const signup = async (req, res) => {
     username,
     password,
   };
-  const result = await insertOne(dataToInsert);
+  const result = await insertUser(dataToInsert);
   console.log(result);
   res.send(result);
 }

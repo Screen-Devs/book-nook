@@ -1,6 +1,6 @@
 const { User } = require('../');
 
-const insertOne = async (data) => {
+const insertUser = async (data) => {
   try {
     const result  = await User.create(data);
     return result;
@@ -9,6 +9,26 @@ const insertOne = async (data) => {
   }
 }
 
+const findUser = async ( user_id ) => {
+  // query for user data
+}
+
+const insertUserBook = async ( user_id, list_type ) => {
+  // add book to user's userBooklist - $set (favorited/current/past/queued/clubbed)
+}
+
+const insertFriend = async ( user_id, friend ) => {
+  // add friend object to user's friends' list
+}
+
+const insertCanvasMessage = async ( user_id, message ) => {
+  // add message to user's canvas
+}
+
 module.exports = {
-  insertOne,
+  insertUser,
+  findUser,
+  insertUserBook,
+  insertFriend,
+  insertCanvasMessage
 }
