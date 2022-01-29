@@ -41,25 +41,11 @@ const userSchema = new mongoose.Schema({
       },
     }, {timestamps: true} ],
   friends: [{ _id: false, username: String }],
+  canvas: Array,
   settings: {
     theme: { type: String },
    },
 }, {timestamps: true} );
-
-const canvasSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true
-  },
-  comment: {
-    type: String,
-    min: 10,
-    max: 500,
-    required: true
-  },
-}, {
-  timestamps: true
-});
 
 const bookDataSchema = new mongoose.Schema({
   lookupId: {
@@ -105,15 +91,12 @@ const bookDataSchema = new mongoose.Schema({
   }],
 });
 
-
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);
-const Canvas = mongoose.model('Canvas', canvasSchema);
 const BookData = mongoose.model('BookData', bookDataSchema);
 
 module.exports = {
   Authenticate,
   User,
-  Canvas,
   BookData
 }
