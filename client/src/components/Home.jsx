@@ -1,48 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-import Login from "./Login.jsx";
-import Signup from "./Signup.jsx";
 import Header from "./Header.jsx";
 import LeftComponent from "./LeftComponent.jsx";
 import CenterComponent from "./CenterComponent.jsx";
-import RightComponent from "./RightComponent.jsx";
+import RightComponent from "./RightComponent/RightComponent.jsx";
 import Footer from "./Footer.jsx";
 
-export default function Home () {
-
-  const [authStatus, setAuthStatus] = useState(false);
-
-  useEffect(() => {
-    axios.get('/authenticate')
-      .then((response) => {
-        console.log(response);
-        //
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-  })
-
+export default function Home ({ authStatus, authenticate }) {
   return (
     <>
-      <div className = "Home">
-      <h2>Home</h2>
-        <p>Protect me! >:|</p>
-        <Header/>
-        <div className = "bodyContainer">
-          <LeftComponent/>
-          <CenterComponent/>
-          <RightComponent/>
+      {!authStatus && (<Navigate to="/login" replace={true}/>)}
+      {authStatus && (
+        <div className = "Home">
+          <h2>Home</h2>
+            <Header authenticate={authenticate}/>
+            <div className = "bodyContainer">
+              <LeftComponent/>
+              <CenterComponent/>
+              <RightComponent/>
+            </div>
+            <Footer/>
         </div>
-        <Footer/>
-      </div>
-      <div>
-        <nav>
-          <Link to="/login">Login</Link>
-        </nav>
-      </div>
+      )}
     </>
   );
 }

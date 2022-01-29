@@ -1,7 +1,8 @@
 const express = require('express');
-const controller = require('./controller');
 const api = require('../database/models/api.js');
 const path = require('path');
+const controller = require('./controller');
+const isAuth = require('./middleware/isAuth');
 
 const router = express.Router();
 
@@ -9,9 +10,12 @@ const router = express.Router();
 
 /* LOGIN / SIGN UP */
 
-router.get('/authenticate', controller.authenticate.getUsers);
+router.get('/authenticate', isAuth);
+router.get('/authenticate', controller.authenticate.authenticate);
 
 router.post('/authenticate/login', controller.authenticate.login);
+
+router.post('/authenticate/logout', controller.authenticate.logout);
 
 router.post('/authenticate/signup', controller.authenticate.signup);
 
@@ -38,10 +42,10 @@ router.post('/books/reviews', controller.book.addReview)
 router.post('/books/reviews/comments', controller.book.addComment)
 
 /* EXTERNAL APIS */
+//TODO: to implement
+// router.get('/search', api.getGoogleData)
 
-router.get('/search', api.getGoogleData)
-
-router.get('/nyt', api.getNYTData)
+// router.get('/nyt', api.getNYTData)
 
 
 

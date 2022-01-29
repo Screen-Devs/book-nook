@@ -1,12 +1,7 @@
 const { User } = require('../');
 
 const insertUser = async (data) => {
-  try {
-    const result  = await User.create(data);
-    return result;
-  } catch (error) {
-    return error;
-  }
+  // insert user data
 }
 
 const findUser = async ( user_id ) => {
