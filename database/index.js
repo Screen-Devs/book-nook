@@ -5,13 +5,24 @@ mongoose.connect('mongodb://localhost:27017/Book_Nook')
   .catch((error) => console.log(error));
 
 // Schemas
-  const usersSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
-  password: { type: String },
+const authenticateSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true,  },
+  password: { type: String, required: true },
 })
 
-const User = mongoose.model('User', usersSchema);
+// TODO: create User schema
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  userbook: {},
+  friends: [],
+  canvas: [],
+  settings: {},
+})
+
+const Authenticate = mongoose.model('Authenticate', authenticateSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = {
-  User,
+  Authenticate,
+  User
 }
