@@ -4,7 +4,10 @@ const bcrypt = require('bcryptjs')
 
 const authenticate = async (req, res) => {
   try{
-    res.send({ isAuthenticated: true })
+    res.send({
+      isAuthenticated: true,
+      username: req.session.username,
+    })
   } catch (error) {
     res.status(400).send(error);
   }
@@ -33,6 +36,7 @@ const login = async (req, res) => {
 
     if (user && isMatch) {
       req.session.isAuth = true;
+      req.session.username = user.username;
       res.send(user);
     }
   } catch (error) {
