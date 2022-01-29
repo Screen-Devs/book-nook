@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { MenuItem } from "@material-ui/core";
 
 export default function Logout ({ authenticate }) {
 
@@ -16,7 +17,7 @@ export default function Logout ({ authenticate }) {
 
   return (
     <>
-      <button type="submit" onClick={handleLogout}>Logout</button>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </>
   )
 }
