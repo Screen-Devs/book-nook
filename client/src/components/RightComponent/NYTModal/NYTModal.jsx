@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Typography, Box, Tabs, Tab } from '@mui/material';
 import styled from 'styled-components';
 import sample2 from './sample.js'
+import ModalCards from './ModalCards.jsx';
 
 const Container = styled.div`
   margin: 10px;
@@ -65,7 +66,9 @@ const NYTModal = () => {
             ))}
           </Tabs>
           {categories.map((info, index) => (
-            <TabPanel value={value} index={index} key={index}>{info}</TabPanel>
+            <TabPanel value={value} index={index} key={index}>
+              <ModalCards/>
+            </TabPanel>
           ))}
         </Box>
       </Modal>
