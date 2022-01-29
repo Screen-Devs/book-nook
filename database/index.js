@@ -14,25 +14,27 @@ const bookDataSchema = new mongoose.Schema({
   lookupId: {type: String},
   primary_isbn: {type: Number},
   reviews: [{
-    username: {type: String}
+    username: {type: String},
     reviewDate: {type: Date},
     rating: {type: Number, min: 1, max: 5},
-    reviewBody: {type: String, min: 25, max: 1000}
-    report: Boolean,
-    helpful: Number,
+    reviewBody: {type: String, min: 25, max: 1000},
+    report: {type: Boolean},
+    helpful: {type: Number},
     comments: [{
         commenter: {type: String},
         time: {type: Date},
-        comment: {type: String}
-      }]
+        comment: {type: String},
+      }],
   }],
 })
 
 
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);
+const BookData = mongoose.mode('BookData', bookDataSchema);
 
 module.exports = {
   Authenticate,
-  User
+  User,
+  BookData,
 }
