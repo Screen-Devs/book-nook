@@ -31,7 +31,7 @@ const bookDataSchema = new mongoose.Schema({
 
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);
-const BookData = mongoose.mode('BookData', bookDataSchema);
+const BookData = mongoose.model('BookData', bookDataSchema);
 
 module.exports = {
   Authenticate,
