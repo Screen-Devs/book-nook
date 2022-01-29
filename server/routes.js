@@ -1,13 +1,17 @@
 const express = require('express');
-const controller = require('./controller');
 const path = require('path');
+const controller = require('./controller');
+const isAuth = require('./middleware/isAuth');
 
 const router = express.Router();
 
 // API endpoints
-router.get('/authenticate', controller.authenticate.getUsers);
+router.get('/authenticate', isAuth);
+router.get('/authenticate', controller.authenticate.authenticate);
 
 router.post('/authenticate/login', controller.authenticate.login);
+
+router.post('/authenticate/logout', controller.authenticate.logout);
 
 router.post('/authenticate/signup', controller.authenticate.signup);
 

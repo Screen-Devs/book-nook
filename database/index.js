@@ -6,8 +6,8 @@ mongoose.connect('mongodb://localhost:27017/Book_Nook')
 
 // Schemas
   const usersSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
-  password: { type: String },
+  username: { type: String, required: true, unique: true,  },
+  password: { type: String, required: true },
 })
 
 const User = mongoose.model('User', usersSchema);
