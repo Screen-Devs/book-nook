@@ -50,7 +50,7 @@ const Right = styled.div`
   margin-top: 8px;
 `;
 
-export default function Header({ authenticate }) {
+export default function Header({ authenticate, handleSearch }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentBook, setCurrentBook] = useState('');
   const open = Boolean(anchorEl);
@@ -65,6 +65,7 @@ export default function Header({ authenticate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleSearch(currentBook);
   };
 
   return (
