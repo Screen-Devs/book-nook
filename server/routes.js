@@ -1,4 +1,5 @@
 const express = require('express');
+import axios = require('axios');
 const api = require('../database/models/api.js');
 const path = require('path');
 const controller = require('./controller');
