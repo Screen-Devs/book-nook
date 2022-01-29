@@ -37,7 +37,17 @@ h5 {
 ~~~~~~~~~DEV CONTAINER SETTINGS -- DO NOT CHANGE ~~~~~~~~~~
 ##########################################################*/
 
-.placeHolderContainer {
+.placeHolderContainerLeft {
+  height: 250px;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.placeHolderContainerRight {
   height: 250px;
   background-color: white;
   justify-content: center;
@@ -82,6 +92,7 @@ h5 {
   display: flex;
   flex-direction: row;
   align-items: center;
+  z-index: 1;
 }
 
 .headerLogo{

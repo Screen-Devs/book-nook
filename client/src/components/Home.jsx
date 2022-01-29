@@ -14,6 +14,7 @@ export default function Home ({ authStatus, authenticate }) {
       {/* <h2>Home</h2>
         <p>Protect me! >:|</p> */}
         <Header/>
+
         <div className = "bodyContainer">
           <LeftComponent/>
           <CenterComponent/>
