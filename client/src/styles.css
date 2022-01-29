@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+h4 {
+  margin-top: 5px;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -39,7 +43,8 @@ body {
 
 .commentContainer {
   height: 90px;
-  background-color: white;
+  /* border-color: rgb(154, 154, 154); */
+  border: solid;
   justify-content: center;
   text-align: center;
   font-weight: 800;
@@ -112,7 +117,8 @@ body {
   width: 300px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: green;
+  border-radius: 20px;
+  background-color: rgb(154, 154, 154);
 }
 
 
@@ -129,7 +135,7 @@ body {
   min-width: 450px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: blue;
+  border-radius: 20px;
 }
 
 
@@ -145,7 +151,8 @@ body {
   width: 300px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: orange;
+  border-radius: 20px;
+  background-color: rgb(154, 154, 154);
 }
 
 .NYTbookImage {
@@ -191,7 +198,13 @@ body {
   background-color: #008CBA;
 }
 
-
+.containerDescription {
+  font-weight: 400;
+  font-size: small;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 
 /*##########################################################
