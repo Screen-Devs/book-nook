@@ -7,7 +7,7 @@ import Signup from "./Signup.jsx";
 import Header from "./Header.jsx";
 import LeftComponent from "./LeftComponent.jsx";
 import CenterComponent from "./CenterComponent.jsx";
-import RightComponent from "./RightComponent.jsx";
+import RightComponent from "./RightComponent/RightComponent.jsx";
 import Footer from "./Footer.jsx";
 
 export default function Home () {
