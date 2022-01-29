@@ -10,16 +10,19 @@ import Footer from "./Footer.jsx";
 
 export default function Home ({ authStatus, authenticate }) {
   return (
-      <div className = "Home">
-      {/* <h2>Home</h2>
-        <p>Protect me! >:|</p> */}
-        <Header/>
-        <div className = "bodyContainer">
-          <LeftComponent/>
-          <CenterComponent/>
-          <RightComponent/>
+    <>
+      {!authStatus && (<Navigate to="/login" replace={true}/>)}
+      {authStatus && (
+        <div className = "Home">
+          <Header authenticate={authenticate}/>
+          <div className = "bodyContainer">
+            <LeftComponent/>
+            <CenterComponent/>
+            <RightComponent/>
+          </div>
+          <Footer/>
         </div>
-        <Footer/>
-    </div>
-      )
+      )}
+    </>
+  )
 }
