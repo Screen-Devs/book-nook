@@ -56,7 +56,7 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
       {!authStatus && (<Navigate to="/login" replace={true}/>)}
       {authStatus && (
         <div className = "Home">
-          <Header authenticate={authenticate}/>
+          <Header authenticate={authenticate} handleSearch={handleSearch}/>
           <div className = "bodyContainer">
             <LeftComponent currentLayout={appLayout.left}/>
             <CenterComponent currentLayout={appLayout.center}/>

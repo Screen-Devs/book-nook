@@ -2,17 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ProfileComments from './ProfileComments.jsx';
 import Search from './Search.jsx';
+import BookReviews from './BookReviews.jsx'
 
 export default function CenterComponent({ currentLayout }) {
 
-  // create logic to conditionally render specific center component dependent on what the user is doing
   // need to consider if user visits friend list
-  console.log(currentLayout)
+  let component;
+  if (currentLayout === 'profileComments') {
+    component = <ProfileComments />;
+  } else if (currentLayout === 'search') {
+    component = <Search />;
+  } else if (currentLayout === 'reviews') {
+    component = <BookReviews />;
+  }
 
   return (
     <div className = "centerComponent" >
-      <ProfileComments />
-      <Search />
+      {component}
     </div >
   );
 }
