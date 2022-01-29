@@ -3,31 +3,8 @@ import { Modal, Button, Typography, Box, Tabs, Tab } from '@mui/material';
 import styled from 'styled-components';
 import sample2 from './sample.js'
 import ModalCards from './ModalCards.jsx';
+import { TabPanel } from './TabPanel.jsx';
 
-const Container = styled.div`
-  margin: 10px;
-`;
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 1000,
-  height: 500,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-let result = sample2.results
-
-let categories = result.map((cat) => {
-  return cat.list_name
-})
-
-console.log(categories)
 
 const NYTModal = () => {
   const [show, setShow] = useState(false);
@@ -40,6 +17,29 @@ const NYTModal = () => {
   const handleModal = () => {
     setShow((prev) => !prev);
   };
+
+  const Container = styled.div`
+    margin: 10px;
+  `;
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 1000,
+    height: 500,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  let result = sample2.results
+
+  let categories = result.map((cat) => {
+    return cat.list_name
+  })
 
   return (
     <Container>
@@ -76,15 +76,4 @@ const NYTModal = () => {
   );
 };
 
-const TabPanel = (props) => {
-  const {children, value, index} = props;
-
-  return(
-    <div>
-      {value === index && (
-        <h1>{children}</h1>
-      )}
-    </div>
-  )
-}
 export default NYTModal;
