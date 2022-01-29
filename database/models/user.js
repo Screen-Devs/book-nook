@@ -1,8 +1,21 @@
 const { User } = require('../');
 
-const insertOne = async (data) => {
+const insertOne = async (username, password) => {
   try {
-    const result  = await User.create(data);
+    const dataToInsert = {
+      username,
+      password,
+    }
+    const result  = await User.create(dataToInsert);
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+const findOne = async (username) => {
+  try {
+    const result = await User.findOne({ username });
     return result;
   } catch (error) {
     return error;
@@ -11,4 +24,5 @@ const insertOne = async (data) => {
 
 module.exports = {
   insertOne,
+  findOne,
 }
