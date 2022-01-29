@@ -1,17 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'animate.css';
-import CommentModule from '../CommentModule.jsx';
+import ProfileComments from './ProfileComments.jsx';
 
 export default function CenterComponent() {
+
+  // create logic to conditionally render specific center component dependent on what the user is doing
+  // need to consider if user visits friend list
+
   return (
     <div className = "centerComponent" >
-      <div className="userDetails animate__animated animate__flipInX"><h5>USER DETAILS</h5></div>
-      <div className="userBook animate__animated animate__flipInY"><h5>Write in my book...</h5>
-        <CommentModule/>
-        <CommentModule/>
-        <CommentModule/>
-      </div>
+      <ProfileComments />
     </div >
   );
 }

@@ -9,6 +9,25 @@ import Footer from "./Footer.jsx";
 
 export default function Home ({ authStatus, authenticate, currentUser }) {
 
+  const [appLayout, setAppLayout] = useEffect();
+
+  const profileLayout = {
+    left: 'userLists',
+    center: 'profileComments',
+    right: 'siteData',
+  }
+
+  const searchLayout = {
+    left: 'userLists',
+    center: 'search',
+    right: 'siteData',
+  }
+
+  const bookLayout = {
+    left: 'bookDetails',
+    center: 'reviews',
+    right: 'addToLists',
+  }
 
   useEffect(() => {
     if (!currentUser) return;
@@ -18,6 +37,11 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
   const handleGetUserData = () => {
     // make get request and give username to the server
     console.log('Current User ', currentUser);
+  }
+
+  const handleSearch = (query) => {
+    // make get request to server and receive API data instead
+    console.log(query)
   }
 
   return (
