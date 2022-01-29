@@ -10,14 +10,15 @@ const authenticateSchema = new mongoose.Schema({
   password: { type: String, required: true },
 })
 
-// TODO: create User schema
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  userbook: {},
-  friends: [],
-  canvas: [],
-  settings: {},
+const bookDataSchema = new mongoose.Schema({
+  bookId: {type: String},
+  username: {type: String},
+  primary_isbn: {type: Number},
+  reviews: [],
+  reviewDate: {type: Date},
+  rating: {type: Number, min: 1, max: 5},
 })
+
 
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);
