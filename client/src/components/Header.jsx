@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import 'animate.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Logout from './Logout.jsx';
@@ -29,7 +30,8 @@ export default function Header({ authenticate }) {
     setAnchorEl(null);
   };
   return (
-    <div className='header'>
+    <div className = "header " >
+    <div className='header animate__animated animate__bounceInDown'>
       <img
         alt='Book Nook logo'
         className='headerLogo'
@@ -66,7 +68,7 @@ export default function Header({ authenticate }) {
         <Logout authenticate={authenticate} />
       </Menu>
     </div>
+    </div>
   );
 }
 
-// < h1 className = "headerText" > Book Nook < /h1>
