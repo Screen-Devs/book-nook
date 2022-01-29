@@ -38,7 +38,7 @@ const ModalCards = () => {
       tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
     >
       {data.map((book) => (
-        <Card style={cardStyle}>
+        <Card style={cardStyle} key={book.rank}>
           <a href={book.amazon_product_url}>
             <CardMedia component='img' height='175' width='50' image={book.book_image} />
           </a>
