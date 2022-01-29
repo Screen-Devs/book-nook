@@ -11,12 +11,21 @@ const authenticateSchema = new mongoose.Schema({
 })
 
 const bookDataSchema = new mongoose.Schema({
-  bookId: {type: String},
-  username: {type: String},
+  lookupId: {type: String},
   primary_isbn: {type: Number},
-  reviews: [],
-  reviewDate: {type: Date},
-  rating: {type: Number, min: 1, max: 5},
+  reviews: [{
+    username: {type: String}
+    reviewDate: {type: Date},
+    rating: {type: Number, min: 1, max: 5},
+    reviewBody: {type: String, min: 25, max: 1000}
+    report: Boolean,
+    helpful: Number,
+    comments: [{
+        commenter: {type: String},
+        time: {type: Date},
+        comment: {type: String}
+      }]
+  }],
 })
 
 
