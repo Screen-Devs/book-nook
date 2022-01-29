@@ -18,7 +18,7 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
 
   const handleGetUserData = () => {
     // make get request and give username to the server
-    console.log(currentUser);
+    console.log('Current User ', currentUser);
   }
 
   return (
