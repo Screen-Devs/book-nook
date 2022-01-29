@@ -43,7 +43,8 @@ h4 {
 
 .commentContainer {
   height: 90px;
-  background-color: white;
+  /* border-color: rgb(154, 154, 154); */
+  border: solid;
   justify-content: center;
   text-align: center;
   font-weight: 800;
@@ -116,7 +117,8 @@ h4 {
   width: 300px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: green;
+  border-radius: 20px;
+  background-color: rgb(154, 154, 154);
 }
 
 
@@ -133,7 +135,7 @@ h4 {
   min-width: 450px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: blue;
+  border-radius: 20px;
 }
 
 
@@ -149,7 +151,8 @@ h4 {
   width: 300px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: orange;
+  border-radius: 20px;
+  background-color: rgb(154, 154, 154);
 }
 
 .NYTbookImage {
