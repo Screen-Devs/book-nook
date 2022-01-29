@@ -1,28 +1,29 @@
 const { User } = require('../');
 
-const insertOne = async (username, password) => {
-  try {
-    const dataToInsert = {
-      username,
-      password,
-    }
-    const result  = await User.create(dataToInsert);
-    return result;
-  } catch (error) {
-    return error;
-  }
+const insertUser = async (data) => {
+  // insert user data
 }
 
-const findOne = async (username) => {
-  try {
-    const result = await User.findOne({ username });
-    return result;
-  } catch (error) {
-    return error;
-  }
+const findUser = async ( user_id ) => {
+  // query for user data
+}
+
+const insertUserBook = async ( user_id, list_type ) => {
+  // add book to user's userBooklist - $set (favorited/current/past/queued/clubbed)
+}
+
+const insertFriend = async ( user_id, friend ) => {
+  // add friend object to user's friends' list
+}
+
+const insertCanvasMessage = async ( user_id, message ) => {
+  // add message to user's canvas
 }
 
 module.exports = {
-  insertOne,
-  findOne,
+  insertUser,
+  findUser,
+  insertUserBook,
+  insertFriend,
+  insertCanvasMessage
 }

@@ -1,4 +1,5 @@
-const { insertOne, findOne } = require('../../database/models/user');
+const { insertUser } = require('../../database/models/user');
+const { insertOne, findOne } = require('../../database/models/authenticate');
 const bcrypt = require('bcryptjs')
 
 const authenticate = async (req, res) => {
@@ -55,6 +56,7 @@ const signup = async (req, res) => {
     const { username, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
     const result = await insertOne(username, hashed);
+    // const newUser = await insertUser(username); // TODO: to implement with user document
     // Error handling
     if (result instanceof Error) {
       // code 11000 - duplicate
