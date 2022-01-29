@@ -4,7 +4,7 @@ import ReactDOM from "react-dom"
 export default function Footer() {
   return (
     <div className = "footer">
-    FOOTER
+    {/* <img src="./favicon-32x32.png"/> */}
     </div>
   );
 }
