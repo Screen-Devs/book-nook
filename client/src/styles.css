@@ -133,6 +133,9 @@ h5 {
   right: 0;
   position: absolute;
   z-index: -1;
+  filter: grayscale(100%);
+  transition-duration:3s; /* <= creates fade out effect */
+  transition-delay:3s;
 }
 
 /* .loginButton {
@@ -149,6 +152,25 @@ h5 {
 .BNwhiteFont {
   padding: 30px;
 }
+
+.loginBlogoBackground {
+  padding: 10px;
+  height: 390px;
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 20%;
+  position: fixed;
+  z-index: 10;
+  background: url("./images/android-chrome-512x512.png");
+  background-size: cover;
+  /* box-shadow: inset 0px 0px 32px -1px #FFFFFF; */
+  /* border-style:outset;
+  border-width: 5px; */
+};
 
 /* .loginBox {
   padding: 10px;

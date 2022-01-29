@@ -9,10 +9,10 @@ const gridStyle = {
   alignItems: 'center',
   height: '100vh',
   width: '100%',
+  position: 'fixed',
 };
-// style={gridStyle}
 
-const paperStyle = {
+const paperStyle2 = {
   // padding: 10,
   height: '390px',
   width: '380px',
@@ -23,8 +23,11 @@ const paperStyle = {
   padding: '5px',
   border: 'solid',
   borderRadius: '20%',
+  zIndex: '1',
+  position: 'fixed',
+  boxShadow: "0px 0px 32px 8px #000000",
+  // borderStyle: "outset",
 };
-// style={paperStyle}
 
 const buttonStyle = {
   width: '97%',
@@ -38,10 +41,13 @@ const textFieldStyle = {
   margin: '5px',
 };
 
+
+
 export default function Login ({ authStatus, authenticate }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
+  const [loading, loaded] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -60,15 +66,25 @@ export default function Login ({ authStatus, authenticate }) {
         authenticate();
       })
       .catch((error) => {
-        console.error(error);
+        loaded('it is loaded');
       })
   }
 
+  const wasLoaded = () => {
+    console.log(loaded)
+  }
+
+
   return (
-    <div className='loginBackground'>
-      <div className="loginBox">
+    <div className='loginBackground' /*onLoad={wasLoaded()}*/>
       <Grid style={gridStyle}>
-        <Paper className="animate__animated animate__fadeInDown" style={paperStyle} elevation={12}>
+        <div  className='loginBlogoBackground animate__animated animate__fadeIn'>
+        </div>
+      </Grid>
+
+
+      <Grid style={gridStyle}>
+        <Paper className="animate__animated animate__fadeInDown" style={paperStyle2} elevation={12}>
           {authStatus && <Navigate to='/' replace={true} />}
           <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
             <img className="BNwhiteFont" src="https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo1MSwidyI6MTAwMCwiZnMiOjUxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png"/>
@@ -103,6 +119,5 @@ export default function Login ({ authStatus, authenticate }) {
         </Paper>
       </Grid>
       </div>
-    </div>
   )
 }
