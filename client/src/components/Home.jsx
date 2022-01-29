@@ -9,25 +9,29 @@ import Footer from "./Footer.jsx";
 
 export default function Home ({ authStatus, authenticate, currentUser }) {
 
-  const [appLayout, setAppLayout] = useEffect();
 
   const profileLayout = {
     left: 'userLists',
     center: 'profileComments',
-    right: 'siteData',
+    right: 'siteData', //
+    payload: '',
   }
 
   const searchLayout = {
     left: 'userLists',
     center: 'search',
     right: 'siteData',
+    payload: '',
   }
 
   const bookLayout = {
     left: 'bookDetails',
     center: 'reviews',
     right: 'addToLists',
+    payload: '',
   }
+
+  const [appLayout, setAppLayout] = useState(profileLayout);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -37,11 +41,14 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
   const handleGetUserData = () => {
     // make get request and give username to the server
     console.log('Current User ', currentUser);
+    // set payload from server into profileLayout
   }
 
   const handleSearch = (query) => {
     // make get request to server and receive API data instead
     console.log(query)
+    // set payload from server into searchLayout
+    setAppLayout(searchLayout)
   }
 
   return (
@@ -51,9 +58,9 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
         <div className = "Home">
           <Header authenticate={authenticate}/>
           <div className = "bodyContainer">
-            <LeftComponent/>
-            <CenterComponent/>
-            <RightComponent/>
+            <LeftComponent currentLayout={appLayout.left}/>
+            <CenterComponent currentLayout={appLayout.center}/>
+            <RightComponent currentLayout={appLayout.right}/>
           </div>
           <Footer/>
         </div>
