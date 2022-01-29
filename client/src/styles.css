@@ -6,8 +6,11 @@ body {
   margin: 0;
 }
 
-h4 {
-  margin-top: 5px;
+.writeInBook {
+  margin: 10px;
+  /* display: flex;
+  justify-content: center; */
+  color:black;
 }
 
 h5 {
@@ -110,18 +113,20 @@ h5 {
   width: 200px;
 }
 
-.background {
+.loginBackground {
   width: 100vw;
   height: 100vh;
-  display: block;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
   position: relative;
 }
 
-.background::after {
+.loginBackground::after {
   content: "";
-  background: url("./images/800px-Pontefract_Castle.png");
+  background: url("./images/loginBackground.jpg") 0 0 no-repeat, radial-gradient(ellipse at center, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
   background-size: cover;
-  opacity: 0.6;
+  /* opacity: 0.6; */
   top: 0;
   left: 0;
   bottom: 0;
@@ -129,6 +134,31 @@ h5 {
   position: absolute;
   z-index: -1;
 }
+
+/* .loginButton {
+  border-radius: 40%;
+} */
+
+.BNwhiteFontBackGround {
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.BNwhiteFont {
+  padding: 30px;
+}
+
+/* .loginBox {
+  padding: 10px;
+  height: 350px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+
 
 /*##########################################################
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,6 +230,11 @@ h5 {
 
 .commentModuleBody {
   border-radius: 20px;
+}
+
+.writeInBook {
+  height: 50px;
+  width: 300px;
 }
 
 

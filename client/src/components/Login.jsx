@@ -10,26 +10,32 @@ const gridStyle = {
   height: '100vh',
   width: '100%',
 };
+// style={gridStyle}
 
 const paperStyle = {
-  padding: 10,
-  height: '27vh',
-  width: 280,
+  // padding: 10,
+  height: '390px',
+  width: '380px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
+  padding: '5px',
+  border: 'solid',
+  borderRadius: '20%',
 };
+// style={paperStyle}
 
 const buttonStyle = {
-  width: '100%',
-  marginTop: 5,
+  width: '97%',
+  marginTop: 10,
   marginBottom: 13,
+  marginLeft: '5px',
 };
 
 const textFieldStyle = {
-  width: '100%',
-  margin: 2,
+  width: '97%',
+  margin: '5px',
 };
 
 export default function Login ({ authStatus, authenticate }) {
@@ -59,10 +65,14 @@ export default function Login ({ authStatus, authenticate }) {
   }
 
   return (
-    <div className='background'>
+    <div className='loginBackground'>
+      <div className="loginBox">
       <Grid style={gridStyle}>
-        <Paper style={paperStyle} elevation={12}>
+        <Paper className="animate__animated animate__fadeInDown" style={paperStyle} elevation={12}>
           {authStatus && <Navigate to='/' replace={true} />}
+          <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
+            <img className="BNwhiteFont" src="https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo1MSwidyI6MTAwMCwiZnMiOjUxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png"/>
+          </div>
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <TextField
@@ -83,8 +93,8 @@ export default function Login ({ authStatus, authenticate }) {
               type='password'
               required
             />
-            <Button type='submit' variant='contained' color='default' style={buttonStyle}>
-              Login
+            <Button className="loginButton" type='submit' variant='contained' color='default' style={buttonStyle}>
+              <b>Login</b>
             </Button>
           </form>
           <nav>
@@ -92,6 +102,7 @@ export default function Login ({ authStatus, authenticate }) {
           </nav>
         </Paper>
       </Grid>
+      </div>
     </div>
   )
 }
