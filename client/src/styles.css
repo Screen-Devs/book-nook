@@ -10,6 +10,12 @@ h4 {
   margin-top: 5px;
 }
 
+h5 {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -49,6 +55,7 @@ h4 {
   text-align: center;
   font-weight: 800;
   margin: 5px;
+  background-color: white;
   border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
 }
 
@@ -135,6 +142,25 @@ h4 {
   min-width: 450px;
   margin-left: 5px;
   margin-right: 5px;
+  border-radius: 20px;
+}
+
+.userDetails {
+  height: 200px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.userBook {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(154, 154, 154);
+  margin-top: 10px;
   border-radius: 20px;
 }
 
