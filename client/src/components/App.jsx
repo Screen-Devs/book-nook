@@ -13,6 +13,10 @@ export default function App() {
   const [authStatus, setAuthStatus] = useState(false);
   // if user is not authenticated, redirect to login
   useEffect(() => {
+    authenticate();
+  }, [])
+
+  const authenticate = () => {
     axios.get('/authenticate')
       .then((response) => {
         setAuthStatus(response.data.isAuthenticated);
@@ -20,13 +24,13 @@ export default function App() {
       .catch((error) => {
         console.error(error);
       });
-  }, [])
+  }
 
   return(
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home authStatus={authStatus}/>} />
-        <Route path="/login" element={<Login authStatus={authStatus}/>} />
+        <Route path="/" element={<Home authenticate={authenticate} authStatus={authStatus}/>} />
+        <Route path="/login" element={<Login authenticate={authenticate} authStatus={authStatus}/>} />
         <Route path="/signup" element={<Signup authStatus={authStatus}/>} />
         <Route path="*" element={<Home />} />
       </Routes>

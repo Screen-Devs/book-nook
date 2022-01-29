@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Login ({ authStatus }) {
+export default function Login ({ authStatus, authenticate }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
@@ -20,6 +20,9 @@ export default function Login ({ authStatus }) {
           setUserExists(true);
         }
       })
+      .then(() => {
+        authenticate();
+      })
       .catch((error) => {
         console.error(error);
       })
@@ -27,7 +30,7 @@ export default function Login ({ authStatus }) {
 
   return (
     <>
-      {userExists && authStatus && (<Navigate to="/" replace={true}/>)}
+      {authStatus && (<Navigate to="/" replace={true}/>)}
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">Username: </label>

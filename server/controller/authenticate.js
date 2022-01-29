@@ -60,7 +60,6 @@ const signup = async (req, res) => {
       // code 11000 - duplicate
       const error = { error: result }
       if (result.code === 11000) {
-        console.log('test')
         error.details = 'This user exists already';
         res.send(error);
         return;

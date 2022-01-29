@@ -28,7 +28,8 @@ export default function Signup ({ authStatus }) {
 
   return (
     <>
-      {userSaved && authStatus && (<Navigate to="/login" replace={true}/>)}
+      {userSaved && (<Navigate to="/login" replace={true}/>)}
+      {authStatus && (<Navigate to="/" replace={true}/>)}
       <h2>Signup</h2>
       <form onSubmit={handleSignup}>
         <label htmlFor="username">Username: </label>
