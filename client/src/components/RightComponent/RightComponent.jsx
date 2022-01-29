@@ -7,12 +7,13 @@ import SplitButton from 'react-bootstrap/SplitButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/ButtonGroup';
 import {NYT} from './NYTdummyData.js';
+import NYTModal from "./NYTModal/NYTModal.jsx";
 
 export default function RightComponent() {
   return (
     <div className = "rightComponent" >
       <div className="placeHolderContainer">
-        <h4>NYT Best Sellers</h4>
+        <NYTModal/>
         {/* <div>
     {[DropdownButton].map((DropdownType, idx) => (
       <DropdownType
