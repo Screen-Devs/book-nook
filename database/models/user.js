@@ -1,12 +1,31 @@
 const { User } = require('../');
 
-const insertUser = async (data) => {
-  // insert user data
-}
+const insertUser = async (username) => {
+  try {
+    const dataToInsert = {
+      username: username,
+      userBooks: [],
+      friends: [],
+      canvas: [],
+      settings: {
+        theme: 'light',
+      }
+    };
+    const result = await User.create(dataToInsert);
+    return result;
+  } catch (error) {
+    return (error)
+  }
+};
 
-const findUser = async ( user_id ) => {
-  // query for user data
-}
+const findUser = async ( username ) => {
+  try {
+    const result = await User.find({username});
+    return result;
+  } catch (error) {
+    return (error)
+  }
+};
 
 const insertUserBook = async ( user_id, list_type ) => {
   // add book to user's userBooklist - $set (favorited/current/past/queued/clubbed)

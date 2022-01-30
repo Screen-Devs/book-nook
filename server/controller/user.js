@@ -1,8 +1,8 @@
 const { findUser, insertUserBook, insertFriend, insertCanvasMessage } = require('../../database/models/user.js')
 
 const getUserInfo = async (req, res) => {
-  const { user_id } = req.body;
-  const result = await findUser(user_id);
+  const { username } = req.query;
+  const result = await findUser(username);
   res.status(200).send(result);
 }
 

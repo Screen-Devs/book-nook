@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   userBooks: [{
     userBookId: String, //googleapi book ID
-    title: { type: String, required: true, unique: true },
-    author: { type: String, required: true, unique: true },
+    title: { type: String, unique: false },
+    author: { type: String, unique: false },
     clubbed: {
         status: { type: Boolean, default: false },
         date: { type: String, default: null },
