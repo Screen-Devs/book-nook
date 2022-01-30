@@ -100,18 +100,34 @@ h5 {
   width: 100%;
   height: 70px;
   position: fixed;
-  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
   box-shadow: 0px 0px 32px 4px #000000;
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center;
+  /* background-blend-mode: multiply; */
+  /* background-size: cover; */
+  /* background-position: center; */
   padding-bottom: 0px;
   padding-right: 20px;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* position: absolute; */
   z-index: 1;
+}
+
+.header::before {
+  content: "";
+  filter: sepia(100%);
+  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
+  background-position: center;
+  z-index: -1;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
 }
 
 .headerLogo{
@@ -238,7 +254,7 @@ h5 {
 .bodyContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin-top: 60px;
   justify-content: center;
   position: relative
@@ -247,13 +263,7 @@ h5 {
 .bodyContainer::before {
   content: "";
   background: url('./images/BNmainBackground.jpeg');
-  /* opacity: 0.5; */
-  /* background-color: 0, 0, 0, 0, 0.5; */
-  /* filter:grayscale(100%); */
-  /* background-size: cover; */
   background-position: center;
-  /* padding: 20px; */
-  /* background-size: cover; */
   position:absolute;
   top: 0px;
   right: 0px;
@@ -309,7 +319,7 @@ h5 {
 .userDetails {
   display: flex;
   /* flex: 1; */
-  height: 400px;
+  height: 200px;
   background-color: black;
   color: white;
   border-radius: 20px;
@@ -319,6 +329,20 @@ h5 {
   box-shadow: 0px 0px 32px 4px #000000;
 }
 
+.writeMe {
+  display: flex;
+  /* flex: 1; */
+  height: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 8px;
+  /* opacity: 100%; */
+  /* box-shadow: 0px 0px 32px 4px #000000; */
+  margin-top: 10px;
+}
+
 .userBook {
   display: flex;
   /* flex: 5; */
@@ -326,10 +350,11 @@ h5 {
   flex-direction: column;
   /* background-color: rgb(154, 154, 154); */
   margin-top: 10px;
-  /* padding-top: 1500px; */
+  /* padding-top: 2500px; */
   border-radius: 20px;
   /* min-height: min-content; */
   overflow: auto;
+  height: 1100px;
   /* position: fixed; */
   /* display: none; */
 }
@@ -349,14 +374,14 @@ h5 {
   margin-right: 20px;
 }
 
-.writeInBook {
+/* .writeInBook {
   height: 50px;
   width: 300px;
   padding-top: 2500px;
   display: flex;
   /* flex: 5; */
   /* min-height: min-content; */
-}
+
 
 
 
@@ -444,6 +469,7 @@ h5 {
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
+  filter: sepia(100%);
 }
 
 
