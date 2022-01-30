@@ -3,14 +3,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { TextField, Grid, Paper, Button } from '@material-ui/core';
 
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100vh',
-  width: '100%',
-  position: 'fixed',
-};
+
 
 const paperStyle2 = {
   // padding: 10,
@@ -30,15 +23,13 @@ const paperStyle2 = {
 };
 
 const buttonStyle = {
-  width: '97%',
-  marginTop: 10,
-  marginBottom: 13,
-  marginLeft: '5px',
+  width: '350px',
+  margin: '14px 9.5px 15px 9.5px',
 };
 
 const textFieldStyle = {
-  width: '97%',
-  margin: '5px',
+  width: '350px',
+  margin: '4px 9.5px 0px 9.5px',
 };
 
 
@@ -47,7 +38,7 @@ export default function Login ({ authStatus, authenticate }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
-  const [loading, loaded] = useState("");
+  const [loading, loaded] = useState("loginBackground");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -71,19 +62,22 @@ export default function Login ({ authStatus, authenticate }) {
   }
 
   const wasLoaded = () => {
-    console.log(loaded)
-  }
+    if (loading === "loginBackground") {
+      loaded("loginBackgroundTransition")
+        }
+    // loaded("loginBackgroundTransition")
+  };
 
 
   return (
-    <div className='loginBackground' /*onLoad={wasLoaded()}*/>
-      <Grid style={gridStyle}>
+    <div className={loading} onLoad={wasLoaded()}>
+      <Grid className="loginGridStyle">
         <div  className='loginBlogoBackground animate__animated animate__fadeIn'>
         </div>
       </Grid>
 
 
-      <Grid style={gridStyle}>
+      <Grid className="loginGridStyle">
         <Paper className="animate__animated animate__fadeInDown" style={paperStyle2} elevation={12}>
           {authStatus && <Navigate to='/' replace={true} />}
           <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
@@ -92,24 +86,24 @@ export default function Login ({ authStatus, authenticate }) {
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <TextField
+              className="textFieldStyle"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              style={textFieldStyle}
               placeholder='Username'
               label='Username'
               type='text'
               required
             />
             <TextField
+              className="textFieldStyle"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={textFieldStyle}
               placeholder='Password'
               label='Password'
               type='password'
               required
             />
-            <Button className="loginButton" type='submit' variant='contained' color='default' style={buttonStyle}>
+            <Button className="loginButton" type='submit' variant='contained' color='default' >
               <b>Login</b>
             </Button>
           </form>
