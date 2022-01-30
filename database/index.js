@@ -17,8 +17,6 @@ const authenticateSchema = new mongoose.Schema({
   },
 })
 
-<<<<<<< HEAD
-=======
 const bookDataSchema = new mongoose.Schema({
   lookupId: {
     type: String
@@ -62,7 +60,6 @@ const bookDataSchema = new mongoose.Schema({
     }],
   }],
 })
->>>>>>> 1d119a7500b9f915771a6bcf3b481aad558f462c
 
 
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);

@@ -13,7 +13,6 @@ const app = express();
 const port = 3010;
 
 // uri(s)
-console.log("DIR NAME: ", __dirname)
 const clientPath = path.resolve(__dirname, '../dist');
 const mongoUri = 'mongodb://localhost:27017'
 

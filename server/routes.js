@@ -1,9 +1,8 @@
 const express = require('express');
-import axios = require('axios');
-const api = require('../database/models/api.js');
 const path = require('path');
 const controller = require('./controller');
 const isAuth = require('./middleware/isAuth');
+const { outbound } = controller;
 
 const router = express.Router();
 
@@ -43,10 +42,8 @@ router.post('/books/reviews', controller.book.addReview)
 router.post('/books/reviews/comments', controller.book.addComment)
 
 /* EXTERNAL APIS */
-//TODO: to implement
-// router.get('/search', api.getGoogleData)
+router.get('/search', )
 
-// router.get('/nyt', api.getNYTData)
 
 
 
