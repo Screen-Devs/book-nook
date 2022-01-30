@@ -63,6 +63,17 @@ h5 {
   box-shadow: 0px 0px 32px 4px #000000;
 }
 
+.friendsListContainer {
+  height: 510px;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
+}
+
 .commentContainer {
   height: 90px;
   /* border-color: rgb(154, 154, 154); */
