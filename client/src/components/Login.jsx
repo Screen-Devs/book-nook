@@ -3,39 +3,42 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { TextField, Grid, Paper, Button } from '@material-ui/core';
 
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100vh',
-  width: '100%',
-};
 
-const paperStyle = {
-  padding: 10,
-  height: '27vh',
-  width: 280,
+
+const paperStyle2 = {
+  // padding: 10,
+  height: '390px',
+  width: '380px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
+  padding: '5px',
+  border: 'solid',
+  borderRadius: '20%',
+  zIndex: '1',
+  position: 'fixed',
+  boxShadow: "0px 0px 32px 8px #000000",
+  // borderStyle: "outset",
 };
 
-const buttonStyle = {
-  width: '100%',
-  marginTop: 5,
-  marginBottom: 13,
-};
+// const buttonStyle = {
+//   width: '350px',
+//   margin: '14px 9.5px 15px 9.5px',
+// };
 
-const textFieldStyle = {
-  width: '100%',
-  margin: 2,
-};
+// const textFieldStyle = {
+//   width: '350px',
+//   margin: '4px 9.5px 0px 9.5px',
+// };
+
+
 
 export default function Login ({ authStatus, authenticate }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
+  const [loading, loaded] = useState("loginBackground");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -54,37 +57,53 @@ export default function Login ({ authStatus, authenticate }) {
         authenticate();
       })
       .catch((error) => {
-        console.error(error);
+        loaded('it is loaded');
       })
   }
 
+  const wasLoaded = () => {
+    if (loading === "loginBackground") {
+      loaded("loginBackgroundTransition")
+        }
+  };
+
+
   return (
-    <div className='background'>
-      <Grid style={gridStyle}>
-        <Paper style={paperStyle} elevation={12}>
+    <div className={loading} onLoad={wasLoaded()}>
+      <Grid className="loginGridStyle">
+        <div  className='loginBlogoBackground animate__animated animate__fadeIn'>
+        </div>
+      </Grid>
+
+
+      <Grid className="loginGridStyle">
+        <Paper className="animate__animated animate__fadeInDown" style={paperStyle2} elevation={12}>
           {authStatus && <Navigate to='/' replace={true} />}
+          <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
+            <img className="BNwhiteFont" src="https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo1MSwidyI6MTAwMCwiZnMiOjUxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png"/>
+          </div>
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <TextField
+              className="textFieldStyle"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              style={textFieldStyle}
               placeholder='Username'
               label='Username'
               type='text'
               required
             />
             <TextField
+              className="textFieldStyle"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={textFieldStyle}
               placeholder='Password'
               label='Password'
               type='password'
               required
             />
-            <Button type='submit' variant='contained' color='default' style={buttonStyle}>
-              Login
+            <Button className="loginButton" type='submit' variant='contained' color='default' >
+              <b>Login</b>
             </Button>
           </form>
           <nav>
@@ -92,6 +111,6 @@ export default function Login ({ authStatus, authenticate }) {
           </nav>
         </Paper>
       </Grid>
-    </div>
+      </div>
   )
 }

@@ -69,7 +69,6 @@ export default function Header({ authenticate, handleSearch }) {
   };
 
   return (
-    <div className='header '>
       <div className='header animate__animated animate__bounceInDown'>
         <Left>
           <img
@@ -116,6 +115,5 @@ export default function Header({ authenticate, handleSearch }) {
           </Menu>
         </Right>
       </div>
-    </div>
   );
 }
