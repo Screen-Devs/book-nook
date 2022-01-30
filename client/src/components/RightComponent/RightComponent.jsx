@@ -13,18 +13,27 @@ import NYTbestSellers from './NYTbestSellers.jsx';
 import HighestRatedBooks from './HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
+import FriendsList from './friendslist.jsx';
 
 export default function RightComponent() {
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
-       <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
+
+
+       <div className="friendsListContainer animate__animated animate__fadeInRight">
+        <h4>Friends List</h4>
+        <FriendsList/>
+      </div>
+
+
+       {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <h4>Friend Leader Board</h4>
         <LeaderBoard/>
       </div>
       <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
       <h4>Book Nook Leader Board</h4>
         <BNleaderBoard/>
-      </div>
+      </div> */}
       <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <h4>Highest Rated Books</h4>
         <HighestRatedBooks/>

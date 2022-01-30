@@ -3,9 +3,9 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header.jsx";
 import LeftComponent from "./LeftComponent/LeftComponent.jsx";
-import CenterComponent from "./CenterComponent/CenterComponent.jsx";
 import RightComponent from "./RightComponent/RightComponent.jsx";
 import Footer from "./Footer.jsx";
+import CenterComponent from './CenterComponent/CenterComponent.jsx';
 
 export default function Home ({ authStatus, authenticate, currentUser }) {
 
@@ -52,7 +52,7 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
   }
 
   return (
-    <>
+    <div>
       {!authStatus && (<Navigate to="/login" replace={true}/>)}
       {authStatus && (
         <div className = "Home">
@@ -65,6 +65,6 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
           <Footer/>
         </div>
       )}
-    </>
+    </div>
   )
 }
