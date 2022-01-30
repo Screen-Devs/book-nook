@@ -22,15 +22,15 @@ const paperStyle2 = {
   // borderStyle: "outset",
 };
 
-const buttonStyle = {
-  width: '350px',
-  margin: '14px 9.5px 15px 9.5px',
-};
+// const buttonStyle = {
+//   width: '350px',
+//   margin: '14px 9.5px 15px 9.5px',
+// };
 
-const textFieldStyle = {
-  width: '350px',
-  margin: '4px 9.5px 0px 9.5px',
-};
+// const textFieldStyle = {
+//   width: '350px',
+//   margin: '4px 9.5px 0px 9.5px',
+// };
 
 
 
@@ -65,7 +65,6 @@ export default function Login ({ authStatus, authenticate }) {
     if (loading === "loginBackground") {
       loaded("loginBackgroundTransition")
         }
-    // loaded("loginBackgroundTransition")
   };
 
 

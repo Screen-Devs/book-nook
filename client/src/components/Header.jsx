@@ -30,7 +30,6 @@ export default function Header({ authenticate }) {
     setAnchorEl(null);
   };
   return (
-    <div className = "header " >
     <div className='header animate__animated animate__bounceInDown'>
       <img
         alt='Book Nook logo'
@@ -67,7 +66,6 @@ export default function Header({ authenticate }) {
         <MenuItem onClick={handleClose}>Settings</MenuItem>
         <Logout authenticate={authenticate} />
       </Menu>
-    </div>
     </div>
   );
 }
