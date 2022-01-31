@@ -9,7 +9,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/ButtonGroup';
 import {NYT} from './NYTdummyData.js';
 import NYTModal from "./NYTModal/NYTModal.jsx";
-import NYTbestSellers from './NYTbestSellers.jsx';
+// import NYTbestSellers from './NYTbestSellers.jsx';
 import HighestRatedBooks from './TopRankingBooks/HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
