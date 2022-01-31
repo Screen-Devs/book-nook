@@ -41,11 +41,6 @@ router.post('/books/reviews/comments', controller.book.addComment);
 router.get('/search', outbound.getGoogleResults);
 
 router.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
-})
-
-
-router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
 })
 
