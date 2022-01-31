@@ -20,15 +20,34 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const boxStyle = {
   width: 290,
-  height: '100%',
+  height: '510px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
   paddingBottom: 50,
   backgroundColor: 'white',
-  position: 'relative'
+  position: 'relative',
+  borderRadius: '20px',
+  // borderWidth: '10px',
+  // border: 'solid',
+  margin: '0px',
 };
+
+const friendsListContainer = {
+  height: '510px',
+  backgroundColor: 'white',
+  display: 'flex',
+  width: '290px',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  fontWeight: '800',
+  margin: '5px',
+  borderRadius: '20px',
+  boxShadow: '0px 0px 32px 4px #000000',
+  padding: '8px',
+}
 
 const data = samplePeople.objects;
 
@@ -46,7 +65,7 @@ const FriendsList = () => {
   };
 
   return (
-    <Paper className='friendsListContainer animate__animated animate__fadeInRight'>
+    <Paper className='animate__animated animate__fadeInRight' style={friendsListContainer}>
       <Box style={boxStyle}>
       <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5>
         {friendsList.length === 0 ? (
@@ -63,9 +82,9 @@ const FriendsList = () => {
                   style={{ height: 42 }}
                 >
                   <ListItemAvatar>
-                    <Avatar>
-                      <AccountCircleIcon />
-                    </Avatar>
+                    <Avatar alt=" " src="./bnLogoSmall.png" className='bnLogoSmall'/>
+                      {/* <AccountCircleIcon /> */}
+                    {/* </Avatar> */}
                   </ListItemAvatar>
                   <ListItemText primary={datum.FirstNameLastName} />
                   <ListItemSecondaryAction>

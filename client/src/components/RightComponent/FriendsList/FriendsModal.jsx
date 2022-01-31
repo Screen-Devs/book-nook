@@ -7,11 +7,13 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  Paper
+  Paper,
+  Divider
 } from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+// import url('./bnLogoSmall.png');
 
 const styleM = {
   position: 'absolute',
@@ -24,10 +26,16 @@ const styleM = {
   border: '0.5px solid lightgrey',
   boxShadow: 24,
   p: 4,
-  overflowY: 'scroll',
   display: 'flex',
   flexDirection: 'column',
+  borderRadius: '5%',
+  boxShadow: '0px 0px 32px 4px #000000',
 };
+
+const dividerStyle = {
+  border: 'solid',
+  borderWidth: '1px',
+}
 
 const FriendsModal = ({ friendsList, set, remove }) => {
 
@@ -38,17 +46,20 @@ const FriendsModal = ({ friendsList, set, remove }) => {
 
   return (
     <Paper>
-      <Box style={styleM}>
-        <div style={{ alignSelf: 'center' }}>Friend List</div>
+      <Box className="friendsListModal" style={styleM}>
+        <div className="modalTitle" style={{ alignSelf: 'center' }}>Friends List</div>
+        <Divider style={dividerStyle}/>
         <List>
           {friendsList.map((datum) => {
             return (
               <ListItem key={datum.ID} style={{ height: 60, width: 400 }}>
                 <ListItemAvatar>
-                  <Avatar>
-                    <AccountCircleIcon />
+                  <Avatar alt=" " src="./bnLogoSmall.png" className='bnLogoSmall'>
+                    {/* <AccountCircleIcon /> */}
+                    {/* <img src={url('./bnLogoSmall.png')}/> */}
+                    {/* <div className='bnLogoSmall'/> */}
                   </Avatar>
-                </ListItemAvatar>
+                 </ListItemAvatar>
                 <ListItemText primary={datum.FirstNameLastName} />
                 <ListItemSecondaryAction>
                   <IconButton edge='end' onClick={() => handleRemove(datum.ID)}>
