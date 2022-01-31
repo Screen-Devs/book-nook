@@ -65,7 +65,7 @@ const bookDataSchema = new mongoose.Schema({
         helpful_comment: { type: Number },
       }],
   }],
-});
+})
 
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);

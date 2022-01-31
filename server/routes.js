@@ -37,12 +37,12 @@ router.post('/books/reviews', controller.book.addReview);
 
 router.post('/books/reviews/comments', controller.book.addComment);
 
+/* EXTERNAL APIS */
+router.get('/search', outbound.getGoogleResults);
+
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
 })
-
-/* EXTERNAL APIS */
-router.get('/search', outbound.getGoogleResults);
 
 
 module.exports = router;

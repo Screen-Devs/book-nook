@@ -2,6 +2,4 @@
 node_modules
 config.js
 # Compiler
-**bundle.js
-
-config.js
+bundle.js
