@@ -3,9 +3,18 @@ const axios = require('axios');
 const API = require('../../config.js')
 
 const getGoogleResults = async (req, res) => {
-  const searchResults = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
-
-  return searchResults
+  if (req.query.q) {
+    const search = req.query.q;
+    const count = req.query.count || 10;
+    const page = req.query.page || 1;
+    try {
+      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`)
+      const {items} = response.data;
+        res.status(200).send(items)
+    } catch(err) {
+      console.error(err)
+    };
+  };
 }
 
 const getNYTList = async () => {

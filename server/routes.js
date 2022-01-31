@@ -19,32 +19,30 @@ router.post('/authenticate/logout', controller.authenticate.logout);
 
 router.post('/authenticate/signup', controller.authenticate.signup);
 
-router.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
-})
+// router.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+// })
 
 /* USER MODEL */
 
-router.get('/users', controller.user.getUserInfo )
+router.get('/users', controller.user.getUserInfo );
 
-router.post('/users/books', controller.user.addBook)
+router.post('/users/books', controller.user.addBook);
 
-router.post('/users/friends', controller.user.addFriend)
+router.post('/users/friends', controller.user.addFriend);
 
-router.post('/users/canvas', controller.user.addMessage)
+router.post('/users/canvas', controller.user.addMessage);
 
 /* BOOK MODEL */
 
-router.get('/books', controller.book.getBook)
+router.get('/books', controller.book.getBook);
 
-router.post('/books/reviews', controller.book.addReview)
+router.post('/books/reviews', controller.book.addReview);
 
-router.post('/books/reviews/comments', controller.book.addComment)
+router.post('/books/reviews/comments', controller.book.addComment);
 
 /* EXTERNAL APIS */
-router.get('/search', )
-
-
+router.get('/search', outbound.getGoogleResults);
 
 
 module.exports = router;

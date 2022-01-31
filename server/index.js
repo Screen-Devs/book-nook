@@ -14,7 +14,7 @@ const port = 3010;
 
 // uri(s)
 const clientPath = path.resolve(__dirname, '../dist');
-const mongoUri = 'mongodb://localhost:27017'
+const mongoUri = 'mongodb://ec2-54-152-31-241.compute-1.amazonaws.com:27017';
 
 // Authentication Connections
 const store = new MongoDBSession({
