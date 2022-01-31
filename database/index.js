@@ -57,7 +57,7 @@ const bookDataSchema = new mongoose.Schema({
     reported_review: {type: Boolean},
     helpful_review: {type: Number},
     comments: [{
-        comment_id: {}
+        comment_id: mongoose.ObjectId,
         commenter: { type: String},
         comment_time: { type: Date , default: Date.now},
         comment_body: { type: String, min: 10, max: 1000},
