@@ -1,6 +1,6 @@
 // getGoogleData - query google api
 const axios = require('axios');
-const API = require('../../config.js')
+const { API } = require('../../config.js')
 
 const getGoogleResults = async (req, res) => {
   if (req.query.q) {
@@ -19,6 +19,7 @@ const getGoogleResults = async (req, res) => {
 
 const getNYTimesLists = async (req, res) => {
   try {
+
     const nyTimesResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API}`);
     const listNames = nyTimesResult.data.results.map((item) => {
     const { list_name, list_name_encoded } = item;
@@ -30,9 +31,14 @@ const getNYTimesLists = async (req, res) => {
   }
 }
 
-const getNYTListResults = async (list_name) => {
-  const nyTimesListResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/${list_name}.json?api-key=${API}`)
-  return nyTimesListResult.data.results.books;
+const getNYTListResults = async (req, res) => {
+  const { category } = req.query;
+  try {
+    const nyTimesListResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${API}`)
+    res.status(200).json(nyTimesListResult.data.results.books)
+  } catch (err) {
+    res.status(500).send(err)
+  }
 }
 
 
