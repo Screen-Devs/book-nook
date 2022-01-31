@@ -2,6 +2,7 @@ const { User } = require('../');
 
 const insertUser = async (username) => {
   try {
+    console.log('inserting', username);
     const dataToInsert = {
       username: username,
       userBooks: [],
@@ -12,9 +13,11 @@ const insertUser = async (username) => {
       }
     };
     const result = await User.create(dataToInsert);
+    console.log('result: ', result);
     return result;
   } catch (error) {
-    return (error)
+    console.log('error!', error);
+    return (error);
   }
 };
 
@@ -76,22 +79,28 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
 
 const addOrRemoveFriend = async ( username, friend, action ) => {
   // add friend object to user's friends' list
+  if (action === 'add') {
+    try {
+      const dataToInsert = {
+        username: username,
+        userBooks: [],
+        friends: [],
+        canvas: [],
+        settings: {
+          theme: 'light',
+        }
+      };
+      const result = await User.create(dataToInsert);
+      return result;
+    } catch (error) {
+      return (error)
+    }
+  } else if (action === 'remove') {
 
-  try {
-    const dataToInsert = {
-      username: username,
-      userBooks: [],
-      friends: [],
-      canvas: [],
-      settings: {
-        theme: 'light',
-      }
-    };
-    const result = await User.create(dataToInsert);
-    return result;
-  } catch (error) {
-    return (error)
+  } else {
+    return 'Please specify an action with your request: add or remove.'
   }
+
 }
 
 const insertCanvasMessage = async ( user_id, message ) => {

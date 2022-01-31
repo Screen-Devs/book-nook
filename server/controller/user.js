@@ -13,7 +13,7 @@ const putUserBook = async (req, res) => {
 }
 
 const putFriend = async (req, res) => {
-  const { username, friend } = req.body;
+  const { username, friend, action } = req.body;
   const result = await addOrRemoveFriend(username, friend, action );
   res.status(204).send(result);
 }
