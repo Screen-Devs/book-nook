@@ -1,7 +1,7 @@
 const { BookData } = require('../');
 
 const getAllBookData = async (book_id) => {
-  const api_data = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book_id}`;
+  const api_data = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${book_id}`);
   let metadata = await BookData.find({ lookup_id: book_id });
   if (!metadata) {
     metadata = BookData.updateOne({ lookup_id: book_id }, { lookup_id: book_id, reviews: [], comments: [] })
@@ -17,7 +17,7 @@ const findBookMeta = async (book_id) => {
 const addBookReview = async (book_id, review) => {
   const newReview = {
     username: review.username,
-    review_date: new Date().toISOString();
+    review_date: new Date().toISOString(),
     rating: review.rating,
     review_body: review.reviewBody,
     reported_review: false,
@@ -36,8 +36,8 @@ const addBookComment = async (book_id, review_id, comment) => {
     reported_comment: false,
     helpful_comment: 0
   }
-  const result = await BookData.updateOne({ lookup_id: book_id,  "reviews.review_id": review_id }, { $push { "reviews.$.comments": newComment }});
-  return result;
+  // const result = await BookData.updateOne({ lookup_id: book_id,  "reviews.review_id": review_id }, { $push { "reviews.$.comments": newComment }});
+  // return result;
 }
 
 const markBookReview = async (book_id, review_id, mark_type) => {
