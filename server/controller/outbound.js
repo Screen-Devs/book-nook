@@ -9,9 +9,7 @@ const getGoogleResults = async (req, res) => {
     const page = req.query.page || 1;
     try {
       const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`)
-      const {
-        items
-      } = response.data;
+      const { items } = response.data;
       res.status(200).send(items)
     } catch (err) {
       res.status(500).send()
@@ -26,9 +24,10 @@ const getNYTimesLists = async (req, res) => {
     const { list_name, list_name_encoded } = item;
     return { list_name, list_name_encoded }
     })
-    res.status(200).send(listNames)
-  } catch() {
-    res.status(500).send()
+    console.log(listNames)
+    res.status(200).json(listNames)
+  } catch (err) {
+    res.status(500).send(err)
   }
 }
 
