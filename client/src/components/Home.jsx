@@ -37,6 +37,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [current, setCurrent] = useState(bookSamples)
   const [completed, setCompleted] = useState(bookSamples)
   const [bookClub, setBookClub] = useState([])
+  const [searchedBooks, setSearchedBooks] = useState([])
 
 
   // TODO : Change to a books unique id
@@ -83,12 +84,12 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   useEffect(() => {
     if (!currentUser) return;
-    handleGetUserData();
+    handleGetUserData(currentUser);
   }, [currentUser]);
 
-  const handleGetUserData = () => {
+  const handleGetUserData = (user) => {
     // make get request and give username to the server
-    console.log('Current User ', currentUser);
+    console.log('Profile is currently loading ', user);
     // set payload from server into profileLayout
   };
 
@@ -96,24 +97,23 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
     const count = 10;
     const page = 1;
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`
-      )
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.error(err));
-    setAppLayout(searchLayout);
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${count}&nextPageToken=${page}`)
+    .then((res) => {
+      setSearchedBooks(res.data.items);
+      setAppLayout(searchLayout)
+    })
+    .catch(err => console.error(err))
   };
 
   return (
     <div>
       {!authStatus && <Navigate to='/login' replace={true} />}
       {authStatus && (
-        <div className='Home'>
-          <Header authenticate={authenticate} handleSearch={handleSearch} />
-          <div className='bodyContainer'>
+        <div className = "Home">
+          <Header
+            authenticate={authenticate}
+            handleSearch={handleSearch}/>
+          <div className = "bodyContainer">
             <LeftComponent
               currentLayout={appLayout.left}
               removeFromQueue={removeFromQueue}
@@ -128,8 +128,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               completed={completed}
               bookClub={bookClub}
             />
-            <CenterComponent currentLayout={appLayout.center} />
-            <RightComponent currentLayout={appLayout.right} />
+            <CenterComponent
+              currentLayout={appLayout.center}
+              searchedBooks={searchedBooks}
+            />
+            <RightComponent
+              currentLayout={appLayout.right}
+              handleGetUserData={handleGetUserData}/>
           </div>
           <Footer />
         </div>

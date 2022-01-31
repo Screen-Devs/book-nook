@@ -8,7 +8,6 @@ import BookClub from './BookClub/BookClub.jsx';
 import Statistics from './Statistics/Statistics.jsx';
 
 export default function LeftComponent({
-  lists,
   removeFromQueue,
   removeFromCurrent,
   removeFromCompleted,
