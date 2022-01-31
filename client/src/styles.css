@@ -73,7 +73,10 @@ body::-webkit-scrollbar-thumb {
   margin: 5px;
   border-radius: 20px;
   box-shadow: 0px 0px 32px 4px #000000;
-  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .friendsListContainer {
