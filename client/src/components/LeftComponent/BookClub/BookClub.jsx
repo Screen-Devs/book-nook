@@ -16,7 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
-  maxWidth: 300,
+  minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
 };
@@ -34,24 +34,25 @@ const paperStyle = {
 
 const cardStyle = {
   height: 80,
+  width: 300,
   margin: 5,
   border: '0.5px black solid',
   width: '95%',
 };
 
-const BookClub = ({ lists }) => {
-  let bookClub = lists.bookClub;
+const BookClub = ({ bookClub, removeFromBookClub }) => {
+
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{ fontWeight: 800}}>Book Club</div>
       <Box style={boxStyle}>
         {bookClub.length === 0 ? null : (
-          <div>
+          <div style={{width:'100%'}}>
             {bookClub.map((datum, index) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BookClubDropdown rank={datum.rank} />}
+                    action={<BookClubDropdown rank={datum.rank} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

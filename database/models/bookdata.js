@@ -14,11 +14,11 @@ const findBookMeta = async (book_id) => {
 const addBookReview = async (book_id, review) => {
   const newReview = {
     username: review.username,
-    reviewDate: new Date().toISOString();
+    review_date: new Date().toISOString();
     rating: review.rating,
-    reviewBody: review.reviewBody,
-    report: false,
-    helpful: 0,
+    review_body: review.reviewBody,
+    reported_review: false,
+    helpful_review: 0,
     comments: []
   }
   const result = await BookData.updateOne({ lookupId: book_id }, {$push: {reviews: newReview}});
@@ -28,19 +28,21 @@ const addBookReview = async (book_id, review) => {
 const addBookComment = async (book_id, review_id, comment) => {
   const newComment = {
     commenter: comment.commenter,
-    time: new Date().toISOString();
-    comment: comment.comment;
+    comment_time: new Date().toISOString(),
+    comment_body: comment.comment,
+    reported_comment: false,
+    helpful_comment: 0
   }
-  const result = await BookData.updateOne({ lookupId: book_id,  "reviews.reviewId": review_id }, { $push { "reviews.$.comments": newComment }});
+  const result = await BookData.updateOne({ lookupId: book_id,  "reviews.review_id": review_id }, { $push { "reviews.$.comments": newComment }});
   return result;
 }
 
 const markBookReview = async (book_id, review_id, mark_type) => {
   let result;
   if (mark_type === 'report') {
-    result = await BookData.updateOne({ lookupId: book_id, "reviews.reviewId": review_id }, { $set: { "reviews.$.report": true } });
+    result = await BookData.updateOne({ lookupId: book_id, "reviews.reviewId": review_id }, { $set: { "reviews.$.reported_review": true } });
   } else if (mark_type === 'helpful') {
-    result = await BookData.updateOne({ lookupId: book_id, "reviews.reviewId": review_id }, { $inc: { "reviews.$.helpful": 1 } });
+    result = await BookData.updateOne({ lookupId: book_id, "reviews.reviewId": review_id }, { $inc: { "reviews.$.helpful_review": 1 } });
   }
   return result;
 }
