@@ -36,8 +36,6 @@ const FriendsModal = ({ friendsList, set, remove }) => {
     set(newFriends);
   };
 
-  console.log(friendsList)
-
   return (
     <Paper>
       <Box style={styleM}>
