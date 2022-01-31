@@ -28,26 +28,49 @@ const findUser = async ( username ) => {
 };
 
 const insertUserBook = async ( username, gBookId, title, authors, list, status ) => {
-  // add book to user's userBooklist - $set (favorited/current/past/queued/clubbed)
-    try {
-    const updateTarget = {username, 'userBooks.$.gBookId': gBookId };
-    const updateData = {
-      $set: {
-          'userBooks.$.gBookId': gBookId,
-          'userBooks.$.title': title,
-          'userBooks.$.authors': authors,
-          [`userBooks.$.${list}.status`]: status,
-          [`userBooks.$.${list}.date`]: new Date().toISOString(),
-        }
-    };
+  const findTarget = {username, 'userBooks.gBookId': gBookId };
+  const userBooksList = await User.find(findTarget); //Check if book is in userBook List
 
-    const result = await User.findOneAndUpdate(updateTarget, updateData, {
-      upsert: true,
-    });
-    console.log(result);
-    return result;
-  } catch (error) {
-    return (error)
+  if (userBooksList.length === 0) { //Create userBook object if it doesn't exist
+    try {
+      const createTarget = {username};
+      const createData = {
+        $push: {
+          userBooks: {
+            'gBookId': gBookId,
+            'title': title,
+            'authors': authors,
+            [`${list}.status`]: status,
+            [`${list}.date`]: new Date().toISOString(),
+          }
+        }
+      };
+
+      const result = await User.updateOne(createTarget, createData, {upsert: true});
+      return result;
+    } catch (error) {
+      return (error)
+    }
+  }
+
+  if (userBookList.length > 0) { //Update book if it is already in UserBooks
+    const bookDocument = userBooksList[0].userBooks.filter(book => book.gBookId === gBookId);
+    bookDocument[listNew].status = statusNew;
+    bookDocument[listNew].date = new Date().toISOString();
+
+    try {
+      const updateTarget = {username, "userBooks.gBookId": gBookId};
+      const updateData = {
+        $set: {
+          "userBooks.$": [bookDocument],
+        }
+      };
+
+      const result = await User.updateOne(updateTarget, updateData);
+      return result;
+    } catch (error) {
+      return (error)
+    }
   }
 }
 
