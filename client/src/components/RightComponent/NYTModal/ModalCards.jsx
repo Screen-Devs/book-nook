@@ -8,7 +8,6 @@ const BookDescription = styled.p`
   font-size: 7px;
   flex: 2;
   padding: 3px;
-  position: center;
 `;
 const BookTitle = styled.p`
   font-size: 9px;
