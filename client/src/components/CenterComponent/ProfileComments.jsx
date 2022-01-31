@@ -4,7 +4,7 @@ import 'animate.css';
 import CommentModule from '../CommentModule.jsx';
 
 export default function ProfileComments ({ userData }) {
-  console.log('Current Data ', userData);
+  console.log('Current User Data ', userData);
   return (
     <>
       <div className = "centerComponent" >

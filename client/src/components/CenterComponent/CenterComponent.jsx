@@ -15,13 +15,8 @@ export default function CenterComponent({
   // Search Component
   searchedBooks,
 }) {
-  // need to consider if user visits friend list
   let component;
-  if (currentLayout === 'profileComments' && currentView === 'self') {
-    // component = <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
-  } else if (currentLayout === 'profileComments' && currentView === 'friend') {
-    // component = <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
-  } else if (currentLayout === 'search') {
+  if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} />;
   } else if (currentLayout === 'reviews') {
     component = <BookReviews />;

@@ -118,6 +118,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   searchGoogle(query)
   .then((res) => {
     setSearchedBooks(res);
+    setAppLayout(searchLayout);
   })
   .catch(err => console.err)
   };
