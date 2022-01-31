@@ -2,7 +2,23 @@ let samplePeople = {
   "objects": [
     {
       "ID": "1",
-      "FirstNameLastName": "Celia Vaughan"
+      "FirstNameLastName": "Celia Vaughan",
+      "username": "celiaVaughan",
+      "userBooks": [
+        {
+          "_id": 123123,
+          "title": "test",
+          "author": "mctest",
+          "favorite": true,
+          "current": true,
+          "past": true,
+          "queued": true,
+          "clubbed": true,
+        }
+      ],
+      "friends": [],
+      "canvas": [],
+      "settings": { "theme": "light" }
     },
     {
       "ID": "2",
