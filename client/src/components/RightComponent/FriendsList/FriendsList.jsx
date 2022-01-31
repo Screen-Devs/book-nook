@@ -13,6 +13,7 @@ import {
   ListItemSecondaryAction,
 } from '@material-ui/core';
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import FriendsModal from './FriendsModal.jsx';
 import samplePeople from './samplepeople.js';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -53,7 +54,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = () => {
+const FriendsList = ({ handleGetFriendData }) => {
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState(data);
 
@@ -91,7 +92,11 @@ const FriendsList = () => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  <ListItemText primary={datum.FirstNameLastName} />
+                  {/* TODO: Need to ensure username clicked */}
+                  <Link to={`friend/celiaVaughan`}><ListItemText
+                    primary={datum.FirstNameLastName}
+                    onClick={e => handleGetFriendData('celiaVaughan')}
+                  /></Link>
                   <ListItemSecondaryAction>
                   <IconButton edge='end' onClick={() => removeFriend(datum.ID)}>
                       <DeleteIcon />
