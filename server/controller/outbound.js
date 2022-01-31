@@ -14,24 +14,22 @@ const getGoogleResults = async (req, res) => {
       } = response.data;
       res.status(200).send(items)
     } catch (err) {
-      console.error(err)
+      res.status(500).send()
     };
   };
 }
 
-const getNYTList = async () => {
-  const nyTimesResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API}`);
-  const listNames = nyTimesResult.data.results.map((item) => {
-    const {
-      list_name,
-      list_name_encoded
-    } = item;
-    return {
-      list_name,
-      list_name_encoded
-    };
-  })
-  return listNames
+const getNYTimesLists = async (req, res) => {
+  try {
+    const nyTimesResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${API}`);
+    const listNames = nyTimesResult.data.results.map((item) => {
+    const { list_name, list_name_encoded } = item;
+    return { list_name, list_name_encoded }
+    })
+    res.status(200).send(listNames)
+  } catch() {
+    res.status(500).send()
+  }
 }
 
 const getNYTListResults = async (list_name) => {
@@ -39,8 +37,10 @@ const getNYTListResults = async (list_name) => {
   return nyTimesListResult.data.results.books;
 }
 
+
+
 module.exports = {
   getGoogleResults,
-  getNYTList,
+  getNYTimesLists,
   getNYTListResults,
 }
