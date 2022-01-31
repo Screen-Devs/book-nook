@@ -21,11 +21,11 @@ router.post('/authenticate/signup', controller.authenticate.signup);
 
 /* USER MODEL */
 
-router.get('/users', controller.user.getUserInfo );
+router.get('/users', controller.user.getUserInfo);
 
-router.post('/users/books', controller.user.addBook);
+router.put('/users/books', controller.user.putUserBook);
 
-router.post('/users/friends', controller.user.addFriend);
+router.put('/users/friends', controller.user.putFriend);
 
 router.post('/users/canvas', controller.user.addMessage);
 
