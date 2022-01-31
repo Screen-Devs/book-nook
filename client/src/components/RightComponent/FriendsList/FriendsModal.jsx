@@ -23,13 +23,14 @@ const styleM = {
   width: 500,
   height: 500,
   background: 'white',
-  border: '0.5px solid lightgrey',
+  // border: '0.5px solid lightgrey',
   boxShadow: 24,
   p: 4,
   display: 'flex',
   flexDirection: 'column',
-  borderRadius: '5%',
+  // borderRadius: '5%',
   boxShadow: '0px 0px 32px 4px #000000',
+  borderRadius: '5%'
 };
 
 const dividerStyle = {
@@ -46,10 +47,12 @@ const FriendsModal = ({ friendsList, set, remove }) => {
 
   return (
     <Paper>
-      <Box className="friendsListModal" style={styleM}>
-        <div className="modalTitle" style={{ alignSelf: 'center'}}>Friends List</div>
-        <Divider style={dividerStyle}/>
-        <List>
+      <Box style={styleM}>
+      <div  style={{color: 'white', backgroundColor: '#212529', width: '500px', display: 'flex', justifyContent: 'center', borderRadius: '22px 22px 0px 0px', height: '100px', paddingTop: '2px',}}>
+        <div className="modalTitle" style={{ alignSelf: 'center', fontWeight: 'bold'}}>Friends List</div>
+        </div>
+        {/* <Divider style={dividerStyle}/> */}
+        <List className="friendsListModal">
           {friendsList.map((datum) => {
             return (
               <ListItem key={datum.ID} style={{ height: 60, width: 400 }}>

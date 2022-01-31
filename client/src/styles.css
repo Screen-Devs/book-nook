@@ -314,6 +314,14 @@ body::-webkit-scrollbar-thumb {
   /* padding: 10px; */
 }
 
+/* .currentBooks {
+  color: black;
+} */
+
+.hideScroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
 
 
 

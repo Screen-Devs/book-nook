@@ -14,6 +14,18 @@ const boxStyle = {
   alignItems: 'center',
 };
 
+// position: 'absolute',
+// top: '50%',
+// left: '50%',
+// transform: 'translate(-50%, -50%)',
+// width: 1000,
+// height: 530,
+// bgcolor: 'background.paper',
+// boxShadow: '0px 0px 32px 4px #000000',
+// borderRadius: '5%',
+// p: 4,
+// padding: '20px',
+
 const Donut = ({completed, current, queue, bookClub}) => {
   return (
     <Box style={boxStyle}>
