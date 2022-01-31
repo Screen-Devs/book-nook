@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema({
 }, {timestamps: true} );
 
 const bookDataSchema = new mongoose.Schema({
+<<<<<<< HEAD
   lookup_id: {type: String},
   reviews: [{
     username: {type: String},
@@ -64,6 +65,48 @@ const bookDataSchema = new mongoose.Schema({
         reported_comment: { type: Boolean },
         helpful_comment: { type: Number },
       }],
+=======
+  lookupId: {
+    type: String
+  },
+  primary_isbn: {
+    type: Number
+  },
+  reviews: [{
+    username: {
+      type: String
+    },
+    reviewDate: {
+      type: Date
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5
+    },
+    reviewBody: {
+      type: String,
+      min: 25,
+      max: 1000
+    },
+    report: {
+      type: Boolean
+    },
+    helpful: {
+      type: Number
+    },
+    comments: [{
+      commenter: {
+        type: String
+      },
+      time: {
+        type: Date
+      },
+      comment: {
+        type: String
+      },
+    }],
+>>>>>>> 71916b618a80cf384f06e75cd6633338421ef0b2
   }],
 });
 

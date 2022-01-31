@@ -10,7 +10,7 @@ import Dropdown from 'react-bootstrap/ButtonGroup';
 import {NYT} from './NYTdummyData.js';
 import NYTModal from "./NYTModal/NYTModal.jsx";
 import NYTbestSellers from './NYTbestSellers.jsx';
-import HighestRatedBooks from './HighestRatedBooks.jsx';
+import HighestRatedBooks from './TopRankingBooks/HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
@@ -21,7 +21,7 @@ export default function RightComponent() {
 
 
        {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
-        <FriendsList />
+      <FriendsList />
       {/* </div> */}
 
 
@@ -33,10 +33,9 @@ export default function RightComponent() {
       <h4>Book Nook Leader Board</h4>
         <BNleaderBoard/>
       </div> */}
-      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
-        <h4>Highest Rated Books</h4>
-        <HighestRatedBooks/>
-      </div>
+
+      <HighestRatedBooks />
+
       <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <NYTModal/>
       <Carousel
