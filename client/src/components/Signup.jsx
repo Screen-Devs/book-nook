@@ -61,7 +61,7 @@ export default function Signup ({ authStatus }) {
       <Grid style={gridStyle}>
         <Paper style={paperStyle} elevation={12}>
           {userSaved && <Navigate to='/login' replace={true} />}
-          {authStatus && <Navigate to='/' replace={true} />}
+          {authStatus && <Navigate to='/home' replace={true} />}
           <h2>Signup</h2>
           <form onSubmit={handleSignup}>
             <TextField

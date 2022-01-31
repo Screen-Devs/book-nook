@@ -86,7 +86,9 @@ const FriendsList = () => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  <ListItemText primary={datum.FirstNameLastName} />
+                  <ListItemText
+                    primary={datum.FirstNameLastName}
+                  />
                   <ListItemSecondaryAction>
                   <IconButton edge='end' onClick={() => removeFriend(datum.ID)}>
                       <DeleteIcon />

@@ -59,8 +59,10 @@ const FriendsModal = ({ friendsList, set, remove }) => {
                     {/* <img src={url('./bnLogoSmall.png')}/> */}
                     {/* <div className='bnLogoSmall'/> */}
                   </Avatar>
-                 </ListItemAvatar>
-                <ListItemText primary={datum.FirstNameLastName} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={datum.FirstNameLastName}
+                />
                 <ListItemSecondaryAction>
                   <IconButton edge='end' onClick={() => handleRemove(datum.ID)}>
                     <DeleteIcon />

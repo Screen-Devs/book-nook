@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header.jsx';
 import LeftComponent from './LeftComponent/LeftComponent.jsx';
@@ -33,9 +33,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   let bookSamples = sample.results.books;
 
   const [appLayout, setAppLayout] = useState(profileLayout);
+  const [currentUserView, setCurrentUserView] = useState(currentUser);
   const [queue, setQueue] = useState(bookSamples)
-  const [current, setCurrent] = useState(bookSamples)
-  const [completed, setCompleted] = useState(bookSamples)
+  const [current, setCurrent] = useState(bookSamples) //TODO: Can we make this more descriptive?
+  const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
 
@@ -82,6 +83,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList)
   };
 
+  // This lifecycle method will handle only the initial render of the home profile page once authenticated. Every subsequent visit should be handled by react router.
   useEffect(() => {
     if (!currentUser) return;
     handleGetUserData(currentUser);
@@ -91,6 +93,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     // make get request and give username to the server
     console.log('Profile is currently loading ', user);
     // set payload from server into profileLayout
+    // rerender user view
+    // setCurrentUserView
   };
 
   const handleSearch = (query) => {
@@ -106,6 +110,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   };
 
   return (
+
     <div>
       {!authStatus && <Navigate to='/login' replace={true} />}
       {authStatus && (
@@ -130,6 +135,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <CenterComponent
               currentLayout={appLayout.center}
+              // Profile Component
+              currentUserView={currentUserView}
+              // Search Component
               searchedBooks={searchedBooks}
             />
             <RightComponent

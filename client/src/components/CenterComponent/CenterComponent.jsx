@@ -1,17 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
 import ProfileComments from './ProfileComments.jsx';
 import Search from './Search.jsx';
 import BookReviews from './BookReviews.jsx'
 import CommentModule from '../CommentModule.jsx';
 
 
-export default function CenterComponent({ currentLayout, searchedBooks }) {
+export default function CenterComponent({
+  currentLayout,
+  // Profile Component
+  currentUserView,
+  // Search Component
+  searchedBooks,
+}) {
 
   // need to consider if user visits friend list
   let component;
   if (currentLayout === 'profileComments') {
-    component = <ProfileComments />;
+    component = <Route path={currentUserView} element={<ProfileComments currentUserView={currentUserView}/>} />;
   } else if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks}/>;
   } else if (currentLayout === 'reviews') {
@@ -20,7 +26,9 @@ export default function CenterComponent({ currentLayout, searchedBooks }) {
 
   return (
     <div className = "centerComponent" >
-      {component}
+      <Routes>
+        {component}
+      </Routes>
     </div >
   );
 }
