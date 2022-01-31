@@ -45,12 +45,12 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
 
   useEffect(() => {
     if (!currentUser) return;
-    handleGetUserData();
+    handleGetUserData(currentUser);
   }, [currentUser])
 
-  const handleGetUserData = () => {
+  const handleGetUserData = (user) => {
     // make get request and give username to the server
-    console.log('Current User ', currentUser);
+    console.log('Profile is currently loading ', user);
     // set payload from server into profileLayout
   }
 
@@ -58,10 +58,12 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
     const count = 10;
     const page = 1;
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`)
-    .then((res) => { console.log(res.data)})
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${count}&nextPageToken=${page}`)
+    .then((res) => {
+      console.log(res.data)
+    })
     .catch(err => console.error(err))
-    setAppLayout(searchLayout)
+    setAppLayout(searchLayout) // move this inside the promise
   }
 
   return (
@@ -69,11 +71,18 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
       {!authStatus && (<Navigate to="/login" replace={true}/>)}
       {authStatus && (
         <div className = "Home">
-          <Header authenticate={authenticate} handleSearch={handleSearch}/>
+          <Header
+            authenticate={authenticate}
+            handleSearch={handleSearch}/>
           <div className = "bodyContainer">
-            <LeftComponent currentLayout={appLayout.left} lists={lists}/>
-            <CenterComponent currentLayout={appLayout.center}/>
-            <RightComponent currentLayout={appLayout.right}/>
+            <LeftComponent
+              currentLayout={appLayout.left}
+              lists={lists}/>
+            <CenterComponent
+              currentLayout={appLayout.center}/>
+            <RightComponent
+              currentLayout={appLayout.right}
+              handleGetUserData={handleGetUserData}/>
           </div>
           <Footer/>
         </div>

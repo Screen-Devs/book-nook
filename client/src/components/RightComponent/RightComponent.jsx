@@ -18,14 +18,12 @@ import FriendsList from './FriendsList/FriendsList.jsx';
 export default function RightComponent() {
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
-
-
-       {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
+      {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
       <FriendsList />
       {/* </div> */}
 
 
-       {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
+      {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <h4>Friend Leader Board</h4>
         <LeaderBoard/>
       </div>
