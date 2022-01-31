@@ -19,7 +19,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const boxStyle = {
-  width: 250,
+  width: 290,
   height: '100%',
   display: 'flex',
   justifyContent: 'center',
