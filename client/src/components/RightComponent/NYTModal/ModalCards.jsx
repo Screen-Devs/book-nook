@@ -7,18 +7,23 @@ import styled from 'styled-components';
 const BookDescription = styled.p`
   font-size: 7px;
   flex: 2;
+  padding: 3px;
 `;
 const BookTitle = styled.p`
   font-size: 9px;
   height: 10px;
+  padding: 3px;
 `;
 
 const cardStyle = {
   height: 325,
   width: 150,
-  border: 1,
+  // border: 1,
   marginTop: 1,
-  position: 'relative'
+  position: 'relative',
+  boxShadow: '0px 0px 32px 1px #000000',
+  borderRadius: '5%',
+  // padding: '10px',
 }
 
 const cardContentStyle = {

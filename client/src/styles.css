@@ -6,8 +6,11 @@ body {
   margin: 0;
 }
 
-h4 {
-  margin-top: 5px;
+.writeInBook {
+  margin: 10px;
+  /* display: flex;
+  justify-content: center; */
+  color:black;
 }
 
 h5 {
@@ -21,6 +24,19 @@ h5 {
   flex-direction: column;
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 .Home {
@@ -45,6 +61,7 @@ h5 {
   font-weight: 800;
   margin: 5px;
   border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
 }
 
 .placeHolderContainerRight {
@@ -55,6 +72,26 @@ h5 {
   font-weight: 800;
   margin: 5px;
   border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.friendsListContainer {
+  height: 510px;
+  background-color: white;
+  display: flex;
+  width: 290px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: 'space-around';
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
+  padding: 8px;
 }
 
 .commentContainer {
@@ -67,6 +104,7 @@ h5 {
   margin: 5px;
   background-color: white;
   border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+  box-shadow: 0px 0px 32px 4px #000000;
 }
 
 
@@ -82,19 +120,34 @@ h5 {
   width: 100%;
   height: 70px;
   position: fixed;
-  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 5px;
+  box-shadow: 0px 0px 32px 4px #000000;
+  /* background-blend-mode: multiply; */
+  /* background-size: cover; */
+  /* background-position: center; */
+  padding-bottom: 0px;
   padding-right: 20px;
-  border-bottom: solid 5px;
-  border-color: white;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* position: absolute; */
   z-index: 1;
+}
+
+.header::before {
+  content: "";
+  filter: sepia(100%);
+  background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at bottom, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
+  background-position: center;
+  z-index: -1;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
 }
 
 .headerLogo{
@@ -110,25 +163,109 @@ h5 {
   width: 200px;
 }
 
-.background {
+.loginBackground {
   width: 100vw;
   height: 100vh;
-  display: block;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
   position: relative;
 }
 
-.background::after {
+.loginBackground::after {
   content: "";
-  background: url("./images/800px-Pontefract_Castle.png");
+  background: url("./images/loginBackground.jpg") 0 0 no-repeat, radial-gradient(ellipse at center, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
   background-size: cover;
-  opacity: 0.6;
+  /* opacity: 0.6; */
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: -1;
+  filter: grayscale(100%);
 }
+
+.loginBackgroundTransition {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  position: relative;
+}
+
+.loginBackgroundTransition::after {
+  content: "";
+  background: url("./images/loginBackground.jpg") 0 0 no-repeat, radial-gradient(ellipse at center, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  filter: pulse;
+  animation: pulse 5s;
+}
+
+@keyframes pulse {
+  0% {
+    filter:grayscale(100%);
+  }
+  100% {
+    filter:grayscale(0%);
+  }
+}
+
+.loginButton {
+    width: 350px;
+    margin: 14px 9.5px 15px 9.5px;
+}
+
+.textFieldStyle {
+  width: 350px;
+  margin: 4px 9.5px 0px 9.5px;
+}
+
+.loginGridStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+}
+
+.BNwhiteFontBackGround {
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  margin-top: 3.5px;
+}
+
+.BNwhiteFont {
+  padding: 30px;
+}
+
+.loginBlogoBackground {
+  padding: 10px;
+  height: 390px;
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 20%;
+  position: fixed;
+  z-index: 10;
+  background: url("./images/android-chrome-512x512.png");
+  background-size: cover;
+}
+
+
+
 
 /*##########################################################
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,8 +274,23 @@ h5 {
 .bodyContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 80px;
+  /* flex-wrap: wrap; */
+  margin-top: 60px;
+  justify-content: center;
+  position: relative
+}
+
+.bodyContainer::before {
+  content: "";
+  background: url('./images/BNmainBackground.jpeg');
+  background-position: center;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+  filter:grayscale(20%);
 }
 
 
@@ -150,12 +302,16 @@ h5 {
 
 .leftComponent {
   display: flex;
+  /* flex: 1; */
   flex-direction: column;
-  width: 300px;
+  width: 310px;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  background-color: rgb(154, 154, 154);
+  /* background-color: rgb(154, 154, 154, 0.5); */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* padding: 10px; */
 }
 
 
@@ -167,15 +323,22 @@ h5 {
 
 .centerComponent {
   display: flex;
+  /* flex: 4; */
   flex-direction: column;
-  flex: 1;
-  min-width: 450px;
+  width: 600px;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
+  height: 1300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
+/* height: 1620px; */
+
 .userDetails {
+  display: flex;
+  /* flex: 1; */
   height: 200px;
   background-color: black;
   color: white;
@@ -183,15 +346,52 @@ h5 {
   display: flex;
   justify-content: center;
   padding-top: 8px;
+  box-shadow: 0px 0px 32px 4px #000000;
+}
+
+.writeMe {
+  display: flex;
+  /* flex: 1; */
+  height: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 8px;
+  /* opacity: 100%; */
+  /* box-shadow: 0px 0px 32px 4px #000000; */
+  margin-top: 10px;
 }
 
 .userBook {
-  display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(154, 154, 154);
   margin-top: 10px;
   border-radius: 20px;
+  overflow: auto;
+  height: 1100px;
+}
+
+.userBook::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.friendsListModal {
+  overflow-y: scroll;
+}
+
+.friendsListModal::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.bnLogoSmall {
+  background: url('./images/bnLogoSmall.png');
+  /* border-radius: 50px; */
+  /* background-blend-mode: multiply; */
+  background-size: cover;
+  background-position: center;
+  /* height: 100px; */
+  /* z-index: 3; */
 }
 
 .commentModule {
@@ -200,7 +400,19 @@ h5 {
 
 .commentModuleBody {
   border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
+  margin-left: 20px;
+  margin-right: 20px;
 }
+
+/* .writeInBook {
+  height: 50px;
+  width: 300px;
+  padding-top: 2500px;
+  display: flex;
+  /* flex: 5; */
+  /* min-height: min-content; */
+
 
 
 
@@ -211,12 +423,15 @@ h5 {
 
 .rightComponent {
   display: flex;
+  /* flex: 1; */
   flex-direction: column;
   width: 300px;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  background-color: rgb(154, 154, 154);
+  /* background-color: rgb(154, 154, 154); */
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .NYTbookImage {
@@ -270,6 +485,42 @@ h5 {
   margin-right: 5px;
 }
 
+.sideComponentTitle {
+  /* color: black; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* border: solid; */
+  /* background-color: white; */
+  font-weight: bold;
+  font-size: large;
+  /* border-style: outset; */
+}
+
+.sideComponentTitle:hover {
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: solid;
+  background-color: white;
+}
+
+.modalTitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: x-large;
+  justify-self: center;
+  align-self: center;}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  /* transform: translate(-50%, -50%); */
+  width: 1000px;
+  height: 500px;
+  /* background-color: background.paper;
+  border: 2px solid #000;
+  box-shadow: 24;
+  p: 4; */
+}
+
 
 /*##########################################################
 ~~~~~~~~~~~~~~~~~~~~~ FOOTER COMPONENT ~~~~~~~~~~~~~~~~~~~~
@@ -278,13 +529,14 @@ h5 {
 .footer {
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  box-shadow: 0px 0px 32px 4px #000000;
   width: 100%;
   height: 50px;
   background: url("./images/bookBannerLight.png") 0 0 no-repeat, radial-gradient(ellipse at top, rgba(0,0,0,0) 20%,rgba(0,0,0,1) 100%);
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
+  filter: sepia(100%);
 }
 
 

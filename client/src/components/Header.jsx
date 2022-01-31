@@ -50,7 +50,7 @@ const Right = styled.div`
   margin-top: 8px;
 `;
 
-export default function Header({ authenticate }) {
+export default function Header({ authenticate, handleSearch }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentBook, setCurrentBook] = useState('');
   const open = Boolean(anchorEl);
@@ -65,11 +65,11 @@ export default function Header({ authenticate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleSearch(currentBook);
   };
 
   return (
-    <div className='header '>
-      <div className='header animate__animated animate__bounceInDown'>
+      <div className='header animate__animated animate__swing'>
         <Left>
           <img
             alt='Book Nook logo'
@@ -115,6 +115,5 @@ export default function Header({ authenticate }) {
           </Menu>
         </Right>
       </div>
-    </div>
   );
 }

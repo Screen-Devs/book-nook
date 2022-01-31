@@ -1,8 +1,8 @@
 const express = require('express');
-const api = require('../database/models/api.js');
 const path = require('path');
 const controller = require('./controller');
 const isAuth = require('./middleware/isAuth');
+const { outbound } = controller;
 
 const router = express.Router();
 
@@ -21,32 +21,32 @@ router.post('/authenticate/signup', controller.authenticate.signup);
 
 /* USER MODEL */
 
-router.get('/users', controller.user.getUserInfo )
+router.get('/users', controller.user.getUserInfo );
 
-router.post('/users/books', controller.user.addBook)
+router.post('/users/books', controller.user.addBook);
 
-router.post('/users/friends', controller.user.addFriend)
+router.post('/users/friends', controller.user.addFriend);
 
-router.post('/users/canvas', controller.user.addMessage)
+router.post('/users/canvas', controller.user.addMessage);
 
 /* BOOK MODEL */
 
-router.get('/books', controller.book.getBook)
+router.get('/books', controller.book.getBook);
 
-router.post('/books/reviews', controller.book.addReview)
+router.post('/books/reviews', controller.book.addReview);
 
-router.post('/books/reviews/comments', controller.book.addComment)
+router.post('/books/reviews/comments', controller.book.addComment);
 
 /* EXTERNAL APIS */
-//TODO: to implement
-// router.get('/search', api.getGoogleData)
-
-// router.get('/nyt', api.getNYTData)
+router.get('/search', outbound.getGoogleResults);
 
 /* CATCH ALL ELSE */
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
 })
 
+router.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+})
 
 module.exports = router;

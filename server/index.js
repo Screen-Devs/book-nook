@@ -13,9 +13,8 @@ const app = express();
 const port = 3010;
 
 // uri(s)
-console.log("DIR NAME: ", __dirname)
 const clientPath = path.resolve(__dirname, '../dist');
-const mongoUri = 'mongodb://ec2-54-152-31-241.compute-1.amazonaws.com:27017'
+const mongoUri = 'mongodb://ec2-54-152-31-241.compute-1.amazonaws.com:27017';
 
 // Authentication Connections
 const store = new MongoDBSession({
@@ -33,7 +32,6 @@ app.use(session({
 }))
 app.use(router);
 app.use(morgan('dev')); // TODO: change in production
-
 
 app.listen(port, () => {
   console.log(`Listening on localhost:${port}`)
