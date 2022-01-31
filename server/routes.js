@@ -19,13 +19,6 @@ router.post('/authenticate/logout', controller.authenticate.logout);
 
 router.post('/authenticate/signup', controller.authenticate.signup);
 
-<<<<<<< HEAD
-=======
-// router.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
-// })
-
->>>>>>> 71916b618a80cf384f06e75cd6633338421ef0b2
 /* USER MODEL */
 
 router.get('/users', controller.user.getUserInfo );
