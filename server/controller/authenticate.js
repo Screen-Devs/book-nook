@@ -60,7 +60,6 @@ const signup = async (req, res) => {
     const { username, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
     const result = await insertOne(username, hashed);
-    // const newUser = await insertUser(username); // TODO: to implement with user document
     // Error handling
     if (result instanceof Error) {
       // code 11000 - duplicate
@@ -71,9 +70,8 @@ const signup = async (req, res) => {
         return;
       }
     }
-
+    const newUser = await insertUser(username);
     res.send(result);
-
   } catch (error) {
     res.status(400).send(error).end();
   }
