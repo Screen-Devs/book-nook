@@ -291,6 +291,7 @@ body::-webkit-scrollbar-thumb {
   left: 0px;
   opacity: 0.75;
   filter:grayscale(20%);
+  z-index: -5;
 }
 
 
@@ -382,6 +383,10 @@ body::-webkit-scrollbar-thumb {
 
 .userBook::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
+}
+
+.searchList {
+  background-color: white;
 }
 
 .friendsListModal {
@@ -545,6 +550,7 @@ body::-webkit-scrollbar-thumb {
   background-size: cover;
   background-position: center;
   filter: sepia(100%);
+  z-index: -5;
 }
 
 

@@ -34,7 +34,7 @@ const paperStyle2 = {
 
 
 
-export default function Login ({ authStatus, authenticate }) {
+export default function Login ({ authStatus, authenticate, currentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userExists, setUserExists] = useState(null);
@@ -78,7 +78,7 @@ export default function Login ({ authStatus, authenticate }) {
 
       <Grid className="loginGridStyle">
         <Paper className="animate__animated animate__fadeInDown" style={paperStyle2} elevation={12}>
-          {authStatus && <Navigate to='/' replace={true} />}
+          {authStatus && currentUser && <Navigate to={`/home/${currentUser}`} replace={true} />}
           <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
             <img className="BNwhiteFont" src="https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo1MSwidyI6MTAwMCwiZnMiOjUxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png"/>
           </div>

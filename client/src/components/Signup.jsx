@@ -32,7 +32,7 @@ const textFieldStyle = {
   margin: 2,
 };
 
-export default function Signup ({ authStatus }) {
+export default function Signup ({ authStatus, currentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userSaved, setUserSaved] = useState(null);
@@ -61,7 +61,7 @@ export default function Signup ({ authStatus }) {
       <Grid style={gridStyle}>
         <Paper style={paperStyle} elevation={12}>
           {userSaved && <Navigate to='/login' replace={true} />}
-          {authStatus && <Navigate to='/' replace={true} />}
+          {authStatus && currentUser && <Navigate to={`/home/${currentUser}`} replace={true} />}
           <h2>Signup</h2>
           <form onSubmit={handleSignup}>
             <TextField
