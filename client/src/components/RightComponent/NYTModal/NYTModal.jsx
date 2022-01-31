@@ -16,8 +16,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 1000,
-  height: 530,
+  width: 1100,
+  height: 580,
   bgcolor: 'background.paper',
   boxShadow: '0px 0px 32px 4px #000000',
   borderRadius: '5%',
@@ -32,8 +32,9 @@ const dividerStyle = {
 const tabStyle = {
   border: 'outset',
   marginTop: '10px',
-  marginBottom: '5px',
-  paddingBottom: '4px',
+  margin: '10px 20px 10px 20px',
+  // paddingBottom: '4px',
+  // paddingLeft: '50px',
 }
 
 const NYTModal = () => {
@@ -64,11 +65,12 @@ const NYTModal = () => {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <Box sx={style}>
+        <Box sx={style} style={{padding: '0px',}}>
+        <div  style={{color: 'white', backgroundColor: '#212529', width: 1100, display: 'flex', justifyContent: 'center', borderRadius: '22px 22px 0px 0px', height: '70px', paddingTop: '2px',}}>
           <Typography className="modalTitle" id='modal-modal-title' variant='h4' component='h2'>
             NYT Bestsellers
           </Typography>
-          <Divider style={dividerStyle}/>
+          </div>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -83,7 +85,7 @@ const NYTModal = () => {
           </Tabs>
           {categories.map((info, index) => (
             <TabPanel value={value} index={index} key={index}>
-              <ModalCards/>
+              <ModalCards />
             </TabPanel>
           ))}
         </Box>
