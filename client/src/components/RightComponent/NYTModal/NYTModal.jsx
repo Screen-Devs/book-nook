@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Modal, Button, Typography, Box, Tabs, Tab } from '@material-ui/core'
+import { Modal, Typography, Box, Tabs, Tab } from '@material-ui/core'
 import styled from 'styled-components';
 import sample2 from './sample.js'
 import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
+import Button from 'react-bootstrap/Button';
+
 
 const Container = styled.div`
   margin: 10px;
@@ -18,7 +20,8 @@ const style = {
   height: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
-  boxShadow: 24,
+  boxShadow: '0px 0px 32px 4px #000000',
+  borderRadius: '5%',
   p: 4,
 };
 
@@ -43,7 +46,7 @@ const NYTModal = () => {
 
   return (
     <Container>
-      <Button style={{ color: 'black'}}onClick={handleModal}>NYT Best Sellers</Button>
+      <Button className="sideComponentTitle" variant="dark" onClick={handleModal}>NYT Best Sellers</Button>
       <Modal
         open={show}
         onClose={handleModal}
@@ -51,8 +54,8 @@ const NYTModal = () => {
         aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
-            NYT Bestseller
+          <Typography className="modalTitle" id='modal-modal-title' variant='h6' component='h2'>
+            NYT Bestsellers
           </Typography>
           <Tabs
             value={value}
