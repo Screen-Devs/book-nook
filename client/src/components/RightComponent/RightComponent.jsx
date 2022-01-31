@@ -13,27 +13,16 @@ import NYTbestSellers from './NYTbestSellers.jsx';
 import HighestRatedBooks from './HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
-<<<<<<< HEAD
-// import FriendsList from './friendslist.jsx';
-=======
 import FriendsList from './FriendsList/FriendsList.jsx';
->>>>>>> 450d0f859e50a5db639ccac94d7e39dc708350fe
 
 export default function RightComponent() {
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
 
 
-<<<<<<< HEAD
-       <div className="friendsListContainer animate__animated animate__fadeInRight">
-        <h4>Friends List</h4>
-        {/* <FriendsList/> */}
-      </div>
-=======
        {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
         <FriendsList />
       {/* </div> */}
->>>>>>> 450d0f859e50a5db639ccac94d7e39dc708350fe
 
 
        {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">

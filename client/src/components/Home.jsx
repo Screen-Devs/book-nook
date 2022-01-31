@@ -49,7 +49,7 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
     const count = 10;
     const page = 1;
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`);
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${count}&nextPageToken=${page}`)
     .then((res) => { console.log(res.data)})
     .catch(err => console.error(err))
     setAppLayout(searchLayout)
