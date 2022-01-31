@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 export default function Search ({ searchedBooks }) {
-  console.log(searchedBooks);
+  console.log('searched books ', searchedBooks);
   return (
     <>
       <div>FILTER STUFF</div>

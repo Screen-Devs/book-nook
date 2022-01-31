@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header.jsx';
 import LeftComponent from './LeftComponent/LeftComponent.jsx';
@@ -40,7 +40,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
-
 
   // TODO : Change to a books unique id
   const removeFromQueue = (rank) => {
@@ -112,8 +111,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     .catch(err => console.error(err))
   };
 
+  let navigate;
   return (
-
     <div>
       {!authStatus && <Navigate to='/login' replace={true} />}
       {authStatus && (
