@@ -16,7 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
-  maxWidth: 300,
+  minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
 };

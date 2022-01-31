@@ -7,7 +7,7 @@ import {
 import { MoreVertOutlined } from '@material-ui/icons';
 
 
-const BooksReadDropdown = ({ rank}) => {
+const BooksReadDropdown = ({ rank, remove, move}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -28,7 +28,6 @@ const BooksReadDropdown = ({ rank}) => {
   const handleAdd = () => {
     move(rank)
     setAnchorEl(null);
-
   }
 
   return (
@@ -50,8 +49,8 @@ const BooksReadDropdown = ({ rank}) => {
       open={open}
       onClose={handleClose}
     >
-      <MenuItem onClick={handleClose}>Join Book Club</MenuItem>
-      <MenuItem onClick={handleClose}>Remove from List</MenuItem>
+      <MenuItem onClick={handleAdd}>Join Book Club</MenuItem>
+      <MenuItem onClick={handleRemove}>Remove from List</MenuItem>
     </Menu>
     </>
   );
