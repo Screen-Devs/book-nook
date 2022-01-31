@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-
+import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests/getRequest.js';
 import sample from './RightComponent/TopRankingBooks/sample.js';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
@@ -95,14 +95,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40
-    const count = 10;
-    const page = 1;
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${count}&nextPageToken=${page}`)
-    .then((res) => {
-      setSearchedBooks(res.data.items);
-      setAppLayout(searchLayout)
-    })
-    .catch(err => console.error(err))
+  searchGoogle(query)
+  .then((res) => {
+    setSearchedBooks(res);
+  })
+  .catch(err => console.err)
   };
 
   return (
