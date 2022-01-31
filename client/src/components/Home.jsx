@@ -7,10 +7,7 @@ import RightComponent from "./RightComponent/RightComponent.jsx";
 import Footer from "./Footer.jsx";
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
 
-<<<<<<< HEAD
 import sample from "./RightComponent/TopRankingBooks/sample.js";
-=======
->>>>>>> main
 
 export default function Home ({ authStatus, authenticate, currentUser }) {
 
