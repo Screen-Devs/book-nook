@@ -37,6 +37,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [current, setCurrent] = useState(bookSamples)
   const [completed, setCompleted] = useState(bookSamples)
   const [bookClub, setBookClub] = useState([])
+  const [searchedBooks, setSearchedBooks] = useState([])
 
 
   // TODO : Change to a books unique id
@@ -98,8 +99,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     const page = 1;
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${count}&nextPageToken=${page}`)
     .then((res) => {
-      console.log(res.data)
-      setAppLayout(searchLayout) // move this inside the promise
+      setSearchedBooks(res.data.items);
+      setAppLayout(searchLayout)
     })
     .catch(err => console.error(err))
   };
@@ -126,9 +127,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               current={current}
               completed={completed}
               bookClub={bookClub}
-              lists={lists}/>
+            />
             <CenterComponent
-              currentLayout={appLayout.center}/>
+              currentLayout={appLayout.center}
+              searchedBooks={searchedBooks}
+            />
             <RightComponent
               currentLayout={appLayout.right}
               handleGetUserData={handleGetUserData}/>

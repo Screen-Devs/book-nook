@@ -6,14 +6,14 @@ import BookReviews from './BookReviews.jsx'
 import CommentModule from '../CommentModule.jsx';
 
 
-export default function CenterComponent({ currentLayout }) {
+export default function CenterComponent({ currentLayout, searchedBooks }) {
 
   // need to consider if user visits friend list
   let component;
   if (currentLayout === 'profileComments') {
     component = <ProfileComments />;
   } else if (currentLayout === 'search') {
-    component = <Search />;
+    component = <Search searchedBooks={searchedBooks}/>;
   } else if (currentLayout === 'reviews') {
     component = <BookReviews />;
   }
