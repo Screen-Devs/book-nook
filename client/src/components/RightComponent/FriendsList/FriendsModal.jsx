@@ -47,7 +47,7 @@ const FriendsModal = ({ friendsList, set, remove }) => {
   return (
     <Paper>
       <Box className="friendsListModal" style={styleM}>
-        <div className="modalTitle" style={{ alignSelf: 'center' }}>Friends List</div>
+        <div className="modalTitle" style={{ alignSelf: 'center'}}>Friends List</div>
         <Divider style={dividerStyle}/>
         <List>
           {friendsList.map((datum) => {

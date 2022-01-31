@@ -337,7 +337,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   /* flex: 1; */
   height: 200px;
-  background-color: black;
+  background-color: #212529;
   color: white;
   border-radius: 20px;
   display: flex;
