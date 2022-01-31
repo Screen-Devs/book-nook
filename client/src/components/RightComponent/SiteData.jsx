@@ -15,11 +15,11 @@ import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
 
-export default function SiteData () {
+export default function SiteData ({ handleGetUserData }) {
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
       {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
-      <FriendsList />
+      <FriendsList handleGetUserData={handleGetUserData}/>
       {/* </div> */}
 
 

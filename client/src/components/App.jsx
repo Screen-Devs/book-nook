@@ -31,11 +31,10 @@ export default function App() {
   return(
     <div className="App">
       <Routes>
-        <Route path="/home/*" element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
+        <Route path={`/home/${currentUser}/*`} element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
         <Route path="/login" element={<Login authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
-        <Route path="/signup" element={<Signup authStatus={authStatus}/>} />
-        {/* Change below to 404 page? */}
-        {/* <Route path="*" element={<Home />} /> */}
+        <Route path="/signup" element={<Signup authStatus={authStatus} currentUser={currentUser}/>} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

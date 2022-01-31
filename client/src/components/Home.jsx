@@ -13,7 +13,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
     left: 'userLists',
     center: 'profileComments',
-    right: 'siteData', //
+    right: 'siteData',
+    view: 'self', // on click of friend in friend list, set this to 'friend'
     payload: '',
   };
 
@@ -33,7 +34,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   let bookSamples = sample.results.books;
 
   const [appLayout, setAppLayout] = useState(profileLayout);
-  const [currentUserView, setCurrentUserView] = useState(currentUser);
+  const [currentUserViewID, setCurrentUserViewID] = useState(null);
   const [queue, setQueue] = useState(bookSamples)
   const [current, setCurrent] = useState(bookSamples) //TODO: Can we make this more descriptive?
   const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
@@ -89,12 +90,14 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     handleGetUserData(currentUser);
   }, [currentUser]);
 
-  const handleGetUserData = (user) => {
+  const handleGetUserData = (userID) => {
     // make get request and give username to the server
-    console.log('Profile is currently loading ', user);
+    console.log('Profile is currently loading ', userID);
+
+    // setCurrentUserViewID
     // set payload from server into profileLayout
+
     // rerender user view
-    // setCurrentUserView
   };
 
   const handleSearch = (query) => {
@@ -136,7 +139,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             <CenterComponent
               currentLayout={appLayout.center}
               // Profile Component
-              currentUserView={currentUserView}
+              currentUserViewID={currentUserViewID}
+              currentView={appLayout.view}
+              userData={appLayout.payload}
               // Search Component
               searchedBooks={searchedBooks}
             />
