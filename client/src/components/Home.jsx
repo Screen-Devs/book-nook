@@ -33,58 +33,52 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   let bookSamples = sample.results.books;
 
   const [appLayout, setAppLayout] = useState(profileLayout);
-  const [lists, setLists] = useState({
-    queue: bookSamples,
-    current: bookSamples,
-    completed: bookSamples,
-    bookClub: [],
-  });
   const [queue, setQueue] = useState(bookSamples)
   const [current, setCurrent] = useState(bookSamples)
   const [completed, setCompleted] = useState(bookSamples)
-  const [bookClub, setBookClub] = useState(bookSamples)
+  const [bookClub, setBookClub] = useState([])
 
 
   // TODO : Change to a books unique id
   const removeFromQueue = (rank) => {
-    const newList = lists.queue.filter((item) => item.rank !== rank);
-    setLists({ ...lists, queue: newList });
+    const newList = queue.filter((item) => item.rank !== rank);
+    setQueue(newList)
   };
 
   const removeFromCurrent = (rank) => {
-    const newList = lists.current.filter((item) => item.rank !== rank);
-    setLists({ ...lists, current: newList });
+    const newList = current.filter((item) => item.rank !== rank);
+    setCurrent(newList)
   };
 
   const removeFromCompleted = (rank) => {
-    const newList = lists.completed.filter((item) => item.rank !== rank);
-    setLists({ ...lists, completed: newList });
+    const newList = completed.filter((item) => item.rank !== rank);
+    setCompleted(newList)
   };
 
   const removeFromBookClub = (rank) => {
-    const newList = lists.bookClub.filter((item) => item.rank !== rank);
-    setLists({ ...lists, bookClub: newList });
+    const newList = bookClub.filter((item) => item.rank !== rank);
+    setBookClub(newList)
   };
 
   const queueToCurrent = (rank) => {
-    const itemToMove = lists.queue.filter((item) => item.rank === rank);
+    const itemToMove = queue.filter((item) => item.rank === rank);
     removeFromQueue(rank);
-    let newList = lists.current.concat(itemToMove);
-    setLists({ ...lists, current: newList });
+    let newList = current.concat(itemToMove);
+    setCurrent(newList)
   };
 
   const currentToCompleted = (rank) => {
-    const itemToMove = lists.current.filter((item) => item.rank === rank);
+    const itemToMove = current.filter((item) => item.rank === rank);
     removeFromCurrent(rank);
-    let newList = lists.completed.concat(itemToMove);
-    setLists({ ...lists, completed: newList });
+    let newList = completed.concat(itemToMove);
+    setCompleted(newList)
   };
 
   const completedToBookClub = (rank) => {
+    const itemToMove = completed.filter((item) => item.rank === rank);
     removeFromCompleted(rank);
-    const itemToMove = lists.completed.filter((item) => item.rank === rank);
-    let newList = lists.bookClub.concat(itemToMove);
-    setLists({ ...lists, bookClub: newList });
+    let newList = bookClub.concat(itemToMove);
+    setBookClub(newList)
   };
 
   useEffect(() => {
@@ -122,7 +116,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           <div className='bodyContainer'>
             <LeftComponent
               currentLayout={appLayout.left}
-              lists={lists}
               removeFromQueue={removeFromQueue}
               removeFromCurrent={removeFromCurrent}
               removeFromCompleted={removeFromCompleted}
@@ -130,6 +123,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               queueToCurrent={queueToCurrent}
               currentToCompleted={currentToCompleted}
               completedToBookClub={completedToBookClub}
+              queue={queue}
+              current={current}
+              completed={completed}
+              bookClub={bookClub}
             />
             <CenterComponent currentLayout={appLayout.center} />
             <RightComponent currentLayout={appLayout.right} />

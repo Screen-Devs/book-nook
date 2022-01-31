@@ -39,8 +39,8 @@ const cardStyle = {
   width: '95%',
 };
 
-const QueueList = ({ lists }) => {
-  let queue = lists.queue;
+const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
+
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{ fontWeight: 800}}>
@@ -53,7 +53,7 @@ const QueueList = ({ lists }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<QueueDropdown rank={datum.rank} />}
+                    action={<QueueDropdown rank={datum.rank} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

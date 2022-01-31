@@ -39,8 +39,8 @@ const cardStyle = {
   width: '95%',
 };
 
-const CurrentList = ({ lists }) => {
-  let current = lists.current;
+const CurrentList = ({ current, removeFromCurrent, currentToCompleted }) => {
+
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{ fontWeight: 800}}>Current Books</div>
@@ -51,7 +51,7 @@ const CurrentList = ({ lists }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<CurrentDropdown rank={datum.rank} />}
+                    action={<CurrentDropdown rank={datum.rank} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

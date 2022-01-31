@@ -5,6 +5,7 @@ import QueueList from './BooksQueue/QueueList.jsx';
 import CurrentList from './CurrentBooks/CurrentList.jsx';
 import BooksRead from './BooksRead/BooksRead.jsx';
 import BookClub from './BookClub/BookClub.jsx';
+import Statistics from './Statistics.jsx';
 
 export default function LeftComponent({
   lists,
@@ -15,31 +16,38 @@ export default function LeftComponent({
   queueToCurrent,
   currentToCompleted,
   completedToBookClub,
+  queue,
+  current,
+  completed,
+  bookClub
 }) {
   return (
     <div className='leftComponent animate__animated animate__fadeInDown'>
-      <div className='placeHolderContainerLeft animate__animated animate__fadeInLeft'>
-        Statistics
-      </div>
+      <Statistics
+        bookClub={bookClub}
+        current={current}
+        queue={queue}
+        completed={completed}
+        className='placeHolderContainerLeft animate__animated animate__fadeInLeft'/>
       <BookClub
-        lists={lists}
+        bookClub={bookClub}
         removeFromBookClub={removeFromBookClub}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <CurrentList
-        lists={lists}
+        current={current}
         removeFromCurrent={removeFromCurrent}
         currentToCompleted={currentToCompleted}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <QueueList
-        lists={lists}
+        queue={queue}
         removeFromQueue={removeFromQueue}
         queueToCurrent={queueToCurrent}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <BooksRead
-        lists={lists}
+        completed={completed}
         removeFromCompleted={removeFromCompleted}
         completedToBookClub={completedToBookClub}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'

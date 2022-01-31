@@ -39,8 +39,7 @@ const cardStyle = {
   width: '95%',
 };
 
-const BooksRead = ({ lists, removeFromCompleted, completedToBookClub }) => {
-  let completed = lists.completed;
+const BooksRead = ({ completed, removeFromCompleted, completedToBookClub }) => {
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{ fontWeight: 800}}>Completed Books</div>

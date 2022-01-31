@@ -40,8 +40,8 @@ const cardStyle = {
   width: '95%',
 };
 
-const BookClub = ({ lists }) => {
-  let bookClub = lists.bookClub;
+const BookClub = ({ bookClub, removeFromBookClub }) => {
+
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{ fontWeight: 800}}>Book Club</div>
@@ -52,7 +52,7 @@ const BookClub = ({ lists }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BookClubDropdown rank={datum.rank} />}
+                    action={<BookClubDropdown rank={datum.rank} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
