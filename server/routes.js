@@ -19,10 +19,6 @@ router.post('/authenticate/logout', controller.authenticate.logout);
 
 router.post('/authenticate/signup', controller.authenticate.signup);
 
-// router.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
-// })
-
 /* USER MODEL */
 
 router.get('/users', controller.user.getUserInfo );
@@ -44,5 +40,8 @@ router.post('/books/reviews/comments', controller.book.addComment);
 /* EXTERNAL APIS */
 router.get('/search', outbound.getGoogleResults);
 
+router.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
+})
 
 module.exports = router;
