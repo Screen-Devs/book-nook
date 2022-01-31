@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Paper, Box, CardHeader, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core';
-import CurrentDropdown from './CurrentDropdown.jsx';
+import BookClubDropdown from './BookClubDropdown.jsx';
 
 const theme = createTheme({
   typography: {
@@ -39,19 +39,19 @@ const cardStyle = {
   width: '95%',
 };
 
-const CurrentList = ({ lists }) => {
-  let current = lists.current;
+const BookClub = ({ lists }) => {
+  let bookClub = lists.bookClub;
   return (
     <Paper style={paperStyle} elevation={6}>
-      <div style={{ fontWeight: 800}}>Current Books</div>
+      <div style={{ fontWeight: 800}}>Book Club</div>
       <Box style={boxStyle}>
-        {current.length === 0 ? null : (
+        {bookClub.length === 0 ? null : (
           <div>
-            {current.map((datum, index) => {
+            {bookClub.map((datum, index) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<CurrentDropdown rank={datum.rank} />}
+                    action={<BookClubDropdown rank={datum.rank} />}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
@@ -77,4 +77,4 @@ const CurrentList = ({ lists }) => {
   );
 };
 
-export default CurrentList;
+export default BookClub;

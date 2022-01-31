@@ -37,8 +37,8 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [lists, setLists] = useState({
     queue: bookSamples,
-    current: [],
-    completed: [],
+    current: bookSamples,
+    completed: bookSamples,
     bookClub: []
   })
 

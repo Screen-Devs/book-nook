@@ -7,7 +7,7 @@ import {
 import { MoreVertOutlined } from '@material-ui/icons';
 
 
-const QueueDropdown = ({ rank}) => {
+const BooksReadDropdown = ({ rank}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -50,11 +50,11 @@ const QueueDropdown = ({ rank}) => {
       open={open}
       onClose={handleClose}
     >
-      <MenuItem onClick={handleClose}>Move to Current List</MenuItem>
+      <MenuItem onClick={handleClose}>Join Book Club</MenuItem>
       <MenuItem onClick={handleClose}>Remove from List</MenuItem>
     </Menu>
     </>
   );
 };
 
-export default QueueDropdown;
+export default BooksReadDropdown;
