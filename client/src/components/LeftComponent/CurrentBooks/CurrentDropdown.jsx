@@ -43,7 +43,7 @@ const CurrentDropdown = ({ rank }) => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Move to Current List</MenuItem>
+        <MenuItem onClick={handleClose}>Move to Completed Books</MenuItem>
         <MenuItem onClick={handleClose}>Remove from List</MenuItem>
       </Menu>
     </>
