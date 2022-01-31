@@ -13,17 +13,16 @@ import NYTbestSellers from './NYTbestSellers.jsx';
 import HighestRatedBooks from './HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
-import FriendsList from './friendslist.jsx';
+import FriendsList from './FriendsList/FriendsList.jsx';
 
 export default function RightComponent() {
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
 
 
-       <div className="friendsListContainer animate__animated animate__fadeInRight">
-        <h4>Friends List</h4>
-        <FriendsList/>
-      </div>
+       {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
+        <FriendsList />
+      {/* </div> */}
 
 
        {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
