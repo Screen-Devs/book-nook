@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom"
+import 'animate.css';
 import Carousel from 'react-elastic-carousel'
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -8,52 +9,36 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/ButtonGroup';
 import {NYT} from './NYTdummyData.js';
 import NYTModal from "./NYTModal/NYTModal.jsx";
-// import Button from 'react-bootstrap/Button';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-// import SplitButton from 'react-bootstrap/SplitButton';
-// import ButtonGroup from 'react-bootstrap/ButtonGroup';
-// import Dropdown from 'react-bootstrap/ButtonGroup';
 import NYTbestSellers from './NYTbestSellers.jsx';
 import HighestRatedBooks from './HighestRatedBooks.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
+import FriendsList from './FriendsList/FriendsList.jsx';
 
 export default function RightComponent() {
   return (
-    <div className = "rightComponent" >
-       <div className="placeHolderContainer">
+    <div className = "rightComponent animate__animated animate__fadeInDown" >
+
+
+       {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
+        <FriendsList />
+      {/* </div> */}
+
+
+       {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <h4>Friend Leader Board</h4>
         <LeaderBoard/>
       </div>
-      <div className="placeHolderContainer">
+      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
       <h4>Book Nook Leader Board</h4>
         <BNleaderBoard/>
-      </div>
-      <div className="placeHolderContainer">
+      </div> */}
+      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <h4>Highest Rated Books</h4>
         <HighestRatedBooks/>
       </div>
-      <div className="placeHolderContainer">
+      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
         <NYTModal/>
-        {/* <div>
-    {[DropdownButton].map((DropdownType, idx) => (
-      <DropdownType
-        as={ButtonGroup}
-        key={idx}
-        id={`dropdown-button-drop-${idx}`}
-        size="sm"
-        variant="secondary"
-        title="Drop small"
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      </DropdownType>
-    ))}
-  </div> */}
-
-
-
       <Carousel
       enableAutoPlay autoPlaySpeed={6000}
       itemsToShow={2}
@@ -74,7 +59,7 @@ export default function RightComponent() {
 })}
 </Carousel>
       </div>
-      <div className="placeHolderContainer">Place Holder Container</div>
+      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">Place Holder Container</div>
     </div>
   );
 }
