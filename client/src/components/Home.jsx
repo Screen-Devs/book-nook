@@ -8,6 +8,7 @@ import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
 import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests/getRequest.js';
 import sample from './RightComponent/TopRankingBooks/sample.js';
+import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -34,7 +35,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   let bookSamples = sample.results.books;
 
   const [appLayout, setAppLayout] = useState(profileLayout);
-  const [currentUserViewID, setCurrentUserViewID] = useState(null);
+  const [currentUserView, setCurrentUserView] = useState(null);
   const [queue, setQueue] = useState(bookSamples)
   const [current, setCurrent] = useState(bookSamples) //TODO: Can we make this more descriptive?
   const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
@@ -83,20 +84,33 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList)
   };
 
-  // This lifecycle method will handle only the initial render of the home profile page once authenticated. Every subsequent visit should be handled by react router.
+  // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
-    handleGetUserData(currentUser);
-  }, [currentUser]);
+    // get user data for currentUser
 
-  const handleGetUserData = (userID) => {
+    setAppLayout({
+      ...profileLayout,
+      payload: {
+        ID: '0',
+        username: 'Its myself!',
+        books: 'none?',
+      }
+    })
+
+  }, []);
+
+  const handleGetFriendData = (user) => {
     // make get request and give username to the server
-    console.log('Profile is currently loading ', userID);
-
-    // setCurrentUserViewID
+    console.log('Profile is currently loading ', user);
     // set payload from server into profileLayout
+    setAppLayout({
+      ...profileLayout,
+      view: 'friend',
+      payload: samplePeople.objects[0],
+    })
+    setCurrentUserView(user)
 
-    // rerender user view
   };
 
   const handleSearch = (query) => {
@@ -135,7 +149,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             <CenterComponent
               currentLayout={appLayout.center}
               // Profile Component
-              currentUserViewID={currentUserViewID}
+              currentUserView={currentUserView}
               currentView={appLayout.view}
               userData={appLayout.payload}
               // Search Component
@@ -143,7 +157,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <RightComponent
               currentLayout={appLayout.right}
-              handleGetUserData={handleGetUserData}/>
+              handleGetFriendData={handleGetFriendData}/>
           </div>
           <Footer />
         </div>

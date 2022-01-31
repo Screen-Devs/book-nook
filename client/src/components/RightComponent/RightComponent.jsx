@@ -3,11 +3,11 @@ import ReactDOM from "react-dom"
 import 'animate.css';
 import SiteData from './SiteData.jsx';
 
-export default function RightComponent({ currentLayout, handleGetUserData }) {
+export default function RightComponent({ currentLayout, handleGetFriendData }) {
 
   let component;
   if (currentLayout === 'siteData') {
-    component = <SiteData handleGetUserData={handleGetUserData}/>;
+    component = <SiteData handleGetFriendData={handleGetFriendData}/>;
   } else if (currentLayout === 'addToLists') {
     //TODO: Need to implement
     component = <AddToLists />;

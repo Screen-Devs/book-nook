@@ -54,7 +54,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetUserData }) => {
+const FriendsList = ({ handleGetFriendData }) => {
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState(data);
 
@@ -92,10 +92,10 @@ const FriendsList = ({ handleGetUserData }) => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  {/* TODO: Need to ensure ID clicked, will match ID requested from API and rendered in Profile Comments */}
-                  <Link to={`friend/${datum.ID}`}><ListItemText
+                  {/* TODO: Need to ensure username clicked */}
+                  <Link to={`friend/celiaVaughan`}><ListItemText
                     primary={datum.FirstNameLastName}
-                    onClick={e => handleGetUserData(datum.ID)}
+                    onClick={e => handleGetFriendData('celiaVaughan')}
                   /></Link>
                   <ListItemSecondaryAction>
                   <IconButton edge='end' onClick={() => removeFriend(datum.ID)}>

@@ -9,20 +9,18 @@ import CommentModule from '../CommentModule.jsx';
 export default function CenterComponent({
   currentLayout,
   // Profile Component
-  currentUserViewID,
+  currentUserView,
   currentView,
   userData,
   // Search Component
   searchedBooks,
 }) {
-
   // need to consider if user visits friend list
   let component;
-  console.log('current Layout ', currentLayout)
   if (currentLayout === 'profileComments' && currentView === 'self') {
-    component = <Route path="/" element={<ProfileComments currentUserViewID={currentUserViewID} userData={userData}/>} />;
+    // component = <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
   } else if (currentLayout === 'profileComments' && currentView === 'friend') {
-    component = <Route path={`friend/${currentUserViewID}`} element={<ProfileComments currentUserViewID={currentUserViewID} userData={userData}/>} />;
+    // component = <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
   } else if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} />;
   } else if (currentLayout === 'reviews') {
@@ -33,7 +31,10 @@ export default function CenterComponent({
   return (
     <div className = "centerComponent" >
       {currentLayout === 'profileComments' ?
-      (<Routes>{component}</Routes>) :
+      (<Routes>
+        <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />
+        <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
+      </Routes>) :
       component}
     </div >
   );
