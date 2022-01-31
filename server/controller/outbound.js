@@ -24,7 +24,6 @@ const getNYTimesLists = async (req, res) => {
     const { list_name, list_name_encoded } = item;
     return { list_name, list_name_encoded }
     })
-    console.log(listNames)
     res.status(200).json(listNames)
   } catch (err) {
     res.status(500).send(err)
