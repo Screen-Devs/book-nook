@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Paper, Box, CardHeader, Typography, IconButton } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core';
-import QueueDropdown from './QueueDropdown.jsx';
+import QueueDropdown from './CurrentDropdown.jsx';
 
 const theme = createTheme({
   typography: {
@@ -29,7 +29,7 @@ const paperStyle = {
   alignItems: 'center',
   flexDirection: 'column',
   margin: 5,
-  position: 'relative',
+  position: 'relative'
 };
 
 const cardStyle = {
@@ -39,21 +39,19 @@ const cardStyle = {
   width: '95%',
 };
 
-const QueueList = ({ lists }) => {
-  let queue = lists.queue;
+const CurrentList = ({ lists }) => {
+  let current = lists.current;
   return (
     <Paper style={paperStyle} elevation={6}>
-      <div style={{ fontWeight: 800}}>
-        Book Queue{' '}
-      </div>
+      <div style={{ fontWeight: 800}}>Current Books</div>
       <Box style={boxStyle}>
-        {queue.length === 0 ? null : (
+        {current.length === 0 ? null : (
           <div>
-            {queue.map((datum, index) => {
+            {current.map((datum, index) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<QueueDropdown rank={datum.rank} />}
+                    action={<CurrentDropdown rank={datum.rank} />}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
@@ -79,4 +77,4 @@ const QueueList = ({ lists }) => {
   );
 };
 
-export default QueueList;
+export default CurrentList;

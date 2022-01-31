@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const QueueDropdown = ({ rank }) => {
+const CurrentDropdown = ({ rank }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -50,4 +50,4 @@ const QueueDropdown = ({ rank }) => {
   );
 };
 
-export default QueueDropdown;
+export default CurrentDropdown;
