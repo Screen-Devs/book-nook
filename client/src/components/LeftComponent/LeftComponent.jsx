@@ -34,6 +34,7 @@ export default function LeftComponent({
       bookClub={bookClub}
     />;
   } else if (currentLayout === 'bookDetails') {
+    //TODO: Need to implement
     component = <BookDetails />;
   }
 
