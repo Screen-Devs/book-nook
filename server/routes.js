@@ -11,6 +11,7 @@ const router = express.Router();
 /* LOGIN / SIGN UP */
 
 router.get('/authenticate', isAuth);
+
 router.get('/authenticate', controller.authenticate.authenticate);
 
 router.post('/authenticate/login', controller.authenticate.login);
@@ -35,13 +36,16 @@ router.post('/users/canvas', controller.user.addMessage);
 
 /* BOOK MODEL */
 
-router.get('/books', controller.book.getBook);
+router.get('/books', controller.book.getTotalBookData);
 
 router.post('/books/reviews', controller.book.addReview);
 
 router.post('/books/reviews/comments', controller.book.addComment);
 
+router.put('/books/reviews/:review_id', controller.book.markReview);
+
 /* EXTERNAL APIS */
+
 router.get('/search', outbound.getGoogleResults);
 
 

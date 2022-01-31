@@ -55,6 +55,9 @@ const bookDataSchema = new mongoose.Schema({
     type: Number
   },
   reviews: [{
+    reviewId: {
+      type: String
+    },
     username: {
       type: String
     },
