@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Paper, Box, CardHeader, Typography, IconButton } from '@material-ui/core';
+import { Card, Paper, Box, CardHeader, Typography, IconButton, Divider } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import QueueDropdown from './QueueDropdown.jsx';
 
@@ -30,6 +30,10 @@ const paperStyle = {
   flexDirection: 'column',
   margin: 5,
   position: 'relative',
+  borderRadius: '5%',
+  boxShadow: '0px 0px 32px 4px #000000',
+  // backgroundColor: 'black',
+  // color: 'white',
 };
 
 const cardStyle = {
@@ -39,14 +43,23 @@ const cardStyle = {
   width: '95%',
 };
 
+const dividerStyle = {
+  border: 'solid',
+  borderWidth: '1px',
+  width: 300,
+}
+
 const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
 
   return (
     <Paper style={paperStyle} elevation={6}>
-      <div style={{ fontWeight: 800}}>
+      <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
+      <div style={{ fontWeight: 800,}}>
         Book Queue{' '}
       </div>
-      <Box style={boxStyle}>
+      </div>
+      {/* <Divider style={dividerStyle}/> */}
+      <Box style={boxStyle} className="hideScroll">
         {queue.length === 0 ? null : (
           <div>
             {queue.map((datum, index) => {
