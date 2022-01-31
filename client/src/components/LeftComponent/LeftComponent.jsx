@@ -5,7 +5,7 @@ import QueueList from './BooksQueue/QueueList.jsx';
 import CurrentList from './CurrentBooks/CurrentList.jsx';
 import BooksRead from './BooksRead/BooksRead.jsx';
 import BookClub from './BookClub/BookClub.jsx';
-import Statistics from './Statistics.jsx';
+import Statistics from './Statistics/Statistics.jsx';
 
 export default function LeftComponent({
   lists,
