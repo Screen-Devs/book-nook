@@ -40,16 +40,9 @@ router.post('/books/reviews/comments', controller.book.addComment);
 /* EXTERNAL APIS */
 router.get('/search', outbound.getGoogleResults);
 
-<<<<<<< HEAD
 /* CATCH ALL ELSE */
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
-})
-
-=======
->>>>>>> main
-router.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
 })
 
 module.exports = router;
