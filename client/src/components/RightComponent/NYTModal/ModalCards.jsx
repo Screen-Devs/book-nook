@@ -19,10 +19,11 @@ const cardStyle = {
   height: 325,
   width: 150,
   // border: 1,
-  marginTop: 1,
+  // marginTop: 1,
   position: 'relative',
   boxShadow: '0px 0px 32px 1px #000000',
   borderRadius: '5%',
+  margin: '20px 20px 20px 20px',
   // padding: '10px',
 }
 
@@ -36,6 +37,7 @@ const ModalCards = () => {
   let data = samplemanga.results.books;
 
   return (
+    <div style={{margin: '0px 15px 0px 15px'}}>
     <Carousel
       itemsToShow={5}
       itemsToScroll={5}
@@ -66,6 +68,7 @@ const ModalCards = () => {
         </Card>
       ))}
     </Carousel>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const QueueDropdown = ({ rank }) => {
+const QueueDropdown = ({ rank, remove, move }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -43,8 +43,8 @@ const QueueDropdown = ({ rank }) => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Move to Current Books</MenuItem>
-        <MenuItem onClick={handleClose}>Remove from List</MenuItem>
+        <MenuItem onClick={handleAdd}>Move to Current Books</MenuItem>
+        <MenuItem onClick={handleRemove}>Remove from List</MenuItem>
       </Menu>
     </>
   );

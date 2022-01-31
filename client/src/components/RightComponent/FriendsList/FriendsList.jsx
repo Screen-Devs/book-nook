@@ -1,7 +1,7 @@
 import {
   Paper,
   Box,
-  Button,
+  // Button,
   Modal,
   List,
   ListItem,
@@ -17,6 +17,8 @@ import FriendsModal from './FriendsModal.jsx';
 import samplePeople from './samplepeople.js';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from 'react-bootstrap/Button';
+
 
 const boxStyle = {
   width: 290,
@@ -64,17 +66,20 @@ const FriendsList = () => {
     setFriendsList(newFriends);
   };
 
+  // onClick={}
+
   return (
     <Paper className='animate__animated animate__fadeInRight' style={friendsListContainer}>
       <Box style={boxStyle}>
-      <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5>
+      <Button className="sideComponentTitle" variant="dark" onClick={handleModal} style={{marginTop: '60px'}}>Friends List</Button>
+      {/* <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5> */}
         {friendsList.length === 0 ? (
           <div style={{ alignSelf: 'center', position: 'absolute', top: '50%' }}>
             {' '}
             No friends :({' '}
           </div>
         ) : (
-          <List style={{ width: '100%', paddingTop: 40}}>
+          <List style={{ width: '100%', paddingTop: 20}}>
             {friendsList.slice(0, 10).map((datum) => {
               return (
                 <ListItem
@@ -98,16 +103,16 @@ const FriendsList = () => {
           </List>
         )}
       </Box>
-      {friendsList.length > 10 ? (
-        <Button
-          onClick={handleModal}
-          style={{ position: 'absolute', bottom: 10, justifySelf: 'center'}}
-          variant='contained'
-          color='inherit'
-        >
-          Show More
-        </Button>
-      ) : null}
+      {/* {friendsList.length > 10 ? (
+        // <Button
+        //   onClick={handleModal}
+        //   style={{ position: 'absolute', bottom: 10, justifySelf: 'center'}}
+        //   variant='contained'
+        //   color='inherit'
+        // >
+        //   Show More
+        // </Button>
+      ) : null} */}
       <Modal open={show} onClose={handleModal}>
         <FriendsModal friendsList={friendsList} remove={removeFriend} set={setFriendsList} />
       </Modal>
