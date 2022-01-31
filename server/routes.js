@@ -40,7 +40,8 @@ router.post('/books/reviews/comments', controller.book.addComment);
 /* EXTERNAL APIS */
 router.get('/search', outbound.getGoogleResults);
 
-/* CATCH ALL ELSE */
+router.get('/nytimeslists', outbound.getNYTimesLists);
+
 router.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
 })
