@@ -27,8 +27,28 @@ const findUser = async ( username ) => {
   }
 };
 
-const insertUserBook = async ( user_id, list_type ) => {
+const insertUserBook = async ( username, gBookId, title, authors, list, status ) => {
   // add book to user's userBooklist - $set (favorited/current/past/queued/clubbed)
+    try {
+    const updateTarget = {username, 'userBooks.$.gBookId': gBookId };
+    const updateData = {
+      $set: {
+          'userBooks.$.gBookId': gBookId,
+          'userBooks.$.title': title,
+          'userBooks.$.authors': authors,
+          [`userBooks.$.${list}.status`]: status,
+          [`userBooks.$.${list}.date`]: new Date().toISOString(),
+        }
+    };
+
+    const result = await User.findOneAndUpdate(updateTarget, updateData, {
+      upsert: true,
+    });
+    console.log(result);
+    return result;
+  } catch (error) {
+    return (error)
+  }
 }
 
 const insertFriend = async ( user_id, friend ) => {

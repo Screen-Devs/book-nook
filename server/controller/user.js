@@ -7,8 +7,8 @@ const getUserInfo = async (req, res) => {
 }
 
 const addBook = async (req, res) => {
-  const { user_id, list_type } = req.body;
-  const result = await insertUserBook(user_id, list_type);
+  const { username, gBookId, title, authors, list, status } = req.body;
+  const result = await insertUserBook(username, gBookId, title, authors, list, status);
   res.status(201).send(result);
 }
 

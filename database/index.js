@@ -20,9 +20,9 @@ const authenticateSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   userBooks: [{
-    userBookId: String, //googleapi book ID
+    gBookId: String, //googleapi book ID
     title: { type: String, unique: false },
-    author: { type: String, unique: false },
+    authors: { type: Array, unique: false },
     clubbed: {
         status: { type: Boolean, default: false },
         date: { type: String, default: null },
@@ -94,6 +94,25 @@ const bookDataSchema = new mongoose.Schema({
 const Authenticate = mongoose.model('Authenticate', authenticateSchema);
 const User = mongoose.model('User', userSchema);
 const BookData = mongoose.model('BookData', bookDataSchema);
+
+const username = 'anero';
+const gBookId = 'bookIdString';
+const title = 'Hamlet';
+const authors = [ 'William Shakespeare'];
+const list = 'clubbed';
+const status = true;
+
+  const userToUpdate = {username};
+  const updateData = {
+    $set: {
+      gBookId,
+      title,
+      authors,
+      [list]: {status, date: Date.now},
+    }
+  };
+
+User.findOneAndUpdate(userToUpdate, updateData, {upsert: true});
 
 module.exports = {
   Authenticate,
