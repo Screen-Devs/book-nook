@@ -69,7 +69,7 @@ export default function Header({ authenticate, handleSearch }) {
   };
 
   return (
-      <div className='header animate__animated animate__bounceInDown'>
+      <div className='header animate__animated animate__swing'>
         <Left>
           <img
             alt='Book Nook logo'

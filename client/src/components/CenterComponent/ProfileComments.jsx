@@ -7,7 +7,11 @@ export default function ProfileComments () {
   return (
     <>
       <div className="userDetails animate__animated animate__flipInX"><h5>USER DETAILS</h5></div>
-      <div className="userBook animate__animated animate__flipInY"><h5>Write in my book...</h5>
+      <div className="writeMe">
+        <h5>Write in my book...</h5>
+        Hello
+      </div>
+      <div className="userBook animate__animated animate__flipInY">
         <CommentModule/>
         <CommentModule/>
         <CommentModule/>
