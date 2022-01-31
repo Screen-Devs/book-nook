@@ -17,29 +17,31 @@ const authenticateSchema = new mongoose.Schema({
   },
 });
 
+const userBookSchema = new mongoose.Schema({
+  gBookId: { type: String, unique: true}, //googleapi book ID
+  title: { type: String, unique: false },
+  authors: { type: Array, unique: false },
+  clubbed: {
+      status: { type: Boolean, default: false },
+      date: { type: String, default: null },
+    },
+  current: {
+      status: { type: Boolean, default: false },
+      date: { type: String, default: null },
+    },
+  past: {
+      status: { type: Boolean, default: false },
+      date: { type: String, default: null },
+    },
+  queued: {
+      status: { type: Boolean, default: false },
+      date: { type: String, default: null },
+    },
+});
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
-  userBooks: [{
-    userBookId: String, //googleapi book ID
-    title: { type: String, required: true, unique: true },
-    author: { type: String, required: true, unique: true },
-    clubbed: {
-        status: { type: Boolean, default: false },
-        date: { type: String, default: null },
-      },
-    current: {
-        status: { type: Boolean, default: false },
-        date: { type: String, default: null },
-      },
-    past: {
-        status: { type: Boolean, default: false },
-        date: { type: String, default: null },
-      },
-    queued: {
-        status: { type: Boolean, default: false },
-        date: { type: String, default: null },
-      },
-    }, {timestamps: true} ],
+  userBooks: [userBookSchema],
   friends: [{ _id: false, username: String }],
   canvas: Array,
   settings: {
