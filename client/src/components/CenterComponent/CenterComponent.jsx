@@ -21,9 +21,7 @@ export default function CenterComponent({ currentLayout }) {
   return (
     <div className = "centerComponent" >
       <div className="userDetails animate__animated animate__flipInX"><h5>USER DETAILS</h5></div>
-        {/* <div className="writeMe">
-        <h4 className="writeInBook">Write In My Book...</h4>
-        </div> */}
+      <div className="writeMe animate__animated animate__flipInX"><h5>Write in my book...</h5></div>
       <div className="userBook animate__animated animate__flipInY">
         <CommentModule/>
         <CommentModule/>
