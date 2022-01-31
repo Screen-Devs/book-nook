@@ -7,6 +7,8 @@ import RightComponent from "./RightComponent/RightComponent.jsx";
 import Footer from "./Footer.jsx";
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
 
+import sample from "./RightComponent/TopRankingBooks/sample.js";
+
 export default function Home ({ authStatus, authenticate, currentUser }) {
 
 
@@ -30,8 +32,16 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
     right: 'addToLists',
     payload: '',
   }
+  let bookSamples = sample.results.books
 
   const [appLayout, setAppLayout] = useState(profileLayout);
+  const [lists, setLists] = useState({
+    queue: bookSamples,
+    current: [],
+    completed: [],
+    bookClub: []
+  })
+
 
   useEffect(() => {
     if (!currentUser) return;
@@ -58,7 +68,7 @@ export default function Home ({ authStatus, authenticate, currentUser }) {
         <div className = "Home">
           <Header authenticate={authenticate} handleSearch={handleSearch}/>
           <div className = "bodyContainer">
-            <LeftComponent currentLayout={appLayout.left}/>
+            <LeftComponent currentLayout={appLayout.left} lists={lists}/>
             <CenterComponent currentLayout={appLayout.center}/>
             <RightComponent currentLayout={appLayout.right}/>
           </div>
