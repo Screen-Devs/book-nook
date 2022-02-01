@@ -55,7 +55,6 @@ const friendsListContainer = {
 const data = samplePeople.objects;
 
 const FriendsList = ({ handleGetFriendData, userData }) => {
-  console.log('Friend list ', userData[0].friends)
 
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
