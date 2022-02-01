@@ -10,11 +10,7 @@ export default function RightComponent({ currentLayout, handleGetFriendData, use
     component = <SiteData handleGetFriendData={handleGetFriendData} userData={userData}/>;
   } else if (currentLayout === 'addToLists') {
     //TODO: Need to implement
-<<<<<<< HEAD
-    component = <AddToLists />;
-=======
-    component = <SiteData handleGetFriendData={handleGetFriendData}/>;
->>>>>>> main
+    component = <SiteData handleGetFriendData={handleGetFriendData}/>
     // return null
   }
 

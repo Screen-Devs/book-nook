@@ -6,8 +6,7 @@ import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-// import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
-import getNYTimesCategory from '../../../requests/index.js';
+import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
 
 
 const Container = styled.div`
@@ -68,7 +67,7 @@ const NYTModal = () => {
 
 
 
-  console.log(categories);
+  console.log('categ', categories);
   return (
     <Container>
       <Button className='sideComponentTitle' variant='dark' onClick={handleModal}>
@@ -106,11 +105,7 @@ const NYTModal = () => {
             style={tabStyle}
           >
             {categories.map((cat, index) => (
-<<<<<<< HEAD
-              <Tab label={cat.list_name} value={index} key={index} />
-=======
-              <Tab className="link" label={cat} value={index} key={index}/>
->>>>>>> main
+              <Tab className="link" label={cat.list_name} value={index} key={index}/>
             ))}
           </Tabs>
           {categories.map((info, index) => (

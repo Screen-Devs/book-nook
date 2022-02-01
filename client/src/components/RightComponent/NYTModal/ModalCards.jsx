@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react';
-import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
-import samplemanga from './samplemanga';
-import Carousel from 'react-elastic-carousel';
-import styled from 'styled-components';
-import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
-=======
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
 import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
->>>>>>> main
-
+import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
 
 const BookDescription = styled.p`
   font-size: 7px;
@@ -45,6 +36,7 @@ const cardContentStyle = {
 }
 
 const ModalCards = ({info}) => {
+  let [booksInCategory, setBooksInCategory] = useState([])
   let data = samplemanga.results.books;
 
   console.log('data', info)
@@ -52,8 +44,7 @@ const ModalCards = ({info}) => {
   const fetchData = () => {
     getNYTimesCategory(info)
       .then((res) => {
-        console.log('ret',res)
-        setCategories(res)
+        setBooksInCategory(res)
       })
       .catch(err => console.error(err))
     }
@@ -61,6 +52,8 @@ const ModalCards = ({info}) => {
   useEffect(() => {
     fetchData()
   }, [])
+
+  console.log(booksInCategory)
 
   return (
     <div style={{margin: '0px 15px 0px 15px'}}>
@@ -70,7 +63,7 @@ const ModalCards = ({info}) => {
       easing='cubic-bezier(1,.15,.55,1.54)'
       tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
     >
-      {data.map((book) => (
+      {booksInCategory.map((book) => (
         <Card style={cardStyle} key={book.rank}>
           <a href={book.amazon_product_url}>
             <CardMedia component='img' height='175' width='50' image={book.book_image} />
@@ -93,6 +86,7 @@ const ModalCards = ({info}) => {
             </CardActions>
         </Card>
       ))}
+
     </Carousel>
     </div>
   );

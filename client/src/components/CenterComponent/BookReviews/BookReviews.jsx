@@ -3,17 +3,6 @@ import React, { useState } from 'react';
 import Comments from './Comments.jsx';
 import TopReviews from './TopReviews.jsx';
 
-<<<<<<< HEAD
-const paperStyle = {
-  width: '100%',
-  height: 1200,
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'column',
-  position: 'relative',
-  overflowY: "scroll"
-}
-=======
 // const paperStyle = {
 //   width: 878,
 //   height: 1200,
@@ -23,7 +12,6 @@ const paperStyle = {
 //   position: 'relative',
 //   overflowY: "scroll"
 // }
->>>>>>> main
 
 export default function BookReviews() {
   const [allReviews, setAllReviews] = useState([])
