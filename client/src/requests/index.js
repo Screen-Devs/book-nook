@@ -43,8 +43,8 @@ const getBookMeta = (book_id) => {
       method: 'get',
       data: { book_id }
     })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .then(response => resolve(response))
+      .catch(err => reject(err));
   });
 }
 
@@ -57,8 +57,8 @@ const addBookReview = (book_id, review) => {
       method: 'post',
       data: { book_id, review },
     })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .then(response => resolve(response))
+      .catch(err => reject(err));
   })
 }
 
@@ -72,8 +72,8 @@ const addReviewComment = (book_id, review_id, comment) => {
       method: 'post',
       data: { book_id, review_id, comment },
     })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .then(response => resolve(response))
+      .catch(err => reject(err));
   })
 }
 
@@ -86,8 +86,8 @@ const markReview = (book_id, review_id, mark_type) => {
       method: 'put',
       data: { book_id, review_id, mark_type },
     })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .then(response => resolve(response))
+      .catch(err => reject(err));
   })
 }
 
@@ -100,8 +100,8 @@ const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
       method: 'put',
       data: { book_id, review_id, comment_id, mark_type },
     })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
+      .then(response => resolve(response))
+      .catch(err => reject(err));
   })
 }
 
