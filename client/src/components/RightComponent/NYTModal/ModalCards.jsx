@@ -65,7 +65,7 @@ const ModalCards = () => {
             </CardContent>
             <CardActions style={{position: 'absolute', bottom: 0}}>
               {/* TODO: ADD functionality to button*/}
-              <Button variant='dark' style={{fontSize:10, marginLeft: '14px'}}>Add to Read List</Button>
+              <Button variant='dark' style={{fontSize:10, marginLeft: '14style={{fontSize:10}}px'}}>Add to Read List</Button>
             </CardActions>
         </Card>
       ))}

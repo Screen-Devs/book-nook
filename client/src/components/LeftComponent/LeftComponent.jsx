@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'animate.css';
 import UserLists from './UserLists.jsx';
+import BookDetails from './BookDetails.jsx';
+
 
 export default function LeftComponent({
   currentLayout,
@@ -15,7 +17,9 @@ export default function LeftComponent({
   queue,
   current,
   completed,
-  bookClub
+  bookClub,
+  goToReviews,
+  set
 }) {
 
   let component;
@@ -32,10 +36,12 @@ export default function LeftComponent({
       current={current}
       completed={completed}
       bookClub={bookClub}
+      goToReviews={goToReviews}
+      set={set}
     />;
   } else if (currentLayout === 'bookDetails') {
     //TODO: Need to implement
-    component = <BookDetails />;
+    component = <BookDetails />
   }
 
   return (

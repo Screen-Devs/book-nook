@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests/getRequest.js';
+import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests';
 import sample from './RightComponent/TopRankingBooks/sample.js';
 import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
@@ -32,8 +32,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     right: 'addToLists',
     payload: '',
   };
+
   let bookSamples = sample.results.books;
 
+  // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
   const [queue, setQueue] = useState(bookSamples)
@@ -117,11 +119,17 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
   searchGoogle(query)
   .then((res) => {
+    console.log(res)
     setSearchedBooks(res);
     setAppLayout(searchLayout);
   })
   .catch(err => console.err)
   };
+
+  // temp button
+  const goToReviews = () => {
+    setAppLayout(bookLayout)
+  }
 
   let navigate;
   return (
@@ -146,6 +154,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               current={current}
               completed={completed}
               bookClub={bookClub}
+              goToReviews={goToReviews}
+              set={setAppLayout}
             />
             <CenterComponent
               currentLayout={appLayout.center}
@@ -161,6 +171,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               handleGetFriendData={handleGetFriendData}/>
           </div>
           <Footer />
+          <button onClick={goToReviews}>to reviews</button>
         </div>
       )}
     </div>

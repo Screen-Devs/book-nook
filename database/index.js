@@ -18,6 +18,7 @@ const authenticateSchema = new mongoose.Schema({
 });
 
 const userBookSchema = new mongoose.Schema({
+<<<<<<< HEAD
   gBookId: {
     type: String,
     unique: true
@@ -30,6 +31,11 @@ const userBookSchema = new mongoose.Schema({
     type: Array,
     unique: false
   },
+=======
+  gBookId: { type: String, unique: false}, //googleapi book ID
+  title: { type: String, unique: false },
+  authors: { type: Array, unique: false },
+>>>>>>> bd34a6f0950da10061ffd0fd6f366c7243ea0659
   clubbed: {
     status: {
       type: Boolean,
@@ -79,10 +85,14 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   userBooks: [userBookSchema],
+<<<<<<< HEAD
   friends: [{
     _id: false,
     username: String
   }],
+=======
+  friends: Array,
+>>>>>>> bd34a6f0950da10061ffd0fd6f366c7243ea0659
   canvas: Array,
   settings: {
     theme: {
@@ -99,6 +109,7 @@ const bookDataSchema = new mongoose.Schema({
   },
   reviews: [{
     review_id: mongoose.ObjectId,
+<<<<<<< HEAD
     username: {
       type: String
     },
@@ -122,6 +133,14 @@ const bookDataSchema = new mongoose.Schema({
     helpful_review: {
       type: Number
     },
+=======
+    username: {type: String},
+    review_date: {type: Date, default: Date.now},
+    rating: {type: Number, min: 1, max: 5},
+    review_body: {type: String, min: 25, max: 1000},
+    reported_review: {type: Boolean},
+    helpful_review: {type: Number},
+>>>>>>> bd34a6f0950da10061ffd0fd6f366c7243ea0659
     comments: [{
       comment_id: mongoose.ObjectId,
       commenter: {

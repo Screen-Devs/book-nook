@@ -121,8 +121,3 @@ export default function Login ({ authStatus, authenticate, currentUser }) {
       </div>
   )
 }
-
-
-{/* <Button className="loginButton" type='submit' variant='contained' color='default' >
-              <b>Login</b>
-            </Button> */}
