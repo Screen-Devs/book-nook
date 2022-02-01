@@ -34,11 +34,15 @@ router.post('/users/canvas', controller.user.addMessage);
 
 router.get('/books', controller.book.getTotalBookData);
 
+router.get('/books/meta', controller.book.getBookMetaData)
+
 router.post('/books/reviews', controller.book.addReview);
 
 router.post('/books/reviews/comments', controller.book.addComment);
 
-router.put('/books/reviews/:review_id', controller.book.markReview);
+router.put('/books/reviews/', controller.book.markReview);
+
+router.put('/books/reviews/comments', controller.book.markComment)
 
 /* EXTERNAL APIS */
 
