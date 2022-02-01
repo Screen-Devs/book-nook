@@ -14,7 +14,7 @@ const insertUser = async (username) => {
     const result = await User.create(dataToInsert);
     return result;
   } catch (error) {
-    return (error)
+    return (error);
   }
 };
 
@@ -23,11 +23,11 @@ const findUser = async ( username ) => {
     const result = await User.find({username}).exec();
     return result;
   } catch (error) {
-    return (error)
+    return (error);
   }
 };
 
-const insertUserBook = async ( username, gBookId, title, authors, list, status ) => {
+const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   const findTarget = {username, 'userBooks.gBookId': gBookId };
   const userBooksList = await User.find(findTarget); //Check if book is in userBook List
 
@@ -49,7 +49,7 @@ const insertUserBook = async ( username, gBookId, title, authors, list, status )
       const result = await User.updateOne(createTarget, createData, {upsert: true});
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
   }
 
@@ -69,23 +69,47 @@ const insertUserBook = async ( username, gBookId, title, authors, list, status )
       const result = await User.updateOne(updateTarget, updateData);
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
   }
 }
 
-const insertFriend = async ( user_id, friend ) => {
-  // add friend object to user's friends' list
+const addOrRemoveFriend = async ( username, friend, action ) => {
+  if (action === 'add') {
+    try {
+      const result = await User.update({username: username}, { $addToSet: {friends: friend} });
+      return result;
+    } catch (error) {
+      return (error);
+    }
+
+  } else if (action === 'remove') {
+    try {
+      const result = await User.update({username: username}, { $pull: {friends: friend} });
+      return result;
+    } catch (error) {
+      return (error);
+    }
+
+  } else {
+    return 'Please specify an action with your request: add or remove.'
+  }
 }
 
-const insertCanvasMessage = async ( user_id, message ) => {
-  // add message to user's canvas
+const insertCanvasMessage = async ( username, message, commenter ) => {
+  try {
+    const result = await User.update({username: username},
+      { $push: { canvas: { message, commenter, date: new Date().toISOString() } } });
+    return result;
+  } catch (error) {
+    return (error);
+  }
 }
 
 module.exports = {
   insertUser,
   findUser,
-  insertUserBook,
-  insertFriend,
+  addOrUpdateUserBooks,
+  addOrRemoveFriend,
   insertCanvasMessage
 }

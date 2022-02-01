@@ -12,7 +12,7 @@ import {
   Container,
   ListItemSecondaryAction,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import FriendsModal from './FriendsModal.jsx';
 import samplePeople from './samplepeople.js';
@@ -54,16 +54,21 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetFriendData }) => {
+const FriendsList = ({ handleGetFriendData, userData }) => {
+
   const [show, setShow] = useState(false);
-  const [friendsList, setFriendsList] = useState(data);
+  const [friendsList, setFriendsList] = useState([]);
+
+  useEffect(() => {
+    setFriendsList(userData[0].friends);
+  }, userData)
 
   const handleModal = () => {
     setShow((prev) => !prev);
   };
 
-  const removeFriend = (ID) => {
-    const newFriends = friendsList.filter((friend) => friend.ID !== ID);
+  const removeFriend = (user) => {
+    const newFriends = friendsList.filter((friend) => friend !== user);
     setFriendsList(newFriends);
   };
 
@@ -75,16 +80,16 @@ const FriendsList = ({ handleGetFriendData }) => {
       <Button className="sideComponentTitle" variant="dark" onClick={handleModal} style={{marginTop: '60px'}}>Friends List</Button>
       {/* <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5> */}
         {friendsList.length === 0 ? (
-          <div style={{ alignSelf: 'center', position: 'absolute', top: '50%' }}>
+          <div style={{ alignSelf: 'center', position: 'absolute', top: '60%' }}>
             {' '}
             No friends :({' '}
           </div>
         ) : (
           <List style={{ width: '100%', paddingTop: 20}}>
-            {friendsList.slice(0, 10).map((datum) => {
+            {friendsList.slice(0, 10).map((datum, idx) => {
               return (
                 <ListItem
-                  key={datum.ID}
+                  key={idx}
                   style={{ height: 42 }}
                 >
                   <ListItemAvatar>
@@ -92,13 +97,12 @@ const FriendsList = ({ handleGetFriendData }) => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  {/* TODO: Need to ensure username clicked */}
-                  <Link to={`friend/celiaVaughan`}><ListItemText
-                    primary={datum.FirstNameLastName}
-                    onClick={e => handleGetFriendData('celiaVaughan')}
+                  <Link to={`friend/${datum}`}><ListItemText
+                    primary={datum}
+                    onClick={e => handleGetFriendData(datum)}
                   /></Link>
                   <ListItemSecondaryAction>
-                  <IconButton edge='end' onClick={() => removeFriend(datum.ID)}>
+                  <IconButton edge='end' onClick={() => removeFriend(datum)}>
                       <DeleteIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
@@ -119,7 +123,7 @@ const FriendsList = ({ handleGetFriendData }) => {
         // </Button>
       ) : null} */}
       <Modal open={show} onClose={handleModal}>
-        <FriendsModal friendsList={friendsList} remove={removeFriend} set={setFriendsList} />
+        <FriendsModal friendsList={friendsList} remove={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
       </Modal>
     </Paper>
   );

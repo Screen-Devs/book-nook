@@ -6,27 +6,27 @@ const getUserInfo = async (req, res) => {
   res.status(200).json(result);
 }
 
-const addBook = async (req, res) => {
+const putUserBook = async (req, res) => {
   const { username, gBookId, title, authors, list, status } = req.body;
-  const result = await insertUserBook(username, gBookId, title, authors, list, status);
-  res.status(201).send(result);
+  const result = await addOrUpdateUserBooks(username, gBookId, title, authors, list, status);
+  res.status(204).send(result);
 }
 
-const addFriend = async (req, res) => {
-  const { user_id, friend_data } = req.body;
-  const result = await insertFriend(user_ud, friend_data);
-  res.status(201).send(result);
+const putFriend = async (req, res) => {
+  const { username, friend, action } = req.body;
+  const result = await addOrRemoveFriend(username, friend, action );
+  res.status(204).send(result);
 }
 
 const addMessage = async (req, res) => {
-  const { user_id, message_data } = req.body;
-  const result = await insertCanvasMessage(user_id, message_data);
+  const { username, message, commenter } = req.body;
+  const result = await insertCanvasMessage(username, message, commenter);
   res.status(201).send(result);
 }
 
 module.exports = {
   getUserInfo,
-  addBook,
-  addFriend,
+  putUserBook,
+  putFriend,
   addMessage
 }

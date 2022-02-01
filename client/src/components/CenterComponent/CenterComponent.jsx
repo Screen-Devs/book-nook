@@ -2,9 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProfileComments from './ProfileComments.jsx';
 import Search from './Search.jsx';
-import BookReviews from './BookReviews.jsx'
+import BookReviews from './BookReviews/BookReviews.jsx'
 import CommentModule from '../CommentModule.jsx';
-
 
 export default function CenterComponent({
   currentLayout,
@@ -25,7 +24,7 @@ export default function CenterComponent({
   // If not a friend or profile, just conditionally render
   return (
     <div className = "centerComponent" >
-      {currentLayout === 'profileComments' ?
+      {currentLayout === 'profileComments' && userData ?
       (<Routes>
         <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />
         <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
