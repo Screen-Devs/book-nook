@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
+import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
+
 
 const BookDescription = styled.p`
   font-size: 7px;
@@ -33,8 +35,23 @@ const cardContentStyle = {
   flexDirection: 'column'
 }
 
-const ModalCards = () => {
+const ModalCards = ({info}) => {
   let data = samplemanga.results.books;
+
+  console.log('data', info)
+
+  const fetchData = () => {
+    getNYTimesCategory(info)
+      .then((res) => {
+        console.log('ret',res)
+        setCategories(res)
+      })
+      .catch(err => console.error(err))
+    }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div style={{margin: '0px 15px 0px 15px'}}>

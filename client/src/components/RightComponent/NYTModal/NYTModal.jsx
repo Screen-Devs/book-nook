@@ -6,7 +6,9 @@ import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
+// import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
+import getNYTimesCategory from '../../../requests/index.js';
+
 
 const Container = styled.div`
   margin: 10px;
@@ -103,15 +105,15 @@ const NYTModal = () => {
             aria-label='scrollable auto tabs example'
             style={tabStyle}
           >
-            {/* {getNYTimesList.map((cat, index) => (
+            {categories.map((cat, index) => (
               <Tab label={cat.list_name} value={index} key={index} />
-            ))} */}
+            ))}
           </Tabs>
-          {/* {categories.map((info, index) => (
-            <TabPanel value={value} index={index} key={index}>
-              <ModalCards />
+          {categories.map((info, index) => (
+            <TabPanel value={value} index={index} key={index} info={info.list_name_encoded}>
+              <ModalCards info={info.list_name_encoded}/>
             </TabPanel>
-          ))} */}
+          ))}
         </Box>
       </Modal>
     </Container>
