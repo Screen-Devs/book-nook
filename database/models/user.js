@@ -21,7 +21,6 @@ const insertUser = async (username) => {
 const findUser = async ( username ) => {
   try {
     const result = await User.find({username}).exec();
-    console.log('Found result ', result)
     return result;
   } catch (error) {
     return (error)

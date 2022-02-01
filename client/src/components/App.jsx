@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { getUser } from "../requests"
 import axios from "axios";
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
@@ -22,12 +23,11 @@ export default function App() {
     axios.get('/authenticate')
       .then((response) => {
         setAuthStatus(response.data.isAuthenticated);
-        setCurrentUser(response.data.username);
+        setCurrentUser(response.data.username)
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch(error => console.error(error));
   }
+
 
   return(
     <div className="App">
