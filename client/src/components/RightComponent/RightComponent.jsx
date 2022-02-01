@@ -3,11 +3,11 @@ import ReactDOM from "react-dom"
 import 'animate.css';
 import SiteData from './SiteData.jsx';
 
-export default function RightComponent({ currentLayout, handleGetFriendData }) {
+export default function RightComponent({ currentLayout, handleGetFriendData, userData }) {
 
   let component;
   if (currentLayout === 'siteData') {
-    component = <SiteData handleGetFriendData={handleGetFriendData}/>;
+    component = <SiteData handleGetFriendData={handleGetFriendData} userData={userData}/>;
   } else if (currentLayout === 'addToLists') {
     //TODO: Need to implement
     component = <SiteData handleGetFriendData={handleGetFriendData}/>;
@@ -16,7 +16,7 @@ export default function RightComponent({ currentLayout, handleGetFriendData }) {
 
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
-      {component}
+      {userData && (component)}
     </div>
   );
 }
