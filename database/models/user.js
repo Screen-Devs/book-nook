@@ -20,7 +20,7 @@ const insertUser = async (username) => {
 
 const findUser = async ( username ) => {
   try {
-    const result = await User.find({username}).exec();
+    const result = await User.find({username});
     return result;
   } catch (error) {
     return (error);
