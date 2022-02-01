@@ -166,6 +166,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               currentLayout={appLayout.right}
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
+              currentUser={currentUser}
             />
           </div>
           <Footer />
