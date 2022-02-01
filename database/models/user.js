@@ -2,6 +2,7 @@ const { User } = require('../');
 
 const insertUser = async (username) => {
   try {
+    console.log('inserting', username);
     const dataToInsert = {
       username: username,
       userBooks: [],
@@ -12,9 +13,11 @@ const insertUser = async (username) => {
       }
     };
     const result = await User.create(dataToInsert);
+    console.log('result: ', result);
     return result;
   } catch (error) {
-    return (error)
+    console.log('error!', error);
+    return (error);
   }
 };
 
@@ -27,7 +30,7 @@ const findUser = async ( username ) => {
   }
 };
 
-const insertUserBook = async ( username, gBookId, title, authors, list, status ) => {
+const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   const findTarget = {username, 'userBooks.gBookId': gBookId };
   const userBooksList = await User.find(findTarget); //Check if book is in userBook List
 
@@ -74,8 +77,27 @@ const insertUserBook = async ( username, gBookId, title, authors, list, status )
   }
 }
 
-const insertFriend = async ( user_id, friend ) => {
+const addOrRemoveFriend = async ( username, friend, action ) => {
   // add friend object to user's friends' list
+  if (action === 'add') {
+    try {
+      const result = await User.update({username: username}, { $addToSet: {friends: friend} });
+      return result;
+    } catch (error) {
+      return (error)
+    }
+
+  } else if (action === 'remove') {
+    try {
+      const result = await User.update({username: username}, { $pull: {friends: friend} });
+      return result;
+    } catch (error) {
+      return (error)
+    }
+
+  } else {
+    return 'Please specify an action with your request: add or remove.'
+  }
 }
 
 const insertCanvasMessage = async ( user_id, message ) => {
@@ -85,7 +107,7 @@ const insertCanvasMessage = async ( user_id, message ) => {
 module.exports = {
   insertUser,
   findUser,
-  insertUserBook,
-  insertFriend,
+  addOrUpdateUserBooks,
+  addOrRemoveFriend,
   insertCanvasMessage
 }

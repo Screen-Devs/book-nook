@@ -18,7 +18,7 @@ const authenticateSchema = new mongoose.Schema({
 });
 
 const userBookSchema = new mongoose.Schema({
-  gBookId: { type: String, unique: true}, //googleapi book ID
+  gBookId: { type: String, unique: false}, //googleapi book ID
   title: { type: String, unique: false },
   authors: { type: Array, unique: false },
   clubbed: {
@@ -42,7 +42,7 @@ const userBookSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   userBooks: [userBookSchema],
-  friends: [{ _id: false, username: String }],
+  friends: Array,
   canvas: Array,
   settings: {
     theme: { type: String },
