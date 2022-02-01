@@ -28,8 +28,4 @@ const getNYTimesCategory = (list_name_encoded) => {
   })
 };
 
-getNYTimesCategory('combined-print-and-e-book-fiction')
-.then(res => console.log(res))
-.catch(err => console.error(err))
-
 export { searchGoogle, getNYTimesList, getNYTimesCategory }
