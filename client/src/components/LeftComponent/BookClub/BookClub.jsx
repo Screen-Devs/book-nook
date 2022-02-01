@@ -62,7 +62,7 @@ const BookClub = ({ bookClub, removeFromBookClub }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BookClubDropdown gBookId={datum.gBookId} remove={removeFromBookClub}/>}
+                    action={<BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

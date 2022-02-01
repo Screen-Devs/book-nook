@@ -43,7 +43,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
 
-  // TODO : Change to a books unique id
   const removeFromQueue = (id) => {
     const newList = queue.filter((item) => item.gBookId !== id);
     // make put request here
@@ -62,7 +61,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setCompleted(newList)
   };
 
-  const removeFromBookClub = (id) => {
+  const removeFromBookClub = (id, data) => {
+    console.log(data);
     const newList = bookClub.filter((item) => item.gBookId !== id);
     // make put request here
     setBookClub(newList)
@@ -116,6 +116,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             view: 'friend',
             payload: response.data,
         })
+        handleCreateLists(response.data[0].userBooks);
       })
   };
 

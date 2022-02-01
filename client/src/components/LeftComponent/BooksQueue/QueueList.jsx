@@ -51,7 +51,6 @@ const dividerStyle = {
 }
 
 const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
-
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
@@ -64,7 +63,6 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
         {queue.length === 0 ? null : (
           <div>
             {queue.map((datum, index) => {
-              console.log(datum);
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
