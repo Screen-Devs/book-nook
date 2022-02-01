@@ -106,7 +106,11 @@ const NYTModal = () => {
             style={tabStyle}
           >
             {categories.map((cat, index) => (
+<<<<<<< HEAD
               <Tab label={cat.list_name} value={index} key={index} />
+=======
+              <Tab className="link" label={cat} value={index} key={index}/>
+>>>>>>> main
             ))}
           </Tabs>
           {categories.map((info, index) => (

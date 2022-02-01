@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
 import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
 import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
+=======
+import React from 'react';
+import { Card, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
+import samplemanga from './samplemanga';
+import Carousel from 'react-elastic-carousel';
+import styled from 'styled-components';
+import Button from 'react-bootstrap/Button';
+>>>>>>> main
 
 
 const BookDescription = styled.p`
@@ -80,7 +89,7 @@ const ModalCards = ({info}) => {
             </CardContent>
             <CardActions style={{position: 'absolute', bottom: 0}}>
               {/* TODO: ADD functionality to button*/}
-              <Button variant='contained' style={{fontSize:10}}>Add to Read List</Button>
+              <Button variant='dark' style={{fontSize:10, marginLeft: '14style={{fontSize:10}}px'}}>Add to Read List</Button>
             </CardActions>
         </Card>
       ))}

@@ -23,7 +23,7 @@ const DropdownReviews = ({set}) => {
   };
 
   return (
-    <>
+    <div style={{overflow: 'auto'}}>
     <IconButton onClick={handleMenu} variant='contained' color='inherit' >
       <MoreVertOutlined/>
   </IconButton>
@@ -48,7 +48,7 @@ const DropdownReviews = ({set}) => {
         <Button variant='text' style={{color: 'black', paddingLeft: 5}}>Join Club</Button>
       </MenuItem>
     </Menu>
-    </>
+    </div>
   );
 };
 

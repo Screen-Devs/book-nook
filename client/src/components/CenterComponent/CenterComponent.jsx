@@ -24,7 +24,7 @@ export default function CenterComponent({
   // If not a friend or profile, just conditionally render
   return (
     <div className = "centerComponent" >
-      {currentLayout === 'profileComments' ?
+      {currentLayout === 'profileComments' && userData ?
       (<Routes>
         <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />
         <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
