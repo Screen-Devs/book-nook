@@ -10,10 +10,6 @@ const getUser = (username) => {
 
 const searchGoogle = (query, count=10, page=1) => {
   return new Promise((resolve, reject) => {
-    if ( type ) {
-      type == 'author',
-      stringToAdd = `&inauthor:${query}`
-    }
     axios.get(`/search?q=${query}&count=${count}&page=${page}`)
     .then(response => resolve(response.data))
     .catch(err => reject(err));
