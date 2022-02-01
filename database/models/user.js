@@ -81,21 +81,19 @@ const addOrRemoveFriend = async ( username, friend, action ) => {
   // add friend object to user's friends' list
   if (action === 'add') {
     try {
-      const dataToInsert = {
-        username: username,
-        userBooks: [],
-        friends: [],
-        canvas: [],
-        settings: {
-          theme: 'light',
-        }
-      };
-      const result = await User.create(dataToInsert);
+      const result = await User.update({username: username}, { $addToSet: {friends: friend} });
       return result;
     } catch (error) {
       return (error)
     }
+
   } else if (action === 'remove') {
+    try {
+      const result = await User.update({username: username}, { $pull: {friends: friend} });
+      return result;
+    } catch (error) {
+      return (error)
+    }
 
   } else {
     return 'Please specify an action with your request: add or remove.'

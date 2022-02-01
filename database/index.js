@@ -42,7 +42,7 @@ const userBookSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   userBooks: [userBookSchema],
-  friends: [{ _id: false, username: String }],
+  friends: Array,
   canvas: Array,
   settings: {
     theme: { type: String },
