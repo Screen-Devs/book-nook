@@ -36,8 +36,8 @@ const addBookComment = async (book_id, review_id, comment) => {
     reported_comment: false,
     helpful_comment: 0
   }
-  // const result = await BookData.updateOne({ lookup_id: book_id,  "reviews.review_id": review_id }, { $push { "reviews.$.comments": newComment }});
-  // return result;
+  const result = await BookData.updateOne({ lookup_id: book_id,  "reviews.review_id": review_id }, { $push: { "reviews.$.comments": newComment }});
+  return result;
 }
 
 const markBookReview = async (book_id, review_id, mark_type) => {
@@ -50,9 +50,21 @@ const markBookReview = async (book_id, review_id, mark_type) => {
   return result;
 }
 
-// const markReviewComment = async (book_id, review_id, comment_id, mark_type) => {
-//   let result;
-//   if (mark_type === 'report') {
-//     result = await BookData.updateOne({}, { $set: { "" } })
-//   }
-// }
+const markReviewComment = async (book_id, review_id, comment_id, mark_type) => {
+  let result;
+  if (mark_type === 'report') {
+    result = await BookData.updateOne(
+      { lookup_id: book_id },
+      { $set: { "reviews.$[review].comments.$[comment].reported_comment": true } },
+      { arrayFilters: [{ "review.review_id": review_id }, { "comment.comment_id": comment_id }] }
+    );
+    return result;
+  } else if (mark_type === 'helpful') {
+    result = await BookData.updateOne(
+      { lookup_id: book_id },
+      { $inc: { "reviews.$[review].comments.$[comment].helpful_comment": 1 } },
+      { arrayFilters: [{ "review.review_id": review_id }, { "comment.comment_id": comment_id }] }
+    );
+    return result;
+  }
+}
