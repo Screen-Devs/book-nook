@@ -4,7 +4,7 @@ import Comments from './Comments.jsx';
 import TopReviews from './TopReviews.jsx';
 
 const paperStyle = {
-  width: 878,
+  width: '100%',
   height: 1200,
   display: 'flex',
   alignItems: 'center',

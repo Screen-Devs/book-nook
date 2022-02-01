@@ -11,8 +11,8 @@ export default function RightComponent({ currentLayout, handleGetFriendData }) {
     component = <SiteData handleGetFriendData={handleGetFriendData}/>;
   } else if (currentLayout === 'addToLists') {
     //TODO: Need to implement
-    // component = <AddToLists />;
-    return null
+    component = <AddToLists />;
+    // return null
   }
 
   return (

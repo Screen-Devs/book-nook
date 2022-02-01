@@ -1,8 +1,8 @@
 import React from 'react';
 
 const AddToLists = () => {
-  return <div style={{display: 'hidden'}}>
-
+  return <div>
+    Hello
   </div>;
 };
 
