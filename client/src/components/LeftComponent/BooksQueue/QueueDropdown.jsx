@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const QueueDropdown = ({ rank, remove, move }) => {
+const QueueDropdown = ({ gBookId, remove, move }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -15,12 +15,12 @@ const QueueDropdown = ({ rank, remove, move }) => {
   };
 
   const handleRemove = () => {
-    remove(rank);
+    remove(gBookId);
     setAnchorEl(null);
   };
 
   const handleAdd = () => {
-    move(rank);
+    move(gBookId);
     setAnchorEl(null);
   };
 
