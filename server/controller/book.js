@@ -1,4 +1,4 @@
-const { markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta } = require('../../database/models/bookdata.js');
+const { markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta, markReviewComment } = require('../../database/models/bookdata.js');
 
 const getTotalBookData = async (req, res) => {
   const { book_id } = req.body;
@@ -29,10 +29,17 @@ const addComment = async (req, res) => {
   res.status(201).send(result);
 }
 
+const markComment = async (req, res) => {
+  const { book_id, review_id, comment_id, mark_type } = req.body;
+  const result = await markReviewComment(book_id, review_id, comment_id, mark_type);
+  res.status(201).send(result);
+}
+
 module.exports = {
   getTotalBookData,
   getBookMetaData,
   addReview,
   markReview,
   addComment,
+  markComment
 }
