@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests';
+import { searchGoogle, getNYTimesList, getNYTimesCategory } from '../requests';
 import sample from './RightComponent/TopRankingBooks/sample.js';
 import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
@@ -120,7 +120,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
   searchGoogle(query)
   .then((res) => {
-    console.log(res)
     setSearchedBooks(res);
     setAppLayout(searchLayout);
   })

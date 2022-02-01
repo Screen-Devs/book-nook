@@ -33,10 +33,9 @@ const getNYTimesLists = async (req, res) => {
 }
 
 const getNYTListResults = async (req, res) => {
-  const { category } = req.query;
-  if (category) {
+  if (req.query.category) {
     try {
-      const nyTimesListResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${API}`)
+      const nyTimesListResult = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${req.query.category}.json?api-key=${API}`)
       res.status(200).json(nyTimesListResult.data.results.books)
     } catch (err) {
       res.status(500).send(err)
