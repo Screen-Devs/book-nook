@@ -19,8 +19,8 @@ const putFriend = async (req, res) => {
 }
 
 const addMessage = async (req, res) => {
-  const { user_id, message_data } = req.body;
-  const result = await insertCanvasMessage(user_id, message_data);
+  const { username, message, commenter } = req.body;
+  const result = await insertCanvasMessage(username, message, commenter);
   res.status(201).send(result);
 }
 

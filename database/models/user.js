@@ -2,7 +2,6 @@ const { User } = require('../');
 
 const insertUser = async (username) => {
   try {
-    console.log('inserting', username);
     const dataToInsert = {
       username: username,
       userBooks: [],
@@ -13,10 +12,8 @@ const insertUser = async (username) => {
       }
     };
     const result = await User.create(dataToInsert);
-    console.log('result: ', result);
     return result;
   } catch (error) {
-    console.log('error!', error);
     return (error);
   }
 };
@@ -26,7 +23,7 @@ const findUser = async ( username ) => {
     const result = await User.find({username});
     return result;
   } catch (error) {
-    return (error)
+    return (error);
   }
 };
 
@@ -52,7 +49,7 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
       const result = await User.updateOne(createTarget, createData, {upsert: true});
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
   }
 
@@ -72,19 +69,18 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
       const result = await User.updateOne(updateTarget, updateData);
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
   }
 }
 
 const addOrRemoveFriend = async ( username, friend, action ) => {
-  // add friend object to user's friends' list
   if (action === 'add') {
     try {
       const result = await User.update({username: username}, { $addToSet: {friends: friend} });
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
 
   } else if (action === 'remove') {
@@ -92,7 +88,7 @@ const addOrRemoveFriend = async ( username, friend, action ) => {
       const result = await User.update({username: username}, { $pull: {friends: friend} });
       return result;
     } catch (error) {
-      return (error)
+      return (error);
     }
 
   } else {
@@ -100,8 +96,14 @@ const addOrRemoveFriend = async ( username, friend, action ) => {
   }
 }
 
-const insertCanvasMessage = async ( user_id, message ) => {
-  // add message to user's canvas
+const insertCanvasMessage = async ( username, message, commenter ) => {
+  try {
+    const result = await User.update({username: username},
+      { $push: { canvas: { message, commenter, date: new Date().toISOString() } } });
+    return result;
+  } catch (error) {
+    return (error);
+  }
 }
 
 module.exports = {
