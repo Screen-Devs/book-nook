@@ -1,8 +1,16 @@
 import axios from 'axios';
 
+const authenticateUser = () => {
+  return new Promise((resolve, reject) => {
+    axios.get('/authenticate')
+    .then(response => resolve(response.data))
+    .catch(err => reject(err));
+  })
+}
+
 const getUser = (username) => {
   return new Promise((resolve, reject) => {
-    axios.get(`/http://localhost:3010/users?username=${username}`)
+    axios.get(`/users?username=${username}`)
     .then(response => resolve(response.data))
     .catch(err => reject(err));
   });
@@ -26,15 +34,16 @@ const getNYTimesList = () => {
 
 const getNYTimesCategory = (list_name_encoded) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/nytimeslists/list?category=${list_name_encoded}`)
+    axios.get(`/nytimeslists/list?category=${list_name_encoded}`)
     .then(response => resolve(response.data))
     .catch(err => reject(err));
   });
 };
 
 export {
+  authenticateUser,
+  getUser,
   searchGoogle,
   getNYTimesList,
   getNYTimesCategory,
-  getUser,
 }
