@@ -88,7 +88,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   useEffect(() => {
     if (!currentUser) return;
     // get user data for currentUser
-
+    currentUser = 'flyingunicorn1337' // test data
+    axios.get(`/users?username=${currentUser}`)
+      .then((response) => {
+        console.log(response);
+      })
     setAppLayout({
       ...profileLayout,
       payload: {
