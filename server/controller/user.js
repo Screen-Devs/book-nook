@@ -2,8 +2,10 @@ const { findUser, insertUserBook, insertFriend, insertCanvasMessage } = require(
 
 const getUserInfo = async (req, res) => {
   const { username } = req.query;
-  const result = await findUser(username);
-  res.status(200).send(result);
+  const result = await findUser(username)
+  console.log('username ', username)
+  console.log(result)
+  res.status(200).json(result);
 }
 
 const addBook = async (req, res) => {
