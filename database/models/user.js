@@ -98,7 +98,6 @@ const addOrRemoveFriend = async ( username, friend, action ) => {
   } else {
     return 'Please specify an action with your request: add or remove.'
   }
-
 }
 
 const insertCanvasMessage = async ( user_id, message ) => {
