@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { Card, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
-import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';

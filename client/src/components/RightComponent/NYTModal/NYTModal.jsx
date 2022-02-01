@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Typography, Box, Tabs, Tab, Divider } from '@material-ui/core';
 import styled from 'styled-components';
-import sample2 from './sample.js';
 import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
 import Button from 'react-bootstrap/Button';
