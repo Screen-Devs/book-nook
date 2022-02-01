@@ -32,8 +32,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     right: 'addToLists',
     payload: '',
   };
+
   let bookSamples = sample.results.books;
 
+  // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
   const [queue, setQueue] = useState(bookSamples)
@@ -128,6 +130,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   .catch(err => console.err)
   };
 
+  // temp button
+  const goToReviews = () => {
+    setAppLayout(bookLayout)
+  }
+
   let navigate;
   return (
     <div>
@@ -151,6 +158,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               current={current}
               completed={completed}
               bookClub={bookClub}
+              goToReviews={goToReviews}
+              set={setAppLayout}
             />
             <CenterComponent
               currentLayout={appLayout.center}
@@ -166,6 +175,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               handleGetFriendData={handleGetFriendData}/>
           </div>
           <Footer />
+          <button onClick={goToReviews}>to reviews</button>
         </div>
       )}
     </div>
