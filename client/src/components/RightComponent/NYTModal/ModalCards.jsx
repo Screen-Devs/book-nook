@@ -4,7 +4,7 @@ import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
-import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
+import { getNYTimesCategory } from '../../../requests/index.js';
 
 const BookDescription = styled.p`
   font-size: 7px;
@@ -37,9 +37,6 @@ const cardContentStyle = {
 
 const ModalCards = ({info}) => {
   let [booksInCategory, setBooksInCategory] = useState([])
-  let data = samplemanga.results.books;
-
-  console.log('data', info)
 
   const fetchData = () => {
     getNYTimesCategory(info)
@@ -52,8 +49,6 @@ const ModalCards = ({info}) => {
   useEffect(() => {
     fetchData()
   }, [])
-
-  console.log(booksInCategory)
 
   return (
     <div style={{margin: '0px 15px 0px 15px'}}>

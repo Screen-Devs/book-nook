@@ -6,8 +6,7 @@ import ModalCards from './ModalCards.jsx';
 import { TabPanel } from './TabPanel.jsx';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { getNYTimesCategory, getNYTimesList } from '../../../requests/index.js';
-
+import { getNYTimesList } from '../../../requests/index.js';
 
 const Container = styled.div`
   margin: 10px;
@@ -65,9 +64,6 @@ const NYTModal = () => {
     fetchData()
   }, [])
 
-
-
-  console.log('categ', categories);
   return (
     <Container>
       <Button className='sideComponentTitle' variant='dark' onClick={handleModal}>
