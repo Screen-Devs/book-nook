@@ -652,8 +652,8 @@ body::-webkit-scrollbar-thumb {
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  height: 1000px;
-  margin-top: 20px;
+  height: 700px;
+  margin: 10px;
   margin-bottom: 20px;
 }
 
@@ -665,10 +665,10 @@ body::-webkit-scrollbar-thumb {
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  height: 400px;
+  height: 300px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: black;
+  background-color: #212529;
   color: white;
   padding: 15px 20px 15px 20px;
 }

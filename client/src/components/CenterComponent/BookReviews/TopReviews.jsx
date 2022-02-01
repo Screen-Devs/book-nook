@@ -13,7 +13,7 @@ const TopReviews = ({ setAllReviews, allReviews }) => {
 
   return (
     <Grid item xs={30} style={{ width: '100%', paddingTop: 5 }}>
-      <Card style={{ height: 125, display: 'flex', justifyContent: 'space-between' }} elevation={6}>
+      <Card style={{ height: 125, width: '580px', display: 'flex', justifyContent: 'space-between' }} elevation={6}>
         <div>
           <Typography
             variant='h4'
@@ -35,7 +35,10 @@ const TopReviews = ({ setAllReviews, allReviews }) => {
             <p style={{paddingTop: 5, paddingLeft: 5}}>{totalReviews} ratings</p>
           </div>
         </div>
-        <DropdownReviews set={setAllReviews} />
+
+
+
+        <DropdownReviews set={setAllReviews} style={{overflow: 'auto'}}/>
       </Card>
     </Grid>
   );

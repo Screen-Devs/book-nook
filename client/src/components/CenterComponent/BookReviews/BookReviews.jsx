@@ -25,7 +25,7 @@ export default function BookReviews() {
           Write a review or comment
         </div>
         <Paper className="bookDetailsCenterComponent" elevation={24}>
-          <Box style={{ width: '100%', paddingBottom: 2 }}>
+          <Box className="bookDetailsCenterComponent" style={{ width: '100%', paddingBottom: 2, }}>
             <Grid container spacing={1}>
               <TopReviews setAllReviews={setAllReviews} allReviews={allReviews} />
               <Comments allReviews={allReviews} />
