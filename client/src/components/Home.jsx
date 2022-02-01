@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { searchGoogle, getNYTimesList, getNYTimesCategory } from '../requests';
+import { getUser, searchGoogle } from '../requests';
 import sample from './RightComponent/TopRankingBooks/sample.js';
 import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
@@ -90,28 +90,24 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   useEffect(() => {
     if (!currentUser) return;
     // get user data for currentUser
-    axios.get(`/users?username=${currentUser}`)
+    getUser(currentUser)
       .then((response) => {
-        console.log(response);
         setAppLayout({
           ...profileLayout,
-          payload: response.data
+          payload: response
         })
     })
-
   }, []);
 
   const handleGetFriendData = (user) => {
     // make get request and give username to the server
-    console.log('Profile is currently loading ', user);
     setCurrentUserView(user)
-    axios.get(`/users?username=${user}`)
+    getUser(user)
       .then((response) => {
-        console.log(response);
         setAppLayout({
             ...profileLayout,
             view: 'friend',
-            payload: response.data,
+            payload: response,
         })
       })
   };
