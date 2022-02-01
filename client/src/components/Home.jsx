@@ -7,7 +7,6 @@ import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
 import { getUser, searchGoogle } from '../requests';
-import sample from './RightComponent/TopRankingBooks/sample.js';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -31,8 +30,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     right: 'addToLists',
     payload: '',
   };
-
-  let bookSamples = sample.results.books;
 
   // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
@@ -62,14 +59,15 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   };
 
   const removeFromBookClub = (id, data) => {
-    //username, gBookId, title, authors, list, status
-    console.log(data);
     const updateParameters = {
       username: currentUser,
       gBookId: data.gBookId,
       title: data.title,
       authors: data.authors,
+      list: 'clubbed',
+      status: false,
     }
+    console.log(updateParameters);
     const newList = bookClub.filter((item) => item.gBookId !== id);
     // make put request here
     setBookClub(newList)
@@ -106,7 +104,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           ...profileLayout,
           payload: response
         })
-        console.log(response);
         handleCreateLists(response[0].userBooks);
       })
   }, []);
@@ -168,6 +165,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           <div className = "bodyContainer">
             <LeftComponent
               currentLayout={appLayout.left}
+              currentView={appLayout.view}
               removeFromQueue={removeFromQueue}
               removeFromCurrent={removeFromCurrent}
               removeFromCompleted={removeFromCompleted}

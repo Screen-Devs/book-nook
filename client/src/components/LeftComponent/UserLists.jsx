@@ -20,7 +20,8 @@ export default function UserLists ({
   completed,
   bookClub,
   goToReviews,
-  set
+  set,
+  currentView,
 }) {
 
   return (
@@ -35,6 +36,7 @@ export default function UserLists ({
         bookClub={bookClub}
         removeFromBookClub={removeFromBookClub}
         gotToReviews={goToReviews}
+        currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <CurrentList
@@ -43,6 +45,7 @@ export default function UserLists ({
         currentToCompleted={currentToCompleted}
         gotToReviews={goToReviews}
         set={set}
+        currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <QueueList
@@ -50,6 +53,7 @@ export default function UserLists ({
         removeFromQueue={removeFromQueue}
         queueToCurrent={queueToCurrent}
         gotToReviews={goToReviews}
+        currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <BooksRead
@@ -57,6 +61,7 @@ export default function UserLists ({
         removeFromCompleted={removeFromCompleted}
         completedToBookClub={completedToBookClub}
         gotToReviews={goToReviews}
+        currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
     </>

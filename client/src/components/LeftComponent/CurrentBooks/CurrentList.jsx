@@ -48,7 +48,7 @@ const dividerStyle = {
   width: 300,
 }
 
-const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToReviews, set }) => {
+const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToReviews, set, currentView }) => {
 
   const handleClick = () => {
     set(bookLayout)
@@ -66,7 +66,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<CurrentDropdown gBookId={datum.gBookId} remove={removeFromCurrent} move={currentToCompleted}/>}
+                    action={currentView === 'self' && <CurrentDropdown gBookId={datum.gBookId} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1' onClick={handleClick}>
