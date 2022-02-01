@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
 import axios from "axios";
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
@@ -32,9 +32,9 @@ export default function App() {
   return(
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
-        <Route path="/login" element={<Login authenticate={authenticate} authStatus={authStatus}/>} />
-        <Route path="/signup" element={<Signup authStatus={authStatus}/>} />
+        <Route path={`/home/${currentUser}/*`} element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
+        <Route path="/login" element={<Login authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />
+        <Route path="/signup" element={<Signup authStatus={authStatus} currentUser={currentUser}/>} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

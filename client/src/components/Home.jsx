@@ -6,14 +6,16 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests/getRequest.js';
+import { searchGoogle, getNYTimesList, getNYTimesCategory} from '../requests';
 import sample from './RightComponent/TopRankingBooks/sample.js';
+import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
     left: 'userLists',
     center: 'profileComments',
-    right: 'siteData', //
+    right: 'siteData',
+    view: 'self', // on click of friend in friend list, set this to 'friend'
     payload: '',
   };
 
@@ -33,12 +35,12 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   let bookSamples = sample.results.books;
 
   const [appLayout, setAppLayout] = useState(profileLayout);
+  const [currentUserView, setCurrentUserView] = useState(null);
   const [queue, setQueue] = useState(bookSamples)
-  const [current, setCurrent] = useState(bookSamples)
-  const [completed, setCompleted] = useState(bookSamples)
+  const [current, setCurrent] = useState(bookSamples) //TODO: Can we make this more descriptive?
+  const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
-
 
   // TODO : Change to a books unique id
   const removeFromQueue = (rank) => {
@@ -82,26 +84,47 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList)
   };
 
+  // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
-    handleGetUserData(currentUser);
-  }, [currentUser]);
+    // get user data for currentUser
 
-  const handleGetUserData = (user) => {
+    setAppLayout({
+      ...profileLayout,
+      payload: {
+        ID: '0',
+        username: 'Its myself!',
+        books: 'none?',
+      }
+    })
+
+  }, []);
+
+  const handleGetFriendData = (user) => {
     // make get request and give username to the server
     console.log('Profile is currently loading ', user);
     // set payload from server into profileLayout
+    setAppLayout({
+      ...profileLayout,
+      view: 'friend',
+      payload: samplePeople.objects[0],
+    })
+    setCurrentUserView(user)
+
   };
 
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40
   searchGoogle(query)
   .then((res) => {
+    console.log(res)
     setSearchedBooks(res);
+    setAppLayout(searchLayout);
   })
   .catch(err => console.err)
   };
 
+  let navigate;
   return (
     <div>
       {!authStatus && <Navigate to='/login' replace={true} />}
@@ -127,11 +150,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <CenterComponent
               currentLayout={appLayout.center}
+              // Profile Component
+              currentUserView={currentUserView}
+              currentView={appLayout.view}
+              userData={appLayout.payload}
+              // Search Component
               searchedBooks={searchedBooks}
             />
             <RightComponent
               currentLayout={appLayout.right}
-              handleGetUserData={handleGetUserData}/>
+              handleGetFriendData={handleGetFriendData}/>
           </div>
           <Footer />
         </div>
