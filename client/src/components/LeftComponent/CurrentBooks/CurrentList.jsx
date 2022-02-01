@@ -16,6 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
+  minHeight: 205,
   minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
@@ -56,7 +57,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
-      <div style={{ fontWeight: 800}}>Current Books</div>
+      <div style={{ fontWeight: 800 }}>Current Books</div>
       </div>
       <Box style={boxStyle} className="hideScroll">
         {current.length === 0 ? null : (
@@ -65,7 +66,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<CurrentDropdown rank={datum.rank} remove={removeFromCurrent} move={currentToCompleted}/>}
+                    action={<CurrentDropdown gBookId={datum.gBookId} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1' onClick={handleClick}>
@@ -76,7 +77,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
                     subheader={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle2'>
-                          {datum.author}
+                          {datum.authors[0]}
                         </Typography>
                       </ThemeProvider>
                     }
