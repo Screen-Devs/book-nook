@@ -1,8 +1,9 @@
-import React from 'react';
-import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
-import samplemanga from './samplemanga';
+import React, {useState, useEffect} from 'react';
+import { Card, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
+import Button from 'react-bootstrap/Button';
+import { getNYTimesCategory } from '../../../requests/index.js';
 
 const BookDescription = styled.p`
   font-size: 7px;
@@ -33,8 +34,20 @@ const cardContentStyle = {
   flexDirection: 'column'
 }
 
-const ModalCards = () => {
-  let data = samplemanga.results.books;
+const ModalCards = ({info}) => {
+  let [booksInCategory, setBooksInCategory] = useState([])
+
+  const fetchData = () => {
+    getNYTimesCategory(info)
+      .then((res) => {
+        setBooksInCategory(res)
+      })
+      .catch(err => console.error(err))
+    }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div style={{margin: '0px 15px 0px 15px'}}>
@@ -44,7 +57,7 @@ const ModalCards = () => {
       easing='cubic-bezier(1,.15,.55,1.54)'
       tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
     >
-      {data.map((book) => (
+      {booksInCategory.map((book) => (
         <Card style={cardStyle} key={book.rank}>
           <a href={book.amazon_product_url}>
             <CardMedia component='img' height='175' width='50' image={book.book_image} />
@@ -63,10 +76,11 @@ const ModalCards = () => {
             </CardContent>
             <CardActions style={{position: 'absolute', bottom: 0}}>
               {/* TODO: ADD functionality to button*/}
-              <Button variant='contained' style={{fontSize:10}}>Add to Read List</Button>
+              <Button variant='dark' style={{fontSize:10, marginLeft: '14style={{fontSize:10}}px'}}>Add to Read List</Button>
             </CardActions>
         </Card>
       ))}
+
     </Carousel>
     </div>
   );

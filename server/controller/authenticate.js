@@ -63,7 +63,7 @@ const signup = async (req, res) => {
     // Error handling
     if (result instanceof Error) {
       // code 11000 - duplicate
-      const error = { error: result }
+      const error = { error: result };
       if (result.code === 11000) {
         error.details = 'This user exists already';
         res.send(error);
@@ -71,6 +71,12 @@ const signup = async (req, res) => {
       }
     }
     const newUser = await insertUser(username);
+    if (newUser instanceof Error) {
+      const error = { error: newUser };
+      error.details = 'Failed to save user to db.'; //TODO: change to general failure message
+      res.send(error);
+      return;
+    }
     res.send(result);
   } catch (error) {
     res.status(400).send(error).end();

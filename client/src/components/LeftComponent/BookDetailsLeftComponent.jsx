@@ -7,7 +7,7 @@ import BooksRead from './BooksRead/BooksRead.jsx';
 import BookClub from './BookClub/BookClub.jsx';
 import Statistics from './Statistics/Statistics.jsx';
 
-export default function UserLists ({
+export default function BookDetailsLeftComponent ({
   removeFromQueue,
   removeFromCurrent,
   removeFromCompleted,
