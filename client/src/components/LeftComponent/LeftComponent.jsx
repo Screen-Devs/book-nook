@@ -40,7 +40,7 @@ export default function LeftComponent({
 
   return (
     <div className='leftComponent animate__animated animate__fadeInDown'>
-      {component};
+      {component}
     </div>
   );
 }

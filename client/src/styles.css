@@ -80,7 +80,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .friendsListContainer {
-  height: 510px;
+  height: 500px;
   background-color: white;
   display: flex;
   width: 290px;
@@ -378,15 +378,11 @@ body::-webkit-scrollbar-thumb {
   margin-top: 10px;
   border-radius: 20px;
   overflow: auto;
-  height: 1100px;
+  height: 1010px;
 }
 
 .userBook::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
-}
-
-.searchList {
-  background-color: white;
 }
 
 .friendsListModal {
@@ -446,6 +442,8 @@ body::-webkit-scrollbar-thumb {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+
 
 .NYTbookImage {
   margin-top: 10px;
@@ -551,6 +549,69 @@ body::-webkit-scrollbar-thumb {
   background-position: center;
   filter: sepia(100%);
   z-index: -5;
+}
+
+
+/*##########################################################
+~~~~~~~~~~~~~~~~~~~~~ SEARCH COMPONENT ~~~~~~~~~~~~~~~~~~~~
+##########################################################*/
+
+/* .searchList {
+  background-color: rgb(255, 0, 0);
+} */
+
+.filterSearchResults {
+  display: flex;
+  /* flex: 1; */
+  height: 200px;
+  background-color: #212529;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  box-shadow: 0px 0px 32px 4px #000000;
+}
+
+.searchResults {
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+  border-radius: 20px;
+  overflow: auto;
+  height: 1070px;
+  color: black;
+}
+
+.aSearchResult {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchResultText {
+  margin: 5px;
+}
+
+.searchResultCard {
+  width: 420px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10%;
+  box-shadow: 0px 0px 32px 1px #000000;
+
+}
+
+.searchResultImage {
+  width: 150px;
+  margin-top: 15px;
+  border-radius: 5%;
+  box-shadow: 0px 0px 32px 1px #000000;
+}
+
+.searchResultImageContainer {
+  width: 150px;
+  margin-top: 15px;
+  border-radius: 5%;
 }
 
 
