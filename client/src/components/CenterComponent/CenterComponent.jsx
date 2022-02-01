@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProfileComments from './ProfileComments.jsx';
 import Search from './Search.jsx';
-import BookReviews from './BookReviews.jsx'
+import BookReviews from './BookReviews/BookReviews.jsx'
 import CommentModule from '../CommentModule.jsx';
 
 
