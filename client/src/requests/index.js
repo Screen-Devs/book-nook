@@ -16,6 +16,14 @@ const getUser = (username) => {
   });
 };
 
+const putUserBook = (book) => {
+  return new Promise((resolve, reject) => {
+    axios.put('http://localhost:3010/users/books', book)
+    .then(response => resolve(response.data))
+    .catch(err => reject(err));
+  })
+}
+
 const searchGoogle = (query, count=10, page=1) => {
   return new Promise((resolve, reject) => {
     axios.get(`http://localhost:3010/search?q=${query}&count=${count}&page=${page}`)
@@ -43,6 +51,7 @@ const getNYTimesCategory = (list_name_encoded) => {
 export {
   authenticateUser,
   getUser,
+  putUserBook,
   searchGoogle,
   getNYTimesList,
   getNYTimesCategory,
