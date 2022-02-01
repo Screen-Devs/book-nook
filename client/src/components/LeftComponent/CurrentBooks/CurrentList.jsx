@@ -77,7 +77,13 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
                     subheader={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle2'>
-                          {datum.authors[0]}
+                          {datum.authors.map((author, idx) => {
+                            if (idx !== datum.authors.length - 1) {
+                              return author + ', '
+                            } else {
+                              return author
+                            }
+                          })}
                         </Typography>
                       </ThemeProvider>
                     }

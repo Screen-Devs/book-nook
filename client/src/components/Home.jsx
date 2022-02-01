@@ -62,7 +62,14 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   };
 
   const removeFromBookClub = (id, data) => {
+    //username, gBookId, title, authors, list, status
     console.log(data);
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+    }
     const newList = bookClub.filter((item) => item.gBookId !== id);
     // make put request here
     setBookClub(newList)
