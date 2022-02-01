@@ -11,6 +11,7 @@ import {
   Divider
 } from '@material-ui/core';
 import React from 'react';
+import { Link } from "react-router-dom";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 // import url('./bnLogoSmall.png');
@@ -38,10 +39,10 @@ const dividerStyle = {
   borderWidth: '1px',
 }
 
-const FriendsModal = ({ friendsList, set, remove }) => {
+const FriendsModal = ({ friendsList, set, remove, handleGetFriendData }) => {
 
-  const handleRemove = (ID) => {
-    const newFriends = friendsList.filter((friend) => friend.ID !== ID);
+  const handleRemove = (user) => {
+    const newFriends = friendsList.filter((friend) => friend !== user);
     set(newFriends);
   };
 
@@ -53,9 +54,9 @@ const FriendsModal = ({ friendsList, set, remove }) => {
         </div>
         {/* <Divider style={dividerStyle}/> */}
         <List className="friendsListModal">
-          {friendsList.map((datum) => {
+          {friendsList.map((datum, idx) => {
             return (
-              <ListItem key={datum.ID} style={{ height: 60, width: 400 }}>
+              <ListItem key={idx} style={{ height: 60, width: 400 }}>
                 <ListItemAvatar>
                   <Avatar alt=" " src="./bnLogoSmall.png" className='bnLogoSmall'>
                     {/* <AccountCircleIcon /> */}
@@ -63,11 +64,12 @@ const FriendsModal = ({ friendsList, set, remove }) => {
                     {/* <div className='bnLogoSmall'/> */}
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText
-                  primary={datum.FirstNameLastName}
-                />
+                <Link to={`friend/${datum}`}><ListItemText
+                    primary={datum}
+                    onClick={e => handleGetFriendData(datum)}
+                  /></Link>
                 <ListItemSecondaryAction>
-                  <IconButton edge='end' onClick={() => handleRemove(datum.ID)}>
+                  <IconButton edge='end' onClick={() => handleRemove(datum)}>
                     <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>

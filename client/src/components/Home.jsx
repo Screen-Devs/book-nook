@@ -90,14 +90,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   useEffect(() => {
     if (!currentUser) return;
     // get user data for currentUser
-
-    setAppLayout({
-      ...profileLayout,
-      payload: {
-        ID: '0',
-        username: 'Its myself!',
-        books: 'none?',
-      }
+    axios.get(`/users?username=${currentUser}`)
+      .then((response) => {
+        console.log(response);
+        setAppLayout({
+          ...profileLayout,
+          payload: response.data
+        })
     })
 
   }, []);
@@ -105,14 +104,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const handleGetFriendData = (user) => {
     // make get request and give username to the server
     console.log('Profile is currently loading ', user);
-    // set payload from server into profileLayout
-    setAppLayout({
-      ...profileLayout,
-      view: 'friend',
-      payload: samplePeople.objects[0],
-    })
     setCurrentUserView(user)
-
+    axios.get(`/users?username=${user}`)
+      .then((response) => {
+        console.log(response);
+        setAppLayout({
+            ...profileLayout,
+            view: 'friend',
+            payload: response.data,
+        })
+      })
   };
 
   const handleSearch = (query) => {
@@ -168,7 +169,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <RightComponent
               currentLayout={appLayout.right}
-              handleGetFriendData={handleGetFriendData}/>
+              handleGetFriendData={handleGetFriendData}
+              userData={appLayout.payload}
+            />
           </div>
           <Footer />
           <button onClick={goToReviews}>to reviews</button>
