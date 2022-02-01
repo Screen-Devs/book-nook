@@ -23,7 +23,7 @@ export default function App() {
     axios.get('/authenticate')
       .then((response) => {
         setAuthStatus(response.data.isAuthenticated);
-        setCurrentUser(response.data.username)
+        setCurrentUser(response.data.username);
       })
       .catch(error => console.error(error));
   }

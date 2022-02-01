@@ -30,7 +30,7 @@ router.post('/users/canvas', controller.user.addMessage);
 
 /* BOOK MODEL */
 
-router.get('/books', book.getTotalBookData);
+router.get('/books', controller.book.getTotalBookData);
 
 router.get('/books/meta', controller.book.getBookMetaData)
 
