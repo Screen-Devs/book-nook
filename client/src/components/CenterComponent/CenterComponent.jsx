@@ -5,7 +5,6 @@ import Search from './Search.jsx';
 import BookReviews from './BookReviews/BookReviews.jsx'
 import CommentModule from '../CommentModule.jsx';
 
-
 export default function CenterComponent({
   currentLayout,
   // Profile Component

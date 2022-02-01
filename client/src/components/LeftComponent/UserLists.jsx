@@ -18,7 +18,9 @@ export default function UserLists ({
   queue,
   current,
   completed,
-  bookClub
+  bookClub,
+  goToReviews,
+  set
 }) {
 
   return (
@@ -32,24 +34,29 @@ export default function UserLists ({
       <BookClub
         bookClub={bookClub}
         removeFromBookClub={removeFromBookClub}
+        gotToReviews={goToReviews}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <CurrentList
         current={current}
         removeFromCurrent={removeFromCurrent}
         currentToCompleted={currentToCompleted}
+        gotToReviews={goToReviews}
+        set={set}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <QueueList
         queue={queue}
         removeFromQueue={removeFromQueue}
         queueToCurrent={queueToCurrent}
+        gotToReviews={goToReviews}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
       <BooksRead
         completed={completed}
         removeFromCompleted={removeFromCompleted}
         completedToBookClub={completedToBookClub}
+        gotToReviews={goToReviews}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
     </>

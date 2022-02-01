@@ -5,7 +5,7 @@ import TopReviews from './TopReviews.jsx';
 
 const paperStyle = {
   width: 878,
-  height: '100%',
+  height: 1200,
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
@@ -17,8 +17,7 @@ export default function BookReviews() {
   const [allReviews, setAllReviews] = useState([])
 
   return (
-    <>
-      <div className='centerComponentReviews'>
+      <Container className='centerComponentReviews'>
         <Paper style={paperStyle} elevation={24}>
           <Box style={{ width: '100%', paddingBottom: 2 }}>
             <Grid container spacing={1}>
@@ -27,7 +26,6 @@ export default function BookReviews() {
             </Grid>
           </Box>
         </Paper>
-      </div>
-    </>
+      </Container>
   );
 }

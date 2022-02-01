@@ -47,7 +47,11 @@ const dividerStyle = {
   width: 300,
 }
 
-const CurrentList = ({ current, removeFromCurrent, currentToCompleted }) => {
+const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToReviews, set }) => {
+
+  const handleClick = () => {
+    set(bookLayout)
+  }
 
   return (
     <Paper style={paperStyle} elevation={6}>
@@ -64,7 +68,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted }) => {
                     action={<CurrentDropdown rank={datum.rank} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1'>
+                        <Typography gutterBottom variant='subtitle1' onClick={handleClick}>
                           {datum.title}
                         </Typography>
                       </ThemeProvider>
