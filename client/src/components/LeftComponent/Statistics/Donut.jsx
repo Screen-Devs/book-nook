@@ -31,7 +31,7 @@ const Donut = ({completed, current, queue, bookClub}) => {
     <Box style={boxStyle}>
       <Doughnut
         data={{
-          labels: [`   Completed: ${completed + bookClub}`, `       Reading: ${current}`, `Plan to Read: ${queue}`],
+          labels: [`   Completed: ${completed}`, `       Reading: ${current}`, `Plan to Read: ${queue}`],
           datasets: [
             {
               label: 'Books Statistics',

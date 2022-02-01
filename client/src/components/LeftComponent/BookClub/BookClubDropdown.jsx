@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const BookClubDropdown = ({ rank, remove }) => {
+const BookClubDropdown = ({ gBookId, bookData, remove }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -15,7 +15,7 @@ const BookClubDropdown = ({ rank, remove }) => {
   };
 
   const handleRemove = () => {
-    remove(rank);
+    remove(gBookId, bookData);
     setAnchorEl(null);
   };
 

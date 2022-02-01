@@ -16,6 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
+  minHeight: 205,
   minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
@@ -60,7 +61,7 @@ const BooksRead = ({ completed, removeFromCompleted, completedToBookClub }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BooksReadDropdown rank={datum.rank} remove={removeFromCompleted} move={completedToBookClub}/>}
+                    action={<BooksReadDropdown gBookId={datum.gBookId} remove={removeFromCompleted} move={completedToBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
@@ -71,7 +72,13 @@ const BooksRead = ({ completed, removeFromCompleted, completedToBookClub }) => {
                     subheader={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle2'>
-                          {datum.author}
+                          {datum.authors.map((author, idx) => {
+                            if (idx !== datum.authors.length - 1) {
+                              return author + ', '
+                            } else {
+                              return author
+                            }
+                          })}
                         </Typography>
                       </ThemeProvider>
                     }
