@@ -14,24 +14,25 @@ export default function searchResult () {
       <Card className="searchResultCard">
 
   <Card.Body >
-    <Card.Title style={{fontWeight: 'bold',}}>TITLE</Card.Title>
-    <Divider style={{borderWidth: '0.25px', border: 'solid',}}/>
+    <Card.Header style={{fontWeight: 'bold', borderRadius:"20px", backgrounColor:''}}>TITLE</Card.Header>
+    <Divider style={{borderWitdh: '0.05px', borderBottom: 'solid', }}/>
     <Card.Text className="searchResultText">
-      Author: VAR
+      <b>Author:</b> VAR
+      </Card.Text>
+      <Divider/>
+      <Card.Text className="searchResultText">
+      <b>Publisher: </b>VAR
       </Card.Text>
       <Card.Text className="searchResultText">
-      Publisher: VAR
+      <b>Genre:</b> VAR
       </Card.Text>
       <Card.Text className="searchResultText">
-      Genre: VAR
+      <b>Published:</b> VAR
       </Card.Text>
       <Card.Text className="searchResultText">
-      Published: VAR
-      </Card.Text>
-      <Card.Text className="searchResultText">
-      Overview: VAR
+      <b>Overview:</b> VAR
     </Card.Text>
-    <Button variant="dark" style={{fontWeight: 'bold',}}>Book Details</Button>
+    <Button variant="dark" style={{marginLeft: '134px'}}>Book Details</Button>
   </Card.Body>
 </Card>
 <div className="searchResultImageContainer" >

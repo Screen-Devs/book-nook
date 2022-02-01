@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, CardActions, Button } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, CardActions } from '@material-ui/core';
 import samplemanga from './samplemanga';
 import Carousel from 'react-elastic-carousel';
 import styled from 'styled-components';
+import Button from 'react-bootstrap/Button';
+
 
 const BookDescription = styled.p`
   font-size: 7px;
@@ -63,7 +65,7 @@ const ModalCards = () => {
             </CardContent>
             <CardActions style={{position: 'absolute', bottom: 0}}>
               {/* TODO: ADD functionality to button*/}
-              <Button variant='contained' style={{fontSize:10}}>Add to Read List</Button>
+              <Button variant='dark' style={{fontSize:10, marginLeft: '14px'}}>Add to Read List</Button>
             </CardActions>
         </Card>
       ))}

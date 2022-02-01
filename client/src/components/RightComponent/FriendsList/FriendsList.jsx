@@ -93,7 +93,7 @@ const FriendsList = ({ handleGetFriendData }) => {
                     {/* </Avatar> */}
                   </ListItemAvatar>
                   {/* TODO: Need to ensure username clicked */}
-                  <Link to={`friend/celiaVaughan`}><ListItemText
+                  <Link to={`friend/celiaVaughan`} className="link"><ListItemText
                     primary={datum.FirstNameLastName}
                     onClick={e => handleGetFriendData('celiaVaughan')}
                   /></Link>

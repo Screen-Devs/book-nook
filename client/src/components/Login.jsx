@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import axios from "axios";
-import { TextField, Grid, Paper, Button } from '@material-ui/core';
+import { TextField, Grid, Paper } from '@material-ui/core';
+import 'animate.css';
+import Button from 'react-bootstrap/Button';
+
 
 
 
@@ -82,7 +85,7 @@ export default function Login ({ authStatus, authenticate, currentUser }) {
           <div className="BNwhiteFontBackGround animate__animated animate__flipInY">
             <img className="BNwhiteFont" src="https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo1MSwidyI6MTAwMCwiZnMiOjUxLCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzAwMDAwMCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png"/>
           </div>
-          <h2>Login</h2>
+          <div style={{marginBottom: '20px'}}></div>
           <form onSubmit={handleLogin}>
             <TextField
               className="textFieldStyle"
@@ -93,24 +96,33 @@ export default function Login ({ authStatus, authenticate, currentUser }) {
               type='text'
               required
             />
+            <div style={{marginBottom: '10px'}}></div>
             <TextField
-              className="textFieldStyle"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Password'
               label='Password'
               type='password'
               required
+              className="textFieldStyle"
             />
-            <Button className="loginButton" type='submit' variant='contained' color='default' >
-              <b>Login</b>
+            <div style={{marginBottom: '20px'}}></div>
+
+            <Button className="sideComponentTitle"  type='submit' variant='dark' style={{marginLeft: '140px'}}>
+              Login
             </Button>
           </form>
+          <div style={{margin: '5px'}}></div>
           <nav>
-            <Link to='/signup'>Signup</Link>
+            <Link to='/signup' className="link" style={{marginLeft: '3px'}}>Signup</Link>
           </nav>
         </Paper>
       </Grid>
       </div>
   )
 }
+
+
+{/* <Button className="loginButton" type='submit' variant='contained' color='default' >
+              <b>Login</b>
+            </Button> */}
