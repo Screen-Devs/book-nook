@@ -36,7 +36,9 @@ router.get('/books/meta', controller.book.getBookMetaData);
 
 router.post('/books/reviews', controller.book.addReview);
 
-router.put('/books/reviews/', controller.book.markReview);
+router.post('/books/reviews/comments', controller.book.addComment)
+
+router.put('/books/reviews', controller.book.markReview);
 
 router.put('/books/reviews/comments', controller.book.markComment);
 
