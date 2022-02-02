@@ -14,12 +14,17 @@ export default function CenterComponent({
   // Search Component
   searchedBooks,
   currentUserData,
+  //To reviews
+  goToReviews,
+  // From searchToResult
+  handleSearchToResults,
+  searchToResult
 }) {
   let component;
   if (currentLayout === 'search') {
-    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData}/>;
+    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
   } else if (currentLayout === 'reviews') {
-    component = <BookReviews currentUserData={currentUserData} />;
+    component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult}/>;
   }
 
   // If not a friend or profile, just conditionally render

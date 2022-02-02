@@ -1,5 +1,6 @@
 import { Box, Grid, Paper } from '@material-ui/core';
 import React, { useState } from 'react';
+import BookDetails from './BookDetails/BookDetails.jsx';
 import Comments from './Comments.jsx';
 import TopReviews from './TopReviews.jsx';
 
@@ -13,13 +14,13 @@ import TopReviews from './TopReviews.jsx';
 //   overflowY: "scroll"
 // }
 
-export default function BookReviews() {
+export default function BookReviews({searchToResult}) {
   const [allReviews, setAllReviews] = useState([])
 
   return (
       <div >
         <div className="bookDetailsTopComponent">
-          BOOK DETAILS
+          <BookDetails searchToResult={searchToResult}/>
         </div>
         <div className="writeReviewOrComment">
           Write a review or comment

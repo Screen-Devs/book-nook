@@ -141,7 +141,7 @@ body::-webkit-scrollbar-thumb {
   flex-direction: row;
   align-items: center;
   /* position: absolute; */
-  z-index: 1;
+  z-index: 10;
 }
 
 .header::before {
@@ -365,6 +365,7 @@ body::-webkit-scrollbar-thumb {
   height: 1300px;
   margin-top: 20px;
   margin-bottom: 20px;
+  z-index: 2;
 }
 
 /* height: 1620px; */
@@ -625,19 +626,29 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   padding-top: 8px;
   box-shadow: 0px 0px 32px 4px #000000;
-  z-index: 2;
+  z-index: 3;
 }
 
 .searchResults {
+  /* display: flex; */
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin-top: 10px;
+  /* padding-top: 2500px; */
   border-radius: 20px;
   overflow: auto;
-  height: 1070px;
+  height: 1080px;
   width: 900px;
   color: black;
-  z-index: 2;
+  z-index: 3;
+}
+
+.bookSearchCover:hover {
+  opacity: 0.75;
+  /* transform: scale(1.15); */
+  box-shadow: 0px 0px 32px 4px white;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .bookSearchCard {  display: grid;
@@ -649,6 +660,7 @@ body::-webkit-scrollbar-thumb {
     "bookSearchHeader bookSearchHeader bookSearchHeader"
     "bookSearchImage bookSearchOverview bookSearchDetails";
     box-shadow: 0px 0px 32px 1px #000000;
+    z-index: 3;
 }
 
 .bookSearchHeader { grid-area: bookSearchHeader; }
