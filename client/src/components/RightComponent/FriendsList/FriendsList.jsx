@@ -97,7 +97,7 @@ const FriendsList = ({ handleGetFriendData, userData }) => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  <Link to={`friend/${datum}`}><ListItemText
+                  <Link className="link" to={`friend/${datum}`}><ListItemText
                     primary={datum}
                     onClick={e => handleGetFriendData(datum)}
                   /></Link>
