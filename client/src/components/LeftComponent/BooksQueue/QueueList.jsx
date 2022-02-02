@@ -77,7 +77,7 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView, goToRe
                     action={currentView === 'self' && <QueueDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)}>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)} className="link">
                           {datum.title}
                         </Typography>
                       </ThemeProvider>

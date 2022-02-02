@@ -72,7 +72,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, currentVi
                     action={currentView === 'self' && <CurrentDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)}>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)} className="link">
                           {datum.title}
                         </Typography>
                       </ThemeProvider>

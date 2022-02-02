@@ -72,7 +72,7 @@ const BookClub = ({ bookClub, removeFromBookClub, currentView, goToReviews, hand
                     action={currentView === 'self' && <BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)}>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)} className="link" >
                           {datum.title}
                         </Typography>
                       </ThemeProvider>
