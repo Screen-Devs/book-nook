@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { Link } from "react-router-dom";
 import 'animate.css';
 import Logout from './Logout.jsx';
 import {
@@ -71,11 +71,11 @@ export default function Header({ authenticate, handleSearch, goHome }) {
   return (
       <div className='header animate__animated animate__swing'>
         <Left>
-          <img
+          <Link to='/home'><img
             alt='Book Nook logo'
             className='headerLogo'
             src='https://see.fontimg.com/api/renderfont4/eZ4dO/eyJyIjoiZnMiLCJoIjo0MCwidyI6MTAwMCwiZnMiOjQwLCJmZ2MiOiIjRkZGRUZFIiwiYmdjIjoiIzA4MDgwOCIsInQiOjF9/Qk9PSyBOT09L/goldleaf-bold-personal-use-bold.png'
-          />
+          /></Link>
         </Left>
         <Center>
           <Paper component='form' style={paperStyle} elevation={24} onSubmit={handleSubmit}>
