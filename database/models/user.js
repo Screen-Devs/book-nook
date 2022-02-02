@@ -65,6 +65,20 @@ const getLeaderboardData = async ( username ) => {
   }
 };
 
+
+const buildSuggestedBookList =  async ( username ) => {
+  if (!username || typeof username !== 'string') {
+    return new Error('Please be sure to specify a username string parameter');
+  }
+
+  try {
+
+    return username;
+  } catch (error) {
+    return (error);
+  }
+};
+
 const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   //Handle input errors
   if (!username || !gBookId || !title || !authors || !list) {
@@ -158,6 +172,7 @@ module.exports = {
   insertUser,
   findUser,
   getLeaderboardData,
+  buildSuggestedBookList,
   addOrUpdateUserBooks,
   addOrRemoveFriend,
   insertCanvasMessage
