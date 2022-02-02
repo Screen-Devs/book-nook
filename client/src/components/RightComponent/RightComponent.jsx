@@ -15,15 +15,17 @@ export default function RightComponent({
     userData={userData}
     currentUserView={currentUserView}
     userData={userData}/>
-  } else if (currentLayout === 'addToLists') {
-    //TODO: Need to implement
-    component = <SiteData
-    currentUserData={currentUserData}
-    userData={userData}
-    currentUserView={currentUserView}
-    handleGetFriendData={handleGetFriendData}/>
-    // return null
   }
+  // //TODO: Need to implement
+  // else if (currentLayout === 'addToLists') {
+
+  //   component = <SiteData
+  //   currentUserData={currentUserData}
+  //   userData={userData}
+  //   currentUserView={currentUserView}
+  //   handleGetFriendData={handleGetFriendData}/>
+  //   // return null
+  // }
 
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >

@@ -20,11 +20,12 @@ export default function CenterComponent({
   handleSearchToResults,
   searchToResult
 }) {
-  console.log('searched result !')
+
   let component;
   if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
-  } else if (currentLayout === 'reviews') {
+  } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
+    console.log('Only allow component to render once there is data ', Object.keys(searchToResult).length)
     component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult}/>;
   }
 

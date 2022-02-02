@@ -193,7 +193,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   const handleCreateLists = (books) => {
     // filtering
-    console.log('where is my gbook id?? ', books);
     setBookClub(books.filter((book) => {
       return book.clubbed.status === true;
     }));
@@ -232,6 +231,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   }
   const handleSearchToResults = (book) => {
+    console.log('books to pass to details ', book)
     setSearchToResult(book)
   }
 
@@ -241,10 +241,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     // get metaData if it exists, and set it to payload
     getBookMeta(gBookId)
       .then((response) => {
-        console.log(response);
         setAppLayout({
           ...bookLayout,
-          payload: response,
+          payload: response.data,
         })
       })
     console.log('get book meta')
