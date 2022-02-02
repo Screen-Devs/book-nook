@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { getUser, searchGoogle } from '../requests';
+import { getUser, searchGoogle, putUserBook } from '../requests';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -70,6 +70,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     console.log(updateParameters);
     const newList = bookClub.filter((item) => item.gBookId !== id);
     // make put request here
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('remove club ', response);
+      })
     setBookClub(newList)
   };
 

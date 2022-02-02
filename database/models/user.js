@@ -53,10 +53,11 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
     }
   }
 
-  if (userBookList.length > 0) { //Update book if it is already in UserBooks
+  if (userBooksList.length > 0) { //Update book if it is already in UserBooks
     const bookDocument = userBooksList[0].userBooks.filter(book => book.gBookId === gBookId);
-    bookDocument[listNew].status = statusNew;
-    bookDocument[listNew].date = new Date().toISOString();
+
+    bookDocument[0][list].status = status;
+    bookDocument[0][list].date = new Date().toISOString();
 
     try {
       const updateTarget = {username, "userBooks.gBookId": gBookId};
