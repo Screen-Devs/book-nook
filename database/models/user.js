@@ -27,7 +27,7 @@ const findUser = async ( username ) => {
   }
 };
 
-const addOrUpdateUserBooks = async ( {username, gBookId, title, authors, list, status} ) => {
+const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   //Handle input errors
   if (!username || !gBookId || !title || !authors || !list) {
     return new Error('Incorrect input- please double check you are using a user book object with all required fields');
@@ -36,6 +36,7 @@ const addOrUpdateUserBooks = async ( {username, gBookId, title, authors, list, s
     return new Error('One or more of your input types is incorrect.');
   }
   const findTarget = {username, 'userBooks.gBookId': gBookId };
+
   const checkForUser = await User.find({username}); //Check if book is in userBook List
   if (checkForUser.length === 0) {
     return new Error('Could not find the user to update.');
@@ -68,7 +69,6 @@ const addOrUpdateUserBooks = async ( {username, gBookId, title, authors, list, s
     const bookDocument = userBooksList[0].userBooks.filter(book => book.gBookId === gBookId);
     bookDocument[0][list].status = status;
     bookDocument[0][list].date = new Date().toISOString();
-
     try {
       const updateTarget = {username, "userBooks.gBookId": gBookId};
       const updateData = {
