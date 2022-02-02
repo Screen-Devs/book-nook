@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { commentOnCanvas } from '../../requests'
 
 
-export default function ProfileComments ({ userData, currentUserData, }) {
+export default function ProfileComments ({ userData, currentUserData, currentUserView}) {
   const [canvas, setCanvasList] = useState([]);
   const [commentText, setCommentText] = useState();
   // onFormSubmit = e => {
@@ -20,11 +20,13 @@ export default function ProfileComments ({ userData, currentUserData, }) {
     //  onInput = ({target:{commentText}}) => setCommentText(commentText),
     const onFormSubmit = (e) => {
       e.preventDefault()
+      const username = currentUserView || currentUserData;
       const comment = {
-        username: userData[0].username,
+        username,
         message: commentText,
-        commentor: currentUserData,
+        commenter: currentUserData,
       }
+      console.log(comment)
       commentOnCanvas(comment)
       .then(res => console.log(res,'comment'))
       .catch(err => console.error(err))
