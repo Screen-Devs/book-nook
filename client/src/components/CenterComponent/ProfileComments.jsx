@@ -4,6 +4,7 @@ import 'animate.css';
 import CommentModule from '../CommentModule.jsx';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { commentOnCanvas } from '../../requests'
 
 
 export default function ProfileComments ({ userData, currentUserData, }) {
@@ -16,17 +17,17 @@ export default function ProfileComments ({ userData, currentUserData, }) {
     // }
 
     const onInput = (e) => setCommentText(e.target.value);
-
-
-
     //  onInput = ({target:{commentText}}) => setCommentText(commentText),
     const onFormSubmit = (e) => {
       e.preventDefault()
-    console.log(currentUserData, userData.username, commentText)
-    console.log("FORM SUBMITTED")
-    // set(prev => [...prev, review])
-    // setReview({rating:0, title:'', review:''})
-    // handleModal()
+      const comment = {
+        username: userData[0].username,
+        message: commentText,
+        commentor: currentUserData,
+      }
+      commentOnCanvas(comment)
+      .then(res => console.log(res,'comment'))
+      .catch(err => console.error(err))
   }
 
   useEffect(() => {

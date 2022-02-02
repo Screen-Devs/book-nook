@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//*                     *//
+// AUTHENTICATE
 const authenticateUser = () => {
   return new Promise((resolve, reject) => {
     axios.get('http://localhost:3010/authenticate')
@@ -7,6 +9,9 @@ const authenticateUser = () => {
     .catch(err => reject(err));
   })
 }
+
+//*                     *//
+// USER INTERACTION START
 
 const getUser = (username) => {
   return new Promise((resolve, reject) => {
@@ -18,9 +23,19 @@ const getUser = (username) => {
 
 const dumpFriend = (action) => {
   return new Promise((resolve, reject) => {
+    console.log(action)
     axios.put('http://localhost:3010/users/friends', action)
     .then(res => resolve(res.data))
     .catch(err => reject(err))
+  })
+}
+
+const commentOnCanvas = (comment) => {
+  console.log(comment)
+  return new Promise((resolve, reject) => {
+    axios.post('http://localhost:3010/users/canvas',comment)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
   })
 }
 
@@ -31,17 +46,11 @@ const putUserBook = (book) => {
     .catch(err => reject(err));
   })
 }
+// USER INTERACTION END
+//*                     *//
 
-const bookToPut = {
-  gBookId: 'nbrhnQEACAAJ',
-  title: 'The Very Hungry Catepillar',
-  authors: [ 'J.K. Rowling', 'Jack Thorne', 'John Tiffany' ],
-  list: 'clubbed',
-  status: true
-};
-
-putUserBook(bookToPut);
-
+//*                     *//
+// EXTERNAL API CALLS START
 
 const searchGoogle = (query, count=10, page=1) => {
   return new Promise((resolve, reject) => {
@@ -66,6 +75,9 @@ const getNYTimesCategory = (list_name_encoded) => {
       .catch(err => reject(err));
   });
 };
+// EXTERNAL API CALLS END
+//*                     *//
+
 
 /* BOOK DB ROUTES */
 // note: all 'book_id' parameters refer to the google api's book id
@@ -150,6 +162,7 @@ export {
   authenticateUser,
   getUser,
   putUserBook,
+  commentOnCanvas,
   dumpFriend,
   searchGoogle,
   getNYTimesList,
