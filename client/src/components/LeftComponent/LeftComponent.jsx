@@ -41,7 +41,6 @@ export default function LeftComponent({
           completed={completed}
           bookClub={bookClub}
           goToReviews={goToReviews}
-          set={set}
           currentView={currentView}
           handleSingleBookSearch={handleSingleBookSearch}
         />

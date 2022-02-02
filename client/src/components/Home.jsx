@@ -223,13 +223,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   // This function will handle searching for a specific book to get book details to render
   // on the book layout
-  const handleSingleBookSearch = (gBookId) => {
-    searchGoogle(gBookId)
+  const handleSingleBookSearch = (gBookId, title) => {
+    console.log(title);
+    const query = `${gBookId}+intitle:${title}`
+    searchGoogle(query)
       .then((res) => {
         handleSearchToResults(res[0]);
       })
 
   }
+
   const handleSearchToResults = (book) => {
     console.log('books to pass to details ', book)
     setSearchToResult(book)
@@ -277,7 +280,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               completed={completed}
               bookClub={bookClub}
               goToReviews={goToReviews}
-              set={setAppLayout}
               currentUserData={currentUser}
               handleSingleBookSearch={handleSingleBookSearch}
             />

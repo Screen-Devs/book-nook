@@ -37,6 +37,7 @@ export default function UserLists ({
         bookClub={bookClub}
         removeFromBookClub={removeFromBookClub}
         goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -46,7 +47,6 @@ export default function UserLists ({
         currentToCompleted={currentToCompleted}
         goToReviews={goToReviews}
         handleSingleBookSearch={handleSingleBookSearch}
-        set={set}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -55,6 +55,7 @@ export default function UserLists ({
         removeFromQueue={removeFromQueue}
         queueToCurrent={queueToCurrent}
         goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -63,6 +64,7 @@ export default function UserLists ({
         removeFromCompleted={removeFromCompleted}
         completedToBookClub={completedToBookClub}
         goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />

@@ -25,7 +25,7 @@ export default function CenterComponent({
   if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
   } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
-    console.log('Only allow component to render once there is data ', Object.keys(searchToResult).length)
+    // TODO: include userData for books meta data in payload
     component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult}/>;
   }
 
