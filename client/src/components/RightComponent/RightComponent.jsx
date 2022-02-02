@@ -10,7 +10,7 @@ export default function RightComponent({
   let component;
   if (currentLayout === 'siteData') {
     component = <SiteData
-    currentUser={currentUser}
+    currentUserData={currentUserData}
     handleGetFriendData={handleGetFriendData}
     userData={userData}/>
   } else if (currentLayout === 'addToLists') {
