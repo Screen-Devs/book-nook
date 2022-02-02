@@ -9,6 +9,7 @@ import { Divider } from '@material-ui/core';
 export default function searchResult ({book, goToReviews, handleSearchToResults}) {
 
   const hdleSearchToResults = () => {
+    console.log(book);
     handleSearchToResults(book)
   }
 
@@ -18,7 +19,7 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
 
   const setToReviews = () => {
     hdleSearchToResults()
-    goToReviews()
+    goToReviews(book.id)
   }
 
   return (

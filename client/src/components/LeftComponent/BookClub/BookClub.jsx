@@ -55,7 +55,7 @@ const BookClub = ({ bookClub, removeFromBookClub, currentView }) => {
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
         <div style={{ fontWeight: 800 }}>Book Club</div>
       </div>
-      <Box style={boxStyle}>
+      <Box style={boxStyle} className="hideScroll">
         {bookClub.length === 0 ? null : (
           <div>
             {bookClub.map((datum, index) => {

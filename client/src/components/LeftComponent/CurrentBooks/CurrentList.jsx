@@ -48,10 +48,13 @@ const dividerStyle = {
   width: 300,
 }
 
-const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToReviews, set, currentView }) => {
+const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToReviews, set, currentView, handleSingleBookSearch }) => {
 
-  const handleClick = () => {
-    set(bookLayout)
+  const handleClick = (gBookId) => {
+    //FIXME: If book does not have a gBookId, this will break
+    if (!gBookId) return;
+    handleSingleBookSearch(gBookId);
+    goToReviews(gBookId);
   }
 
   return (
@@ -69,7 +72,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
                     action={currentView === 'self' && <CurrentDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1' onClick={handleClick}>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId)}>
                           {datum.title}
                         </Typography>
                       </ThemeProvider>

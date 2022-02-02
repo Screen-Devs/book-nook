@@ -20,6 +20,7 @@ export default function CenterComponent({
   handleSearchToResults,
   searchToResult
 }) {
+  console.log('searched result !')
   let component;
   if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
