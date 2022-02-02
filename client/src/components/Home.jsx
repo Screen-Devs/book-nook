@@ -216,7 +216,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   searchGoogle(query)
   .then((res) => {
     setSearchedBooks(res);
-    setAppLayout(searchLayout);
+    setAppLayout({
+      ...searchLayout,
+      payload: appLayout.payload,
+    });
   })
   .catch(err => console.err)
   };
@@ -275,6 +278,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
               currentUserData={currentUser}
+              searchedBooks={searchedBooks}
             />
           </div>
           <Footer />

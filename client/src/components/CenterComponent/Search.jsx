@@ -13,9 +13,9 @@ export default function Search ({ searchedBooks, goToReviews, handleSearchToResu
       <div>FILTER STUFF</div>
       </div>
       <div className="searchResults hideScroll animate__animated animate__flipInY">
-        {searchedBooks.map((book) => {
-          return <SearchResult book={book} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>
-        })}
+        {searchedBooks ? searchedBooks.map((book) => {
+          return <SearchResult book={book}/>
+        }) : null}
     </div>
     </div>
   );
