@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import ProfileComments from './ProfileComments.jsx';
-import Search from './Search.jsx';
-import BookReviews from './BookReviews/BookReviews.jsx'
-import CommentModule from '../CommentModule.jsx';
+import ProfileComments from "./ProfileComments.jsx";
+import Search from "./Search.jsx";
+import BookReviews from "./BookReviews/BookReviews.jsx";
+import CommentModule from "../CommentModule.jsx";
 
 export default function CenterComponent({
   currentLayout,
@@ -18,7 +18,7 @@ export default function CenterComponent({
   goToReviews,
   // From searchToResult
   handleSearchToResults,
-  searchToResult
+  searchToResult,
 }) {
 
   let component;
@@ -31,13 +31,33 @@ export default function CenterComponent({
 
   // If not a friend or profile, just conditionally render
   return (
-    <div className = "centerComponent" >
-      {currentLayout === 'profileComments' && userData ?
-      (<Routes>
-        <Route path="/" element={<ProfileComments currentUserData={currentUserData} currentUserView={currentUserView} userData={userData}/>} />
-        <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
-      </Routes>) :
-      component}
-    </div >
+    <div className="centerComponent">
+      {currentLayout === "profileComments" && userData ? (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProfileComments
+                currentUserData={currentUserData}
+                currentUserView={currentUserView}
+                userData={userData}
+              />
+            }
+          />
+          <Route
+            path={`friend/${currentUserView}`}
+            element={
+              <ProfileComments
+                currentUserData={currentUserData}
+                currentUserView={currentUserView}
+                userData={userData}
+              />
+            }
+          />
+        </Routes>
+      ) : (
+        component
+      )}
+    </div>
   );
 }

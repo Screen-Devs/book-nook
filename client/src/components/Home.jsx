@@ -163,6 +163,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList);
   };
 
+
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
