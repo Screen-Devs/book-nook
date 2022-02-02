@@ -8,8 +8,12 @@ const getUserInfo = async (req, res) => {
 }
 
 const putUserBook = async (req, res) => {
+  console.log(req)
   const { username, gBookId, title, authors, list, status } = req.body;
+  console.log(req.body)
   const result = await addOrUpdateUserBooks(username, gBookId, title, authors, list, status);
+  console.log(req.body)
+  console.log(result)
   res.status(204).send(result);
 }
 

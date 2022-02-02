@@ -109,7 +109,7 @@ export default function Header({ authenticate, handleSearch, goHome }) {
             open={open}
             onClose={handleClose}
           >
-            <MenuItem onClick={()=>{goHome}}>Profile</MenuItem>
+            <MenuItem onClick={()=>{goHome()}}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
             <Logout authenticate={authenticate} />
           </Menu>

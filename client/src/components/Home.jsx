@@ -222,7 +222,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   // temp button
   const goToReviews = () => {
-    setAppLayout(bookLayout)
+    setAppLayout()
   }
 
   let navigate;

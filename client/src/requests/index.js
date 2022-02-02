@@ -40,9 +40,6 @@ const bookToPut = {
   status: true
 };
 
-putUserBook(bookToPut);
-
-
 const searchGoogle = (query, count=10, page=1) => {
   return new Promise((resolve, reject) => {
     axios.get(`http://localhost:3010/search?q=${query}&count=${count}&page=${page}`)
