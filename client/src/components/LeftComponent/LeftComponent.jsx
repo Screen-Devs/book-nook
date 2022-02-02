@@ -19,7 +19,8 @@ export default function LeftComponent({
   completed,
   bookClub,
   goToReviews,
-  set
+  set,
+  currentView,
 }) {
 
   let component;
@@ -40,14 +41,14 @@ export default function LeftComponent({
       bookClub={bookClub}
       goToReviews={goToReviews}
       set={set}
+      currentView={currentView}
       />
       </div>
   } else if (currentLayout === 'bookDetails') {
     //TODO: Need to implement
-    component =
-    <div className='leftComponent animate__animated animate__fadeInDown'>
-    <UserLists
-    removeFromQueue={removeFromQueue}
+    <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
+    <BookDetailsLeftComponent
+      removeFromQueue={removeFromQueue}
       removeFromCurrent={removeFromCurrent}
       removeFromCompleted={removeFromCompleted}
       removeFromBookClub={removeFromBookClub}

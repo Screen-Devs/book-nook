@@ -50,7 +50,7 @@ const dividerStyle = {
   width: 300,
 }
 
-const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
+const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView }) => {
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
@@ -66,7 +66,7 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<QueueDropdown gBookId={datum.gBookId} remove={removeFromQueue} move={queueToCurrent}/>}
+                    action={currentView === 'self' && <QueueDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

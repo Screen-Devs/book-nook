@@ -1,6 +1,6 @@
 // getGoogleData - query google api
 const axios = require('axios');
-const API  = require('../../config.js')
+const API = require('../../config.js')
 
 const getGoogleResults = async (req, res) => {
   if (req.query.q) {
