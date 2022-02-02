@@ -224,7 +224,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // This function will handle searching for a specific book to get book details to render
   // on the book layout
   const handleSingleBookSearch = (gBookId, title) => {
-    console.log(title);
     const query = `${gBookId}+intitle:${title}`
     searchGoogle(query)
       .then((res) => {
@@ -234,7 +233,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   }
 
   const handleSearchToResults = (book) => {
-    console.log('books to pass to details ', book)
     setSearchToResult(book)
   }
 
@@ -244,11 +242,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     // get metaData if it exists, and set it to payload
     getBookMeta(gBookId)
       .then((response) => {
+        console.log('server response ', response);
         setAppLayout({
           ...bookLayout,
           payload: response.data,
         })
       })
+    // TODO: check why book meta data is not coming back
     console.log('get book meta')
       // error handle? Does this catch if book does not exist in database
   }
@@ -285,11 +285,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <CenterComponent
               currentLayout={appLayout.center}
-              // Profile Component
               currentUserView={currentUserView}
               currentView={appLayout.view}
               userData={appLayout.payload}
-              // Search Component
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
               goToReviews={goToReviews}
