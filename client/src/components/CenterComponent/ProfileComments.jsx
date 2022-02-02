@@ -6,15 +6,27 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-export default function ProfileComments ({ userData }) {
+export default function ProfileComments ({ userData, currentUserData, }) {
   const [canvas, setCanvasList] = useState([]);
+  const [commentText, setCommentText] = useState();
+  // onFormSubmit = e => {
+    //   e.preventDefault()
+    //   console.log(commentText)
+    //   setCommentText()
+    // }
 
-  const [commentText, setCommentText] = useState(),
-  onInput = ({target:{commentText}}) => setCommentText(commentText),
-  onFormSubmit = e => {
-    e.preventDefault()
-    console.log(commentText)
-    setCommentText()
+    const onInput = (e) => setCommentText(e.target.value);
+
+
+
+    //  onInput = ({target:{commentText}}) => setCommentText(commentText),
+    const onFormSubmit = (e) => {
+      e.preventDefault()
+    console.log(currentUserData, userData.username, commentText)
+    console.log("FORM SUBMITTED")
+    // set(prev => [...prev, review])
+    // setReview({rating:0, title:'', review:''})
+    // handleModal()
   }
 
   useEffect(() => {
@@ -35,12 +47,12 @@ export default function ProfileComments ({ userData }) {
         <h5 style={{fontWeight: 'bold',}}>Write in my book...</h5>
 
         <div style={{alignSelf: 'center'}}>
-          <Form onSubmit={onFormSubmit}>
+          <Form onSubmit={onFormSubmit} >
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control className="writeMeTextArea" as="textarea" onChange={onInput} value={commentText} placeholder="scribble scribble scribble..." rows={5} />
             </Form.Group>
-          </Form>
       <Button className="publishButton" type="submit" variant="dark" style={{width: '100px', marginLeft: '230px'}}>Publish</Button>
+          </Form>
         </div>
         </div>
 
