@@ -73,7 +73,6 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
     dumpFriend(action)
     .then((res) => {
       const newFriends = friendsList.filter((friend) => friend !== friendToRemove);
-      console.log(res)
       setFriendsList(newFriends);
     })
     .catch(err => console.error(err))
@@ -130,7 +129,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
         // </Button>
       ) : null} */}
       <Modal open={show} onClose={handleModal}>
-        <FriendsModal friendsList={friendsList} remove={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
+        <FriendsModal friendsList={friendsList} removeFriend={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
       </Modal>
     </Paper>
   );
