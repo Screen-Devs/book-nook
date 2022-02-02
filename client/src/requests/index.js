@@ -64,6 +64,18 @@ const getBookMeta = (book_id) => {
   });
 }
 
+// get back an array of the top rated books based on all books' metadata
+const getTopTen = () => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/topten',
+      method: 'get'
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  });
+}
+
 // add a review to a book's metadata
 // review argument should be object: {username: STR, rating: 1-5, review_body: STR}
 const addBookReview = (book_id, review) => {
@@ -75,7 +87,7 @@ const addBookReview = (book_id, review) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // add a comment to a given review on a given book's metadata
@@ -90,7 +102,7 @@ const addReviewComment = (book_id, review_id, comment) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // mark a review helpful or report it
@@ -104,7 +116,7 @@ const markReview = (book_id, review_id, mark_type) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // mark a review's comment as helpful or report it
@@ -118,12 +130,13 @@ const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 
 export {
   getBookMeta,
+  getTopTen,
   addBookReview,
   addReviewComment,
   markReview,

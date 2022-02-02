@@ -24,7 +24,11 @@ const findBookMeta = async (book_id) => {
     lookup_id: book_id
   });
   console.log(metadata);
-  return metadata.data;
+  return metadata;
+}
+
+const getTopTen = async () => {
+  const top_ten = await BookData.aggregate([{$group: {lookup_id: "$lookup_id", $avg: "reviews.rating"}}])
 }
 
 const addBookReview = async (book_id, review) => {

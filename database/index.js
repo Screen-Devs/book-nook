@@ -92,6 +92,7 @@ const userSchema = new mongoose.Schema({
 
 const bookDataSchema = new mongoose.Schema({
   lookup_id: {type: String},
+  title: {type: String},
   reviews: [{
     username: {type: String},
     review_date: {type: Date, default: Date.now},
