@@ -6,9 +6,8 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { searchGoogle, getNYTimesList, getNYTimesCategory } from '../requests';
+import { getUser, searchGoogle } from '../requests';
 import sample from './RightComponent/TopRankingBooks/sample.js';
-import samplePeople from './RightComponent/FriendsList/samplepeople.js';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -38,50 +37,61 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
-  const [queue, setQueue] = useState(bookSamples)
-  const [current, setCurrent] = useState(bookSamples) //TODO: Can we make this more descriptive?
-  const [completed, setCompleted] = useState(bookSamples) //TODO: Can we make this more descriptive?
+  const [queue, setQueue] = useState([])
+  const [current, setCurrent] = useState([])
+  const [completed, setCompleted] = useState([])
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
 
-  // TODO : Change to a books unique id
-  const removeFromQueue = (rank) => {
-    const newList = queue.filter((item) => item.rank !== rank);
+  const removeFromQueue = (id) => {
+    const newList = queue.filter((item) => item.gBookId !== id);
+    // make put request here
     setQueue(newList)
   };
 
-  const removeFromCurrent = (rank) => {
-    const newList = current.filter((item) => item.rank !== rank);
+  const removeFromCurrent = (id) => {
+    const newList = current.filter((item) => item.gBookId !== id);
+    // make put request here
     setCurrent(newList)
   };
 
-  const removeFromCompleted = (rank) => {
-    const newList = completed.filter((item) => item.rank !== rank);
+  const removeFromCompleted = (id) => {
+    const newList = completed.filter((item) => item.gBookId !== id);
+    // make put request here
     setCompleted(newList)
   };
 
-  const removeFromBookClub = (rank) => {
-    const newList = bookClub.filter((item) => item.rank !== rank);
+  const removeFromBookClub = (id, data) => {
+    //username, gBookId, title, authors, list, status
+    console.log(data);
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+    }
+    const newList = bookClub.filter((item) => item.gBookId !== id);
+    // make put request here
     setBookClub(newList)
   };
 
-  const queueToCurrent = (rank) => {
-    const itemToMove = queue.filter((item) => item.rank === rank);
-    removeFromQueue(rank);
+  const queueToCurrent = (id) => {
+    const itemToMove = queue.filter((item) => item.gBookId === id);
+    removeFromQueue(id);
     let newList = current.concat(itemToMove);
     setCurrent(newList)
   };
 
-  const currentToCompleted = (rank) => {
-    const itemToMove = current.filter((item) => item.rank === rank);
-    removeFromCurrent(rank);
+  const currentToCompleted = (id) => {
+    const itemToMove = current.filter((item) => item.gBookId === id);
+    removeFromCurrent(id);
     let newList = completed.concat(itemToMove);
     setCompleted(newList)
   };
 
-  const completedToBookClub = (rank) => {
-    const itemToMove = completed.filter((item) => item.rank === rank);
-    removeFromCompleted(rank);
+  const completedToBookClub = (id) => {
+    const itemToMove = completed.filter((item) => item.gBookId === id);
+    removeFromCompleted(id);
     let newList = bookClub.concat(itemToMove);
     setBookClub(newList)
   };
@@ -90,31 +100,46 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   useEffect(() => {
     if (!currentUser) return;
     // get user data for currentUser
-    axios.get(`/users?username=${currentUser}`)
+    getUser(currentUser)
       .then((response) => {
-        console.log(response);
         setAppLayout({
           ...profileLayout,
-          payload: response.data
+          payload: response
         })
-    })
-
+        console.log(response);
+        handleCreateLists(response[0].userBooks);
+      })
   }, []);
 
   const handleGetFriendData = (user) => {
     // make get request and give username to the server
-    console.log('Profile is currently loading ', user);
     setCurrentUserView(user)
-    axios.get(`/users?username=${user}`)
+    getUser(user)
       .then((response) => {
-        console.log(response);
         setAppLayout({
             ...profileLayout,
             view: 'friend',
-            payload: response.data,
+            payload: response,
         })
+        handleCreateLists(response[0].userBooks);
       })
   };
+
+  const handleCreateLists = (books) => {
+    // filtering
+    setBookClub(books.filter((book) => {
+      return book.clubbed.status === true;
+    }));
+    setCurrent(books.filter((book) => {
+      return book.current.status === true;
+    }));
+    setQueue(books.filter((book) => {
+      return book.queued.status === true;
+    }));
+    setCompleted(books.filter((book) => {
+      return book.past.status === true;
+    }))
+  }
 
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40

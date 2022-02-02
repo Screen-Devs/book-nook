@@ -60,7 +60,6 @@ export default function ProfileComments ({ userData, currentUserData, }) {
       <div className="userBook animate__animated animate__flipInY">
         {canvas.length === 0 ? <CommentModule body="No comments :(" /> :
         canvas.map((comment) => {
-          console.log(comment);
           return <CommentModule username={comment.username} body={comment.comment}/>
         })}
       </div>

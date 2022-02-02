@@ -16,6 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
+  minHeight: 205,
   minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
@@ -50,7 +51,6 @@ const dividerStyle = {
 }
 
 const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
-
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
@@ -66,7 +66,7 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<QueueDropdown rank={datum.rank} remove={removeFromQueue} move={queueToCurrent}/>}
+                    action={<QueueDropdown gBookId={datum.gBookId} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
@@ -77,7 +77,13 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent }) => {
                     subheader={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle2'>
-                          {datum.author}
+                          {datum.authors.map((author, idx) => {
+                            if (idx !== datum.authors.length - 1) {
+                              return author + ', '
+                            } else {
+                              return author
+                            }
+                          })}
                         </Typography>
                       </ThemeProvider>
                     }

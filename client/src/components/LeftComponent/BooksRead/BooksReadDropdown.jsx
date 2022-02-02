@@ -7,7 +7,7 @@ import {
 import { MoreVertOutlined } from '@material-ui/icons';
 
 
-const BooksReadDropdown = ({ rank, remove, move}) => {
+const BooksReadDropdown = ({ gBookId, remove, move}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -21,12 +21,12 @@ const BooksReadDropdown = ({ rank, remove, move}) => {
   };
 
   const handleRemove = () => {
-    remove(rank)
+    remove(gBookId)
     setAnchorEl(null);
   };
 
   const handleAdd = () => {
-    move(rank)
+    move(gBookId)
     setAnchorEl(null);
   }
 
