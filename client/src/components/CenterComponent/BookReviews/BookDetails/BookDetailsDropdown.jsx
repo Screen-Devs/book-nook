@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const CurrentDropdown = ({ gBookId, bookData, remove, move }) => {
+const BookDetailsDropdown = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -15,19 +15,13 @@ const CurrentDropdown = ({ gBookId, bookData, remove, move }) => {
   };
 
   const handleRemove = () => {
-    remove(gBookId, bookData);
-    setAnchorEl(null);
-  };
-
-  const handleAdd = () => {
-    move(gBookId, bookData);
     setAnchorEl(null);
   };
 
   return (
     <>
       <IconButton onClick={handleMenu} variant='contained' color='inherit'>
-        <MoreVertOutlined />
+        <MoreVertOutlined style={{color:'white'}}/>
       </IconButton>
       <Menu
         anchorEl={anchorEl}
@@ -43,11 +37,10 @@ const CurrentDropdown = ({ gBookId, bookData, remove, move }) => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleAdd}>Move to Completed Books</MenuItem>
-        <MenuItem onClick={handleRemove}>Remove from List</MenuItem>
+        <MenuItem onClick={handleRemove}>Add to Read List</MenuItem>
       </Menu>
     </>
   );
 };
 
-export default CurrentDropdown;
+export default BookDetailsDropdown;

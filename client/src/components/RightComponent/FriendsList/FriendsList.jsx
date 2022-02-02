@@ -16,6 +16,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import FriendsModal from './FriendsModal.jsx';
 import samplePeople from './samplepeople.js';
+import { dumpFriend } from '../../../requests'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from 'react-bootstrap/Button';
@@ -54,7 +55,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetFriendData, userData }) => {
+const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUserView }) => {
 
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
@@ -67,9 +68,14 @@ const FriendsList = ({ handleGetFriendData, userData }) => {
     setShow((prev) => !prev);
   };
 
-  const removeFriend = (user) => {
-    const newFriends = friendsList.filter((friend) => friend !== user);
-    setFriendsList(newFriends);
+  const removeFriend = (friendToRemove) => {
+    const action = {friend: friendToRemove, username: currentUserData, action: 'remove'}
+    dumpFriend(action)
+    .then((res) => {
+      const newFriends = friendsList.filter((friend) => friend !== friendToRemove);
+      setFriendsList(newFriends);
+    })
+    .catch(err => console.error(err))
   };
 
   // onClick={}
@@ -101,11 +107,15 @@ const FriendsList = ({ handleGetFriendData, userData }) => {
                     primary={datum}
                     onClick={e => handleGetFriendData(datum)}
                   /></Link>
-                  <ListItemSecondaryAction>
-                  <IconButton edge='end' onClick={() => removeFriend(datum)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+                  {
+                    (currentUserView === null) && (
+                      <ListItemSecondaryAction>
+                      <IconButton edge='end' onClick={() => removeFriend(datum)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                    )
+                  }
                 </ListItem>
               );
             })}
@@ -123,7 +133,8 @@ const FriendsList = ({ handleGetFriendData, userData }) => {
         // </Button>
       ) : null} */}
       <Modal open={show} onClose={handleModal}>
-        <FriendsModal friendsList={friendsList} remove={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
+
+        <FriendsModal currentUserView={currentUserView} friendsList={friendsList} removeFriend={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
       </Modal>
     </Paper>
   );

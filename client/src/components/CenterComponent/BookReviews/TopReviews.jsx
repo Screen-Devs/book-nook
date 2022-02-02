@@ -4,6 +4,7 @@ import { Rating } from '@material-ui/lab';
 
 import DropdownReviews from './DropdownReviews.jsx';
 
+//BOOK TITLE
 const TopReviews = ({ setAllReviews, allReviews }) => {
   const ratings = allReviews.map((each) => each.rating);
 

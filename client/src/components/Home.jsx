@@ -6,8 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { getUser, searchGoogle } from '../requests';
-import sample from './RightComponent/TopRankingBooks/sample.js';
+import { getUser, searchGoogle, putUserBook } from '../requests';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -32,8 +31,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     payload: '',
   };
 
-  let bookSamples = sample.results.books;
-
   // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
@@ -42,58 +39,132 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [completed, setCompleted] = useState([])
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
+  const [searchToResult, setSearchToResult] = useState({})
 
-  const removeFromQueue = (id) => {
-    const newList = queue.filter((item) => item.gBookId !== id);
-    // make put request here
-    setQueue(newList)
-  };
+  const handleSearchToResults = (book) => {
+    setSearchToResult(book)
+  }
 
-  const removeFromCurrent = (id) => {
-    const newList = current.filter((item) => item.gBookId !== id);
-    // make put request here
-    setCurrent(newList)
-  };
-
-  const removeFromCompleted = (id) => {
-    const newList = completed.filter((item) => item.gBookId !== id);
-    // make put request here
-    setCompleted(newList)
-  };
-
-  const removeFromBookClub = (id, data) => {
-    //username, gBookId, title, authors, list, status
-    console.log(data);
+  const removeFromQueue = (id, data) => {
     const updateParameters = {
       username: currentUser,
       gBookId: data.gBookId,
       title: data.title,
       authors: data.authors,
+      list: 'queued',
+      status: false,
+    }
+    const newList = queue.filter((item) => item.gBookId !== id);
+    putUserBook(updateParameters)
+      .then(() => {})
+    setQueue(newList);
+  };
+
+  const removeFromCurrent = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'current',
+      status: false,
+    }
+    const newList = current.filter((item) => item.gBookId !== id);
+    putUserBook(updateParameters)
+      .then(() => {})
+    setCurrent(newList);
+  };
+
+  const removeFromCompleted = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'past',
+      status: false,
+    }
+    const newList = completed.filter((item) => item.gBookId !== id);
+    putUserBook(updateParameters)
+      .then(() => {})
+    setCompleted(newList);
+  };
+
+  const removeFromBookClub = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'clubbed',
+      status: false,
     }
     const newList = bookClub.filter((item) => item.gBookId !== id);
-    // make put request here
-    setBookClub(newList)
+    putUserBook(updateParameters)
+      .then(() => {})
+    setBookClub(newList);
   };
 
-  const queueToCurrent = (id) => {
+  const queueToCurrent = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'current',
+      status: true,
+    }
     const itemToMove = queue.filter((item) => item.gBookId === id);
-    removeFromQueue(id);
-    let newList = current.concat(itemToMove);
-    setCurrent(newList)
+    const queueWithItemRemoved = queue.filter((item) => item.gBookId !== id);
+    putUserBook(updateParameters)
+      .then((response) => {
+        removeFromQueue(id, data);
+      })
+    const newList = current.concat(itemToMove);
+    setQueue(queueWithItemRemoved);
+    setCurrent(newList);
   };
 
-  const currentToCompleted = (id) => {
+  const currentToCompleted = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'past',
+      status: true,
+    }
     const itemToMove = current.filter((item) => item.gBookId === id);
-    removeFromCurrent(id);
-    let newList = completed.concat(itemToMove);
-    setCompleted(newList)
+    const currentWithItemRemoved = current.filter((item) => item.gBookId !== id);
+
+    putUserBook(updateParameters)
+      .then((response) => {
+        removeFromCurrent(id, data);
+      })
+    const newList = completed.concat(itemToMove);
+    setCurrent(currentWithItemRemoved);
+    setCompleted(newList);
   };
 
-  const completedToBookClub = (id) => {
+  const completedToBookClub = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'clubbed',
+      status: true,
+    }
     const itemToMove = completed.filter((item) => item.gBookId === id);
-    removeFromCompleted(id);
-    let newList = bookClub.concat(itemToMove);
-    setBookClub(newList)
+    const completedWithItemRemoved = completed.filter((item) => item.gBookId !== id);
+
+    putUserBook(updateParameters)
+      .then((response) => {
+        removeFromCompleted(id, data);
+      })
+    const newList = bookClub.concat(itemToMove);
+    setCompleted(completedWithItemRemoved);
+    setBookClub(newList);
   };
 
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.
@@ -106,7 +177,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           ...profileLayout,
           payload: response
         })
-        console.log(response);
         handleCreateLists(response[0].userBooks);
       })
   }, []);
@@ -146,7 +216,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   searchGoogle(query)
   .then((res) => {
     setSearchedBooks(res);
-    setAppLayout(searchLayout);
+    setAppLayout({
+      ...searchLayout,
+      payload: appLayout.payload,
+    });
   })
   .catch(err => console.err)
   };
@@ -170,6 +243,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           <div className = "bodyContainer">
             <LeftComponent
               currentLayout={appLayout.left}
+              currentView={appLayout.view}
               removeFromQueue={removeFromQueue}
               removeFromCurrent={removeFromCurrent}
               removeFromCompleted={removeFromCompleted}
@@ -194,12 +268,17 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               // Search Component
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
+              goToReviews={goToReviews}
+              handleSearchToResults={handleSearchToResults}
+              searchToResult={searchToResult}
             />
             <RightComponent
               currentLayout={appLayout.right}
+              currentUserView={currentUserView}
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
               currentUserData={currentUser}
+              searchedBooks={searchedBooks}
             />
           </div>
           <Footer />

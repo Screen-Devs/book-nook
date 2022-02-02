@@ -19,49 +19,52 @@ export default function LeftComponent({
   completed,
   bookClub,
   goToReviews,
-  set
+  set,
+  currentView,
 }) {
 
   let component;
   if (currentLayout === 'userLists') {
-    component =
-    <div className='leftComponent animate__animated animate__fadeInDown'>
-    <UserLists
-      removeFromQueue={removeFromQueue}
-      removeFromCurrent={removeFromCurrent}
-      removeFromCompleted={removeFromCompleted}
-      removeFromBookClub={removeFromBookClub}
-      queueToCurrent={queueToCurrent}
-      currentToCompleted={currentToCompleted}
-      completedToBookClub={completedToBookClub}
-      queue={queue}
-      current={current}
-      completed={completed}
-      bookClub={bookClub}
-      goToReviews={goToReviews}
-      set={set}
-      />
+    component = (
+      <div className='leftComponent animate__animated animate__fadeInDown'>
+        <UserLists
+          removeFromQueue={removeFromQueue}
+          removeFromCurrent={removeFromCurrent}
+          removeFromCompleted={removeFromCompleted}
+          removeFromBookClub={removeFromBookClub}
+          queueToCurrent={queueToCurrent}
+          currentToCompleted={currentToCompleted}
+          completedToBookClub={completedToBookClub}
+          queue={queue}
+          current={current}
+          completed={completed}
+          bookClub={bookClub}
+          goToReviews={goToReviews}
+          set={set}
+          currentView={currentView}
+        />
       </div>
+    )
   } else if (currentLayout === 'bookDetails') {
-    //TODO: Need to implement
-    component =
-    <div className='leftComponent animate__animated animate__fadeInDown'>
-    <UserLists
-    removeFromQueue={removeFromQueue}
-      removeFromCurrent={removeFromCurrent}
-      removeFromCompleted={removeFromCompleted}
-      removeFromBookClub={removeFromBookClub}
-      queueToCurrent={queueToCurrent}
-      currentToCompleted={currentToCompleted}
-      completedToBookClub={completedToBookClub}
-      queue={queue}
-      current={current}
-      completed={completed}
-      bookClub={bookClub}
-      goToReviews={goToReviews}
-      set={set}
-    />
-    </div>
+    component = (
+      <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
+        <BookDetailsLeftComponent
+          removeFromQueue={removeFromQueue}
+          removeFromCurrent={removeFromCurrent}
+          removeFromCompleted={removeFromCompleted}
+          removeFromBookClub={removeFromBookClub}
+          queueToCurrent={queueToCurrent}
+          currentToCompleted={currentToCompleted}
+          completedToBookClub={completedToBookClub}
+          queue={queue}
+          current={current}
+          completed={completed}
+          bookClub={bookClub}
+          goToReviews={goToReviews}
+          set={set}
+        />
+      </div>
+    )
   }
 
   return (
