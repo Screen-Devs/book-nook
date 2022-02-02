@@ -61,7 +61,7 @@ const BooksRead = ({ completed, removeFromCompleted, completedToBookClub, curren
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={currentView === 'self' && <BooksReadDropdown gBookId={datum.gBookId} remove={removeFromCompleted} move={completedToBookClub}/>}
+                    action={currentView === 'self' && <BooksReadDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromCompleted} move={completedToBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

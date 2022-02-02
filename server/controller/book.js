@@ -21,6 +21,7 @@ const addReview = async (req, res) => {
 const markReview = async (req, res) => {
   const { book_id, review_id, mark_type } = req.body;
   const result = await markBookReview(book_id, review_id, mark_type);
+  res.status(200).send(result);
 }
 
 const addComment = async (req, res) => {

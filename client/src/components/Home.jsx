@@ -40,21 +40,54 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
 
-  const removeFromQueue = (id) => {
+  const removeFromQueue = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'queued',
+      status: false,
+    }
     const newList = queue.filter((item) => item.gBookId !== id);
-    // make put request here
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('remove current ', response);
+      })
     setQueue(newList)
   };
 
-  const removeFromCurrent = (id) => {
+  const removeFromCurrent = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'current',
+      status: false,
+    }
     const newList = current.filter((item) => item.gBookId !== id);
-    // make put request here
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('remove current ', response);
+      })
     setCurrent(newList)
   };
 
-  const removeFromCompleted = (id) => {
+  const removeFromCompleted = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'past',
+      status: false,
+    }
     const newList = completed.filter((item) => item.gBookId !== id);
-    // make put request here
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('remove completed ', response);
+      })
     setCompleted(newList)
   };
 
@@ -67,9 +100,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       list: 'clubbed',
       status: false,
     }
-    console.log(updateParameters);
     const newList = bookClub.filter((item) => item.gBookId !== id);
-    // make put request here
     putUserBook(updateParameters)
       .then((response) => {
         console.log('remove club ', response);
@@ -77,23 +108,59 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList)
   };
 
-  const queueToCurrent = (id) => {
+  const queueToCurrent = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'current',
+      status: true,
+    }
     const itemToMove = queue.filter((item) => item.gBookId === id);
-    removeFromQueue(id);
+    removeFromQueue(id, data);
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('add to current ', response);
+      })
     let newList = current.concat(itemToMove);
     setCurrent(newList)
   };
 
-  const currentToCompleted = (id) => {
+  const currentToCompleted = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'past',
+      status: true,
+    }
     const itemToMove = current.filter((item) => item.gBookId === id);
     removeFromCurrent(id);
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('add completed ', response);
+      })
     let newList = completed.concat(itemToMove);
     setCompleted(newList)
   };
 
-  const completedToBookClub = (id) => {
+  const completedToBookClub = (id, data) => {
+    const updateParameters = {
+      username: currentUser,
+      gBookId: data.gBookId,
+      title: data.title,
+      authors: data.authors,
+      list: 'clubbed',
+      status: true,
+    }
     const itemToMove = completed.filter((item) => item.gBookId === id);
-    removeFromCompleted(id);
+    removeFromCompleted(id, data);
+    putUserBook(updateParameters)
+      .then((response) => {
+        console.log('add club ', response);
+      })
     let newList = bookClub.concat(itemToMove);
     setBookClub(newList)
   };
@@ -165,7 +232,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
         <div className = "Home">
           <Header
             authenticate={authenticate}
-            handleSearch={handleSearch}/>
+            handleSearch={handleSearch}
+            currentUserData={currentUser}
+            />
           <div className = "bodyContainer">
             <LeftComponent
               currentLayout={appLayout.left}
@@ -183,6 +252,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               bookClub={bookClub}
               goToReviews={goToReviews}
               set={setAppLayout}
+              currentUserData={currentUser}
             />
             <CenterComponent
               currentLayout={appLayout.center}
@@ -192,11 +262,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               userData={appLayout.payload}
               // Search Component
               searchedBooks={searchedBooks}
+              currentUserData={currentUser}
             />
             <RightComponent
               currentLayout={appLayout.right}
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
+              currentUserData={currentUser}
             />
           </div>
           <Footer />

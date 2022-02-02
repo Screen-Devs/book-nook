@@ -66,7 +66,7 @@ const CurrentList = ({ current, removeFromCurrent, currentToCompleted, goToRevie
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={currentView === 'self' && <CurrentDropdown gBookId={datum.gBookId} remove={removeFromCurrent} move={currentToCompleted}/>}
+                    action={currentView === 'self' && <CurrentDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromCurrent} move={currentToCompleted}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1' onClick={handleClick}>

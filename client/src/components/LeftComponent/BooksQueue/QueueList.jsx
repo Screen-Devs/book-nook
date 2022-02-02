@@ -66,7 +66,7 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={currentView === 'self' && <QueueDropdown gBookId={datum.gBookId} remove={removeFromQueue} move={queueToCurrent}/>}
+                    action={currentView === 'self' && <QueueDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

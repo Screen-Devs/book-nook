@@ -48,7 +48,7 @@ export default function LeftComponent({
     //TODO: Need to implement
     <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
     <BookDetailsLeftComponent
-    removeFromQueue={removeFromQueue}
+      removeFromQueue={removeFromQueue}
       removeFromCurrent={removeFromCurrent}
       removeFromCompleted={removeFromCompleted}
       removeFromBookClub={removeFromBookClub}
@@ -72,3 +72,23 @@ export default function LeftComponent({
     </>
   );
 }
+
+
+// component =
+//     <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
+//     <BookDetailsLeftComponent
+//     removeFromQueue={removeFromQueue}
+//       removeFromCurrent={removeFromCurrent}
+//       removeFromCompleted={removeFromCompleted}
+//       removeFromBookClub={removeFromBookClub}
+//       queueToCurrent={queueToCurrent}
+//       currentToCompleted={currentToCompleted}
+//       completedToBookClub={completedToBookClub}
+//       queue={queue}
+//       current={current}
+//       completed={completed}
+//       bookClub={bookClub}
+//       goToReviews={goToReviews}
+//       set={set}
+//     />
+//     </div>
