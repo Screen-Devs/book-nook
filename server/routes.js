@@ -3,7 +3,6 @@ const path = require('path');
 const controller = require('./controller');
 const isAuth = require('./middleware/isAuth');
 const router = express.Router();
-
 // API endpoints
 
 /* LOGIN / SIGN UP */
