@@ -433,7 +433,7 @@ body::-webkit-scrollbar-thumb {
   margin-top: 10px;
   border-radius: 20px;
   overflow: auto;
-  height: 820px;
+  height: 800px;
 }
 
 .userBook::-webkit-scrollbar {
