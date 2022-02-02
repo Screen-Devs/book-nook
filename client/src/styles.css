@@ -617,6 +617,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   /* flex: 1; */
   height: 200px;
+  width: 880px;
   background-color: #212529;
   color: white;
   border-radius: 20px;
@@ -633,10 +634,35 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   overflow: auto;
   height: 1070px;
+  width: 900px;
   color: black;
 }
 
-.aSearchResult {
+.bookSearchCard {  display: grid;
+  grid-template-columns: 138px 512px 230px;
+  grid-template-rows: 70px 300px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "bookSearchHeader bookSearchHeader bookSearchHeader"
+    "bookSearchImage bookSearchOverview bookSearchDetails";
+    box-shadow: 0px 0px 32px 1px #000000;
+}
+
+.bookSearchHeader { grid-area: bookSearchHeader; }
+
+.bookSearchImage { grid-area: bookSearchImage; }
+
+.bookSearchOverview { grid-area: bookSearchOverview; }
+
+.bookSearchDetails { grid-area: bookSearchDetails; }
+
+
+
+
+
+
+/* .aSearchResult {
   display: flex;
   flex-direction: row;
 }
@@ -665,7 +691,7 @@ body::-webkit-scrollbar-thumb {
   width: 150px;
   margin-top: 15px;
   border-radius: 5%;
-}
+} */
 
 
 
