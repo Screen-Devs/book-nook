@@ -1,4 +1,5 @@
-const { findUser, addOrRemoveFriend ,insertUserBook, insertUser, insertFriend, insertCanvasMessage } = require('../../database/models/user.js')
+const { findUser, addOrUpdateUserBooks, addOrRemoveFriend, insertCanvasMessage } = require('../../database/models/user.js')
+
 
 const getUserInfo = async (req, res) => {
   const { username } = req.query;

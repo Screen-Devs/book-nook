@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 
-const CurrentDropdown = ({ gBookId, remove, move }) => {
+const CurrentDropdown = ({ gBookId, bookData, remove, move }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -15,12 +15,12 @@ const CurrentDropdown = ({ gBookId, remove, move }) => {
   };
 
   const handleRemove = () => {
-    remove(gBookId);
+    remove(gBookId, bookData);
     setAnchorEl(null);
   };
 
   const handleAdd = () => {
-    move(gBookId);
+    move(gBookId, bookData);
     setAnchorEl(null);
   };
 
