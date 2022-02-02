@@ -28,7 +28,6 @@ const findUser = async ( username ) => {
 };
 
 const getLeaderboardData = async ( username ) => {
-  console.log('\n--> getting leaderboard data...');
   if (!username || typeof username !== 'string') {
     return new Error('Please be sure to specify a username string parameter');
   }
@@ -36,7 +35,6 @@ const getLeaderboardData = async ( username ) => {
   try {
     const userDocument = await User.find({username}); //Get specified user's data
     if (userDocument.length === 0) {
-      console.log('error!');
       return new Error('Could not find the specified user.');
     }
 
