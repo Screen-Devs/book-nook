@@ -13,7 +13,10 @@ export default function searchResult ({book}) {
 
   return (
       <div className='bookSearchCard' style={{backgroundColor:"#212529", borderRadius:"20px", margin:'20px 10px 20px 10px'}}>
-        <div className="bookSearchHeader" style={{fontWeight: 'bold', borderRadius:"20px 20px 0px 0px", backgroundColor:'#212529', color: 'white', padding:'10px' }}><h3>{info.title}</h3></div>
+        <div className="bookSearchHeader" style={{fontWeight: 'bold', borderRadius:"20px 20px 0px 0px", backgroundColor:'#212529', color: 'white', padding:'10px', display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
+          <h3>{info.title}</h3>
+          <Button className="sideComponentTitle" variant="dark" style={{ borderRadius:'20px',}}>Book Details</Button>
+          </div>
         {/* <div style={{display:'flex', flexDirection:'row',}}> */}
         <div className="bookSearchImage" style={{backgroundColor:'#212529', borderRadius:"0px 0px 0px 20px", padding:'0px 5px 0px 5px' }}>
           <img src={image.thumbnail} style={{borderRadius:'20px',}}/>

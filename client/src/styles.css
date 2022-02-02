@@ -625,6 +625,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   padding-top: 8px;
   box-shadow: 0px 0px 32px 4px #000000;
+  z-index: 2;
 }
 
 .searchResults {
@@ -636,11 +637,12 @@ body::-webkit-scrollbar-thumb {
   height: 1070px;
   width: 900px;
   color: black;
+  z-index: 2;
 }
 
 .bookSearchCard {  display: grid;
   grid-template-columns: 138px 512px 230px;
-  grid-template-rows: 70px 300px;
+  grid-template-rows: auto 300px;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
