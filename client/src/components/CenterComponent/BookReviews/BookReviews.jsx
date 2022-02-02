@@ -1,5 +1,6 @@
 import { Box, Grid, Paper } from '@material-ui/core';
 import React, { useState } from 'react';
+import BookDetails from './BookDetails/BookDetails.jsx';
 import Comments from './Comments.jsx';
 import TopReviews from './TopReviews.jsx';
 
@@ -19,7 +20,7 @@ export default function BookReviews() {
   return (
       <div >
         <div className="bookDetailsTopComponent">
-          BOOK DETAILS
+          <BookDetails/>
         </div>
         <div className="writeReviewOrComment">
           Write a review or comment
