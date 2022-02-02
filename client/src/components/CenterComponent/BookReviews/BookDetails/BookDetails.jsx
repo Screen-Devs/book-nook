@@ -24,7 +24,7 @@ const BookDetails = ({searchToResult}) => {
           <CardMedia
             component='img'
             height='265'
-            image={searchToResult.volumeInfo.imageLinks.smallThumbnail}
+            image={(searchToResult.volumeInfo.imageLinks) ? searchToResult.volumeInfo.imageLinks.smallThumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
           />
         </Grid>
         <Grid item xs={7}>
@@ -37,15 +37,15 @@ const BookDetails = ({searchToResult}) => {
               style={{ padding: '0px 0px 20px', margin: 0 }}
             />
             <CardContent style={{ padding: 0, margin: 0 }}>
-              Publisher : {searchToResult.volumeInfo.publisher}
+              Publisher : {(searchToResult.volumeInfo.publisher) ? searchToResult.volumeInfo.publisher : null}
               <br />
-              Published Date : {searchToResult.volumeInfo.publishedDate}
+              Published Date : {(searchToResult.volumeInfo.publishedDate) ? searchToResult.volumeInfo.publishedDate : null}
               <br />
-              ISBN : {searchToResult.volumeInfo.industryIdentifiers[0].identifier}
+              ISBN : {(searchToResult.volumeInfo.industryIdentifiers) ? searchToResult.volumeInfo.industryIdentifiers[0].identifier : null}
               <br />
-              Page Count : {searchToResult.volumeInfo.pageCount}
+              Page Count : {(searchToResult.volumeInfo.pageCount) ? searchToResult.volumeInfo.pageCount : null}
               <br />
-              <Link underline='none' style={{ color: 'lightblue' }} href={searchToResult.saleInfo.buyLink}>
+              <Link underline='none' style={{ color: 'lightblue' }} href={(searchToResult.saleInfo.buyLink) ? searchToResult.saleInfo.buyLink : null }>
                 Get book
               </Link>
             </CardContent>

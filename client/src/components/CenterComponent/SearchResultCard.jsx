@@ -14,7 +14,7 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
 
   const info = book.volumeInfo
 
-  let image = info.imageLinks || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+  let image = info.imageLinks
 
   const setToReviews = () => {
     hdleSearchToResults()
@@ -50,7 +50,7 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
 </Card>
 <div className="searchResultImageContainer" >
   {}
-<img className="searchResultImage"  src={image.thumbnail}/>
+<img className="searchResultImage"  src={(image) ? image.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}/>
         </div>
         </div>
 
