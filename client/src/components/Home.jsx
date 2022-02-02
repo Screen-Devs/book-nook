@@ -195,6 +195,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
             <RightComponent
               currentLayout={appLayout.right}
+              currentUserView={currentUserView}
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
               currentUserData={currentUser}

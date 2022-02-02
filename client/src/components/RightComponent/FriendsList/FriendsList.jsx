@@ -55,7 +55,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
+const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUserView }) => {
 
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
@@ -107,11 +107,15 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
                     primary={datum}
                     onClick={e => handleGetFriendData(datum)}
                   /></Link>
-                  <ListItemSecondaryAction>
-                  <IconButton edge='end' onClick={() => removeFriend(datum)}>
-                      <DeleteIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
+                  {
+                    (currentUserView === null) && (
+                      <ListItemSecondaryAction>
+                      <IconButton edge='end' onClick={() => removeFriend(datum)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                    )
+                  }
                 </ListItem>
               );
             })}
@@ -129,7 +133,8 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
         // </Button>
       ) : null} */}
       <Modal open={show} onClose={handleModal}>
-        <FriendsModal friendsList={friendsList} removeFriend={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
+
+        <FriendsModal currentUserView={currentUserView} friendsList={friendsList} removeFriend={removeFriend} set={setFriendsList} handleGetFriendData={handleGetFriendData}/>
       </Modal>
     </Paper>
   );

@@ -16,7 +16,7 @@ import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
 import { getNYTimesCategory } from '../../requests/index.js';
 
-export default function SiteData({ handleGetFriendData, userData, currentUserData }) {
+export default function SiteData({ handleGetFriendData, userData, currentUserData, currentUserView }) {
   let [booksInCategory, setBooksInCategory] = useState([]);
 
   const fetchData = () => {
@@ -37,6 +37,7 @@ export default function SiteData({ handleGetFriendData, userData, currentUserDat
       <FriendsList
       currentUserData={currentUserData}
       handleGetFriendData={handleGetFriendData}
+      currentUserView={currentUserView}
       userData={userData} />
       {/* </div> */}
 

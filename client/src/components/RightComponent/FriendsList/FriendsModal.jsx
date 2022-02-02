@@ -39,7 +39,7 @@ const dividerStyle = {
   borderWidth: '1px',
 }
 
-const FriendsModal = ({ friendsList, set, removeFriend, handleGetFriendData }) => {
+const FriendsModal = ({ friendsList, set, removeFriend, handleGetFriendData, currentUserData, currentUserView }) => {
 
   return (
     <Paper>
@@ -63,11 +63,15 @@ const FriendsModal = ({ friendsList, set, removeFriend, handleGetFriendData }) =
                     primary={datum}
                     onClick={e => handleGetFriendData(datum)}
                   /></Link>
-                <ListItemSecondaryAction>
-                  <IconButton edge='end' onClick={() =>removeFriend(datum)}>
-                    <DeleteIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
+                  {
+                    (currentUserView === null) && (
+                      <ListItemSecondaryAction>
+                      <IconButton edge='end' onClick={() => removeFriend(datum)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                    )
+                  }
               </ListItem>
             );
           })}
