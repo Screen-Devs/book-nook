@@ -1,19 +1,25 @@
 import { Grid, Paper, styled, Card, Typography, Divider, Button } from '@material-ui/core';
-import React, { useState } from 'react';
-import DropdownComments from './DropdownComments.jsx';
+import React from 'react';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+const CommentsWithinReview = ({comments}) => {
 
-const Comments = ({ allReviews }) => {
+  let commentsInReview = [
+    {username: 'bob',
+    comment: 'this sucks'
+  }
+  ,
+  {
+    username: 'man',
+    comment: 'this sucks'
+  }
+  ]
+
 
   return (
     <>
-      {allReviews.map((comment, index) => {
+    {(comments.length === 0) ? null : (
+      <div>
+      {comments.map((info, index) => {
         return (
           <Grid item xs={12}>
             <Card elevation={6}>
@@ -28,16 +34,8 @@ const Comments = ({ allReviews }) => {
                   <div style={{ flex: 8, border: '1px red solid'}}>
                   <div style={{ paddingLeft: 10 }}>
                     <p style={{ marginBottom: 0, paddingTop: 4, paddingLeft: 1.5, fontSize: 13 }}>
-                      Username
+                      {info.username}
                     </p>
-                    <Typography
-                      variant='h6'
-                      component='div'
-                      gutterBottom
-                      style={{ paddingBottom: 0, paddingLeft: 0.5, margin: 0, fontWeight: 700 }}
-                    >
-                      {comment.title}
-                    </Typography>
                     <div>
                     <p
                       style={{
@@ -49,13 +47,10 @@ const Comments = ({ allReviews }) => {
                         maxHeight: '200px',
                       }}
                     >
-                      {comment.review}
+                      {info.comment}
                     </p>
                     </div>
                   </div>
-                  </div>
-                  <div style={{ border: '1px pink solid', flex: 1 }}>
-                    <DropdownComments/>
                   </div>
                 </div>
               </Card>
@@ -63,8 +58,10 @@ const Comments = ({ allReviews }) => {
           </Grid>
         );
       })}
+      </div>
+      )}
     </>
   );
 };
 
-export default Comments;
+export default CommentsWithinReview
