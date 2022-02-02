@@ -16,6 +16,15 @@ const getUser = (username) => {
   });
 };
 
+const dumpFriend = (action) => {
+  console.log(action)
+  return new Promise((resolve, reject) => {
+    axios.put('http://localhost:3010/users/friends', action)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err))
+  })
+}
+
 const putUserBook = (book) => {
   return new Promise((resolve, reject) => {
     axios.put('http://localhost:3010/users/books', book)
@@ -52,6 +61,7 @@ export {
   authenticateUser,
   getUser,
   putUserBook,
+  dumpFriend,
   searchGoogle,
   getNYTimesList,
   getNYTimesCategory,

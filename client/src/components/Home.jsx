@@ -63,7 +63,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
   const removeFromBookClub = (id, data) => {
     //username, gBookId, title, authors, list, status
-    console.log(data);
     const updateParameters = {
       username: currentUser,
       gBookId: data.gBookId,
@@ -106,7 +105,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           ...profileLayout,
           payload: response
         })
-        console.log(response);
         handleCreateLists(response[0].userBooks);
       })
   }, []);

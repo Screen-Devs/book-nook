@@ -16,6 +16,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import FriendsModal from './FriendsModal.jsx';
 import samplePeople from './samplepeople.js';
+import { dumpFriend } from '../../../requests'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from 'react-bootstrap/Button';
@@ -54,7 +55,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetFriendData, userData }) => {
+const FriendsList = ({ handleGetFriendData, userData, currentUser }) => {
 
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
@@ -67,9 +68,15 @@ const FriendsList = ({ handleGetFriendData, userData }) => {
     setShow((prev) => !prev);
   };
 
-  const removeFriend = (user) => {
-    const newFriends = friendsList.filter((friend) => friend !== user);
-    setFriendsList(newFriends);
+  const removeFriend = (friendToRemove) => {
+    const action = {friend: friendToRemove, username: currentUser, action: 'remove'}
+    dumpFriend(action)
+    .then((res) => {
+      const newFriends = friendsList.filter((friend) => friend !== friendToRemove);
+      console.log(res)
+      setFriendsList(newFriends);
+    })
+    .catch(err => console.error(err))
   };
 
   // onClick={}

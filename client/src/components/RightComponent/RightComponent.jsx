@@ -17,6 +17,7 @@ export default function RightComponent({
     //TODO: Need to implement
     component = <SiteData
     currentUser={currentUser}
+    userData={userData}
     handleGetFriendData={handleGetFriendData}/>
     // return null
   }
