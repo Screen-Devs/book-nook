@@ -162,6 +162,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList);
   };
 
+  const goHome = () => {
+    setAppLayout(profileLayout);
+  }
+
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
@@ -231,6 +235,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             authenticate={authenticate}
             handleSearch={handleSearch}
             currentUserData={currentUser}
+            goHome={goHome}
             />
           <div className = "bodyContainer">
             <LeftComponent

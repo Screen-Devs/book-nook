@@ -50,7 +50,7 @@ const Right = styled.div`
   margin-top: 8px;
 `;
 
-export default function Header({ authenticate, handleSearch }) {
+export default function Header({ authenticate, handleSearch, goHome }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentBook, setCurrentBook] = useState('');
   const open = Boolean(anchorEl);
@@ -109,7 +109,7 @@ export default function Header({ authenticate, handleSearch }) {
             open={open}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={()=>{goHome}}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
             <Logout authenticate={authenticate} />
           </Menu>
