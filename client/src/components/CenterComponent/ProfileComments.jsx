@@ -26,7 +26,6 @@ export default function ProfileComments ({ userData, currentUserData, currentUse
         message: commentText,
         commenter: currentUserData,
       }
-      console.log(comment)
       commentOnCanvas(comment)
       .then(res => console.log(res,'comment'))
       .catch(err => console.error(err))
