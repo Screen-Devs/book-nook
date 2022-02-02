@@ -54,7 +54,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       .then((response) => {
         console.log('remove current ', response);
       })
-    setQueue(newList)
+    setQueue(newList);
   };
 
   const removeFromCurrent = (id, data) => {
@@ -71,7 +71,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       .then((response) => {
         console.log('remove current ', response);
       })
-    setCurrent(newList)
+    setCurrent(newList);
   };
 
   const removeFromCompleted = (id, data) => {
@@ -88,7 +88,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       .then((response) => {
         console.log('remove completed ', response);
       })
-    setCompleted(newList)
+    setCompleted(newList);
   };
 
   const removeFromBookClub = (id, data) => {
@@ -105,7 +105,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       .then((response) => {
         console.log('remove club ', response);
       })
-    setBookClub(newList)
+    setBookClub(newList);
   };
 
   const queueToCurrent = (id, data) => {
@@ -118,13 +118,15 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       status: true,
     }
     const itemToMove = queue.filter((item) => item.gBookId === id);
+    const queueWithItemRemoved = queue.filter((item) => item.gBookId !== id);
     removeFromQueue(id, data);
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add to current ', response);
       })
-    let newList = current.concat(itemToMove);
-    setCurrent(newList)
+    const newList = current.concat(itemToMove);
+    setQueue(queueWithItemRemoved);
+    setCurrent(newList);
   };
 
   const currentToCompleted = (id, data) => {
@@ -137,13 +139,15 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       status: true,
     }
     const itemToMove = current.filter((item) => item.gBookId === id);
+    const currentWithItemRemoved = current.filter((item) => item.gBookId !== id);
     removeFromCurrent(id);
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add completed ', response);
       })
-    let newList = completed.concat(itemToMove);
-    setCompleted(newList)
+    const newList = completed.concat(itemToMove);
+    setCurrent(currentWithItemRemoved);
+    setCompleted(newList);
   };
 
   const completedToBookClub = (id, data) => {
@@ -156,13 +160,15 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       status: true,
     }
     const itemToMove = completed.filter((item) => item.gBookId === id);
+    const completedWithItemRemoved = completed.filter((item) => item.gBookId !== id);
     removeFromCompleted(id, data);
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add club ', response);
       })
-    let newList = bookClub.concat(itemToMove);
-    setBookClub(newList)
+    const newList = bookClub.concat(itemToMove);
+    setCompleted(completedWithItemRemoved);
+    setBookClub(newList);
   };
 
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.

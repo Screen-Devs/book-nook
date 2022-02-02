@@ -27,7 +27,7 @@ const findUser = async ( username ) => {
   }
 };
 
-const addOrUpdateUserBooks = async ( {username, gBookId, title, authors, list, status} ) => {
+const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   //Handle input errors
   if (!username || !gBookId || !title || !authors || !list) {
     return new Error('Incorrect input- please double check you are using a user book object with all required fields');
