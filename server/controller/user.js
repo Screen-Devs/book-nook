@@ -1,5 +1,6 @@
 const { findUser, addOrUpdateUserBooks, addOrRemoveFriend, insertCanvasMessage } = require('../../database/models/user.js')
 
+
 const getUserInfo = async (req, res) => {
   const { username } = req.query;
   const result = await findUser(username)
