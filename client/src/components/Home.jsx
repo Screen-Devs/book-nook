@@ -119,10 +119,10 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const itemToMove = queue.filter((item) => item.gBookId === id);
     const queueWithItemRemoved = queue.filter((item) => item.gBookId !== id);
-    removeFromQueue(id, data);
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add to current ', response);
+        removeFromQueue(id, data);
       })
     const newList = current.concat(itemToMove);
     setQueue(queueWithItemRemoved);
@@ -140,10 +140,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const itemToMove = current.filter((item) => item.gBookId === id);
     const currentWithItemRemoved = current.filter((item) => item.gBookId !== id);
-    removeFromCurrent(id);
+
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add completed ', response);
+        removeFromCurrent(id, data);
       })
     const newList = completed.concat(itemToMove);
     setCurrent(currentWithItemRemoved);
@@ -161,10 +162,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const itemToMove = completed.filter((item) => item.gBookId === id);
     const completedWithItemRemoved = completed.filter((item) => item.gBookId !== id);
-    removeFromCompleted(id, data);
+
     putUserBook(updateParameters)
       .then((response) => {
         console.log('add club ', response);
+        removeFromCompleted(id, data);
       })
     const newList = bookClub.concat(itemToMove);
     setCompleted(completedWithItemRemoved);
