@@ -4,7 +4,7 @@ import 'animate.css';
 import CommentModule from '../CommentModule.jsx';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { commentOnCanvas } from '../../requests'
+import { commentOnCanvas, getUser } from '../../requests'
 
 
 export default function ProfileComments ({ userData, currentUserData, currentUserView}) {
@@ -27,7 +27,14 @@ export default function ProfileComments ({ userData, currentUserData, currentUse
         commenter: currentUserData,
       }
       commentOnCanvas(comment)
-      .then(res => console.log(res,'comment'))
+      .then(({acknowledged}) => {
+        if (acknowledged) {
+          getUser(username)
+          .then((user) => {
+            setCanvasList(user[0].canvas)
+          })
+        }
+      })
       .catch(err => console.error(err))
   }
 
