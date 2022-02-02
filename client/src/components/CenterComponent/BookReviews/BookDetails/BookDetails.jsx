@@ -28,11 +28,11 @@ const BookDetails = ({searchToResult}) => {
           />
         </Grid>
         <Grid item xs={7}>
-          <Container style={{ fontSize: 20 }}>
+          <Container style={{ fontSize: 18 }}>
             <CardHeader
               title={searchToResult.volumeInfo.title}
               subheader={
-                <Typography style={{ color: 'white' }}>{searchToResult.volumeInfo.authors[0]}</Typography>
+                <Typography style={{ color: 'white' }}>{(searchToResult.volumeInfo.authors) ? searchToResult.volumeInfo.authors.join(', ') : null}</Typography>
               }
               style={{ padding: '0px 0px 20px', margin: 0 }}
             />

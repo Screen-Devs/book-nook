@@ -44,11 +44,11 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
           <Card.Text className="searchResultText">
             <b>Overview:</b> {info.description ? info.description : null}
           </Card.Text>
-          <Button variant="dark" style={{marginLeft: '134px'}}>Book Details</Button>
+          <Button variant="dark" style={{marginLeft: '134px'}} onClick={setToReviews}>Book Details</Button>
         </Card.Body>
       </Card>
       <div className="searchResultImageContainer" >
-        <img className="searchResultImage"  src={image.thumbnail}/>
+        <img className="searchResultImage"  src={(image) ? image.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}/>
       </div>
     </div>
   );
