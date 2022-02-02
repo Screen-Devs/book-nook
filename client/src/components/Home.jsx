@@ -164,7 +164,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
         <div className = "Home">
           <Header
             authenticate={authenticate}
-            handleSearch={handleSearch}/>
+            handleSearch={handleSearch}
+            currentUserData={currentUser}
+            />
           <div className = "bodyContainer">
             <LeftComponent
               currentLayout={appLayout.left}
@@ -181,6 +183,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               bookClub={bookClub}
               goToReviews={goToReviews}
               set={setAppLayout}
+              currentUserData={currentUser}
             />
             <CenterComponent
               currentLayout={appLayout.center}
@@ -190,11 +193,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               userData={appLayout.payload}
               // Search Component
               searchedBooks={searchedBooks}
+              currentUserData={currentUser}
             />
             <RightComponent
               currentLayout={appLayout.right}
               handleGetFriendData={handleGetFriendData}
               userData={appLayout.payload}
+              currentUserData={currentUser}
             />
           </div>
           <Footer />

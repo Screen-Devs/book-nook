@@ -13,12 +13,13 @@ export default function CenterComponent({
   userData,
   // Search Component
   searchedBooks,
+  currentUserData,
 }) {
   let component;
   if (currentLayout === 'search') {
-    component = <Search searchedBooks={searchedBooks} />;
+    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData}/>;
   } else if (currentLayout === 'reviews') {
-    component = <BookReviews />;
+    component = <BookReviews currentUserData={currentUserData} />;
   }
 
   // If not a friend or profile, just conditionally render
@@ -26,7 +27,7 @@ export default function CenterComponent({
     <div className = "centerComponent" >
       {currentLayout === 'profileComments' && userData ?
       (<Routes>
-        <Route path="/" element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />
+        <Route path="/" element={<ProfileComments currentUserData={currentUserData} currentUserView={currentUserView} userData={userData}/>} />
         <Route path={`friend/${currentUserView}`} element={<ProfileComments currentUserView={currentUserView} userData={userData}/>} />;
       </Routes>) :
       component}

@@ -18,9 +18,18 @@ const authenticateSchema = new mongoose.Schema({
 });
 
 const userBookSchema = new mongoose.Schema({
-  gBookId: { type: String, unique: false}, //googleapi book ID
-  title: { type: String, unique: false },
-  authors: { type: Array, unique: false },
+  gBookId: {
+    type: String,
+    unique: false
+  }, //googleapi book ID
+  title: {
+    type: String,
+    unique: false
+  },
+  authors: {
+    type: Array,
+    unique: false
+  },
   clubbed: {
     status: {
       type: Boolean,
@@ -87,12 +96,29 @@ const bookDataSchema = new mongoose.Schema({
   },
   reviews: [{
     review_id: mongoose.ObjectId,
-    username: {type: String},
-    review_date: {type: Date, default: Date.now},
-    rating: {type: Number, min: 1, max: 5},
-    review_body: {type: String, min: 25, max: 1000},
-    reported_review: {type: Boolean},
-    helpful_review: {type: Number},
+    username: {
+      type: String
+    },
+    review_date: {
+      type: Date,
+      default: Date.now
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5
+    },
+    review_body: {
+      type: String,
+      min: 25,
+      max: 1000
+    },
+    reported_review: {
+      type: Boolean
+    },
+    helpful_review: {
+      type: Number
+    },
     comments: [{
       comment_id: mongoose.ObjectId,
       commenter: {
