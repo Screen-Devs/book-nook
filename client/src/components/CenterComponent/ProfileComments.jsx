@@ -23,20 +23,17 @@ export default function ProfileComments({
   //  onInput = ({target:{commentText}}) => setCommentText(commentText),
   const onFormSubmit = (e) => {
     e.preventDefault();
-
     const username = currentUserView || currentUserData
-
     const comment = {
       username,
       message: commentText,
       commenter: currentUserData,
     };
-    console.log(comment)
     commentOnCanvas(comment)
       .then(({ acknowledged }) => {
         if (acknowledged) {
           getUser(username).then((user) => {
-            setCanvasList(user[0].canvas);
+            setCanvasList(user[0].canvas.reverse());
           });
         }
       })
@@ -45,7 +42,9 @@ export default function ProfileComments({
 
   useEffect(() => {
     setCanvasList(userData[0].canvas);
-  }, userData);
+  }, [userData])
+
+
 
   //TODO: Need to implement a way to add a comment
 
@@ -89,7 +88,7 @@ export default function ProfileComments({
         <div className="userBook animate__animated animate__flipInY">
           {
           (canvas.length) && (
-            canvas.map((comment, idx) => {
+            canvas.reverse().map((comment, idx) => {
               return (
                 <CommentModule
                 key={idx}

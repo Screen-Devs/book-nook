@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export default function CommentModule({ comment }) {
-  console.log('this is a comment',comment)
   return (
     <div className = "commentModule" >
       <Card className="text-center commentModuleBody">
@@ -14,7 +13,6 @@ export default function CommentModule({ comment }) {
           <Card.Text>
             {comment.message}
           </Card.Text>
-          {/* <Button variant="dark">Button</Button> */}
         </Card.Body>
         <Card.Footer className="text-muted"><i>{comment.date}</i></Card.Footer>
       </Card>
