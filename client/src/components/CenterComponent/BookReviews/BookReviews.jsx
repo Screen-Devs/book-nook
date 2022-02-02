@@ -24,14 +24,14 @@ export default function BookReviews() {
         <div className="writeReviewOrComment">
           Write a review or comment
         </div>
-        <Paper className="bookDetailsCenterComponent" elevation={24}>
-          <Box className="bookDetailsCenterComponent" style={{ width: '100%', paddingBottom: 2, }}>
-            <Grid container spacing={1}>
-              <TopReviews setAllReviews={setAllReviews} allReviews={allReviews} />
+        <div className="bookDetailsCenterComponent" style={{ paddingBottom: 2, backgroundColor: 'red', }}>
+              <div className="topDivider" style={{backgroundColor:'black'}}>
+              <TopReviews setAllReviews={setAllReviews} allReviews={allReviews} style={{overFlow: 'auto', height: '220px', backgroundColor: 'blue',}}/>
+              </div>
+              <div className="divider" style={{backgroundColor: 'blue', height: '601px', overflow: 'auto'}}>
               <Comments allReviews={allReviews} />
-            </Grid>
-          </Box>
-        </Paper>
+              </div>
+        </div>
       </div>
   );
 }
