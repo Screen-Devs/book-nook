@@ -18,9 +18,18 @@ const authenticateSchema = new mongoose.Schema({
 });
 
 const userBookSchema = new mongoose.Schema({
-  gBookId: { type: String, unique: false}, //googleapi book ID
-  title: { type: String, unique: false },
-  authors: { type: Array, unique: false },
+  gBookId: {
+    type: String,
+    unique: false
+  }, //googleapi book ID
+  title: {
+    type: String,
+    unique: false
+  },
+  authors: {
+    type: Array,
+    unique: false
+  },
   clubbed: {
     status: {
       type: Boolean,

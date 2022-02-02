@@ -384,16 +384,47 @@ body::-webkit-scrollbar-thumb {
 
 .writeMe {
   display: flex;
+  flex-direction: column;
   /* flex: 1; */
-  height: 50px;
-  background-color: white;
-  color: black;
+  height: 275px;
+  background: linear-gradient(to bottom, #212529 0%, #758190 50%, #212529 100%);
+  color: white;
   border-radius: 20px;
   justify-content: center;
-  padding-top: 8px;
+  padding-top: 0px;
   /* opacity: 100%; */
   /* box-shadow: 0px 0px 32px 4px #000000; */
   margin-top: 10px;
+  box-shadow: 0px 0px 32px 4px #000000;
+}
+
+.writeMeTextArea {
+  width: 550px;
+  border: inset;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 10px 0px 5px 0px;
+}
+
+.publishButton {
+    /* color: black; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* border: solid; */
+    /* background-color: white; */
+    font-weight: bold;
+    border-color: white;
+    border: solid;
+    /* font-size: large; */
+    /* border-style: outset; */
+}
+
+.publishButton:hover {
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: solid;
+  background-color: white;
 }
 
 .userBook {
@@ -402,7 +433,7 @@ body::-webkit-scrollbar-thumb {
   margin-top: 10px;
   border-radius: 20px;
   overflow: auto;
-  height: 1020px;
+  height: 800px;
 }
 
 .userBook::-webkit-scrollbar {
