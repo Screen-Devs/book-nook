@@ -27,6 +27,7 @@ h5 {
 .link:hover {
   text-decoration: none;
   color: #4100ab;
+  cursor: pointer;
 }
 
 .App {

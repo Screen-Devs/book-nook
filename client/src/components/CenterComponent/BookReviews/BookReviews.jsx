@@ -14,7 +14,8 @@ import TopReviews from './TopReviews.jsx';
 //   overflowY: "scroll"
 // }
 
-export default function BookReviews({searchToResult}) {
+export default function BookReviews({ searchToResult, bookMeta }) {
+  console.log('What is getting passed in here? ', bookMeta);
   const [allReviews, setAllReviews] = useState([])
 
   return (

@@ -62,7 +62,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
 
   useEffect(() => {
     setFriendsList(userData[0].friends);
-  }, userData)
+  }, [userData])
 
   const handleModal = () => {
     setShow((prev) => !prev);
