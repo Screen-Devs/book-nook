@@ -4,7 +4,7 @@ import 'animate.css';
 import SiteData from './SiteData.jsx';
 
 export default function RightComponent({
-  currentLayout, handleGetFriendData, userData, currentUserData, currentUserView,
+  currentLayout, handleGetFriendData, userData, currentUserData, currentUserView, searchedBooks
   }) {
 
   let component;
