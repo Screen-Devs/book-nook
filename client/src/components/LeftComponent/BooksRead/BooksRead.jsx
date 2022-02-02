@@ -48,7 +48,7 @@ const dividerStyle = {
   width: 300,
 }
 
-const BooksRead = ({ completed, removeFromCompleted, completedToBookClub }) => {
+const BooksRead = ({ completed, removeFromCompleted, completedToBookClub, currentView }) => {
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
@@ -61,7 +61,7 @@ const BooksRead = ({ completed, removeFromCompleted, completedToBookClub }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BooksReadDropdown gBookId={datum.gBookId} remove={removeFromCompleted} move={completedToBookClub}/>}
+                    action={currentView === 'self' && <BooksReadDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromCompleted} move={completedToBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>

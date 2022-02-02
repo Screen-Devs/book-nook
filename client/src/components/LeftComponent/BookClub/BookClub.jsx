@@ -48,7 +48,7 @@ const dividerStyle = {
   width: 300,
 }
 
-const BookClub = ({ bookClub, removeFromBookClub }) => {
+const BookClub = ({ bookClub, removeFromBookClub, currentView }) => {
 
   return (
     <Paper style={paperStyle} elevation={6}>
@@ -62,7 +62,7 @@ const BookClub = ({ bookClub, removeFromBookClub }) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
+                    action={currentView === 'self' && <BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
