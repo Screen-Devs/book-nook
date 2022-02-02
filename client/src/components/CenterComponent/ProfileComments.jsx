@@ -7,9 +7,9 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function ProfileComments ({ userData, currentUserData, }) {
-  console.log(userData);
-  const [canvas, setCanvasList] = useState();
-  const [commentText, setCommentText] = useState();
+
+  const [canvas, setCanvasList] = useState([]);
+  const [commentText, setCommentText] = useState('');
   // onFormSubmit = e => {
     //   e.preventDefault()
     //   console.log(commentText)
@@ -32,7 +32,7 @@ export default function ProfileComments ({ userData, currentUserData, }) {
 
   useEffect(() => {
     setCanvasList(userData[0].canvas);
-  }, userData)
+  }, [userData])
 
 
 
