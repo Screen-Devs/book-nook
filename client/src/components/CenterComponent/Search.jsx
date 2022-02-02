@@ -4,7 +4,7 @@ import 'animate.css';
 import SearchResult from './SearchResultCard.jsx';
 import { Divider } from '@material-ui/core';
 
-export default function Search ({ searchedBooks }) {
+export default function Search ({ searchedBooks, goToReviews, handleSearchToResults }) {
   console.log('these are our searched books ', searchedBooks);
 
   return (

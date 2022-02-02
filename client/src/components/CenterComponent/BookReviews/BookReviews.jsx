@@ -14,13 +14,13 @@ import TopReviews from './TopReviews.jsx';
 //   overflowY: "scroll"
 // }
 
-export default function BookReviews() {
+export default function BookReviews({searchToResult}) {
   const [allReviews, setAllReviews] = useState([])
 
   return (
       <div >
         <div className="bookDetailsTopComponent">
-          <BookDetails/>
+          <BookDetails searchToResult={searchToResult}/>
         </div>
         <div className="writeReviewOrComment">
           Write a review or comment
