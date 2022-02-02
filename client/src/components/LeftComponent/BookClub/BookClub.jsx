@@ -79,7 +79,7 @@ const BookClub = ({ bookClub, removeFromBookClub, currentView, goToReviews, hand
                     }
                     subheader={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle2'>
+                        <Typography className="hideScroll" gutterBottom variant='subtitle2'>
                           {datum.authors.map((author, idx) => {
                             if (idx !== datum.authors.length - 1) {
                               return author + ', '
