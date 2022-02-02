@@ -55,7 +55,7 @@ const friendsListContainer = {
 
 const data = samplePeople.objects;
 
-const FriendsList = ({ handleGetFriendData, userData, currentUser }) => {
+const FriendsList = ({ handleGetFriendData, userData, currentUserData }) => {
 
   const [show, setShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
@@ -69,7 +69,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUser }) => {
   };
 
   const removeFriend = (friendToRemove) => {
-    const action = {friend: friendToRemove, username: currentUser, action: 'remove'}
+    const action = {friend: friendToRemove, username: currentUserData, action: 'remove'}
     dumpFriend(action)
     .then((res) => {
       const newFriends = friendsList.filter((friend) => friend !== friendToRemove);
@@ -104,7 +104,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUser }) => {
                       {/* <AccountCircleIcon /> */}
                     {/* </Avatar> */}
                   </ListItemAvatar>
-                  <Link to={`friend/${datum}`}><ListItemText
+                  <Link className="link" to={`friend/${datum}`}><ListItemText
                     primary={datum}
                     onClick={e => handleGetFriendData(datum)}
                   /></Link>

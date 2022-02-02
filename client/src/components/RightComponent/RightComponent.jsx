@@ -4,7 +4,7 @@ import 'animate.css';
 import SiteData from './SiteData.jsx';
 
 export default function RightComponent({
-  currentLayout, handleGetFriendData, userData, currentUser
+  currentLayout, handleGetFriendData, userData, currentUserData
   }) {
 
   let component;
@@ -16,7 +16,7 @@ export default function RightComponent({
   } else if (currentLayout === 'addToLists') {
     //TODO: Need to implement
     component = <SiteData
-    currentUser={currentUser}
+    currentUserData={currentUserData}
     userData={userData}
     handleGetFriendData={handleGetFriendData}/>
     // return null

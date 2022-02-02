@@ -16,7 +16,7 @@ import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
 import { getNYTimesCategory } from '../../requests/index.js';
 
-export default function SiteData({ handleGetFriendData, userData, currentUser }) {
+export default function SiteData({ handleGetFriendData, userData, currentUserData }) {
   let [booksInCategory, setBooksInCategory] = useState([]);
 
   const fetchData = () => {
@@ -35,7 +35,7 @@ export default function SiteData({ handleGetFriendData, userData, currentUser })
     <div className='rightComponent animate__animated animate__fadeInDown'>
       {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
       <FriendsList
-      currentUser={currentUser}
+      currentUserData={currentUserData}
       handleGetFriendData={handleGetFriendData}
       userData={userData} />
       {/* </div> */}
