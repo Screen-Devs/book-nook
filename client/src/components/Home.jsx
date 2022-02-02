@@ -51,9 +51,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const newList = queue.filter((item) => item.gBookId !== id);
     putUserBook(updateParameters)
-      .then((response) => {
-        console.log('remove current ', response);
-      })
+      .then(() => {})
     setQueue(newList);
   };
 
@@ -68,9 +66,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const newList = current.filter((item) => item.gBookId !== id);
     putUserBook(updateParameters)
-      .then((response) => {
-        console.log('remove current ', response);
-      })
+      .then(() => {})
     setCurrent(newList);
   };
 
@@ -85,9 +81,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const newList = completed.filter((item) => item.gBookId !== id);
     putUserBook(updateParameters)
-      .then((response) => {
-        console.log('remove completed ', response);
-      })
+      .then(() => {})
     setCompleted(newList);
   };
 
@@ -102,9 +96,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }
     const newList = bookClub.filter((item) => item.gBookId !== id);
     putUserBook(updateParameters)
-      .then((response) => {
-        console.log('remove club ', response);
-      })
+      .then(() => {})
     setBookClub(newList);
   };
 
@@ -121,7 +113,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     const queueWithItemRemoved = queue.filter((item) => item.gBookId !== id);
     putUserBook(updateParameters)
       .then((response) => {
-        console.log('add to current ', response);
         removeFromQueue(id, data);
       })
     const newList = current.concat(itemToMove);
@@ -143,7 +134,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
     putUserBook(updateParameters)
       .then((response) => {
-        console.log('add completed ', response);
         removeFromCurrent(id, data);
       })
     const newList = completed.concat(itemToMove);
@@ -165,7 +155,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
 
     putUserBook(updateParameters)
       .then((response) => {
-        console.log('add club ', response);
         removeFromCompleted(id, data);
       })
     const newList = bookClub.concat(itemToMove);
