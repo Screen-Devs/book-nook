@@ -16,6 +16,7 @@ const theme = createTheme({
 
 const boxStyle = {
   maxHeight: 250,
+  minHeight: 205,
   minWidth: 300,
   overflowY: 'scroll',
   marginBottom: 5,
@@ -29,30 +30,39 @@ const paperStyle = {
   alignItems: 'center',
   flexDirection: 'column',
   margin: 5,
-  position: 'relative'
+  position: 'relative',
+  borderRadius: '5%',
+  boxShadow: '0px 0px 32px 4px #000000',
 };
 
 const cardStyle = {
   height: 80,
-  width: 300,
   margin: 5,
   border: '0.5px black solid',
   width: '95%',
 };
 
+const dividerStyle = {
+  border: 'solid',
+  borderWidth: '1px',
+  width: 300,
+}
+
 const BookClub = ({ bookClub, removeFromBookClub }) => {
 
   return (
     <Paper style={paperStyle} elevation={6}>
-      <div style={{ fontWeight: 800}}>Book Club</div>
+      <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
+        <div style={{ fontWeight: 800 }}>Book Club</div>
+      </div>
       <Box style={boxStyle}>
         {bookClub.length === 0 ? null : (
-          <div style={{width:'100%'}}>
+          <div>
             {bookClub.map((datum, index) => {
               return (
                 <Card style={cardStyle} key={index}>
                   <CardHeader
-                    action={<BookClubDropdown rank={datum.rank} remove={removeFromBookClub}/>}
+                    action={<BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle1'>
@@ -63,7 +73,13 @@ const BookClub = ({ bookClub, removeFromBookClub }) => {
                     subheader={
                       <ThemeProvider theme={theme}>
                         <Typography gutterBottom variant='subtitle2'>
-                          {datum.author}
+                          {datum.authors.map((author, idx) => {
+                            if (idx !== datum.authors.length - 1) {
+                              return author + ', '
+                            } else {
+                              return author
+                            }
+                          })}
                         </Typography>
                       </ThemeProvider>
                     }

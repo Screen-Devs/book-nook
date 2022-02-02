@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link, Outlet } from "react-router-dom";
-import { getUser } from "../requests"
-import axios from "axios";
+import {authenticateUser} from "../requests";
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
@@ -20,12 +19,13 @@ export default function App() {
   }, [])
 
   const authenticate = () => {
-    axios.get('/authenticate')
+    authenticateUser()
       .then((response) => {
-        setAuthStatus(response.data.isAuthenticated);
-        setCurrentUser(response.data.username);
+        setAuthStatus(response.isAuthenticated);
+        setCurrentUser(response.username);
       })
       .catch(error => console.error(error));
+
   }
 
 
