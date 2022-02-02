@@ -4,7 +4,7 @@ import 'animate.css';
 import SearchResult from './SearchResultCard.jsx';
 import { Divider } from '@material-ui/core';
 
-export default function Search ({ searchedBooks }) {
+export default function Search ({ searchedBooks, goToReviews, handleSearchToResults }) {
   console.log('these are our searched books ', searchedBooks);
 
   return (
@@ -14,7 +14,7 @@ export default function Search ({ searchedBooks }) {
       </div>
       <div className="searchResults hideScroll animate__animated animate__flipInY">
         {searchedBooks.map((book) => {
-          return <SearchResult book={book}/>
+          return <SearchResult book={book} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>
         })}
     </div>
     </div>

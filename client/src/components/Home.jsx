@@ -39,6 +39,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [completed, setCompleted] = useState([])
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
+  const [searchToResult, setSearchToResult] = useState({})
+
+  const handleSearchToResults = (book) => {
+    setSearchToResult(book)
+  }
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
@@ -260,6 +265,9 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               // Search Component
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
+              goToReviews={goToReviews}
+              handleSearchToResults={handleSearchToResults}
+              searchToResult={searchToResult}
             />
             <RightComponent
               currentLayout={appLayout.right}

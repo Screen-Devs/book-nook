@@ -6,10 +6,20 @@ import { Divider } from '@material-ui/core';
 // import 'animate.css';
 // import CommentModule from '../CommentModule.jsx';
 
-export default function searchResult ({book}) {
+export default function searchResult ({book, goToReviews, handleSearchToResults}) {
+
+  const hdleSearchToResults = () => {
+    handleSearchToResults(book)
+  }
+
   const info = book.volumeInfo
 
   let image = info.imageLinks || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+
+  const setToReviews = () => {
+    hdleSearchToResults()
+    goToReviews()
+  }
 
   return (
     // <div className="commentModule">
@@ -35,7 +45,7 @@ export default function searchResult ({book}) {
       <Card.Text className="searchResultText">
       <b>Overview:</b> {info.description}
     </Card.Text>
-    <Button variant="dark" style={{marginLeft: '134px'}}>Book Details</Button>
+    <Button variant="dark" style={{marginLeft: '134px'}} onClick={setToReviews}>Book Details</Button>
   </Card.Body>
 </Card>
 <div className="searchResultImageContainer" >
