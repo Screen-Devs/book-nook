@@ -15,8 +15,8 @@ const Comments = ({ allReviews }) => {
     <>
       {allReviews.map((comment, index) => {
         return (
-          <Grid item xs={12}>
-            <Card style={{ maxheight: 300 }} elevation={6}>
+          <Grid item xs={12}  >
+            <Card elevation={6} >
               <Card
                 direction='column'
                 justifyContent='flex-start'
@@ -25,7 +25,7 @@ const Comments = ({ allReviews }) => {
                 divider={<Divider orientation='vertical' flexItem />}
               >
                 <div style={{height: 80, paddingLeft: 10}}>
-                  <p style={{marginBottom: 0, paddingTop: 4,paddingLeft: 1.5, fontSize: 13}}>Username</p>
+                  <p style={{marginBottom: 0, paddingTop: 4,paddingLeft: 1.5, fontSize: 13}}>Username</p>//USERNAME OF COMMENT
                   <Typography
                     variant='h6'
                     component='div'
@@ -41,7 +41,7 @@ const Comments = ({ allReviews }) => {
                   />
                 </div>
                 <div>
-                <p style={{paddingLeft: 14, paddingTop: 5, fontSize: 15}}>
+                <p style={{paddingLeft: 14, paddingTop: 5, fontSize: 15, backgroundColor: 'green', overflow: 'auto', maxHeight: '200px'}}>
                   {comment.review}
                 </p>
                 <div style={{marginLeft: 15, marginBottom: 15}}>

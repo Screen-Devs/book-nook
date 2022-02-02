@@ -20,4 +20,3 @@ export default function Search ({ searchedBooks }) {
     </div>
   );
 }
-
