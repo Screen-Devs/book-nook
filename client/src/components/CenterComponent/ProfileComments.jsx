@@ -23,12 +23,15 @@ export default function ProfileComments({
   //  onInput = ({target:{commentText}}) => setCommentText(commentText),
   const onFormSubmit = (e) => {
     e.preventDefault();
-    const username = currentUserView || currentUserData;
+
+    const username = currentUserView || currentUserData
+
     const comment = {
       username,
       message: commentText,
       commenter: currentUserData,
     };
+    console.log(comment)
     commentOnCanvas(comment)
       .then(({ acknowledged }) => {
         if (acknowledged) {

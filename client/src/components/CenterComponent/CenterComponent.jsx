@@ -58,12 +58,12 @@ export default function CenterComponent({
             path={`friend/${currentUserView}`}
             element={
               <ProfileComments
+                currentUserData={currentUserData}
                 currentUserView={currentUserView}
                 userData={userData}
               />
             }
           />
-          ;
         </Routes>
       ) : (
         component

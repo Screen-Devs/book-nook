@@ -22,6 +22,8 @@ router.post('/authenticate/signup', controller.authenticate.signup);
 
 router.get('/users', controller.user.getUserInfo);
 
+router.get('/users/leaderboards', controller.user.getLeaderboards);
+
 router.put('/users/books', controller.user.putUserBook);
 
 router.put('/users/friends', controller.user.putFriend);
