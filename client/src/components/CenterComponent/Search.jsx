@@ -10,9 +10,9 @@ export default function Search ({ searchedBooks }) {
   return (
     <div className="centerComponent">
       <div className="filterSearchResults animate__animated animate__flipInX">
-      <div>FILTER STUFF</div>
+      <div>FILTER BOOKS</div>
       </div>
-      <div className="searchResults hideScroll animate__animated animate__flipInY">
+      <div className="searchResults hideScroll animate__animated animate__fadeInUp">
         {searchedBooks.map((book) => {
           return <SearchResult book={book}/>
         })}
