@@ -22,6 +22,7 @@ export default function UserLists ({
   goToReviews,
   set,
   currentView,
+  handleSingleBookSearch,
 }) {
 
   return (
@@ -35,7 +36,8 @@ export default function UserLists ({
       <BookClub
         bookClub={bookClub}
         removeFromBookClub={removeFromBookClub}
-        gotToReviews={goToReviews}
+        goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -43,8 +45,8 @@ export default function UserLists ({
         current={current}
         removeFromCurrent={removeFromCurrent}
         currentToCompleted={currentToCompleted}
-        gotToReviews={goToReviews}
-        set={set}
+        goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -52,7 +54,8 @@ export default function UserLists ({
         queue={queue}
         removeFromQueue={removeFromQueue}
         queueToCurrent={queueToCurrent}
-        gotToReviews={goToReviews}
+        goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
@@ -60,7 +63,8 @@ export default function UserLists ({
         completed={completed}
         removeFromCompleted={removeFromCompleted}
         completedToBookClub={completedToBookClub}
-        gotToReviews={goToReviews}
+        goToReviews={goToReviews}
+        handleSingleBookSearch={handleSingleBookSearch}
         currentView={currentView}
         className='placeHolderContainerLeft animate__animated animate__fadeInLeft'
       />
