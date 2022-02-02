@@ -7,7 +7,8 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function ProfileComments ({ userData, currentUserData, }) {
-  const [canvas, setCanvasList] = useState([]);
+  console.log(userData);
+  const [canvas, setCanvasList] = useState();
   const [commentText, setCommentText] = useState();
   // onFormSubmit = e => {
     //   e.preventDefault()
