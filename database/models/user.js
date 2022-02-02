@@ -27,6 +27,46 @@ const findUser = async ( username ) => {
   }
 };
 
+const getLeaderboardData = async ( username ) => {
+  console.log('\n--> getting leaderboard data...');
+  if (!username || typeof username !== 'string') {
+    return new Error('Please be sure to specify a username string parameter');
+  }
+
+  try {
+    const userDocument = await User.find({username}); //Get specified user's data
+    if (userDocument.length === 0) {
+      console.log('error!');
+      return new Error('Could not find the specified user.');
+    }
+
+    const friends = userDocument[0].friends;
+    const leaderBoards = [];
+
+    if (friends.length === 0) { return leaderBoards; }
+    for (const friend of friends) {
+      const {userBooks} = await User.findOne({username: friend});
+
+      let clubbedCount = 0;
+      let completedCount = 0;
+      userBooks.forEach(book => {
+        if (book.clubbed.status === true) { clubbedCount++; }
+        if (book.past.status === true) { completedCount++; }
+      });
+      const friendMetas = {
+        friend,
+        clubbedCount,
+        completedCount
+      };
+      leaderBoards.push(friendMetas);
+    };
+
+    return leaderBoards;
+  } catch (error) {
+    return (error);
+  }
+};
+
 const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, status ) => {
   //Handle input errors
   if (!username || !gBookId || !title || !authors || !list) {
@@ -37,7 +77,7 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
   }
   const findTarget = {username, 'userBooks.gBookId': gBookId };
 
-  const checkForUser = await User.find({username}); //Check if book is in userBook List
+  const checkForUser = await User.find({username}); //Check if user exists
   if (checkForUser.length === 0) {
     return new Error('Could not find the user to update.');
   }
@@ -119,6 +159,7 @@ const insertCanvasMessage = async ( username, message, commenter ) => {
 module.exports = {
   insertUser,
   findUser,
+  getLeaderboardData,
   addOrUpdateUserBooks,
   addOrRemoveFriend,
   insertCanvasMessage
