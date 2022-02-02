@@ -43,12 +43,91 @@ const getNYTimesList = () => {
 const getNYTimesCategory = (list_name_encoded) => {
   return new Promise((resolve, reject) => {
     axios.get(`http://localhost:3010/nytimeslists/list?category=${list_name_encoded}`)
-    .then(response => resolve(response.data))
-    .catch(err => reject(err));
+      .then(response => resolve(response.data))
+      .catch(err => reject(err));
   });
 };
 
+/* BOOK DB ROUTES */
+// note: all 'book_id' parameters refer to the google api's book id
+
+// get back a book's reviews/comments data (if any)
+const getBookMeta = (book_id) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/meta',
+      method: 'get',
+      data: { book_id }
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  });
+}
+
+// add a review to a book's metadata
+// review argument should be object: {username: STR, rating: 1-5, review_body: STR}
+const addBookReview = (book_id, review) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/reviews',
+      method: 'post',
+      data: { book_id, review },
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  })
+}
+
+// add a comment to a given review on a given book's metadata
+// to get review_id string, access the '_id' property of the review
+// comment argument should be object: {commenter: STR, comment_body: STR}
+const addReviewComment = (book_id, review_id, comment) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/reviews/comments',
+      method: 'post',
+      data: { book_id, review_id, comment },
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  })
+}
+
+// mark a review helpful or report it
+// mark_type can either be 'helpful' or 'report' (STRING)
+const markReview = (book_id, review_id, mark_type) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/reviews',
+      method: 'put',
+      data: { book_id, review_id, mark_type },
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  })
+}
+
+// mark a review's comment as helpful or report it
+// mark_type can either be 'helpful' or 'report' (STRING)
+const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
+  return new Promise((resolve, reject) => {
+    axios({
+      url: '/books/reviews/comments',
+      method: 'put',
+      data: { book_id, review_id, comment_id, mark_type },
+    })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  })
+}
+
+
 export {
+  getBookMeta,
+  addBookReview,
+  addReviewComment,
+  markReview,
+  markReviewComment,
   authenticateUser,
   getUser,
   putUserBook,
