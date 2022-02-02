@@ -83,6 +83,8 @@ const getBookMeta = (book_id) => {
   });
 }
 
+getBookMeta('L8oC0c7Pn_8C').then(re => {console.log(re)});
+
 // get back an array of the top rated books based on all books' metadata
 const getTopTen = () => {
   return new Promise((resolve, reject) => {

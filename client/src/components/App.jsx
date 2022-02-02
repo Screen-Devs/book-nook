@@ -30,6 +30,7 @@ export default function App() {
 
 
   return(
+    getBookMeta('L8oC0c7Pn_8C').then(re => { console.log(re) });
     <div className="App">
       <Routes>
         <Route path={`/home/${currentUser}/*`} element={<Home authenticate={authenticate} authStatus={authStatus} currentUser={currentUser}/>} />

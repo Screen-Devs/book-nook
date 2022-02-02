@@ -23,7 +23,6 @@ const findBookMeta = async (book_id) => {
   const metadata = await BookData.find({
     lookup_id: book_id
   });
-  console.log(metadata);
   return metadata;
 }
 
