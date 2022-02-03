@@ -1,6 +1,21 @@
 const { User } = require('../');
 const axios = require('axios');
 
+const nytListOptions = [
+  'combined-print-and-e-book-fiction',
+  'combined-print-and-e-book-nonfiction',
+  'hardcover-advice',
+  'series-books',
+  'animals',
+  'culture',
+  'espionage',
+  'expeditions-disasters-and-adventures',
+  'humor',
+  'indigenous-americans',
+  'mass-market-monthly',
+  'science',
+];
+
 const insertUser = async (username) => {
   try {
     const dataToInsert = {
@@ -104,6 +119,48 @@ const buildSuggestedBookList =  async ( username ) => {
     //If active book list is empty, return NYT best seller books
     if (authorsNoDupes.length === 0) {
       //return some NYT best seller books
+      const randomIndex = Math.floor(Math.random() * 12);
+      const randomCat = nytListOptions[randomIndex];
+      let modifier = 1;
+      if (randomIndex === 11) { modifier = -1};
+      const randomCat2 = nytListOptions[randomIndex + modifier];
+
+      const getNYTimesCategory = (list_name_encoded) => {
+        return new Promise((resolve, reject) => {
+          axios.get(`http://localhost:3010/nytimeslists/list?category=${list_name_encoded}`)
+            .then(response => resolve(response.data))
+            .catch(err => reject(err));
+        });
+      };
+
+      const results = await getNYTimesCategory(randomCat);
+      const randomResIndex = Math.floor(Math.random() * results.length);
+      const randomResIndex2 = Math.floor(Math.random() * results.length);
+      const randomResIndex3 = Math.floor(Math.random() * results.length);
+      const results2 = await getNYTimesCategory(randomCat2);
+      const randomRes2Index = Math.floor(Math.random() * results.length);
+      const randomRes2Index2 = Math.floor(Math.random() * results.length);
+      const randomRes2Index3 = Math.floor(Math.random() * results.length);
+
+      const suggestedBooks = [
+        results[randomRes2Index3],
+        results[randomResIndex2],
+        results[randomRes2Index],
+        results[randomResIndex],
+        results[randomResIndex3],
+        results[randomRes2Index2],
+      ].map(bookResult => {
+        return {
+          title: bookResult.title,
+          author: bookResult.author,
+          isbn10: bookResult.primary_isbn10,
+          isbn13: bookResult.primary_isbn13,
+          description: bookResult.description,
+          imageUrl: bookResult.book_image,
+        };
+      });
+
+      return suggestedBooks;
     }
 
     //Otherwise, compile related books from Google API using a random author
@@ -112,7 +169,7 @@ const buildSuggestedBookList =  async ( username ) => {
     console.log(authorToSearch);
 
     const suggestedBooks = [];
-    return authorsNoDupes;
+    return suggestedBooks;
   } catch (error) {
     return (error);
   }
