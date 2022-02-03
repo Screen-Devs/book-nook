@@ -4,20 +4,20 @@ import "animate.css";
 import CommentModule from "../CommentModule.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { commentOnCanvas, getUser } from "../../requests";
+import { commentOnCanvas, getUser, addFriend } from "../../requests";
 
 export default function ProfileComments({
   userData,
   currentUserData,
   currentUserView,
+  currentFriends,
+  setUserFriends,
 }) {
+
   const [canvas, setCanvasList] = useState([]);
-  const [commentText, setCommentText] = useState();
-  // onFormSubmit = e => {
-  //   e.preventDefault()
-  //   console.log(commentText)
-  //   setCommentText()
-  // }
+  const [commentText, setCommentText] = useState('');
+  const [showBtn, showAddFriendBtn] = useState(false)
+  const { username, friends, } = userData[0];
 
   const onInput = (e) => setCommentText(e.target.value);
   //  onInput = ({target:{commentText}}) => setCommentText(commentText),
@@ -29,6 +29,7 @@ export default function ProfileComments({
       message: commentText,
       commenter: currentUserData,
     };
+
     commentOnCanvas(comment)
       .then(({ acknowledged }) => {
         if (acknowledged) {
@@ -40,11 +41,35 @@ export default function ProfileComments({
       .catch((err) => console.error(err));
   };
 
+  const addNewFriend = () => {
+
+    const addFriend = {
+      username: currentUserData,
+      friend: currentUserView,
+      action: 'add',
+    }
+
+    const updatedFriendsList = [...currentFriends, currentUserView, ];
+
+    addFriend(addFriend)
+      .then((response) => {
+        setUserFriends(updatedFriendsList);
+        showAddFriendBtn(false);
+      })
+      .catch(err => console.error(err));
+
+  }
+
   useEffect(() => {
+
+    const renderBtn = !(currentUserView === null) &&
+    !(currentFriends.includes(currentUserView));
+
     setCanvasList(userData[0].canvas);
+    showAddFriendBtn(renderBtn)
+    setUserFriends(currentFriends)
+
   }, [userData])
-
-
 
   //TODO: Need to implement a way to add a comment
 
@@ -52,7 +77,17 @@ export default function ProfileComments({
     <>
       <div className="centerComponent">
         <div className="userDetails animate__animated animate__flipInX">
-          <h5>User: {userData[0].username}</h5>
+          <h5>User: {username}</h5>
+          <div>
+            {
+
+              (showBtn) && (
+                <a onClick={() => {
+                  addNewFriend();
+                }}> Add Friend </a>
+              )
+            }
+          </div>
         </div>
 
         <div className="writeMe animate__animated animate__flipInX">
@@ -87,16 +122,16 @@ export default function ProfileComments({
 
         <div className="userBook animate__animated animate__flipInY">
           {
-          (canvas.length) && (
-            canvas.reverse().map((comment, idx) => {
-              return (
-                <CommentModule
-                key={idx}
-                comment={comment}
-                />
-              );
-            })
-          )}
+            (canvas.length) && (
+              canvas.reverse().map((comment, idx) => {
+                return (
+                  <CommentModule
+                    key={idx}
+                    comment={comment}
+                  />
+                );
+              })
+            )}
         </div>
       </div>
     </>

@@ -11,6 +11,8 @@ export default function CenterComponent({
   currentUserView,
   currentView,
   userData,
+  currentFriends,
+  setUserFriends,
   // Search Component
   searchedBooks,
   currentUserData,
@@ -23,10 +25,10 @@ export default function CenterComponent({
 
   let component;
   if (currentLayout === 'search') {
-    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
+    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
   } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
     // TODO: include userData for books meta data in payload
-    component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult} bookMeta={userData}/>;
+    component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult} bookMeta={userData} />;
   }
 
   // If not a friend or profile, just conditionally render
@@ -38,7 +40,9 @@ export default function CenterComponent({
             path="/"
             element={
               <ProfileComments
+                currentFriends={currentFriends}
                 currentUserData={currentUserData}
+                setUserFriends={setUserFriends}
                 currentUserView={currentUserView}
                 userData={userData}
               />
@@ -48,7 +52,9 @@ export default function CenterComponent({
             path={`friend/${currentUserView}`}
             element={
               <ProfileComments
+                currentFriends={currentFriends}
                 currentUserData={currentUserData}
+                setUserFriends={setUserFriends}
                 currentUserView={currentUserView}
                 userData={userData}
               />

@@ -36,12 +36,13 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
-  const [queue, setQueue] = useState([])
-  const [current, setCurrent] = useState([])
-  const [completed, setCompleted] = useState([])
-  const [bookClub, setBookClub] = useState([])
-  const [searchedBooks, setSearchedBooks] = useState([])
-  const [searchToResult, setSearchToResult] = useState({})
+  const [queue, setQueue] = useState([]);
+  const [current, setCurrent] = useState([]);
+  const [completed, setCompleted] = useState([]);
+  const [bookClub, setBookClub] = useState([]);
+  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [searchToResult, setSearchToResult] = useState({});
+  const [currentFriends, setUserFriends] = useState([]);
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
@@ -172,6 +173,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     // get user data for currentUser
     getUser(currentUser)
       .then((response) => {
+        setUserFriends(response[0].friends)
         setAppLayout({
           ...profileLayout,
           payload: response
@@ -288,6 +290,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               currentLayout={appLayout.center}
               currentUserView={currentUserView}
               currentView={appLayout.view}
+              currentFriends={currentFriends}
+              setUserFriends={setUserFriends}
               userData={appLayout.payload}
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
