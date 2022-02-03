@@ -49,6 +49,7 @@ const AddReviewModal = ({set, username, bookId, goToReviews}) => {
     // set(prev => [...prev, review]) // handles array of reviews -> submit review to database, once resolve, get new list of reviews
     addBookReview(bookId, review)
       .then(() => {
+        console.log('testreview', review);
         goToReviews(bookId);
         setReview({ rating: 0, username, review: '' })
         handleModal()
@@ -105,7 +106,7 @@ const AddReviewModal = ({set, username, bookId, goToReviews}) => {
             variant='filled'
             style={{marginBottom: 2}}
             value={review.review}
-            onChange={(e) => setReview({...review, review: e.target.value})}
+            onChange={(e) => setReview({...review, review_body: e.target.value})}
             fullWidth
             />
           </div>

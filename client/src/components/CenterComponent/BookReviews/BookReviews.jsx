@@ -16,10 +16,8 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
       <div className='bookDetailsTopComponent'>
         <BookDetails searchToResult={searchToResult} />
       </div>
-      <div className='writeReviewOrComment'>Write a review or comment</div>
       <div
         className='bookDetailsCenterComponent'
-        style={{ paddingBottom: 2, backgroundColor: 'white', marginLeft: 5}}
       >
           <TopReviews
             setAllReviews={setAllReviews}
@@ -27,9 +25,9 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
             username={username}
             goToReviews={goToReviews}
             bookId={searchToResult.id}
-            style={{ overFlow: 'auto', height: '220px', width: '100%', marginLeft: 5 }}
+            style={{ height: '220px', width: '100%', marginLeft: 5 }}
           />
-        <div className='divider' style={{ height: '601px', overflow: 'auto' }}>
+        <div className='reviewsScrollBar' style={{ width: '95%', margin: '5px 5px 15px 5px', height: '93%', borderRadius: '20px', overflow: 'auto', alignSelf: 'center', paddingTop: '10px', paddingBottom: '10px',}}>
           <Comments allReviews={allReviews} />
         </div>
       </div>
