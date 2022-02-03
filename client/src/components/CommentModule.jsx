@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import * as timeago from 'timeago.js';
 
 export default function CommentModule({ comment }) {
-  console.log('lolool');
   return (
     <div className = "commentModule" >
       <Card className="text-center commentModuleBody">
