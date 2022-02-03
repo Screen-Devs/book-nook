@@ -15,6 +15,7 @@ import LeaderBoard from './LeaderBoard.jsx';
 import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
 import { getNYTimesCategory } from '../../requests/index.js';
+import Leaderboard from './Leaderboard/Leaderboard.jsx';
 
 export default function SiteData({ handleGetFriendData, userData, currentUserData, currentUserView }) {
   let [booksInCategory, setBooksInCategory] = useState([]);
@@ -75,7 +76,7 @@ export default function SiteData({ handleGetFriendData, userData, currentUserDat
         </Carousel>
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        Place Holder Container
+        <Leaderboard/>
       </div>
     </div>
   );

@@ -53,6 +53,7 @@ const NYTModal = () => {
   const fetchData = () => {
     getNYTimesList()
       .then((res) => {
+        console.log(res)
         setCategories(res)
       })
       .catch(err => console.error(err))
