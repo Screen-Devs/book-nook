@@ -1,5 +1,6 @@
 import { Box, Button, Container, Card, Divider, Modal, TextField, Typography } from '@material-ui/core';
 import React, {useState} from 'react';
+import { addReviewComment } from '../../../requests'
 
 const containerStyle ={
   margin: 0
@@ -26,13 +27,13 @@ const cardStyle = {
   padding: 32
 }
 
-const AddCommentModal = ({set}) => {
+const AddCommentModal = ({reviewId, username, bookId, goToReviews}) => {
   const [show, setShow] = useState(false);
 
   // TODO add current Username
   const [addedComment, setAddedComment] = useState({
-    username: 'Sample',
-    comment: ''
+    commenter: username,
+    comment_body: ''
   })
 
   const handleModal = () => {
@@ -41,9 +42,12 @@ const AddCommentModal = ({set}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setAddedComment({username: 'Sample', comment: ''})
-    set(prev => [...prev, addedComment])
-    handleModal()
+    addReviewComment(bookId, reviewId, addedComment)
+      .then(() => {
+        goToReviews(bookId)
+        setAddedComment({ commenter: username, comment_body: '' })
+        handleModal()
+      })
   }
 
   return (
@@ -68,8 +72,8 @@ const AddCommentModal = ({set}) => {
             rows={10}
             variant='filled'
             style={{marginBottom: 2}}
-            value={addedComment.comment}
-            onChange={(e) => setAddedComment({...addedComment, comment : e.target.value})}
+            value={addedComment.comment_body}
+            onChange={(e) => setAddedComment({...addedComment, comment_body : e.target.value})}
             fullWidth
             />
           </div>
