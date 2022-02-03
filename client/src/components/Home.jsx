@@ -43,6 +43,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [searchedBooks, setSearchedBooks] = useState([])
   const [searchToResult, setSearchToResult] = useState({})
   const [bookMeta, setBookMeta] = useState([])
+  const [currentFriends, setUserFriends] = useState([]);
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
@@ -173,6 +174,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     // get user data for currentUser
     getUser(currentUser)
       .then((response) => {
+        setUserFriends(response[0].friends)
         setAppLayout({
           ...profileLayout,
           payload: response
@@ -285,6 +287,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               currentLayout={appLayout.center}
               currentUserView={currentUserView}
               currentView={appLayout.view}
+              currentFriends={currentFriends}
+              setUserFriends={setUserFriends}
               userData={appLayout.payload}
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
