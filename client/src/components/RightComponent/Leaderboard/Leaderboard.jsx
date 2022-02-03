@@ -25,13 +25,15 @@ const Leaderboard = ({currentUserData}) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   const fetchLeaderboards = (username) => {
-    getLeaderboardData(username)
-      .then((leaderboardData) => {
-        setLeaderboardData(leaderboardData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //if (username) {
+      getLeaderboardData(username)
+       .then((leaderboardData) => {
+         setLeaderboardData(leaderboardData);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   // }
   };
 
   const handleChange = (e, newValue) => {
