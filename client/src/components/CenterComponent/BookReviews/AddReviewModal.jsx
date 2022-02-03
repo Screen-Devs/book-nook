@@ -1,7 +1,7 @@
 import { Box, Button, Container, Card, Divider, Modal, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Rating } from '@material-ui/lab';
-
+import { addBookReview } from '../../../requests';
 
 const containerStyle ={
   margin: 0
@@ -28,15 +28,15 @@ const cardStyle = {
   padding: 32
 }
 
-const AddReviewModal = ({set, username}) => {
+const AddReviewModal = ({set, username, bookId, goToReviews}) => {
   const [show, setShow] = useState(false);
 
   // TODO add current Username
   const [review, setReview] = useState({
     rating: 0,
     // title: '',
-    review: '',
-
+    review_body: '',
+    username,
   })
 
 
@@ -46,9 +46,13 @@ const AddReviewModal = ({set, username}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    set(prev => [...prev, review])
-    setReview({rating:0, title:'', review:''})
-    handleModal()
+    // set(prev => [...prev, review]) // handles array of reviews -> submit review to database, once resolve, get new list of reviews
+    addBookReview(bookId, review)
+      .then(() => {
+        goToReviews(bookId);
+        setReview({ rating: 0, username, review: '' })
+        handleModal()
+      })
   }
 
   return (
