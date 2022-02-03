@@ -7,6 +7,7 @@ const getTotalBookData = async (req, res) => {
 }
 
 const getBookMetaData = async (req, res) => {
+  console.log('here is req.body', req.body)
   const { book_id } = req.body;
   const result = await findBookMeta(book_id);
   res.status(200).send(result);

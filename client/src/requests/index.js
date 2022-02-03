@@ -85,7 +85,7 @@ const getBookMeta = (book_id) => {
   return new Promise((resolve, reject) => {
     axios({
       url: '/books/meta',
-      method: 'get',
+      method: 'post',
       data: { book_id }
     })
       .then(response => resolve(response))
