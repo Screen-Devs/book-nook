@@ -23,8 +23,14 @@ const findBookMeta = async (book_id) => {
   const metadata = await BookData.find({
     lookup_id: book_id
   });
-  console.log(metadata);
-  return metadata.data;
+  if (!metadata) {
+    BookData.create({lookup_id: book_id})
+    .then((metaData) => {
+      return metaData;
+    });
+  } else {
+    return metadata;
+  };
 }
 
 const addBookReview = async (book_id, review) => {
