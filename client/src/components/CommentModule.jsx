@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import 'animate.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import * as timeago from 'timeago.js';
 
 export default function CommentModule({ comment }) {
+  console.log('lolool');
   return (
     <div className = "commentModule" >
       <Card className="text-center commentModuleBody">
@@ -14,7 +16,7 @@ export default function CommentModule({ comment }) {
             {comment.message}
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="text-muted"><i>{comment.date}</i></Card.Footer>
+        <Card.Footer className="text-muted"><i>{timeago.format(comment.date)}</i></Card.Footer>
       </Card>
     </div >
   );
