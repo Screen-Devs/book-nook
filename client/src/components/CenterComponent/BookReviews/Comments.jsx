@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const TopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 4px 2px -2px gray;
 `
 
 const UsernamdAndTitle = styled.div`
@@ -20,18 +21,17 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 25px;
 `
-const TextBody = styled.div`
-  padding: 0px 15px;
-  font-size: 15px;
-  background-color: 'green';
-  overflow: 'auto';
-  max-height: '200px';
-`
+
 const CommentWrapper = styled.div`
   margin: 7px 0px;
+  max-height: '200px';
 `
+//  overflow: 'auto';
+
 const Grid = styled.div`
   margin: 7px 0px;
+  background-color: red;
+  border-radius: 20px;
 `
 
 const Comments = ({ allReviews }) => {
@@ -39,21 +39,21 @@ const Comments = ({ allReviews }) => {
 
   console.log(commentsInReview)
   return (
-    <CommentWrapper>
+    <CommentWrapper className="hideScroll">
       {allReviews.map((comment, index) => {
         return (
           <Grid>
-            <Card elevation={6}>
+            <Card className=" hideScroll" elevation={6}>
                 <TopWrapper>
                     <UsernamdAndTitle>
-                      <Username>Username</Username>
+                      <Username>Written by USERNAME</Username>
                       <Title>{comment.title}</Title>
                     </UsernamdAndTitle>
                     <DropdownComments set={setCommentsInReview}/>
                     </TopWrapper>
-                    <TextBody>
+                    <div className="aReview hideScroll">
                       {comment.review}
-                    </TextBody>
+                    </div>
                 <CommentAccordian comments={commentsInReview} />
             </Card>
           </Grid>

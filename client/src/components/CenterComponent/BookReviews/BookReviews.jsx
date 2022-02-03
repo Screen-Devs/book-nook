@@ -4,41 +4,25 @@ import BookDetails from './BookDetails/BookDetails.jsx';
 import Comments from './Comments.jsx';
 import TopReviews from './TopReviews.jsx';
 
-// const paperStyle = {
-//   width: 878,
-//   height: 1200,
-//   display: 'flex',
-//   alignItems: 'center',
-//   flexDirection: 'column',
-//   position: 'relative',
-//   overflowY: "scroll"
-// }
 
 export default function BookReviews({ searchToResult, bookMeta }) {
   console.log('What is getting passed in here? ', bookMeta);
-  const [allReviews, setAllReviews] = useState([])
+  const [allReviews, setAllReviews] = useState([]);
 
   return (
     <div>
       <div className='bookDetailsTopComponent'>
         <BookDetails searchToResult={searchToResult} />
       </div>
-      <div className='writeReviewOrComment'>Write a review or comment</div>
       <div
         className='bookDetailsCenterComponent'
-        style={{ paddingBottom: 2, backgroundColor: 'red' }}
       >
-        <div className='topDivider' style={{ backgroundColor: 'black' }}>
           <TopReviews
             setAllReviews={setAllReviews}
             allReviews={allReviews}
-            style={{ overFlow: 'auto', height: '220px', backgroundColor: 'blue' }}
+            style={{ height: '220px', width: '100%', marginLeft: 5 }}
           />
-        </div>
-        <div
-          className='divider'
-          style={{ backgroundColor: 'blue', height: '601px', overflow: 'auto'}}
-        >
+        <div className='reviewsScrollBar' style={{ width: '95%', margin: '5px 5px 15px 5px', height: '93%', borderRadius: '20px', overflow: 'auto', alignSelf: 'center', paddingTop: '10px', paddingBottom: '10px',}}>
           <Comments allReviews={allReviews} />
         </div>
       </div>

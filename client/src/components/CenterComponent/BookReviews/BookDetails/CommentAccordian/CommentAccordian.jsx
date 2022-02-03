@@ -15,8 +15,7 @@ const CommentAccordian = ({comments}) => {
           <Typography>Show comments</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            {/* <CommentsWithinAccordian/> */}
+          <Typography className="none" style={{overflow: 'auto', maxHeight: '220px',}}>
             <CommentsWithinReview comments={comments}/>
           </Typography>
         </AccordionDetails>
