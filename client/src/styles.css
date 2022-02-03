@@ -27,6 +27,7 @@ h5 {
 .link:hover {
   text-decoration: none;
   color: #4100ab;
+  cursor: pointer;
 }
 
 .App {
@@ -141,7 +142,7 @@ body::-webkit-scrollbar-thumb {
   flex-direction: row;
   align-items: center;
   /* position: absolute; */
-  z-index: 1;
+  z-index: 10;
 }
 
 .header::before {
@@ -365,6 +366,7 @@ body::-webkit-scrollbar-thumb {
   height: 1300px;
   margin-top: 20px;
   margin-bottom: 20px;
+  z-index: 2;
 }
 
 /* height: 1620px; */
@@ -617,6 +619,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   /* flex: 1; */
   height: 200px;
+  width: 880px;
   background-color: #212529;
   color: white;
   border-radius: 20px;
@@ -624,19 +627,57 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   padding-top: 8px;
   box-shadow: 0px 0px 32px 4px #000000;
+  z-index: 3;
 }
 
 .searchResults {
+  /* display: flex; */
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin-top: 10px;
+  /* padding-top: 2500px; */
   border-radius: 20px;
   overflow: auto;
-  height: 1070px;
+  height: 1080px;
+  width: 900px;
   color: black;
+  z-index: 3;
 }
 
-.aSearchResult {
+.bookSearchCover:hover {
+  opacity: 0.75;
+  /* transform: scale(1.15); */
+  box-shadow: 0px 0px 32px 4px white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.bookSearchCard {  display: grid;
+  grid-template-columns: 138px 512px 230px;
+  grid-template-rows: auto 300px;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "bookSearchHeader bookSearchHeader bookSearchHeader"
+    "bookSearchImage bookSearchOverview bookSearchDetails";
+    box-shadow: 0px 0px 32px 1px #000000;
+    z-index: 3;
+}
+
+.bookSearchHeader { grid-area: bookSearchHeader; }
+
+.bookSearchImage { grid-area: bookSearchImage; }
+
+.bookSearchOverview { grid-area: bookSearchOverview; }
+
+.bookSearchDetails { grid-area: bookSearchDetails; }
+
+
+
+
+
+
+/* .aSearchResult {
   display: flex;
   flex-direction: row;
 }
@@ -665,7 +706,7 @@ body::-webkit-scrollbar-thumb {
   width: 150px;
   margin-top: 15px;
   border-radius: 5%;
-}
+} */
 
 
 

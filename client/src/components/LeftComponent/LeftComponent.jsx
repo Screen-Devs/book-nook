@@ -21,6 +21,7 @@ export default function LeftComponent({
   goToReviews,
   set,
   currentView,
+  handleSingleBookSearch,
 }) {
 
   let component;
@@ -40,8 +41,8 @@ export default function LeftComponent({
           completed={completed}
           bookClub={bookClub}
           goToReviews={goToReviews}
-          set={set}
           currentView={currentView}
+          handleSingleBookSearch={handleSingleBookSearch}
         />
       </div>
     )

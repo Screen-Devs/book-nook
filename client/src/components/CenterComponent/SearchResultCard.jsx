@@ -18,38 +18,36 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
 
   const setToReviews = () => {
     hdleSearchToResults()
-    goToReviews()
+    goToReviews(book.id)
   }
 
   return (
-    // <div className="commentModule">
-      <div className='aSearchResult'>
-      <Card className="searchResultCard">
-        <Card.Body >
-          <Card.Header style={{fontWeight: 'bold', borderRadius:"20px", backgrounColor:''}}>{info.title}</Card.Header>
-          <Divider style={{borderWitdh: '0.05px', borderBottom: 'solid', }}/>
-          <Card.Text className="searchResultText">
-            <b>Author:</b> {info.authors ? info.authors.join(', ') : null}
-          </Card.Text>
-          <Divider/>
-          <Card.Text className="searchResultText">
-            <b>Publisher: </b>{info.publisher ? info.publisher : null}
-          </Card.Text>
-          <Card.Text className="searchResultText">
-            <b>Genre:</b> {info.categories ? info.categories.join(', ') : null }
-          </Card.Text>
-          <Card.Text className="searchResultText">
-            <b>Published:</b> {info.publishedDate ? info.publishedData : null}
-          </Card.Text>
-          <Card.Text className="searchResultText">
-            <b>Overview:</b> {info.description ? info.description : null}
-          </Card.Text>
-          <Button variant="dark" style={{marginLeft: '134px'}} onClick={setToReviews}>Book Details</Button>
-        </Card.Body>
-      </Card>
-      <div className="searchResultImageContainer" >
-        <img className="searchResultImage"  src={(image) ? image.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}/>
+      <div className='bookSearchCard' style={{backgroundColor:"#212529", borderRadius:"20px", margin:'20px 10px 20px 10px'}}>
+        <div className="bookSearchHeader" style={{fontWeight: 'bold', borderRadius:"20px 20px 0px 0px", backgroundColor:'#212529', color: 'white', padding:'10px', display:'flex', flexDirection:'row', justifyContent:'space-between' }}>
+          <h3>{info.title}</h3>
+          <Button className="sideComponentTitle" variant="dark" onClick={setToReviews} style={{ borderRadius:'20px',}}>Book Details</Button>
+          </div>
+        {/* <div style={{display:'flex', flexDirection:'row',}}> */}
+        <div className="bookSearchImage" style={{backgroundColor:'#212529', borderRadius:"0px 0px 0px 20px", padding:'0px 5px 0px 5px' }}>
+          <div className="bookSearchCover" onClick={setToReviews}>
+          <img src={(image) ? image.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} style={{borderRadius:'20px',}}/>
+          </div>
+        </div>
+          <div className="bookSearchOverview" style={{padding:'10px', borderRadius:'20px 20px 0px 0px', backgroundColor:'white',}}>
+            <div className="hideScroll" style={{overflow:'auto', height:'290px'}}>
+          <b>Overview:</b> {info.description ? info.description : null}<br/>
+          </div>
+          </div>
+        <div className="bookSearchDetails hideScroll" style={{display:'flex', flexDirection:'column', overflow:'scroll', backgroundColor:"#212529", color:'white', borderRadius:"0px 0px 20px 0px", padding:'10px',}}>
+        <b>Author:</b> {info.authors ? info.authors.join(', ') : null}<p/>
+        <b>Publisher: </b>{info.publisher ? info.publisher : null}<p/>
+            <b>Genre:</b> {info.categories ? info.categories.join(', ') : null }<p/>
+            <b>Published:</b> {info.publishedDate ? info.publishedData : null}<p/>
+            </div>
+            {/* </div> */}
       </div>
-    </div>
   );
 }
+
+
+

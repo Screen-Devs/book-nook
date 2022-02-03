@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//*                     *//
+// AUTHENTICATE
 const authenticateUser = () => {
   return new Promise((resolve, reject) => {
     axios.get('http://localhost:3010/authenticate')
@@ -7,6 +9,9 @@ const authenticateUser = () => {
     .catch(err => reject(err));
   })
 }
+
+//*                     *//
+// USER INTERACTION START
 
 const getUser = (username) => {
   return new Promise((resolve, reject) => {
@@ -24,6 +29,14 @@ const dumpFriend = (action) => {
   })
 }
 
+const commentOnCanvas = (comment) => {
+  return new Promise((resolve, reject) => {
+    axios.post('http://localhost:3010/users/canvas',comment)
+    .then(res => resolve(res.data))
+    .catch(err => reject(err));
+  })
+}
+
 const putUserBook = (book) => {
   return new Promise((resolve, reject) => {
     axios.put('http://localhost:3010/users/books', book)
@@ -31,6 +44,11 @@ const putUserBook = (book) => {
     .catch(err => reject(err));
   })
 }
+// USER INTERACTION END
+//*                     *//
+
+//*                     *//
+// EXTERNAL API CALLS START
 
 const searchGoogle = (query, count=10, page=1) => {
   return new Promise((resolve, reject) => {
@@ -55,6 +73,9 @@ const getNYTimesCategory = (list_name_encoded) => {
       .catch(err => reject(err));
   });
 };
+// EXTERNAL API CALLS END
+//*                     *//
+
 
 /* BOOK DB ROUTES */
 // note: all 'book_id' parameters refer to the google api's book id
@@ -139,6 +160,7 @@ export {
   authenticateUser,
   getUser,
   putUserBook,
+  commentOnCanvas,
   dumpFriend,
   searchGoogle,
   getNYTimesList,
