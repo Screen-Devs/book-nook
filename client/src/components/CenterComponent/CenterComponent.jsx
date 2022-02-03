@@ -4,6 +4,7 @@ import ProfileComments from "./ProfileComments.jsx";
 import Search from "./Search.jsx";
 import BookReviews from "./BookReviews/BookReviews.jsx";
 import CommentModule from "../CommentModule.jsx";
+import { addFriend } from "../../requests"
 
 export default function CenterComponent({
   currentLayout,
@@ -23,6 +24,23 @@ export default function CenterComponent({
   searchToResult,
 }) {
 
+  const addNewFriend = () => {
+
+    const friendToAdd = {
+      username: currentUserData,
+      friend: currentUserView,
+      action: 'add',
+    }
+
+    const updatedFriendsList = [...currentFriends, currentUserView,];
+
+    addFriend(friendToAdd)
+      .then((response) => {
+        setUserFriends(updatedFriendsList);
+      })
+      .catch(err => console.error(err));
+  }
+
   let component;
   if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
@@ -40,6 +58,7 @@ export default function CenterComponent({
             path="/"
             element={
               <ProfileComments
+                addNewFriend={addNewFriend}
                 currentFriends={currentFriends}
                 currentUserData={currentUserData}
                 setUserFriends={setUserFriends}
@@ -52,6 +71,7 @@ export default function CenterComponent({
             path={`friend/${currentUserView}`}
             element={
               <ProfileComments
+                addNewFriend={addNewFriend}
                 currentFriends={currentFriends}
                 currentUserData={currentUserData}
                 setUserFriends={setUserFriends}

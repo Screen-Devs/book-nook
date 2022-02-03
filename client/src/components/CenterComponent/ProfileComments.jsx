@@ -4,19 +4,19 @@ import "animate.css";
 import CommentModule from "../CommentModule.jsx";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { commentOnCanvas, getUser, addFriend } from "../../requests";
+import { commentOnCanvas, getUser } from "../../requests";
 
 export default function ProfileComments({
   userData,
   currentUserData,
   currentUserView,
   currentFriends,
-  setUserFriends,
+  addNewFriend,
 }) {
 
   const [canvas, setCanvasList] = useState([]);
   const [commentText, setCommentText] = useState('');
-  const [showBtn, showAddFriendBtn] = useState(false)
+  const [showBtn, setRenderBtn] = useState(false)
   const { username, friends, } = userData[0];
 
   const onInput = (e) => setCommentText(e.target.value);
@@ -41,34 +41,11 @@ export default function ProfileComments({
       .catch((err) => console.error(err));
   };
 
-  const addNewFriend = () => {
-
-    const addFriend = {
-      username: currentUserData,
-      friend: currentUserView,
-      action: 'add',
-    }
-
-    const updatedFriendsList = [...currentFriends, currentUserView, ];
-
-    addFriend(addFriend)
-      .then((response) => {
-        setUserFriends(updatedFriendsList);
-        showAddFriendBtn(false);
-      })
-      .catch(err => console.error(err));
-
-  }
-
   useEffect(() => {
-
     const renderBtn = !(currentUserView === null) &&
     !(currentFriends.includes(currentUserView));
-
     setCanvasList(userData[0].canvas);
-    showAddFriendBtn(renderBtn)
-    setUserFriends(currentFriends)
-
+    setRenderBtn(renderBtn)
   }, [userData])
 
   //TODO: Need to implement a way to add a comment
@@ -84,6 +61,8 @@ export default function ProfileComments({
               (showBtn) && (
                 <a onClick={() => {
                   addNewFriend();
+                  setRenderBtn(false);
+
                 }}> Add Friend </a>
               )
             }

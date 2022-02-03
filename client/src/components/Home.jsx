@@ -244,16 +244,12 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const goToReviews = (gBookId) => {
     getBookMeta(gBookId)
       .then((response) => {
-        console.log('server response ', response);
         setAppLayout({
           ...bookLayout,
           payload: appLayout.payload, // keep userData as payload
         })
         // use hooks to create a state for book reviews & comments, then pass to book details component.
       })
-    // TODO: check why book meta data is not coming back
-    console.log('get book meta')
-      // error handle? Does this catch if book does not exist in database
   }
 
   let navigate;
