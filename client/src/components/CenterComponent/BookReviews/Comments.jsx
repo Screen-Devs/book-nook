@@ -23,7 +23,6 @@ const Title = styled.div`
 const TextBody = styled.div`
   padding: 0px 15px;
   font-size: 15px;
-  background-color: 'green';
   overflow: 'auto';
   max-height: '200px';
 `

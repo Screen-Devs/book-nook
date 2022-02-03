@@ -16,7 +16,6 @@ const CommentAccordian = ({comments}) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            {/* <CommentsWithinAccordian/> */}
             <CommentsWithinReview comments={comments}/>
           </Typography>
         </AccordionDetails>

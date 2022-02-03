@@ -3,6 +3,23 @@ import React, { useState } from 'react';
 import { Rating } from '@material-ui/lab';
 
 import DropdownReviews from './DropdownReviews.jsx';
+import styled from 'styled-components';
+
+const LeftSide = styled.div`
+
+`
+
+const RightSide = styled.div`
+
+`
+
+const Container = styled.div`
+  height: 125px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+`
 
 //BOOK TITLE
 const TopReviews = ({ setAllReviews, allReviews }) => {
@@ -10,12 +27,12 @@ const TopReviews = ({ setAllReviews, allReviews }) => {
 
   const average = ratings.reduce((a, b) => a + b, 0) / ratings.length;
 
-  const totalReviews = allReviews.length
+  const totalReviews = allReviews.length;
 
   return (
-    <Grid item xs={30} style={{ width: '100%', paddingTop: 5 }}>
-      <Card style={{ height: 125, width: '580px', display: 'flex', justifyContent: 'space-between' }} elevation={6}>
-        <div>
+
+      <Container>
+        <LeftSide>
           <Typography
             variant='h4'
             component='div'
@@ -33,15 +50,14 @@ const TopReviews = ({ setAllReviews, allReviews }) => {
               precision={0.25}
               style={{ paddingBottom: 10, paddingLeft: 5 }}
             />
-            <p style={{paddingTop: 5, paddingLeft: 5}}>{totalReviews} ratings</p>
+            <p style={{ paddingTop: 5, paddingLeft: 5 }}>{totalReviews} ratings</p>
           </div>
-        </div>
+        </LeftSide>
+        <RightSide>
+          <DropdownReviews set={setAllReviews} style={{ overflow: 'auto' }} />
+        </RightSide>
+      </Container>
 
-
-
-        <DropdownReviews set={setAllReviews} style={{overflow: 'auto'}}/>
-      </Card>
-    </Grid>
   );
 };
 
