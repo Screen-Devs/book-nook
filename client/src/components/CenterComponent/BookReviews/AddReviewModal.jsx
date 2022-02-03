@@ -1,5 +1,5 @@
 import { Box, Button, Container, Card, Divider, Modal, TextField, Typography } from '@material-ui/core';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Rating } from '@material-ui/lab';
 
 
@@ -28,14 +28,15 @@ const cardStyle = {
   padding: 32
 }
 
-const AddReviewModal = ({set}) => {
+const AddReviewModal = ({set, username}) => {
   const [show, setShow] = useState(false);
 
   // TODO add current Username
   const [review, setReview] = useState({
-    rating:0,
-    title:'',
-    review:''
+    rating: 0,
+    // title: '',
+    review: '',
+
   })
 
 
@@ -76,7 +77,7 @@ const AddReviewModal = ({set}) => {
               precision={0.5}
               style={{marginBottom: 2, paddingLeft: 0.5} }/>
           </div>
-          <div style={{width:'100%'}}>
+          {/* <div style={{width:'100%'}}>
           <Typography variant='h6' component='div' gutterBottom style={{margin:0,padding:1}}>
               Add a title
           </Typography>
@@ -88,7 +89,7 @@ const AddReviewModal = ({set}) => {
             onChange={(e) => setReview({...review, title : e.target.value})}
             fullWidth
             />
-          </div>
+          </div> */}
           <div style={{width:'100%'}}>
           <Typography variant='h6' component='div' gutterBottom style={{margin:0,padding:1}}>
               Add a written review

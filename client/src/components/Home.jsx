@@ -42,6 +42,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
   const [searchToResult, setSearchToResult] = useState({})
+  const [bookMeta, setBookMeta] = useState([])
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
@@ -242,16 +243,12 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const goToReviews = (gBookId) => {
     getBookMeta(gBookId)
       .then((response) => {
-        console.log('server response ', response);
         setAppLayout({
           ...bookLayout,
-          payload: appLayout.payload, // keep userData as payload
+          payload: appLayout.payload,
         })
-        // use hooks to create a state for book reviews & comments, then pass to book details component.
+        setBookMeta(response.data[0].reviews);
       })
-    // TODO: check why book meta data is not coming back
-    console.log('get book meta')
-      // error handle? Does this catch if book does not exist in database
   }
 
   let navigate;
@@ -294,6 +291,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               goToReviews={goToReviews}
               handleSearchToResults={handleSearchToResults}
               searchToResult={searchToResult}
+              bookMeta={bookMeta}
             />
             <RightComponent
               currentLayout={appLayout.right}

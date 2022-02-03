@@ -9,7 +9,7 @@ import { MoreVertOutlined } from '@material-ui/icons';
 import AddReviewModal from './AddReviewModal.jsx';
 
 
-const DropdownReviews = ({set}) => {
+const DropdownReviews = ({set, username}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -42,7 +42,7 @@ const DropdownReviews = ({set}) => {
       onClose={handleClose}
     >
       <MenuItem onClick={handleClose}>
-        <AddReviewModal set={set}/>
+        <AddReviewModal set={set} username={username}/>
       </MenuItem>
       <MenuItem onClick={handleClose}>
         <Button variant='text' style={{color: 'black', paddingLeft: 5}}>Join Club</Button>

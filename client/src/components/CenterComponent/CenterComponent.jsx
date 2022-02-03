@@ -19,14 +19,15 @@ export default function CenterComponent({
   // From searchToResult
   handleSearchToResults,
   searchToResult,
+  bookMeta,
 }) {
 
   let component;
   if (currentLayout === 'search') {
     component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults}/>;
   } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
-    // TODO: include userData for books meta data in payload
-    component = <BookReviews currentUserData={currentUserData} searchToResult={searchToResult} bookMeta={userData}/>;
+    // TODO: differentiate between bookMeta and userData
+    component = <BookReviews username={currentUserData} searchToResult={searchToResult} bookMeta={bookMeta}/>;
   }
 
   // If not a friend or profile, just conditionally render
