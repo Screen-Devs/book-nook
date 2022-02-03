@@ -1,30 +1,35 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel'
-import { NYT } from '../NYTdummyData';
 
-
-const SuggestedCarousel = () => {
+const SuggestedCarousel = ({suggestedBooks}) => {
   return (
     <div>
-      <Carousel
-        enableAutoPlay
-        autoPlaySpeed={6000}
-        itemsToShow={2}
-        itemsToScroll={2}
-        easing='cubic-bezier(1,.15,.55,1.54)'
-        tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
-        transitionMs={700}
-      >
-        {NYT[0].books.map((book) => {
-          return (
-            <div key={book.rank ** book.rank}>
-              <a href={book.amazon_product_url} key={book.rank * book.rank} target='_blank'>
-                <img src={book.book_image} className='NYTbookImage' key={book.rank} />
-              </a>
-            </div>
-          );
-        })}
-      </Carousel>
+      {suggestedBooks.length === 0 &&
+        <div className='suggestedBookMessage'>
+          Sorry, we currently do not have any recommendations for you.
+        </div>
+      }
+      {suggestedBooks.length > 0 &&
+        <Carousel
+          enableAutoPlay
+          autoPlaySpeed={6000}
+          itemsToShow={2}
+          itemsToScroll={2}
+          easing='cubic-bezier(1,.15,.55,1.54)'
+          tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
+          transitionMs={700}
+        >
+          {suggestedBooks.map((book, i) => {
+            return (
+              <div key={i}>
+                <a href='' key={i} target='_blank'>
+                  <img src={book.imageUrl} className='NYTbookImage' key={i} />
+                </a>
+              </div>
+            );
+          })}
+        </Carousel>
+      }
     </div>
   );
 };

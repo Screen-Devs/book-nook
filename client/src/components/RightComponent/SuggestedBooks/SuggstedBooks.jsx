@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
 import SuggestedCarousel from './SuggestedCarousel.jsx';
+import { getSuggestedBooks } from '../../../requests/index.js';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,20 +20,36 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const SuggstedBooks = () => {
+const SuggstedBooks = ({currentUserData}) => {
+  const [suggestedBooks, setSuggestedBooks] = useState([]);
+
+  const fetchSuggestedBooks = (username) => {
+    getSuggestedBooks(username)
+      .then((suggestedBookData) => {
+        setSuggestedBooks(suggestedBookData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchSuggestedBooks(currentUserData);
+  }, []);
+
   return (
     <Wrapper>
       <Title>
         <Button
-          className='sideComponentTitle'
-          style={{ display: 'flex', justifyContent: 'center' }}
+          className='sideComponentTitle2'
+          style={{ display: 'flex', justifyContent: 'center'}}
           variant='dark'
         >
           Suggested Books
         </Button>
       </Title>
       <Content>
-        <SuggestedCarousel/>
+        <SuggestedCarousel suggestedBooks={suggestedBooks}/>
       </Content>
     </Wrapper>
   );
