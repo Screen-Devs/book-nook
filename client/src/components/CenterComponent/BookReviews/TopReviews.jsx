@@ -22,7 +22,7 @@ const Container = styled.div`
 `
 
 //BOOK TITLE
-const TopReviews = ({ setAllReviews, allReviews, username, bookId, goToReviews }) => {
+const TopReviews = ({ bookMeta, username, bookId, goToReviews }) => {
   const ratings = allReviews.map((each) => each.rating);
 
   const average = ratings.reduce((a, b) => a + b, 0) / ratings.length;
@@ -54,7 +54,7 @@ const TopReviews = ({ setAllReviews, allReviews, username, bookId, goToReviews }
           </div>
         </LeftSide>
         <RightSide>
-          <DropdownReviews bookId={bookId} goToReviews={goToReviews} set={setAllReviews} username={username} style={{ overflow: 'auto' }} />
+          <DropdownReviews bookId={bookId} goToReviews={goToReviews} username={username} style={{ overflow: 'auto' }} />
         </RightSide>
       </Container>
 

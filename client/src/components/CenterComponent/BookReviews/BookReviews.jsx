@@ -9,7 +9,7 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
   console.log('current user logged in ', username);
   console.log('Search result ', searchToResult);
   console.log('Book Meta Data being passed in ', bookMeta);
-  const [allReviews, setAllReviews] = useState([]);
+  // const [allReviews, setAllReviews] = useState([]);
 
   return (
     <div>
@@ -20,15 +20,15 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
         className='bookDetailsCenterComponent'
       >
           <TopReviews
-            setAllReviews={setAllReviews}
-            allReviews={allReviews}
+            // setAllReviews={setAllReviews}
+            allReviews={bookMeta}
             username={username}
             goToReviews={goToReviews}
             bookId={searchToResult.id}
             style={{ height: '220px', width: '100%', marginLeft: 5 }}
           />
         <div className='reviewsScrollBar' style={{ width: '95%', margin: '5px 5px 15px 5px', height: '93%', borderRadius: '20px', overflow: 'auto', alignSelf: 'center', paddingTop: '10px', paddingBottom: '10px',}}>
-          <Comments allReviews={allReviews} />
+          <Comments allReviews={bookMeta} />
         </div>
       </div>
     </div>

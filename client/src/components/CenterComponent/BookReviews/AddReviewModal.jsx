@@ -28,10 +28,9 @@ const cardStyle = {
   padding: 32
 }
 
-const AddReviewModal = ({set, username, bookId, goToReviews}) => {
+const AddReviewModal = ({ username, bookId, goToReviews }) => {
   const [show, setShow] = useState(false);
 
-  // TODO add current Username
   const [review, setReview] = useState({
     rating: 0,
     // title: '',
@@ -46,10 +45,8 @@ const AddReviewModal = ({set, username, bookId, goToReviews}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // set(prev => [...prev, review]) // handles array of reviews -> submit review to database, once resolve, get new list of reviews
     addBookReview(bookId, review)
       .then(() => {
-        console.log('testreview', review);
         goToReviews(bookId);
         setReview({ rating: 0, username, review: '' })
         handleModal()
