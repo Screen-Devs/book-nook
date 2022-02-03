@@ -14,6 +14,10 @@ const UsernamdAndTitle = styled.div`
   padding: 5px 15px 0px;
 `
 
+const Helpful = styled.div`
+  padding: 5px 15px 0px;
+`
+
 const Username = styled.div`
   font-size: 13px;
 `
@@ -57,9 +61,9 @@ const Reviews = ({ allReviews, username, goToReviews, bookId }) => {
                     <div className="aReview hideScroll">
                       {review.review_body}
                     </div>
-                    <div>
+                    <Helpful>
                       Helpful ({review.helpful_review})
-                    </div>
+                    </Helpful>
                 <CommentAccordian comments={review.comments} />
             </Card>
           </Grid>
