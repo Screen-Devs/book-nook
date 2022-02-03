@@ -20,16 +20,14 @@ const getAllBookData = async (book_id) => {
 }
 
 const findBookMeta = async (book_id) => {
-  const metadata = await BookData.find({
+  let metaData = await BookData.find({
     lookup_id: book_id
   });
-  if (!metadata) {
-    BookData.create({lookup_id: book_id})
-    .then((metaData) => {
-      return metaData;
-    });
+  if (metaData.length === 0) {
+    metaData = await BookData.create({lookup_id: book_id});
+    return metaData;
   } else {
-    return metadata;
+    return metaData;
   };
 }
 
