@@ -36,7 +36,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // LOOK HERE
   const [appLayout, setAppLayout] = useState(profileLayout);
   const [currentUserView, setCurrentUserView] = useState(null);
-<<<<<<< HEAD
   const [queue, setQueue] = useState([])
   const [current, setCurrent] = useState([])
   const [completed, setCompleted] = useState([])
@@ -44,15 +43,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [searchedBooks, setSearchedBooks] = useState([])
   const [searchToResult, setSearchToResult] = useState({})
   const [bookMeta, setBookMeta] = useState([])
-=======
-  const [queue, setQueue] = useState([]);
-  const [current, setCurrent] = useState([]);
-  const [completed, setCompleted] = useState([]);
-  const [bookClub, setBookClub] = useState([]);
-  const [searchedBooks, setSearchedBooks] = useState([]);
-  const [searchToResult, setSearchToResult] = useState({});
   const [currentFriends, setUserFriends] = useState([]);
->>>>>>> 3b7f6f8ddf79871aec719cb2a712c9a6f43bc9e9
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
