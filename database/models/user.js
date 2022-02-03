@@ -1,4 +1,5 @@
 const { User } = require('../');
+const axios = require('axios');
 
 const insertUser = async (username) => {
   try {
@@ -71,9 +72,47 @@ const buildSuggestedBookList =  async ( username ) => {
     return new Error('Please be sure to specify a username string parameter');
   }
 
-  try {
+  //randomly pick 2 books from the list
+    //make a google api request to search for authors for each
+      //randomly pick 3 books from this result
+      //build book objects for each
+      //push book objects to suggestedBooks
+  //return suggestedBooks
 
-    return username;
+  try {
+    const userDocument = await User.find({username}); //Get specified user's data
+    if (userDocument.length === 0) {
+      return new Error('Could not find the specified user.');
+    }
+    //Filter user book list by active, remove duplicates
+    const activeBookAuthors = userDocument[0].userBooks.filter(book => {
+      let activeBook = false;
+      if (
+        book.clubbed.status === true ||
+        book.current.status === true ||
+        book.past.status === true
+      ) {
+        activeBook = true;
+      }
+      return activeBook;
+    })
+    .map(book => {
+      return book.authors[0];
+    });
+    const authorsNoDupes = [...new Set(activeBookAuthors)];
+
+    //If active book list is empty, return NYT best seller books
+    if (authorsNoDupes.length === 0) {
+      //return some NYT best seller books
+    }
+
+    //Otherwise, compile related books from Google API using a random author
+    const randomIndex = Math.floor(Math.random() * authorsNoDupes.length);
+    const authorToSearch = authorsNoDupes[randomIndex].replace(' ', '+');
+    console.log(authorToSearch);
+
+    const suggestedBooks = [];
+    return authorsNoDupes;
   } catch (error) {
     return (error);
   }
