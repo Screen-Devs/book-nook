@@ -31,9 +31,9 @@ const CommentsWithinReview = ({comments}) => {
 
   return (
     <>
-    {(commentsInReview.length) && (
+    {(comments.length) && (
       <div style={{display: 'flex', gap: 10, flexDirection: 'column'}}>
-      {commentsInReview.map((info, index) => {
+      {comments.map((info, index) => {
         return (
           <Grid item xs={12}>
             <Card elevation={6}>

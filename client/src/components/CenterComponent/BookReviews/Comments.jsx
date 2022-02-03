@@ -37,6 +37,7 @@ const Grid = styled.div`
 const Comments = ({ allReviews }) => {
   const [commentsInReview, setCommentsInReview] = useState([]);
 
+  console.log(commentsInReview)
   return (
     <CommentWrapper>
       {allReviews.map((comment, index) => {
@@ -48,7 +49,7 @@ const Comments = ({ allReviews }) => {
                       <Username>Username</Username>
                       <Title>{comment.title}</Title>
                     </UsernamdAndTitle>
-                    <DropdownComments />
+                    <DropdownComments set={setCommentsInReview}/>
                     </TopWrapper>
                     <TextBody>
                       {comment.review}
