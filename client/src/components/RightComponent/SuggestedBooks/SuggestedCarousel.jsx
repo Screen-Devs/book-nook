@@ -1,9 +1,7 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel'
-import { NYT } from '../NYTdummyData';
 
-
-const SuggestedCarousel = () => {
+const SuggestedCarousel = ({suggestedBooks}) => {
   return (
     <div>
       <Carousel
@@ -15,11 +13,11 @@ const SuggestedCarousel = () => {
         tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
         transitionMs={700}
       >
-        {NYT[0].books.map((book) => {
+        {suggestedBooks.map((book, i) => {
           return (
-            <div key={book.rank ** book.rank}>
-              <a href={book.amazon_product_url} key={book.rank * book.rank} target='_blank'>
-                <img src={book.book_image} className='NYTbookImage' key={book.rank} />
+            <div key={i}>
+              <a href='' key={i} target='_blank'>
+                <img src={book.imageUrl} className='NYTbookImage' key={i} />
               </a>
             </div>
           );

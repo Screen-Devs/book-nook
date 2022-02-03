@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
 import SuggestedCarousel from './SuggestedCarousel.jsx';
@@ -21,6 +21,22 @@ const Content = styled.div`
 `;
 
 const SuggstedBooks = ({currentUserData}) => {
+  const [suggestedBooks, setSuggestedBooks] = useState([]);
+
+  const fetchSuggestedBooks = (username) => {
+    getSuggestedBooks(username)
+      .then((suggestedBookData) => {
+        setSuggestedBooks(suggestedBookData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchSuggestedBooks(currentUserData);
+  }, []);
+
   return (
     <Wrapper>
       <Title>
@@ -33,7 +49,7 @@ const SuggstedBooks = ({currentUserData}) => {
         </Button>
       </Title>
       <Content>
-        <SuggestedCarousel/>
+        <SuggestedCarousel suggestedBooks={suggestedBooks}/>
       </Content>
     </Wrapper>
   );
