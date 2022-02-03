@@ -24,8 +24,8 @@ const SuggstedBooks = () => {
     <Wrapper>
       <Title>
         <Button
-          className='sideComponentTitle'
-          style={{ display: 'flex', justifyContent: 'center' }}
+          className='sideComponentTitle2'
+          style={{ display: 'flex', justifyContent: 'center'}}
           variant='dark'
         >
           Suggested Books
