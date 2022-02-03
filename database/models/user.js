@@ -151,8 +151,9 @@ const buildSuggestedBookList =  async ( username ) => {
         results[randomRes2Index2],
       ].map(bookResult => {
         return {
+          gBookId: null,
           title: bookResult.title,
-          author: bookResult.author,
+          authors: [bookResult.author],
           isbn10: bookResult.primary_isbn10,
           isbn13: bookResult.primary_isbn13,
           description: bookResult.description,
@@ -163,13 +164,69 @@ const buildSuggestedBookList =  async ( username ) => {
       return suggestedBooks;
     }
 
-    //Otherwise, compile related books from Google API using a random author
+    //Compile related books from Google API using two random active book authors
     const randomIndex = Math.floor(Math.random() * authorsNoDupes.length);
     const authorToSearch = authorsNoDupes[randomIndex].replace(' ', '+');
-    console.log(authorToSearch);
+    let secondSearch = false;
+    let modifier = 1;
+    let authorToSearch2 = '';
+    console.log(authorsNoDupes, randomIndex);
+    if (authorsNoDupes.length > 1) {
+      if (randomIndex === authorsNoDupes.length - 1) { modifier = -1};
+      authorToSearch2 = authorsNoDupes[randomIndex + modifier].replace(' ', '+');
+      secondSearch = true;
+    }
 
-    const suggestedBooks = [];
-    return suggestedBooks;
+    const searchGoogle = (query, count=10, page=1) => {
+      return new Promise((resolve, reject) => {
+        axios.get(`http://localhost:3010/search?q=${query}&count=${count}&page=${page}`)
+        .then(response => resolve(response.data))
+        .catch(err => reject(err));
+      });
+    };
+
+    const results = await searchGoogle(`+inauthor:${authorToSearch}`);
+    const filteredResults = results.filter((bookResult, i) => {
+        return i < 3;
+      }).map(bookResult => {
+        return {
+          gBookId: bookResult.id,
+          title: bookResult.volumeInfo.title,
+          authors: bookResult.volumeInfo.authors,
+          isbn10: bookResult.volumeInfo.industryIdentifiers.primary_isbn10,
+          isbn13: bookResult.volumeInfo.industryIdentifiers.primary_isbn13,
+          description: bookResult.volumeInfo.description,
+          imageUrl: bookResult.volumeInfo.imageLinks.smallThumbnail,
+        };
+      });
+    const results2 = await searchGoogle(`+inauthor:${authorToSearch2}`);
+    const filteredResults2 = results2.filter((bookResult, i) => {
+        return i < 3;
+      }).map(bookResult => {
+        return {
+          gBookId: bookResult.id,
+          title: bookResult.volumeInfo.title,
+          authors: bookResult.volumeInfo.authors,
+          isbn10: bookResult.volumeInfo.industryIdentifiers.primary_isbn10,
+          isbn13: bookResult.volumeInfo.industryIdentifiers.primary_isbn13,
+          description: bookResult.volumeInfo.description,
+          imageUrl: bookResult.volumeInfo.imageLinks.smallThumbnail,
+        };
+      });
+
+    const sorter = (a, b) => {
+      const resultA = a.title.toUpperCase();
+      const resultBb = b.title.toUpperCase();
+      let comparison = 0;
+      if (resultA > resultBb) {
+        comparison = 1;
+      } else if (resultA < resultBb) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+      return [...filteredResults, ...filteredResults2].sort(sorter);
   } catch (error) {
     return (error);
   }
