@@ -27,8 +27,6 @@ const Leaderboard = ({currentUserData}) => {
   const fetchLeaderboards = (username) => {
     getLeaderboardData(username)
       .then((leaderboardData) => {
-        console.log('LEADERBOARD FETCH RESULTS:')
-        console.log(leaderboardData);
         setLeaderboardData(leaderboardData);
       })
       .catch((err) => {
