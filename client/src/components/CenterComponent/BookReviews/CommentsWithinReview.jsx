@@ -3,37 +3,11 @@ import React from 'react';
 
 const CommentsWithinReview = ({comments}) => {
 
-  let commentsInReview = [
-    {username: 'Username 1',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ]
-
   return (
     <>
-    {(comments.length) && (
+    {(comments.length > 0) ? (
       <div style={{display: 'flex', gap: '1em', flexDirection: 'column'}}>
-      {comments.map((info, index) => {
+      {comments.map((comment, index) => {
         return (
           <Grid item xs={12} style={{gap: '1em', borderRadius: '20px', padding: '3px',}}>
             <Card elevation={6}>
@@ -42,8 +16,9 @@ const CommentsWithinReview = ({comments}) => {
                   <div>
                   <div  style={{ padding: 5, borderRadius: '20px',}}>
                     <p style={{ marginBottom: 0, padding: 1.5, fontSize: 13, boxShadow: '0 4px 2px -2px gray', backgroundColor: '#212529', color: 'white', borderRadius:'20px', paddingLeft: '3px',}}>
-                      <b><u>From:</u> {info.username}</b>
+                      <b><u>From:</u> {comment.commenter}</b>
                     </p>
+                    <div>Written at: {comment.comment_time}</div>
                     <div>
                     <p
                       className="hideScroll"
@@ -55,8 +30,11 @@ const CommentsWithinReview = ({comments}) => {
                         maxHeight: '150px',
                       }}
                     >
-                      {info.comment}
+                      {comment.comment_body}
                     </p>
+                    <div>
+                      Helpful ({comment.helpful_comment})
+                    </div>
                     </div>
                   </div>
                   </div>
@@ -67,7 +45,8 @@ const CommentsWithinReview = ({comments}) => {
         );
       })}
       </div>
-      )}
+      ) :
+        <div>There are no comments on this review</div>}
     </>
   );
 };
