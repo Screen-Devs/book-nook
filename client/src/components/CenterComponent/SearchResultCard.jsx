@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Divider } from '@material-ui/core';
+import styled from "styled-components";
 // import 'animate.css';
 // import CommentModule from '../CommentModule.jsx';
 
@@ -15,6 +16,12 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
   const info = book.volumeInfo
 
   let image = info.imageLinks
+
+  const Image = styled.img`
+    max-height: 192px;
+    max-width: 128px;
+    border-radius: 20px;
+  `
 
   const setToReviews = () => {
     hdleSearchToResults()
@@ -30,7 +37,9 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
         {/* <div style={{display:'flex', flexDirection:'row',}}> */}
         <div className="bookSearchImage" style={{backgroundColor:'#212529', borderRadius:"0px 0px 0px 20px", padding:'0px 5px 0px 5px' }}>
           <div className="bookSearchCover" onClick={setToReviews}>
-          <img src={(image) ? image.thumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'} style={{borderRadius:'20px',}}/>
+            {(image) ?
+          <img src={image.thumbnail} style={{borderRadius:'20px'}}/> : <Image src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'/>
+          }
           </div>
         </div>
           <div className="bookSearchOverview" style={{padding:'10px', borderRadius:'20px 20px 0px 0px', backgroundColor:'white',}}>
