@@ -20,14 +20,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const searchLayout = {
     left: 'userLists',
     center: 'search',
-    right: 'siteData',
+    right: '', // no right component will render on search
     payload: '',
   };
 
   const bookLayout = {
-    left: 'bookDetails',
+    // left: 'bookDetails', // Demo -> keep as userLists to move fromt books
+    left: 'userLists',
     center: 'reviews',
-    right: 'addToLists',
+    // right: 'addToLists',  // Demo -> keep as siteData
+    right: 'siteData',
     payload: '',
   };
 
@@ -163,6 +165,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList);
   };
 
+
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
@@ -236,17 +239,15 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setSearchToResult(book)
   }
 
-  // double check to see each component needs the setAppLayout method
-
   const goToReviews = (gBookId) => {
-    // get metaData if it exists, and set it to payload
     getBookMeta(gBookId)
       .then((response) => {
         console.log('server response ', response);
         setAppLayout({
           ...bookLayout,
-          payload: response.data,
+          payload: appLayout.payload, // keep userData as payload
         })
+        // use hooks to create a state for book reviews & comments, then pass to book details component.
       })
     // TODO: check why book meta data is not coming back
     console.log('get book meta')
