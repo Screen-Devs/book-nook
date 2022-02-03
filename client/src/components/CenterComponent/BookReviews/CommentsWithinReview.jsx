@@ -3,32 +3,6 @@ import React from 'react';
 
 const CommentsWithinReview = ({comments}) => {
 
-  let commentsInReview = [
-    {username: 'Username 1',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ,
-  {
-    username: 'Username 2',
-    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
-  }
-  ]
-
   return (
     <>
     {(comments.length > 0) ? (
