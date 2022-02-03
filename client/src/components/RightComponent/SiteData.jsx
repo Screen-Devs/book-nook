@@ -17,7 +17,12 @@ import FriendsList from './FriendsList/FriendsList.jsx';
 import { getNYTimesCategory } from '../../requests/index.js';
 import Leaderboard from './Leaderboard/Leaderboard.jsx';
 
-export default function SiteData({ handleGetFriendData, userData, currentUserData, currentUserView }) {
+export default function SiteData({
+  handleGetFriendData,
+  userData,
+  currentUserData,
+  currentUserView,
+}) {
   let [booksInCategory, setBooksInCategory] = useState([]);
 
   const fetchData = () => {
@@ -34,22 +39,18 @@ export default function SiteData({ handleGetFriendData, userData, currentUserDat
 
   return (
     <div className='rightComponent animate__animated animate__fadeInDown'>
-      {/* <div className="friendsListContainer animate__animated animate__fadeInRight"> */}
-      <FriendsList
-      currentUserData={currentUserData}
-      handleGetFriendData={handleGetFriendData}
-      currentUserView={currentUserView}
-      userData={userData} />
-      {/* </div> */}
-
-      {/* <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
-        <h4>Friend Leader Board</h4>
-        <LeaderBoard/>
+      <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
+        <FriendsList
+          currentUserData={currentUserData}
+          handleGetFriendData={handleGetFriendData}
+          currentUserView={currentUserView}
+          userData={userData}
+        />
       </div>
-      <div className="placeHolderContainerRight animate__animated animate__fadeInRight">
-      <h4>Book Nook Leader Board</h4>
-        <BNleaderBoard/>
-      </div> */}
+
+      <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
+        <h4>Suggested Books</h4>
+      </div>
 
       <HighestRatedBooks />
 
@@ -76,7 +77,7 @@ export default function SiteData({ handleGetFriendData, userData, currentUserDat
         </Carousel>
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard/>
+        <Leaderboard />
       </div>
     </div>
   );
