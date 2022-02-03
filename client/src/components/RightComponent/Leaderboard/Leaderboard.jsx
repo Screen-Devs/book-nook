@@ -48,8 +48,8 @@ const Leaderboard = ({currentUserData}) => {
     <Container style={containerStyle}>
       <Content>
         <Tabs value={value} onChange={handleChange} style={{width: '100%'}} center>
-          <Tab label='Most Completed' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
-          <Tab label='Most Clubbed' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
+          <Tab label='Top Readers' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
+          <Tab label='Most Clubs' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
         </Tabs>
         <TabPanel value={value} index={0}>
           <MostCompleted leaderboardData={leaderboardData}/>

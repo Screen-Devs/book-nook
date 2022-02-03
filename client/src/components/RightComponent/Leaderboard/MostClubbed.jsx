@@ -38,7 +38,7 @@ const MostClubbed = ({leaderboardData}) => {
               Rank
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
-              Username
+              Friend
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px' }}>
               Clubs
