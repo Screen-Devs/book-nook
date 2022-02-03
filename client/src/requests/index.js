@@ -104,7 +104,7 @@ const addBookReview = (book_id, review) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // add a comment to a given review on a given book's metadata
@@ -119,7 +119,7 @@ const addReviewComment = (book_id, review_id, comment) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // mark a review helpful or report it
@@ -133,7 +133,7 @@ const markReview = (book_id, review_id, mark_type) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 // mark a review's comment as helpful or report it
@@ -147,7 +147,7 @@ const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
-  })
+  });
 }
 
 
