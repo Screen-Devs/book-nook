@@ -4,18 +4,17 @@ import 'animate.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-export default function CommentModule({ username = 'Find a friend!', body, time }) {
+export default function CommentModule({ comment }) {
   return (
     <div className = "commentModule" >
       <Card className="text-center commentModuleBody">
-        <Card.Header><b>{username}</b></Card.Header>
+        <Card.Header>{comment.commenter}</Card.Header>
         <Card.Body>
           <Card.Text>
-            {body}
+            {comment.message}
           </Card.Text>
-          <Button variant="dark">Button</Button>
         </Card.Body>
-        <Card.Footer className="text-muted"><i>2 days ago</i></Card.Footer>
+        <Card.Footer className="text-muted"><i>{comment.date}</i></Card.Footer>
       </Card>
     </div >
   );

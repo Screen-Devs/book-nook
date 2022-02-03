@@ -1,10 +1,35 @@
-const { findUser, addOrUpdateUserBooks, addOrRemoveFriend, insertCanvasMessage } = require('../../database/models/user.js')
-
+const { findUser,
+  getLeaderboardData,
+  buildSuggestedBookList,
+  addOrUpdateUserBooks,
+  addOrRemoveFriend,
+  insertCanvasMessage
+} = require('../../database/models/user.js')
 
 const getUserInfo = async (req, res) => {
   const { username } = req.query;
   const result = await findUser(username)
   res.status(200).json(result);
+}
+
+const getLeaderboards = async (req, res) => {
+  const { username } = req.query;
+  const result = await getLeaderboardData(username)
+  if (result instanceof Error) {
+    res.status(400).json(result.message);
+  } else {
+    res.status(200).json(result);
+  }
+}
+
+const getSuggestedBooks = async (req, res) => {
+  const { username } = req.query;
+  const result = await buildSuggestedBookList(username)
+  if (result instanceof Error) {
+    res.status(400).json(result.message);
+  } else {
+    res.status(200).json(result);
+  }
 }
 
 const putUserBook = async (req, res) => {
@@ -27,6 +52,8 @@ const addMessage = async (req, res) => {
 
 module.exports = {
   getUserInfo,
+  getLeaderboards,
+  getSuggestedBooks,
   putUserBook,
   putFriend,
   addMessage

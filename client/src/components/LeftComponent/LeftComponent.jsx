@@ -21,6 +21,7 @@ export default function LeftComponent({
   goToReviews,
   set,
   currentView,
+  handleSingleBookSearch,
 }) {
 
   let component;
@@ -40,37 +41,39 @@ export default function LeftComponent({
           completed={completed}
           bookClub={bookClub}
           goToReviews={goToReviews}
-          set={set}
           currentView={currentView}
-        />
-      </div>
-    )
-  } else if (currentLayout === 'bookDetails') {
-    component = (
-      <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
-        <BookDetailsLeftComponent
-          removeFromQueue={removeFromQueue}
-          removeFromCurrent={removeFromCurrent}
-          removeFromCompleted={removeFromCompleted}
-          removeFromBookClub={removeFromBookClub}
-          queueToCurrent={queueToCurrent}
-          currentToCompleted={currentToCompleted}
-          completedToBookClub={completedToBookClub}
-          queue={queue}
-          current={current}
-          completed={completed}
-          bookClub={bookClub}
-          goToReviews={goToReviews}
-          set={set}
+          handleSingleBookSearch={handleSingleBookSearch}
         />
       </div>
     )
   }
+  // TODO: remove if left component will always be user lists
+  // else if (currentLayout === 'bookDetails') {
+  //   component = (
+  //     <div className='leftComponentBookDetails animate__animated animate__fadeInDown'>
+  //       <BookDetailsLeftComponent
+  //         removeFromQueue={removeFromQueue}
+  //         removeFromCurrent={removeFromCurrent}
+  //         removeFromCompleted={removeFromCompleted}
+  //         removeFromBookClub={removeFromBookClub}
+  //         queueToCurrent={queueToCurrent}
+  //         currentToCompleted={currentToCompleted}
+  //         completedToBookClub={completedToBookClub}
+  //         queue={queue}
+  //         current={current}
+  //         completed={completed}
+  //         bookClub={bookClub}
+  //         goToReviews={goToReviews}
+  //         set={set}
+  //       />
+  //     </div>
+  //   )
+  // }
 
   return (
     // <div className='leftComponent animate__animated animate__fadeInDown'>
-      <>
-    {component}
+    <>
+      {component}
     </>
   );
 }

@@ -48,14 +48,21 @@ const dividerStyle = {
   width: 300,
 }
 
-const BookClub = ({ bookClub, removeFromBookClub, currentView }) => {
+const BookClub = ({ bookClub, removeFromBookClub, currentView, goToReviews, handleSingleBookSearch }) => {
+
+  const handleClick = (gBookId, title) => {
+    //FIXME: If book does not have a gBookId, this will break
+    if (!gBookId) return;
+    handleSingleBookSearch(gBookId, title);
+    goToReviews(gBookId);
+  }
 
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
         <div style={{ fontWeight: 800 }}>Book Club</div>
       </div>
-      <Box style={boxStyle}>
+      <Box style={boxStyle} className="hideScroll">
         {bookClub.length === 0 ? null : (
           <div>
             {bookClub.map((datum, index) => {
@@ -65,14 +72,14 @@ const BookClub = ({ bookClub, removeFromBookClub, currentView }) => {
                     action={currentView === 'self' && <BookClubDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromBookClub}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1'>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)} className="link" >
                           {datum.title}
                         </Typography>
                       </ThemeProvider>
                     }
                     subheader={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle2'>
+                        <Typography className="hideScroll" gutterBottom variant='subtitle2'>
                           {datum.authors.map((author, idx) => {
                             if (idx !== datum.authors.length - 1) {
                               return author + ', '

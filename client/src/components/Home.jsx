@@ -6,7 +6,7 @@ import LeftComponent from './LeftComponent/LeftComponent.jsx';
 import RightComponent from './RightComponent/RightComponent.jsx';
 import Footer from './Footer.jsx';
 import CenterComponent from './CenterComponent/CenterComponent.jsx';
-import { getUser, searchGoogle, putUserBook } from '../requests';
+import { getUser, searchGoogle, putUserBook, getBookMeta } from '../requests';
 
 export default function Home({ authStatus, authenticate, currentUser }) {
   const profileLayout = {
@@ -20,14 +20,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const searchLayout = {
     left: 'userLists',
     center: 'search',
-    right: 'siteData',
+    right: '', // no right component will render on search
     payload: '',
   };
 
   const bookLayout = {
-    left: 'bookDetails',
+    // left: 'bookDetails', // Demo -> keep as userLists to move fromt books
+    left: 'userLists',
     center: 'reviews',
-    right: 'addToLists',
+    // right: 'addToLists',  // Demo -> keep as siteData
+    right: 'siteData',
     payload: '',
   };
 
@@ -40,10 +42,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   const [bookClub, setBookClub] = useState([])
   const [searchedBooks, setSearchedBooks] = useState([])
   const [searchToResult, setSearchToResult] = useState({})
-
-  const handleSearchToResults = (book) => {
-    setSearchToResult(book)
-  }
 
   const removeFromQueue = (id, data) => {
     const updateParameters = {
@@ -167,6 +165,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setBookClub(newList);
   };
 
+
   // This lifecycle method will handle only the initial render of the home profile page once authenticated.
   useEffect(() => {
     if (!currentUser) return;
@@ -211,22 +210,48 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     }))
   }
 
+  // This function will handle searching for a list of books to render on the search list
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40
-  searchGoogle(query)
-  .then((res) => {
-    setSearchedBooks(res);
-    setAppLayout({
-      ...searchLayout,
-      payload: appLayout.payload,
-    });
-  })
-  .catch(err => console.err)
+    searchGoogle(query)
+      .then((res) => {
+        setSearchedBooks(res);
+        setAppLayout({
+          ...searchLayout,
+          payload: appLayout.payload,
+        });
+      })
+      .catch(err => console.err)
   };
 
-  // temp button
-  const goToReviews = () => {
-    setAppLayout(bookLayout)
+  // This function will handle searching for a specific book to get book details to render
+  // on the book layout
+  const handleSingleBookSearch = (gBookId, title) => {
+    const query = `${gBookId}+intitle:${title}`
+    searchGoogle(query)
+      .then((res) => {
+        handleSearchToResults(res[0]);
+      })
+
+  }
+
+  const handleSearchToResults = (book) => {
+    setSearchToResult(book)
+  }
+
+  const goToReviews = (gBookId) => {
+    getBookMeta(gBookId)
+      .then((response) => {
+        console.log('server response ', response);
+        setAppLayout({
+          ...bookLayout,
+          payload: appLayout.payload, // keep userData as payload
+        })
+        // use hooks to create a state for book reviews & comments, then pass to book details component.
+      })
+    // TODO: check why book meta data is not coming back
+    console.log('get book meta')
+      // error handle? Does this catch if book does not exist in database
   }
 
   let navigate;
@@ -256,16 +281,14 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               completed={completed}
               bookClub={bookClub}
               goToReviews={goToReviews}
-              set={setAppLayout}
               currentUserData={currentUser}
+              handleSingleBookSearch={handleSingleBookSearch}
             />
             <CenterComponent
               currentLayout={appLayout.center}
-              // Profile Component
               currentUserView={currentUserView}
               currentView={appLayout.view}
               userData={appLayout.payload}
-              // Search Component
               searchedBooks={searchedBooks}
               currentUserData={currentUser}
               goToReviews={goToReviews}
@@ -282,7 +305,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
             />
           </div>
           <Footer />
-          <button onClick={goToReviews}>to reviews</button>
         </div>
       )}
     </div>

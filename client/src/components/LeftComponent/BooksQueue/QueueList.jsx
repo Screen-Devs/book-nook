@@ -50,7 +50,15 @@ const dividerStyle = {
   width: 300,
 }
 
-const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView }) => {
+const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView, goToReviews, handleSingleBookSearch }) => {
+
+  const handleClick = (gBookId, title) => {
+    //FIXME: If book does not have a gBookId, this will break
+    if (!gBookId) return;
+    handleSingleBookSearch(gBookId, title);
+    goToReviews(gBookId);
+  }
+
   return (
     <Paper style={paperStyle} elevation={6}>
       <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '205px', paddingTop: '8px',}}>
@@ -69,7 +77,7 @@ const QueueList = ({ queue, removeFromQueue, queueToCurrent, currentView }) => {
                     action={currentView === 'self' && <QueueDropdown gBookId={datum.gBookId} bookData={datum} remove={removeFromQueue} move={queueToCurrent}/>}
                     title={
                       <ThemeProvider theme={theme}>
-                        <Typography gutterBottom variant='subtitle1'>
+                        <Typography gutterBottom variant='subtitle1' onClick={e => handleClick(datum.gBookId, datum.title)} className="link">
                           {datum.title}
                         </Typography>
                       </ThemeProvider>

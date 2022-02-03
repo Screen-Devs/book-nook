@@ -6,86 +6,38 @@ mongoose.connect('mongodb://ec2-54-152-31-241.compute-1.amazonaws.com:27017/Book
 
 // Schemas
 const authenticateSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true
-  },
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
 });
 
 const userBookSchema = new mongoose.Schema({
-  gBookId: {
-    type: String,
-    unique: false
-  }, //googleapi book ID
-  title: {
-    type: String,
-    unique: false
-  },
-  authors: {
-    type: Array,
-    unique: false
-  },
+  gBookId: { type: String, unique: false }, //googleapi book ID
+  title: { type: String, unique: false},
+  authors: { type: Array, unique: false },
   clubbed: {
-    status: {
-      type: Boolean,
-      default: false
-    },
-    date: {
-      type: String,
-      default: null
-    },
+    status: { type: Boolean, default: false },
+    date: { type: String, default: null },
   },
   current: {
-    status: {
-      type: Boolean,
-      default: false
-    },
-    date: {
-      type: String,
-      default: null
-    },
+    status: { type: Boolean, default: false },
+    date: { type: String, default: null },
   },
   past: {
-    status: {
-      type: Boolean,
-      default: false
-    },
-    date: {
-      type: String,
-      default: null
-    },
+    status: { type: Boolean, default: false },
+    date: { type: String, default: null },
   },
   queued: {
-    status: {
-      type: Boolean,
-      default: false
-    },
-    date: {
-      type: String,
-      default: null
-    },
+    status: { type: Boolean, default: false },
+    date: { type: String, default: null },
   },
 });
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
+  username: { type: String, required: true, unique: true },
   userBooks: [userBookSchema],
   friends: Array,
   canvas: Array,
-  settings: {
-    theme: {
-      type: String
-    },
-  },
+  settings: { theme: { type: String } },
 }, {
   timestamps: true
 });
