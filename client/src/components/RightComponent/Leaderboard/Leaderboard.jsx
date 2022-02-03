@@ -25,7 +25,7 @@ const Leaderboard = ({currentUserData}) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   const fetchLeaderboards = (username) => {
-    //if (username) {
+    if (typeof username === 'string') {
       getLeaderboardData(username)
        .then((leaderboardData) => {
          setLeaderboardData(leaderboardData);
@@ -33,7 +33,7 @@ const Leaderboard = ({currentUserData}) => {
        .catch((err) => {
          console.log(err);
        });
-   // }
+   }
   };
 
   const handleChange = (e, newValue) => {
