@@ -4,45 +4,52 @@ import React from 'react';
 const CommentsWithinReview = ({comments}) => {
 
   let commentsInReview = [
-    {username: 'bob',
-    comment: 'this sucks'
+    {username: 'Username 1',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
   }
   ,
   {
-    username: 'man',
-    comment: 'this sucks'
+    username: 'Username 2',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
+  }
+  ,
+  {
+    username: 'Username 2',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
+  }
+  ,
+  {
+    username: 'Username 2',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
+  }
+  ,
+  {
+    username: 'Username 2',
+    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut placerat orci nulla pellentesque. Ut porttitor leo a diam sollicitudin tempor id eu nisl. Arcu vitae elementum curabitur vitae. Felis imperdiet proin fermentum leo vel orci porta non pulvinar.'
   }
   ]
 
-
   return (
     <>
-    {(comments.length === 0) ? null : (
-      <div>
-      {comments.map((info, index) => {
+    {(commentsInReview.length) && (
+      <div style={{display: 'flex', gap: 10, flexDirection: 'column'}}>
+      {commentsInReview.map((info, index) => {
         return (
           <Grid item xs={12}>
             <Card elevation={6}>
-              <Card
-                direction='column'
-                justifyContent='flex-start'
-                alignItems='flex-start'
-                spacing={0}
-                divider={<Divider orientation='vertical' flexItem />}
-              >
-                <div style={{ display: 'flex' }}>
-                  <div style={{ flex: 8, border: '1px red solid'}}>
-                  <div style={{ paddingLeft: 10 }}>
-                    <p style={{ marginBottom: 0, paddingTop: 4, paddingLeft: 1.5, fontSize: 13 }}>
+              <Card>
+                <div style={{ display: 'flex'}}>
+                  <div>
+                  <div style={{ padding: 5}}>
+                    <p style={{ marginBottom: 0, padding: 1.5, fontSize: 13 }}>
                       {info.username}
                     </p>
                     <div>
                     <p
                       style={{
-                        paddingLeft: 14,
-                        paddingTop: 5,
+                        padding: 1,
+                        margin: 1,
                         fontSize: 15,
-                        backgroundColor: 'green',
                         overflow: 'auto',
                         maxHeight: '200px',
                       }}

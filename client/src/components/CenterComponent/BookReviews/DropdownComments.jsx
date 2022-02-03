@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton, Button } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
-import CommentsModal from './CommentsModal.jsx';
 import AddCommentModal from './AddCommentModal.jsx';
 
-const DropdownComments = () => {
+const DropdownComments = ({set}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-    // all comments for a given review
-  const [commentsInReview, setCommentsInReview] = useState([])
-
-
-  console.log('cir', commentsInReview)
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,10 +42,7 @@ const DropdownComments = () => {
           <Button>Report</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <CommentsModal commentsInReview={commentsInReview}/>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <AddCommentModal set={setCommentsInReview}/>
+          <AddCommentModal set={set}/>
         </MenuItem>
       </Menu>
     </div>

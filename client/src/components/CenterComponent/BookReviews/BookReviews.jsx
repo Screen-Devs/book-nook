@@ -37,7 +37,7 @@ export default function BookReviews({ searchToResult, bookMeta }) {
         </div>
         <div
           className='divider'
-          style={{ backgroundColor: 'blue', height: '601px', overflow: 'auto' }}
+          style={{ backgroundColor: 'blue', height: '601px', overflow: 'auto'}}
         >
           <Comments allReviews={allReviews} />
         </div>
