@@ -22,7 +22,7 @@ const Container = styled.div`
 `
 
 //BOOK TITLE
-const TopReviews = ({ bookMeta, username, bookId, goToReviews }) => {
+const TopReviews = ({ allReviews, username, bookId, goToReviews }) => {
   const ratings = allReviews.map((each) => each.rating);
 
   const average = ratings.reduce((a, b) => a + b, 0) / ratings.length;
