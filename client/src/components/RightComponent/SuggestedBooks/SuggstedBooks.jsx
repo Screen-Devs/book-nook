@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
 import SuggestedCarousel from './SuggestedCarousel.jsx';
+import { getSuggestedBooks } from '../../../requests/index.js';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const SuggstedBooks = () => {
+const SuggstedBooks = ({currentUserData}) => {
   return (
     <Wrapper>
       <Title>
