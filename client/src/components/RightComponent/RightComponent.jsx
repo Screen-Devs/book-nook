@@ -23,7 +23,7 @@ export default function RightComponent({
     currentUserView={currentUserView}
     handleGetFriendData={handleGetFriendData}/>
   }
-  console.log('payload being passed in ', userData);
+
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
       {userData && (component)}

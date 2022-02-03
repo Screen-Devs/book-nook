@@ -37,7 +37,7 @@ const Grid = styled.div`
 const Comments = ({ allReviews }) => {
   const [commentsInReview, setCommentsInReview] = useState([]);
 
-  console.log(commentsInReview)
+  console.log('comments in reviews ', commentsInReview)
   return (
     <CommentWrapper className="hideScroll">
       {allReviews.map((comment, index) => {
