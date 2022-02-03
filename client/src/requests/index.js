@@ -60,6 +60,14 @@ const getLeaderboardData = (username) => {
     .catch(err => reject(err));
   })
 }
+
+const getSuggestedBooks = (username) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`http://localhost:3010/users/suggested?username=${username}`)
+    .then(response => resolve(response.data))
+    .catch(err => reject(err));
+  })
+}
 // USER INTERACTION END
 //*                     *//
 
@@ -177,6 +185,7 @@ export {
   getUser,
   putUserBook,
   getLeaderboardData,
+  getSuggestedBooks,
   commentOnCanvas,
   addFriend,
   dumpFriend,

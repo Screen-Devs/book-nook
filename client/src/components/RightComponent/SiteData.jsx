@@ -50,7 +50,7 @@ export default function SiteData({
       </div>
 
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <SuggstedBooks/>
+        <SuggstedBooks currentUserData={currentUserData}/>
       </div>
 
       <HighestRatedBooks />
@@ -78,7 +78,7 @@ export default function SiteData({
         </Carousel>
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard />
+        <Leaderboard currentUserData={currentUserData}/>
       </div>
     </div>
   );
