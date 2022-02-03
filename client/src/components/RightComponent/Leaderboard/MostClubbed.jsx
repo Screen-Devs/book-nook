@@ -23,6 +23,8 @@ const MostClubbed = ({leaderboardData}) => {
     return createData(`${datum.friend}`, `${datum.clubbedCount}`);
   }).sort(sorter);
 
+  let noFriendDataMsg = 'Your friends have not joined any Book Clubs yet.';
+
   return (
     <TableContainer
       style={{
@@ -46,6 +48,14 @@ const MostClubbed = ({leaderboardData}) => {
           </TableRow>
         </TableHead>
         <TableBody style={{ height: '120px', width: '150px' }}>
+        {rows.length === 0 &&
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="center" style={{ fontSize: 10 }}>
+                {noFriendDataMsg}
+              </TableCell>
+              <TableCell></TableCell>
+            </TableRow>}
           {rows.map((row, index) => {
             return (
               <TableRow key={index}>
