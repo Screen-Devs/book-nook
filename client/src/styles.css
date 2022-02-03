@@ -85,9 +85,23 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   box-shadow: 0px 0px 32px 4px #000000;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.suggestedBooksContainer {
+  height: 250px;
+  background-color: white;
+  font-weight: 800;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 32px 4px #000000;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
 }
 
 .friendsListContainer {
