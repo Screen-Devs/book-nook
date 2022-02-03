@@ -22,7 +22,7 @@ export default function BookReviews({ searchToResult, bookMeta }) {
             allReviews={allReviews}
             style={{ height: '220px', width: '100%', marginLeft: 5 }}
           />
-        <div className='hideScroll' style={{ width: '95%', margin: '5px 5px 15px 5px', height: '93%', borderRadius: '20px', overflow: 'auto', alignSelf: 'center', paddingTop: '10px', paddingBottom: '10px',}}>
+        <div className='reviewsScrollBar' style={{ width: '95%', margin: '5px 5px 15px 5px', height: '93%', borderRadius: '20px', overflow: 'auto', alignSelf: 'center', paddingTop: '10px', paddingBottom: '10px',}}>
           <Comments allReviews={allReviews} />
         </div>
       </div>

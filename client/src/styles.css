@@ -761,7 +761,39 @@ body::-webkit-scrollbar-thumb {
   height: 250px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: 212529;
+  background-color: #212529;
   color: white;
   padding: 15px 20px 15px 20px;
+}
+
+.aReview {
+  overflow: auto;
+  max-height: 200px;
+  padding: 0px 15px;
+  font-size: 15px;
+  /* border-radius: 20px; */
+}
+
+/* width */
+.reviewsScrollBar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.reviewsScrollBar::-webkit-scrollbar-track {
+  background: #212529;
+}
+
+/* Handle */
+.reviewsScrollBar::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+/* Handle on hover */
+.reviewsScrollBar::-webkit-scrollbar-thumb:hover {
+  background: #4100ab;
+  box-shadow: white;
+  margin-left: 4px;
 }
