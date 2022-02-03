@@ -24,6 +24,8 @@ router.get('/users', controller.user.getUserInfo);
 
 router.get('/users/leaderboards', controller.user.getLeaderboards);
 
+router.get('/users/suggested', controller.user.getSuggestedBooks);
+
 router.put('/users/books', controller.user.putUserBook);
 
 router.put('/users/friends', controller.user.putFriend);
