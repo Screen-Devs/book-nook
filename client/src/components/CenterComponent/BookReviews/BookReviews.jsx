@@ -6,7 +6,7 @@ import TopReviews from './TopReviews.jsx';
 
 
 export default function BookReviews({ searchToResult, bookMeta }) {
-  console.log('What is getting passed in here? ', bookMeta);
+  console.log('Book Meta Data being passed in ', bookMeta);
   const [allReviews, setAllReviews] = useState([]);
 
   return (
