@@ -76,7 +76,8 @@ export default function SiteData({ handleGetFriendData, userData, currentUserDat
         </Carousel>
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard/>
+        <Leaderboard
+          currentUserData={currentUserData}/>
       </div>
     </div>
   );
