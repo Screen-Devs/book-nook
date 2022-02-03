@@ -87,13 +87,6 @@ const buildSuggestedBookList =  async ( username ) => {
     return new Error('Please be sure to specify a username string parameter');
   }
 
-  //randomly pick 2 books from the list
-    //make a google api request to search for authors for each
-      //randomly pick 3 books from this result
-      //build book objects for each
-      //push book objects to suggestedBooks
-  //return suggestedBooks
-
   try {
     const userDocument = await User.find({username}); //Get specified user's data
     if (userDocument.length === 0) {
@@ -170,7 +163,6 @@ const buildSuggestedBookList =  async ( username ) => {
     let secondSearch = false;
     let modifier = 1;
     let authorToSearch2 = '';
-    console.log(authorsNoDupes, randomIndex);
     if (authorsNoDupes.length > 1) {
       if (randomIndex === authorsNoDupes.length - 1) { modifier = -1};
       authorToSearch2 = authorsNoDupes[randomIndex + modifier].replace(' ', '+');
