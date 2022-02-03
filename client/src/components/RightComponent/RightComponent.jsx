@@ -23,7 +23,10 @@ export default function RightComponent({
     currentUserView={currentUserView}
     handleGetFriendData={handleGetFriendData}/>
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b7f6f8ddf79871aec719cb2a712c9a6f43bc9e9
   return (
     <div className = "rightComponent animate__animated animate__fadeInDown" >
       {userData && (component)}
