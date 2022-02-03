@@ -1,9 +1,13 @@
-import React from 'react';
-import Carousel from 'react-elastic-carousel'
+import { Box, Card, Container, Modal, Paper } from '@material-ui/core';
+import React, { useState } from 'react';
+import Carousel from 'react-elastic-carousel';
 import { NYT } from '../NYTdummyData';
-
+import sample from './sample.js';
+import SuggestBooksModal from './SuggestBooksModal.jsx';
+import SuggestedBooksModalContent from './SuggestedBooksModalContent.jsx';
 
 const SuggestedCarousel = () => {
+
   return (
     <div>
       <Carousel
@@ -15,13 +19,9 @@ const SuggestedCarousel = () => {
         tiltEasing='cubic-bezier(0.110, 1, 1.000, 0.210)'
         transitionMs={700}
       >
-        {NYT[0].books.map((book) => {
+        {sample.map((book, index) => {
           return (
-            <div key={book.rank ** book.rank}>
-              <a href={book.amazon_product_url} key={book.rank * book.rank} target='_blank'>
-                <img src={book.book_image} className='NYTbookImage' key={book.rank} />
-              </a>
-            </div>
+            <SuggestBooksModal book={book} key={index}/>
           );
         })}
       </Carousel>
