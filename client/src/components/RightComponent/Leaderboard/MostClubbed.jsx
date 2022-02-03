@@ -8,23 +8,23 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 
-const sample = [
-  { username: 'Matthew', books: 3 },
-  { username: 'Aaron', books: 1 },
-  { username: 'Lee', books: 2},
-  { username: 'Steve', books: 6 },
-  { username: 'Gary', books: 6},
-];
+const MostClubbed = ({leaderboardData}) => {
+  const createData = (username, books) => {
+    return { username, books };
+  };
 
-const createData = (username, books) => {
-  return { username, books };
-};
+  const sorter = (a, b) => {
+    const rowA = a.books;
+    const rowB = b.books;
+    return rowB - rowA;
+  };
 
-const rows = sample.slice(0, 5).map((datum) => {
-  return createData(`${datum.username}`, `${datum.books}`);
-});
+  const rows = leaderboardData.slice(0, 5).map((datum) => {
+    return createData(`${datum.friend}`, `${datum.clubbedCount}`);
+  }).sort(sorter);
 
-const MostClubbed = () => {
+  let noFriendDataMsg = 'Your friends have not joined any Book Clubs yet.';
+
   return (
     <TableContainer
       style={{
@@ -40,7 +40,7 @@ const MostClubbed = () => {
               Rank
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
-              Username
+              Friend
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px' }}>
               Clubs
@@ -48,6 +48,14 @@ const MostClubbed = () => {
           </TableRow>
         </TableHead>
         <TableBody style={{ height: '120px', width: '150px' }}>
+        {rows.length === 0 &&
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="center" style={{ fontSize: 10 }}>
+                {noFriendDataMsg}
+              </TableCell>
+              <TableCell></TableCell>
+            </TableRow>}
           {rows.map((row, index) => {
             return (
               <TableRow key={index}>

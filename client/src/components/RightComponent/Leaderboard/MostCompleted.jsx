@@ -17,15 +17,23 @@ const sample = [
   { username: 'John', books: 4 },
 ];
 
-const createData = (username, books) => {
-  return { username, books };
-};
+const MostCompleted = ({leaderboardData}) => {
+  const createData = (username, books) => {
+    return { username, books };
+  };
 
-const rows = sample.slice(0, 5).map((datum) => {
-  return createData(`${datum.username}`, `${datum.books}`);
-});
+  const sorter = (a, b) => {
+    const rowA = a.books;
+    const rowB = b.books;
+    return rowB - rowA;
+  };
 
-const MostCompleted = () => {
+  const rows = leaderboardData.slice(0, 5).map((datum) => {
+    return createData(`${datum.friend}`, `${datum.completedCount}`);
+  }).sort(sorter);
+
+  let noFriendDataMsg = 'Your friends have not read any books yet.';
+
   return (
     <TableContainer
       style={{
@@ -41,21 +49,28 @@ const MostCompleted = () => {
               Rank
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
-              Username
+              Friend
             </TableCell>
             <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px' }}>
-              Completed
+              Books
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody >
+          {rows.length === 0 &&
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="center" style={{ fontSize: 10 }}>
+                {noFriendDataMsg}
+              </TableCell>
+              <TableCell></TableCell>
+            </TableRow>}
           {rows.map((row, index) => {
             return (
               <TableRow key={index}>
                 <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold' }}>
                   {index + 1}
                 </TableCell>
-
                 <TableCell align="center" style={{ fontSize: 10 }}>
                   {row.username}
                 </TableCell>

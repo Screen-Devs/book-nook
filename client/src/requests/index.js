@@ -52,6 +52,14 @@ const putUserBook = (book) => {
     .catch(err => reject(err));
   })
 }
+
+const getLeaderboardData = (username) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`http://localhost:3010/users/leaderboards?username=${username}`)
+    .then(response => resolve(response.data))
+    .catch(err => reject(err));
+  })
+}
 // USER INTERACTION END
 //*                     *//
 
@@ -168,6 +176,7 @@ export {
   authenticateUser,
   getUser,
   putUserBook,
+  getLeaderboardData,
   commentOnCanvas,
   addFriend,
   dumpFriend,
