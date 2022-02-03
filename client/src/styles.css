@@ -734,13 +734,17 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   /* flex: 4; */
   flex-direction: column;
-  width: 600px;
+  /* justify-content: center; */
+  background-color: #212529;
+  color: white;
+  width: 595px;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 20px;
-  height: 700px;
+  height: 970px;
   margin: 10px;
   margin-bottom: 20px;
+  box-shadow: 0px 0px 32px 1px #000000;
 }
 
 .bookDetailsTopComponent {
@@ -757,6 +761,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #212529;
   color: white;
   padding: 15px 20px 15px 20px;
+  box-shadow: 0px 0px 32px 1px #000000;
 }
 
 .writeReviewOrComment {
@@ -770,7 +775,39 @@ body::-webkit-scrollbar-thumb {
   height: 250px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: white;
-  color: black;
+  background-color: #212529;
+  color: white;
   padding: 15px 20px 15px 20px;
+}
+
+.aReview {
+  overflow: auto;
+  max-height: 200px;
+  padding: 0px 15px;
+  font-size: 15px;
+  /* border-radius: 20px; */
+}
+
+/* width */
+.reviewsScrollBar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.reviewsScrollBar::-webkit-scrollbar-track {
+  background: #212529;
+}
+
+/* Handle */
+.reviewsScrollBar::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+/* Handle on hover */
+.reviewsScrollBar::-webkit-scrollbar-thumb:hover {
+  background: #4100ab;
+  box-shadow: white;
+  margin-left: 4px;
 }

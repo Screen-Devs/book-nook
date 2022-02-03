@@ -1,7 +1,7 @@
 import { Box, Button, Container, Card, Divider, Modal, TextField, Typography } from '@material-ui/core';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Rating } from '@material-ui/lab';
-
+import { addBookReview } from '../../../requests';
 
 const containerStyle ={
   margin: 0
@@ -28,14 +28,14 @@ const cardStyle = {
   padding: 32
 }
 
-const AddReviewModal = ({set}) => {
+const AddReviewModal = ({ username, bookId, goToReviews }) => {
   const [show, setShow] = useState(false);
 
-  // TODO add current Username
   const [review, setReview] = useState({
-    rating:0,
-    title:'',
-    review:''
+    rating: 0,
+    // title: '',
+    review_body: '',
+    username,
   })
 
 
@@ -45,9 +45,12 @@ const AddReviewModal = ({set}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    set(prev => [...prev, review])
-    setReview({rating:0, title:'', review:''})
-    handleModal()
+    addBookReview(bookId, review)
+      .then(() => {
+        goToReviews(bookId);
+        setReview({ rating: 0, username, review: '' })
+        handleModal()
+      })
   }
 
   return (
@@ -76,7 +79,7 @@ const AddReviewModal = ({set}) => {
               precision={0.5}
               style={{marginBottom: 2, paddingLeft: 0.5} }/>
           </div>
-          <div style={{width:'100%'}}>
+          {/* <div style={{width:'100%'}}>
           <Typography variant='h6' component='div' gutterBottom style={{margin:0,padding:1}}>
               Add a title
           </Typography>
@@ -88,7 +91,7 @@ const AddReviewModal = ({set}) => {
             onChange={(e) => setReview({...review, title : e.target.value})}
             fullWidth
             />
-          </div>
+          </div> */}
           <div style={{width:'100%'}}>
           <Typography variant='h6' component='div' gutterBottom style={{margin:0,padding:1}}>
               Add a written review
@@ -100,7 +103,7 @@ const AddReviewModal = ({set}) => {
             variant='filled'
             style={{marginBottom: 2}}
             value={review.review}
-            onChange={(e) => setReview({...review, review: e.target.value})}
+            onChange={(e) => setReview({...review, review_body: e.target.value})}
             fullWidth
             />
           </div>
