@@ -16,6 +16,7 @@ import BNleaderBoard from './BNleaderBoard.jsx';
 import FriendsList from './FriendsList/FriendsList.jsx';
 import { getNYTimesCategory } from '../../requests/index.js';
 import Leaderboard from './Leaderboard/Leaderboard.jsx';
+import SuggstedBooks from './SuggestedBooks/SuggstedBooks.jsx';
 
 export default function SiteData({
   handleGetFriendData,
@@ -49,7 +50,7 @@ export default function SiteData({
       </div>
 
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <h4>Suggested Books</h4>
+        <SuggstedBooks currentUserData={currentUserData}/>
       </div>
 
       <HighestRatedBooks />
@@ -77,7 +78,7 @@ export default function SiteData({
         </Carousel>
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard />
+        <Leaderboard currentUserData={currentUserData}/>
       </div>
     </div>
   );
