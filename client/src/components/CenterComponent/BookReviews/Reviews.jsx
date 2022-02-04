@@ -1,4 +1,4 @@
-import { Paper, Card, Typography, Divider, Button } from '@material-ui/core';
+import { Paper, Card, Typography, Divider, Button, Link, ListItemText } from '@material-ui/core';
 import React, { useState } from 'react';
 import CommentAccordian from './BookDetails/CommentAccordian/CommentAccordian.jsx';
 import DropdownComments from './DropdownComments.jsx';
@@ -24,7 +24,13 @@ const Helpful = styled.div`
 `;
 
 const Username = styled.div`
-  font-size: 13px;
+  font-size: 16px;
+  margin-left: 3px;
+  padding-top: 0.5px;
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
 `;
 const Title = styled.div`
   font-weight: 700;
@@ -48,18 +54,24 @@ const Time = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
-const Reviews = ({ allReviews, username, goToReviews, bookId }) => {
+const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendData }) => {
+
+
+
   return (
     <CommentWrapper className='hideScroll'>
       {allReviews.map((review, index) => {
+        let datum = review.username
         return (
           <Grid>
             <Card className=' hideScroll' elevation={6}>
               <TopWrapper>
                 <UsernamdAndTitle>
-                  <Username>Written by {review.username}</Username>
+                  <div style={{display: 'flex'}}onClick={e => handleGetFriendData(review.username)}>
+                    <div>Written by </div><Username>{review.username}</Username>
+                  </div>
                   <Rating
                     size='small'
                     readOnly
@@ -76,9 +88,11 @@ const Reviews = ({ allReviews, username, goToReviews, bookId }) => {
                   bookId={bookId}
                 />
               </TopWrapper>
-              <div className='aReview hideScroll' style={{paddingTop: 10}}>{review.review_body}</div>
+              <div className='aReview hideScroll' style={{ paddingTop: 10 }}>
+                {review.review_body}
+              </div>
               <Helpful>Helpful ({review.helpful_review})</Helpful>
-              <CommentAccordian reviewId={review._id} bookId={bookId} comments={review.comments} />
+              <CommentAccordian handleGetFriendData={handleGetFriendData} reviewId={review._id} bookId={bookId} comments={review.comments} />
             </Card>
           </Grid>
         );

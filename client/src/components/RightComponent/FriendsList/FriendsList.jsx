@@ -11,6 +11,7 @@ import {
   IconButton,
   Container,
   ListItemSecondaryAction,
+  Typography,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ import { dumpFriend } from '../../../requests';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from 'react-bootstrap/Button';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const boxStyle = {
   width: 290,
@@ -56,6 +57,7 @@ const FriendsListContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUserView }) => {
@@ -80,47 +82,58 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
       .catch((err) => console.error(err));
   };
 
+  const NoFriendsQuote = styled.div`
+    padding: 25px 10px;
+  `;
+  const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `;
+
+  const Remove = styled.div`
+  `
+
   // onClick={}
 
   return (
     <Paper style={friendsListContainer}>
       <Box style={boxStyle}>
         <FriendsListButton>
-          <Button
-            className='sideComponentTitle'
-            variant='dark'
-            onClick={handleModal}
-          >
+          <Button className='sideComponentTitle' variant='dark' onClick={handleModal}>
             Friends List
           </Button>
         </FriendsListButton>
         <FriendsListContent>
-          {/* <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5> */}
           {friendsList.length === 0 ? (
-            <div style={{paddingTop: 80}}>
-              {' '}
-              No friends :({' '}
-            </div>
+            <NoFriendsQuote>
+              <Typography variant='h5'>
+                Books, like friends, should be few and well chosen
+              </Typography>
+              <Typography variant='h6'>-Anonymous</Typography>
+            </NoFriendsQuote>
           ) : (
-            <List style={{ width: '100%', paddingTop: 20 }}>
+            <List style={{ minWidth: '100%', paddingTop: 20 }}>
               {friendsList.slice(0, 4).map((datum, idx) => {
                 return (
-                  <ListItem key={idx} style={{ height: 42 }}>
-                    <ListItemAvatar>
-                      <Avatar alt=' ' src='./bnLogoSmall.png' className='bnLogoSmall' />
-                      {/* <AccountCircleIcon /> */}
-                      {/* </Avatar> */}
-                    </ListItemAvatar>
-                    <Link className='link' to={`friend/${datum}`}>
-                      <ListItemText primary={datum} onClick={(e) => handleGetFriendData(datum)} />
-                    </Link>
-                    {currentUserView === null && (
-                      <ListItemSecondaryAction>
-                        <IconButton edge='end' onClick={() => removeFriend(datum)}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    )}
+                  <ListItem key={idx} style={{ height: 42, minWidth: '100%' }}>
+                    <Wrapper className='a'>
+                      <ListItemAvatar className='b'>
+                        <Avatar alt=' ' src='./bnLogoSmall.png' className='bnLogoSmall' />
+                      </ListItemAvatar>
+                      <Link className='link' to={`friend/${datum}`}>
+                        <ListItemText primary={datum} onClick={(e) => handleGetFriendData(datum)} />
+                      </Link>
+                      <Remove>
+                      {currentUserView === null && (
+                        <ListItemSecondaryAction>
+                          <IconButton edge='end' onClick={() => removeFriend(datum)}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </ListItemSecondaryAction>
+                      )}
+                      </Remove>
+                    </Wrapper>
                   </ListItem>
                 );
               })}
@@ -128,16 +141,6 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
           )}
         </FriendsListContent>
       </Box>
-      {/* {friendsList.length > 10 ? (
-        // <Button
-        //   onClick={handleModal}
-        //   style={{ position: 'absolute', bottom: 10, justifySelf: 'center'}}
-        //   variant='contained'
-        //   color='inherit'
-        // >
-        //   Show More
-        // </Button>
-      ) : null} */}
       <Modal open={show} onClose={handleModal}>
         <FriendsModal
           currentUserView={currentUserView}

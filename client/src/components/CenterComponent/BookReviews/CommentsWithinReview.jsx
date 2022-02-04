@@ -27,7 +27,16 @@ const Report = styled.div`
   }
 `
 
-const CommentsWithinReview = ({comments, bookId, reviewId}) => {
+const TopWrapper = styled.div``
+const UsernameWrapper = styled.div`
+  padding-left: 2px;
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
+`
+
+const CommentsWithinReview = ({handleGetFriendData, comments, bookId, reviewId}) => {
 
   const handleHelpful = (e, commentId) => {
     e.preventDefault();
@@ -53,7 +62,14 @@ const CommentsWithinReview = ({comments, bookId, reviewId}) => {
                   <div>
                   <div  style={{ padding: 5, borderRadius: '20px', width:'100%'}}>
                     <p style={{ marginBottom: 0, padding: 1.5, fontSize: 13, boxShadow: '0 4px 2px -2px gray', backgroundColor: '#212529', color: 'white', borderRadius:'20px', paddingLeft: '3px'}}>
-                      <b><u>From:</u> {comment.commenter}</b>
+                      <b>
+                        <TopWrapper style={{display: 'flex'}}>
+                        <u>From:</u>
+                        <UsernameWrapper onClick={e => handleGetFriendData(comment.commenter)}>
+                        {comment.commenter}
+                        </UsernameWrapper>
+                        </TopWrapper>
+                        </b>
                     </p>
                     <div style={{fontSize: 12, paddingTop: 5, paddingLeft: 1, marginLeft: 1}}>Written at: {dayjs(comment.comment_time).format('LL')}</div>
                     <div>

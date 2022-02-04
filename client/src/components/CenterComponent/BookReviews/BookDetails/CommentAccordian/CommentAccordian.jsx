@@ -3,7 +3,7 @@ import { ExpandMore } from '@material-ui/icons';
 import React from 'react';
 import CommentsWithinReview from '../../CommentsWithinReview.jsx';
 
-const CommentAccordian = ({comments, bookId, reviewId}) => {
+const CommentAccordian = ({handleGetFriendData, comments, bookId, reviewId}) => {
   return (
     <div>
       <Accordion style={{minWidth: 550, marginBottom: 0, width: '100%'}}>
@@ -18,6 +18,7 @@ const CommentAccordian = ({comments, bookId, reviewId}) => {
               comments={comments}
               bookId={bookId}
               reviewId={reviewId}
+              handleGetFriendData={handleGetFriendData}
             />
           </Typography>
         </AccordionDetails>

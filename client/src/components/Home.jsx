@@ -188,6 +188,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setCurrentUserView(user)
     getUser(user)
       .then((response) => {
+
         setAppLayout({
             ...profileLayout,
             view: 'friend',
@@ -267,6 +268,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       })
   }
 
+
   let navigate;
   return (
     <div>
@@ -313,6 +315,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               bookMeta={bookMeta}
               queue={queue}
               setQueue={setQueue}
+              handleGetFriendData={handleGetFriendData}
             />
             <RightComponent
               currentLayout={appLayout.right}

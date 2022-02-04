@@ -6,11 +6,9 @@ import TopReviews from './TopReviews.jsx';
 import 'animate.css';
 
 
-export default function BookReviews({ searchToResult, bookMeta, username, goToReviews, queue, setQueue }) {
+export default function BookReviews({ handleGetFriendData, searchToResult, bookMeta, username, goToReviews, queue, setQueue }) {
   console.log('current user logged in ', username);
   console.log('Search result ', searchToResult);
-  // const [allReviews, setAllReviews] = useState([]);
-  console.log('this 2', queue)
 
   return (
     <div>
@@ -34,6 +32,7 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
             username={username}
             goToReviews={goToReviews}
             bookId={searchToResult.id}
+            handleGetFriendData={handleGetFriendData}
           />
         </div>
       </div>

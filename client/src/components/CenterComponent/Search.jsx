@@ -24,30 +24,36 @@ export default function Search({
       <div className='filterSearchResults animate__animated animate__flipInX'>
         <div>Filter Search</div>
         <div>
-          <label htmlFor='author'> By Author </label>
+          {/* <label htmlFor='author'> By Author </label> */}
           <input
+            className="bookSearchFilterText"
             id='author-filter'
             name='author'
+            placeHolder="Filter by Author"
             onChange={() => {
               const authorFilter = document.querySelector('#author-filter').value;
               filterByAuthor(authorFilter)
             }}
             type='text'
           />
-          <label htmlFor='publisher'> By Publisher </label>
+          {/* <label htmlFor='publisher'> By Publisher </label> */}
           <input
+            className="bookSearchFilterText"
             id='publisher-filter'
             name='publisher'
+            placeHolder="Filter by Publisher"
             onChange={() => {
               const publisherFilter = document.querySelector('#publisher-filter').value;
               filterByPublisher(publisherFilter)
             }}
             type='text'
           />
-          <label htmlFor='genre'> By Genre </label>
+          {/* <label htmlFor='genre'> By Genre </label> */}
           <input
+            className="bookSearchFilterText"
             id='genre-filter'
             name='genre'
+            placeHolder="Filter by Genre"
             onChange={() => {
               const genreFilter = document.querySelector('#genre-filter').value;
               filterByGenre(genreFilter)
