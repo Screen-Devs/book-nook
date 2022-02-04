@@ -6,15 +6,16 @@ import TopReviews from './TopReviews.jsx';
 import 'animate.css';
 
 
-export default function BookReviews({ searchToResult, bookMeta, username, goToReviews }) {
+export default function BookReviews({ searchToResult, bookMeta, username, goToReviews, queue, setQueue }) {
   console.log('current user logged in ', username);
   console.log('Search result ', searchToResult);
   // const [allReviews, setAllReviews] = useState([]);
+  console.log('this 2', queue)
 
   return (
     <div>
       <div className='bookDetailsTopComponent animate__animated animate__fadeInDown'>
-        <BookDetails searchToResult={searchToResult} />
+        <BookDetails searchToResult={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
       </div>
       <div
         className='bookDetailsCenterComponent animate__animated animate__fadeInUp'
