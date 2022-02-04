@@ -110,7 +110,7 @@ export default function CenterComponent({
 }
 
 let component;
-if (currentLayout === 'search') {
+        if (currentLayout === 'search') {
   component = <Search
     filterByAuthor={filterByAuthor}
     filterByPublisher={filterByPublisher}
@@ -127,6 +127,8 @@ if (currentLayout === 'search') {
   component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue} handleGetFriendData={handleGetFriendData}/>;
 }
 // If not a friend or profile, just conditionally render
+console.log('This is user data ', userData);
+      console.log('This is userView ', currentUserView)
 return (
   <div className="centerComponent">
     {currentLayout === "profileComments" && userData ? (
@@ -156,6 +158,7 @@ return (
               setUserFriends={setUserFriends}
               currentUserView={currentUserView}
               userData={userData}
+              handleGetFriendData={handleGetFriendData}
             />
           }
         />
