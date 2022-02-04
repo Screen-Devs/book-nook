@@ -267,6 +267,22 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       })
   }
 
+  const handleGetFriendDatad = (user) => {
+    // make get request and give username to the server
+    setCurrentUserView(user)
+    getUser(user)
+      .then((response) => {
+        setAppLayout({
+            ...profileLayout,
+            view: 'friend',
+            payload: response,
+        })
+        handleCreateLists(response[0].userBooks);
+      })
+  };
+
+  console.log('cur', currentUserView)
+
   let navigate;
   return (
     <div>
@@ -313,6 +329,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               bookMeta={bookMeta}
               queue={queue}
               setQueue={setQueue}
+              handleGetFriendData={handleGetFriendData}
             />
             <RightComponent
               currentLayout={appLayout.right}

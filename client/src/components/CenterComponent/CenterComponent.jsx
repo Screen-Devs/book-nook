@@ -25,7 +25,8 @@ export default function CenterComponent({
   searchToResult,
   bookMeta,
   queue,
-  setQueue
+  setQueue,
+  handleGetFriendData
 }) {
 
 
@@ -123,7 +124,7 @@ if (currentLayout === 'search') {
   />;
 } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
   // TODO: differentiate between bookMeta and userData
-  component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue}/>;
+  component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue} handleGetFriendData={handleGetFriendData}/>;
 }
 // If not a friend or profile, just conditionally render
 return (

@@ -50,6 +50,7 @@ const FriendsModal = ({ friendsList, set, removeFriend, handleGetFriendData, cur
         {/* <Divider style={dividerStyle}/> */}
         <List className="friendsListModal">
           {friendsList.map((datum, idx) => {
+            console.log('dat boi', datum)
             return (
               <ListItem  key={idx} style={{ height: 60, width: 400 }}>
                 <ListItemAvatar>
