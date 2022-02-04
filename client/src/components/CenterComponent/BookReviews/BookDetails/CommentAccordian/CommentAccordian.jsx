@@ -6,16 +6,14 @@ import CommentsWithinReview from '../../CommentsWithinReview.jsx';
 const CommentAccordian = ({comments}) => {
   return (
     <div>
-      <Accordion sx={{minWidth: 550, marginBottom: 0}}>
+      <Accordion style={{minWidth: 550, marginBottom: 0, width: '100%'}}>
         <AccordionSummary
           expandIcon={<ExpandMore/>}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
         >
           <Typography>Show comments</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          <Typography className="none" style={{overflow: 'auto', maxHeight: '220px',}}>
+        <AccordionDetails style={{minWidth: 550, marginBottom: 0, width: '100%'}}>
+          <Typography className="none" style={{overflow: 'auto', maxHeight: '220px', width: '100%'}}>
             <CommentsWithinReview comments={comments}/>
           </Typography>
         </AccordionDetails>

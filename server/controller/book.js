@@ -12,6 +12,11 @@ const getBookMetaData = async (req, res) => {
   res.status(200).send(result);
 }
 
+const getTopTen = async (req, res) => {
+  const result = await findBookMeta();
+  res.status(200).send(result);
+}
+
 const addReview = async (req, res) => {
   const { book_id, review } = req.body;
   const result = await addBookReview(book_id, review);
@@ -37,6 +42,7 @@ const markComment = async (req, res) => {
 }
 
 module.exports = {
+  getTopTen,
   getTotalBookData,
   getBookMetaData,
   addReview,

@@ -35,11 +35,11 @@ const DropdownComments = ({reviewId, bookId, goToReviews, username}) => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <Button>Helpful</Button>
+        <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <Button >Helpful</Button>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Button>Report</Button>
+        <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <Button >Report</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <AddCommentModal
