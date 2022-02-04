@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Divider } from '@material-ui/core';
 import styled from "styled-components";
+import * as timeago from 'timeago.js';
 // import 'animate.css';
 // import CommentModule from '../CommentModule.jsx';
 
@@ -51,7 +52,7 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
         <b>Author:</b> {info.authors ? info.authors.join(', ') : null}<p/>
         <b>Publisher: </b>{info.publisher ? info.publisher : null}<p/>
             <b>Genre:</b> {info.categories ? info.categories.join(', ') : null }<p/>
-            <b>Published:</b> {info.publishedDate ? info.publishedDate : null}<p/>
+            <b>Published:</b> {info.publishedDate ? info.publishedDate.split('-')[0] : null}<p/>
             </div>
             {/* </div> */}
       </div>
