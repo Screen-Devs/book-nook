@@ -141,6 +141,8 @@ return (
               setUserFriends={setUserFriends}
               currentUserView={currentUserView}
               userData={userData}
+              handleSearchToResults={handleSearchToResults}
+              handleGetFriendData={handleGetFriendData}
             />
           }
         />

@@ -12,6 +12,8 @@ export default function ProfileComments({
   currentUserView,
   currentFriends,
   addNewFriend,
+  handleSearchToResults,
+  handleGetFriendData
 }) {
 
   const [canvas, setCanvasList] = useState([]);
@@ -127,6 +129,7 @@ export default function ProfileComments({
                   <CommentModule
                     key={idx}
                     comment={comment}
+                    handleGetFriendData={handleGetFriendData}
                   />
                 );
               })
