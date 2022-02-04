@@ -76,7 +76,7 @@ export default function CenterComponent({
       const filteredBooks = searchedBooks.map((book) => {
         if (book.volumeInfo.publisher) {
           const containsTargetPublisher = book.volumeInfo.publisher
-          .includes(targetPublisher)
+          .toLowerCase().includes(targetPublisher.toLowerCase());
           if (!containsTargetPublisher) {
             book.isVisible = false;
           }
