@@ -3,7 +3,7 @@ import { Menu, MenuItem, IconButton, Button } from '@material-ui/core';
 import { MoreVertOutlined } from '@material-ui/icons';
 import AddCommentModal from './AddCommentModal.jsx';
 
-const DropdownComments = ({set}) => {
+const DropdownComments = ({reviewId, bookId, goToReviews, username}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -35,14 +35,19 @@ const DropdownComments = ({set}) => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
-          <Button>Helpful</Button>
+        <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <Button >Helpful</Button>
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <Button >Report</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Button>Report</Button>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <AddCommentModal set={set}/>
+          <AddCommentModal
+            bookId={bookId}
+            goToReviews={goToReviews}
+            username={username}
+            reviewId={reviewId}
+          />
         </MenuItem>
       </Menu>
     </div>
