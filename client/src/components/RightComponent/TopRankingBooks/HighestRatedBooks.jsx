@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Paper,
   Box,
@@ -14,6 +14,7 @@ import {
 import sample from './sample.js';
 import HighestRatedBooksModal from './HighestRatedBooksModal.jsx';
 import Button from 'react-bootstrap/Button';
+import { getHighestAvgRating, searchGoogle } from '../../../requests/index.js';
 
 const boxStyle = {
   height: 250,
@@ -46,20 +47,59 @@ const boxStyle = {
 
 const HighestRatedBooks = () => {
   const [show, setShow] = useState(false);
+  const [topRated, setTopRated] = useState([]);
 
   const handleModal = () => {
     setShow((prev) => !prev);
   };
 
-  let data = sample.results.books;
+  const fetchTopRated = () => {
+    getHighestAvgRating()
+      .then((topRatedData) => {
 
-  const createData = (title) => {
-    return { title };
+        const promisedResults = topRatedData.map(book => {
+          return searchGoogle(book._id.id);
+        });
+
+        Promise.All(promisedResults)
+          .then((res) => {
+            console.log(res);
+            //setTopRated(res);
+          })
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const rows = data.slice(0,5).map((datum) => {
+  const createData = (title, rank) => {
+    return { title, rank, gBookId };
+  };
+
+  const rows = topRated.slice(0,5).map((datum) => {
     return createData(`${datum.title}`);
   });
+
+  useEffect(() => {
+    fetchTopRated(currentUserData);
+  }, []);
+
+
+  [
+    {
+        "_id": {
+            "id": "yoZGEAAAQBAJ"
+        },
+        "avg_rating": 5
+    },
+    {
+        "_id": {
+            "id": "B2tBEAAAQBAJ"
+        },
+        "avg_rating": 4.666666666666667
+    },
+]
   return (
     <Paper style={boxStyle} className='placeHolderContainerRight animate__animated animate__fadeInRight' elevation={6}>
       {/* <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '35px', paddingTop: '5px',}}> */}
