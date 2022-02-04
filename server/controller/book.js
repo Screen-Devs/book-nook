@@ -1,4 +1,4 @@
-const { markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta, markReviewComment } = require('../../database/models/bookdata.js');
+const { markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta, markReviewComment, findHighestAvgRating } = require('../../database/models/bookdata.js');
 
 const getTotalBookData = async (req, res) => {
   const { book_id } = req.body;
@@ -12,8 +12,8 @@ const getBookMetaData = async (req, res) => {
   res.status(200).send(result);
 }
 
-const getTopTen = async (req, res) => {
-  const result = await findBookMeta();
+const getHighestAvgRating = async (req, res) => {
+  const result = await findHighestAvgRating();
   res.status(200).send(result);
 }
 
@@ -42,7 +42,7 @@ const markComment = async (req, res) => {
 }
 
 module.exports = {
-  getTopTen,
+  getHighestAvgRating,
   getTotalBookData,
   getBookMetaData,
   addReview,

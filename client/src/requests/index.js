@@ -118,10 +118,10 @@ const getBookMeta = (book_id) => {
 }
 
 // get back an array of the top rated books based on all books' metadata
-const getTopTen = () => {
+const getHighestAvgRating = () => {
   return new Promise((resolve, reject) => {
     axios({
-      url: '/books/topten',
+      url: '/books/highestAvgRating',
       method: 'get'
     })
       .then(response => resolve(response))
@@ -189,7 +189,7 @@ const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
 
 export {
   getBookMeta,
-  getTopTen,
+  getHighestAvgRating,
   addBookReview,
   addReviewComment,
   markReview,
