@@ -11,8 +11,10 @@ const style = {
   width: 1000,
   height: 'auto',
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
+  borderRadius: '20px',
+  boxShadow: '0px 0px 32px 1px #000000',
 };
 
 const cardStyle = {
@@ -20,8 +22,9 @@ const cardStyle = {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  height: '100%',
+  maxHeight: '550px',
   padding: 32,
+  borderRadius: '20px',
 };
 
 const containerStyle = {
