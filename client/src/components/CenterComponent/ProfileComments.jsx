@@ -45,8 +45,22 @@ export default function ProfileComments({
     const renderBtn = !(currentUserView === null) &&
     !(currentFriends.includes(currentUserView));
     setCanvasList(userData[0].canvas);
-    setRenderBtn(renderBtn)
+    setRenderBtn(renderBtn);
   }, [userData])
+
+
+  //TODO: Need to implement a way to add a comment
+  let isFriend = false;
+  if (currentFriends.includes(username)) {
+    isFriend = true;
+  }
+  let onOwnPage = false;
+  let myPage, writeMeHeader;
+  if (username === currentUserData) {
+    onOwnPage = true;
+    myPage = 'My Book';
+    writeMeHeader = 'Note to self...'
+  }
 
   const sorter = (a,b) => {
     const dateA = new Date(a.date);
@@ -58,23 +72,25 @@ export default function ProfileComments({
     <>
       <div className="centerComponent">
         <div className="userDetails animate__animated animate__flipInX">
-          <h5>User: {username}</h5>
+          <h5 className={isFriend ? 'friendTitle' : ''}>
+            {onOwnPage ? myPage : username}</h5>
           <div>
-            {
-
-              (showBtn) && (
-                <a onClick={() => {
+            { (showBtn) && (
+              <Button
+                className='sideComponentTitle'
+                variant='dark'
+                onClick={() => {
                   addNewFriend();
-                  setRenderBtn(false);
-
-                }}> Add Friend </a>
-              )
-            }
+                  setRenderBtn(false)}}
+                >Add Friend
+              </Button>
+            )}
           </div>
         </div>
 
         <div className="writeMe animate__animated animate__flipInX">
-          <h5 style={{ fontWeight: "bold" }}>Write in my book...</h5>
+          <h5 style={{ fontWeight: "bold" }}>
+          { onOwnPage ? writeMeHeader : 'Write in my book...' }</h5>
 
           <div style={{ alignSelf: "center" }}>
             <Form onSubmit={onFormSubmit}>

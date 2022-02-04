@@ -285,7 +285,7 @@ const addOrUpdateUserBooks = async ( username, gBookId, title, authors, list, st
 const addOrRemoveFriend = async ( username, friend, action ) => {
   if (action === 'add') {
     try {
-      const result = await User.update({username: username}, { $addToSet: {friends: friend} });
+      const result = await User.updateOne({username: username}, { $addToSet: {friends: friend} });
       return result;
     } catch (error) {
       return (error);
@@ -293,7 +293,7 @@ const addOrRemoveFriend = async ( username, friend, action ) => {
 
   } else if (action === 'remove') {
     try {
-      const result = await User.update({username: username}, { $pull: {friends: friend} });
+      const result = await User.updateOne({username: username}, { $pull: {friends: friend} });
       return result;
     } catch (error) {
       return (error);
