@@ -21,7 +21,7 @@ export default function CommentModule({ comment, handleGetFriendData }) {
           <Link
           to={`../friend/${comment.commenter}`}
           className='link'>
-            <User onClick={()=>{
+            <User className='link' onClick={()=>{
               handleGetFriendData(comment.commenter)
             }}>{comment.commenter}</User>
           </Link>
