@@ -216,9 +216,17 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // This function will handle searching for a list of books to render on the search list
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40
-    searchGoogle(query)
+    searchGoogle(query, 40)
       .then((res) => {
-        setSearchedBooks(res);
+
+        const searchResults = res.map((book) => {
+          book.isVisible = true;
+          return book;
+        })
+
+        console.log(searchResults)
+
+        setSearchedBooks(searchResults);
         setAppLayout({
           ...searchLayout,
           payload: appLayout.payload,
@@ -291,6 +299,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               setUserFriends={setUserFriends}
               userData={appLayout.payload}
               searchedBooks={searchedBooks}
+              setSearchedBooks={setSearchedBooks}
               currentUserData={currentUser}
               goToReviews={goToReviews}
               handleSearchToResults={handleSearchToResults}
