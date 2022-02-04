@@ -44,14 +44,6 @@ export default function CenterComponent({
       .catch(err => console.error(err));
   }
 
-<<<<<<< HEAD
-  let component;
-  if (currentLayout === 'search') {
-    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
-  } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
-    // TODO: differentiate between bookMeta and userData
-    component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue}/>;
-=======
   const clearFilters = () => {
     const unfilteredBooks = searchedBooks.map((book) => {
       book.isVisible = true;
@@ -95,7 +87,6 @@ export default function CenterComponent({
       })
       setSearchedBooks(filteredBooks);
     }
->>>>>>> main
   }
 
   const filterByGenre = (targetGenre) => {
@@ -128,14 +119,11 @@ if (currentLayout === 'search') {
     currentUserData={currentUserData}
     goToReviews={goToReviews}
     handleSearchToResults={handleSearchToResults}
+
   />;
 } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
   // TODO: differentiate between bookMeta and userData
-  component = <BookReviews
-    username={currentUserData}
-    searchToResult={searchToResult}
-    goToReviews={goToReviews}
-    bookMeta={bookMeta} />;
+  component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue}/>;
 }
 // If not a friend or profile, just conditionally render
 return (

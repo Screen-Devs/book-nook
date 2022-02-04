@@ -14,13 +14,8 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
 
   return (
     <div>
-<<<<<<< HEAD
-      <div className='bookDetailsTopComponent'>
-        <BookDetails searchToResult={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
-=======
       <div className='bookDetailsTopComponent animate__animated animate__fadeInDown'>
-        <BookDetails searchToResult={searchToResult} />
->>>>>>> main
+        <BookDetails searchToResult={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
       </div>
       <div
         className='bookDetailsCenterComponent animate__animated animate__fadeInUp'
