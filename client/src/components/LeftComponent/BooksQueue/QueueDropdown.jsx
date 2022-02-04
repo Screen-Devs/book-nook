@@ -24,7 +24,6 @@ const QueueDropdown = ({ gBookId, bookData, remove, move }) => {
     setAnchorEl(null);
   };
 
-  console.log('qbi', gBookId, 'bd', bookData)
   return (
     <>
       <IconButton onClick={handleMenu} variant='contained' color='inherit'>

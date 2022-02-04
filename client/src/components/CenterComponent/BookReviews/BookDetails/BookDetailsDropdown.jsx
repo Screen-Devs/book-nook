@@ -17,8 +17,6 @@ const BookDetailsDropdown = ({bookData, queue, setQueue, username}) => {
     setAnchorEl(null)
   }
 
-  console.log('book data', bookData)
-
   const addToQueue = () => {
     const params = {
       username: username,
