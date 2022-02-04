@@ -30,9 +30,9 @@ const findBookMeta = async (book_id, title) => {
 }
 
 const findHighestAvgRating = async () => {
-  const highestAvgRating = await BookData.aggregate([
+  let highestAvgRating = await BookData.aggregate([
     { $unwind: "$reviews" },
-    { $group: { _id: "$title", avg_rating: { $avg: "$reviews.rating" } } }
+    { $group: { _id: {id: "$lookup_id", title: "$title"}, avg_rating: { $avg: "$reviews.rating" } } }
   ]).sort({"avg_rating": -1});
   return highestAvgRating;
 }

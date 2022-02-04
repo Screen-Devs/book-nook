@@ -117,7 +117,8 @@ const getBookMeta = (book_id, title) => {
   });
 }
 
-// get back an array of the top rated books based on all books' metadata
+// get back an array of the top rated books based on all books' metadata;
+// response is in the form: {_id: {id: (gBookId), title: (title)}, avg_rating: (average rating)}
 const getHighestAvgRating = () => {
   return new Promise((resolve, reject) => {
     axios({
