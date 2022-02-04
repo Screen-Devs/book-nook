@@ -14,6 +14,10 @@ const UsernamdAndTitle = styled.div`
   padding: 5px 15px 0px;
 `
 
+const Helpful = styled.div`
+  padding: 5px 15px 0px;
+`
+
 const Username = styled.div`
   font-size: 13px;
 `
@@ -34,27 +38,33 @@ const Grid = styled.div`
   border-radius: 20px;
 `
 
-const Comments = ({ allReviews }) => {
-  const [commentsInReview, setCommentsInReview] = useState([]);
-
-  console.log('comments in reviews ', commentsInReview)
+const Reviews = ({ allReviews, username, goToReviews, bookId }) => {
+  // const [commentsInReview, setCommentsInReview] = useState([]);
   return (
     <CommentWrapper className="hideScroll">
-      {allReviews.map((comment, index) => {
+      {allReviews.map((review, index) => {
         return (
           <Grid>
             <Card className=" hideScroll" elevation={6}>
                 <TopWrapper>
                     <UsernamdAndTitle>
-                      <Username>Written by USERNAME</Username>
-                      <Title>{comment.title}</Title>
+                      <Username>Written by {review.username}</Username>
                     </UsernamdAndTitle>
-                    <DropdownComments set={setCommentsInReview}/>
+                    <div>{review.review_date}</div>
+                    <DropdownComments
+                      reviewId={review._id}
+                      username={username}
+                      goToReviews={goToReviews}
+                      bookId={bookId}
+                    />
                     </TopWrapper>
                     <div className="aReview hideScroll">
-                      {comment.review}
+                      {review.review_body}
                     </div>
-                <CommentAccordian comments={commentsInReview} />
+                    <Helpful>
+                      Helpful ({review.helpful_review})
+                    </Helpful>
+                <CommentAccordian comments={review.comments} />
             </Card>
           </Grid>
         );
@@ -63,4 +73,4 @@ const Comments = ({ allReviews }) => {
   );
 };
 
-export default Comments;
+export default Reviews;

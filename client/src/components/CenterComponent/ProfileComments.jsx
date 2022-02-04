@@ -10,14 +10,14 @@ export default function ProfileComments({
   userData,
   currentUserData,
   currentUserView,
+  currentFriends,
+  addNewFriend,
 }) {
+
   const [canvas, setCanvasList] = useState([]);
-  const [commentText, setCommentText] = useState();
-  // onFormSubmit = e => {
-  //   e.preventDefault()
-  //   console.log(commentText)
-  //   setCommentText()
-  // }
+  const [commentText, setCommentText] = useState('');
+  const [showBtn, setRenderBtn] = useState(false)
+  const { username, friends, } = userData[0];
 
   const onInput = (e) => setCommentText(e.target.value);
   //  onInput = ({target:{commentText}}) => setCommentText(commentText),
@@ -29,6 +29,7 @@ export default function ProfileComments({
       message: commentText,
       commenter: currentUserData,
     };
+
     commentOnCanvas(comment)
       .then(({ acknowledged }) => {
         if (acknowledged) {
@@ -41,10 +42,11 @@ export default function ProfileComments({
   };
 
   useEffect(() => {
+    const renderBtn = !(currentUserView === null) &&
+    !(currentFriends.includes(currentUserView));
     setCanvasList(userData[0].canvas);
+    setRenderBtn(renderBtn)
   }, [userData])
-
-
 
   //TODO: Need to implement a way to add a comment
 
@@ -52,7 +54,19 @@ export default function ProfileComments({
     <>
       <div className="centerComponent">
         <div className="userDetails animate__animated animate__flipInX">
-          <h5>User: {userData[0].username}</h5>
+          <h5>User: {username}</h5>
+          <div>
+            {
+
+              (showBtn) && (
+                <a onClick={() => {
+                  addNewFriend();
+                  setRenderBtn(false);
+
+                }}> Add Friend </a>
+              )
+            }
+          </div>
         </div>
 
         <div className="writeMe animate__animated animate__flipInX">
@@ -87,16 +101,16 @@ export default function ProfileComments({
 
         <div className="userBook animate__animated animate__flipInY">
           {
-          (canvas.length) && (
-            canvas.reverse().map((comment, idx) => {
-              return (
-                <CommentModule
-                key={idx}
-                comment={comment}
-                />
-              );
-            })
-          )}
+            (canvas.length) && (
+              canvas.reverse().map((comment, idx) => {
+                return (
+                  <CommentModule
+                    key={idx}
+                    comment={comment}
+                  />
+                );
+              })
+            )}
         </div>
       </div>
     </>
