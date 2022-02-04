@@ -3,22 +3,27 @@ import React, { useState } from 'react';
 import BookDetails from './BookDetails/BookDetails.jsx';
 import Reviews from './Reviews.jsx';
 import TopReviews from './TopReviews.jsx';
+import 'animate.css';
 
 
 export default function BookReviews({ searchToResult, bookMeta, username, goToReviews, queue, setQueue }) {
   console.log('current user logged in ', username);
   console.log('Search result ', searchToResult);
-  console.log('Book Meta Data being passed in ', bookMeta);
   // const [allReviews, setAllReviews] = useState([]);
   console.log('this 2', queue)
 
   return (
     <div>
+<<<<<<< HEAD
       <div className='bookDetailsTopComponent'>
         <BookDetails searchToResult={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
+=======
+      <div className='bookDetailsTopComponent animate__animated animate__fadeInDown'>
+        <BookDetails searchToResult={searchToResult} />
+>>>>>>> main
       </div>
       <div
-        className='bookDetailsCenterComponent'
+        className='bookDetailsCenterComponent animate__animated animate__fadeInUp'
       >
           <TopReviews
             // setAllReviews={setAllReviews}

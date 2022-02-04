@@ -36,7 +36,7 @@ router.post('/users/canvas', controller.user.addMessage);
 
 router.get('/books', controller.book.getTotalBookData);
 
-router.get('/topten', controller.book.getTopTen);
+router.get('/books/highestAvgRating', controller.book.getHighestAvgRating);
 
 router.post('/books/meta', controller.book.getBookMetaData);
 

@@ -1,8 +1,9 @@
 import { Grid, Paper, Card, Typography, Divider, Button } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
+import { markReviewComment } from '../../../requests'
 
 dayjs.extend(localizedFormat)
 
@@ -26,14 +27,18 @@ const Report = styled.div`
   }
 `
 
-const CommentsWithinReview = ({comments}) => {
+const CommentsWithinReview = ({comments, bookId, reviewId}) => {
 
-  const handleHelpful = () => {
-    console.log('This was helpful')
+  const handleHelpful = (e, commentId) => {
+    e.preventDefault();
+    markReviewComment(bookId, reviewId, commentId, 'helpful')
+      .then((success) => {console.log(`successfully marked ${commentId} helpful`)})
   }
 
-  const handleReport = () => {
-    console.log('Ban')
+  const handleReport = (e, commentId) => {
+    e.preventDefault();
+    markReviewComment(bookId, reviewId, commentId, 'report')
+      .then((success) => { console.log(`successfully reported ${commentId}`) })
   }
   return (
     <>
@@ -65,11 +70,11 @@ const CommentsWithinReview = ({comments}) => {
                       {comment.comment_body}
                     </p>
                     <HelpfulAndReport>
-                      <Helpful onClick={handleHelpful}>
+                      <Helpful onClick={(e) => {handleHelpful(e, comment._id)}}>
                         Helpful ({comment.helpful_comment})
                       </Helpful>
                       <Divider orientation="vertical" />
-                      <Report onClick={handleReport}>
+                          <Report onClick={(e) => {handleReport(e, comment._id)}}>
                         Report
                       </Report>
                     </HelpfulAndReport>

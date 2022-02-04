@@ -27,7 +27,7 @@ export default function LeftComponent({
   let component;
   if (currentLayout === 'userLists') {
     component = (
-      <div className='leftComponent animate__animated animate__fadeInDown'>
+      <div className='leftComponent animate__animated animate__fadeInTopLeft'>
         <UserLists
           removeFromQueue={removeFromQueue}
           removeFromCurrent={removeFromCurrent}

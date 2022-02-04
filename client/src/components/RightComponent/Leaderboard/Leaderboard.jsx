@@ -6,9 +6,10 @@ import MostClubbed from './MostClubbed.jsx';
 import MostCompleted from './MostCompleted.jsx';
 import { getLeaderboardData } from '../../../requests/index.js';
 
+
 const containerStyle = {
-  height: '100%',
-  width: '100%',
+  height: '50px',
+  width: '290px',
   borderRadius: '20px',
   display: 'flex',
   justifyContent: 'center',
@@ -17,7 +18,8 @@ const containerStyle = {
 };
 
 const Content = styled.div`
-  width: 100%
+  width: 100%;
+  height: 100%;
 `;
 
 const Leaderboard = ({currentUserData}) => {
@@ -25,13 +27,15 @@ const Leaderboard = ({currentUserData}) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   const fetchLeaderboards = (username) => {
-    getLeaderboardData(username)
-      .then((leaderboardData) => {
-        setLeaderboardData(leaderboardData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (typeof username === 'string') {
+      getLeaderboardData(username)
+       .then((leaderboardData) => {
+         setLeaderboardData(leaderboardData);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }
   };
 
   const handleChange = (e, newValue) => {
@@ -43,11 +47,10 @@ const Leaderboard = ({currentUserData}) => {
   }, []);
 
   return (
-    <Container style={containerStyle}>
       <Content>
         <Tabs value={value} onChange={handleChange} style={{width: '100%'}} center>
-          <Tab label='Top Readers' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
-          <Tab label='Most Clubs' style={{fontSize: 10, minWidth:'50%'}} wrapped/>
+          <Tab label='Top Readers' style={{fontSize: 14, minWidth:'50%', fontWeight: '800'}} wrapped/>
+          <Tab label='Most Clubs' style={{fontSize: 14, minWidth:'50%', fontWeight: '800'}} wrapped/>
         </Tabs>
         <TabPanel value={value} index={0}>
           <MostCompleted leaderboardData={leaderboardData}/>
@@ -56,7 +59,6 @@ const Leaderboard = ({currentUserData}) => {
           <MostClubbed leaderboardData={leaderboardData}/>
         </TabPanel>
       </Content>
-    </Container>
   );
 };
 

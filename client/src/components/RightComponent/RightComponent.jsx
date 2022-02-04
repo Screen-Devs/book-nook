@@ -15,7 +15,6 @@ export default function RightComponent({
     userData={userData}
     currentUserView={currentUserView}
     userData={userData}/>
-    //TODO: Need to implement
   } else if (currentLayout === 'addToLists') {
     component = <SiteData
     currentUserData={currentUserData}

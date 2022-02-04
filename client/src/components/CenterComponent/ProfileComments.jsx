@@ -48,7 +48,11 @@ export default function ProfileComments({
     setRenderBtn(renderBtn)
   }, [userData])
 
-  //TODO: Need to implement a way to add a comment
+  const sorter = (a,b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  };
 
   return (
     <>
@@ -102,7 +106,7 @@ export default function ProfileComments({
         <div className="userBook animate__animated animate__flipInY">
           {
             (canvas.length) && (
-              canvas.reverse().map((comment, idx) => {
+              canvas.sort(sorter).map((comment, idx) => {
                 return (
                   <CommentModule
                     key={idx}

@@ -216,9 +216,23 @@ export default function Home({ authStatus, authenticate, currentUser }) {
   // This function will handle searching for a list of books to render on the search list
   const handleSearch = (query) => {
     //this route can take a page and count and they can be change, max count is 40
-    searchGoogle(query)
+    searchGoogle(query, 40)
       .then((res) => {
-        setSearchedBooks(res);
+        const mappedVisible = res.map((book) => {
+          const { authors, categories, publisher } = book.volumeInfo;
+          if (authors && categories && publisher) {
+            book.isVisible = true;
+            return book;
+          }
+        })
+
+        const validSearchResults = mappedVisible.filter(book => {
+          if (book) {
+            return true;
+          }
+        });
+
+        setSearchedBooks(validSearchResults);
         setAppLayout({
           ...searchLayout,
           payload: appLayout.payload,
@@ -242,8 +256,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setSearchToResult(book)
   }
 
-  const goToReviews = (gBookId) => {
-    getBookMeta(gBookId)
+  const goToReviews = (gBookId, title) => {
+    getBookMeta(gBookId, title)
       .then((response) => {
         setAppLayout({
           ...bookLayout,
@@ -291,6 +305,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               setUserFriends={setUserFriends}
               userData={appLayout.payload}
               searchedBooks={searchedBooks}
+              setSearchedBooks={setSearchedBooks}
               currentUserData={currentUser}
               goToReviews={goToReviews}
               handleSearchToResults={handleSearchToResults}
