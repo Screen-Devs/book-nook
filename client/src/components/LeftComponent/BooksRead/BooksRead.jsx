@@ -54,7 +54,7 @@ const BooksRead = ({ completed, removeFromCompleted, completedToBookClub, curren
     //FIXME: If book does not have a gBookId, this will break
     if (!gBookId) return;
     handleSingleBookSearch(gBookId, title);
-    goToReviews(gBookId);
+    goToReviews(gBookId, title);
   }
 
   return (

@@ -105,12 +105,12 @@ const getNYTimesCategory = (list_name_encoded) => {
 // note: all 'book_id' parameters refer to the google api's book id
 
 // get back a book's reviews/comments data (if any)
-const getBookMeta = (book_id) => {
+const getBookMeta = (book_id, title) => {
   return new Promise((resolve, reject) => {
     axios({
       url: '/books/meta',
       method: 'post',
-      data: { book_id }
+      data: { book_id, title }
     })
       .then(response => resolve(response))
       .catch(err => reject(err));

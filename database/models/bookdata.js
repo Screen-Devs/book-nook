@@ -19,12 +19,12 @@ const getAllBookData = async (book_id) => {
   }
 }
 
-const findBookMeta = async (book_id) => {
+const findBookMeta = async (book_id, title) => {
   let metadata = await BookData.find({
     lookup_id: book_id
   });
   if (metadata.length === 0) {
-    metadata = await BookData.create({ lookup_id: book_id })
+    metadata = await BookData.create({ lookup_id: book_id, title })
   }
   return metadata;
 }
@@ -32,7 +32,7 @@ const findBookMeta = async (book_id) => {
 const findHighestAvgRating = async () => {
   const highestAvgRating = await BookData.aggregate([
     { $unwind: "$reviews" },
-    { $group: { _id: "$lookup_id", avg_rating: { $avg: "$reviews.rating" } } }
+    { $group: { _id: "$title", avg_rating: { $avg: "$reviews.rating" } } }
   ]).sort({"avg_rating": -1});
   return highestAvgRating;
 }
