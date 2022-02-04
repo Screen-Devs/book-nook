@@ -42,16 +42,16 @@ const MostClubbed = ({leaderboardData}) => {
             <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
               Friend
             </TableCell>
-            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px' }}>
+            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 5px 0px' }}>
               Clubs
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody style={{ height: '120px', width: '150px' }}>
+        <TableBody>
         {rows.length === 0 &&
             <TableRow>
               <TableCell></TableCell>
-              <TableCell align="center" style={{ fontSize: 10 }}>
+              <TableCell align="center" style={{ fontSize: 10, height: 150 }}>
                 {noFriendDataMsg}
               </TableCell>
               <TableCell></TableCell>
