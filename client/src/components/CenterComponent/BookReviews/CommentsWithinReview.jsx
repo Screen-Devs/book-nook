@@ -36,26 +36,26 @@ const UsernameWrapper = styled.div`
   }
 `
 
-const CommentsWithinReview = ({handleGetFriendData, comments, bookId, reviewId}) => {
+const CommentsWithinReview = ({goToReviews, handleGetFriendData, comments, bookId, reviewId}) => {
 
   const handleHelpful = (e, commentId) => {
     e.preventDefault();
     markReviewComment(bookId, reviewId, commentId, 'helpful')
-      .then((success) => {console.log(`successfully marked ${commentId} helpful`)})
+      .then((success) => { goToReviews(bookId) })
   }
 
   const handleReport = (e, commentId) => {
     e.preventDefault();
     markReviewComment(bookId, reviewId, commentId, 'report')
-      .then((success) => { console.log(`successfully reported ${commentId}`) })
+      .then((success) => { goToReviews(bookId) })
+    console.log(comments);
   }
   return (
     <>
     {(comments.length > 0) ? (
       <div style={{display: 'flex', gap: '1em', flexDirection: 'column', width: '100%'}}>
       {comments.map((comment, index) => {
-        return (
-          <Grid item xs={12} style={{gap: '1em', borderRadius: '20px', padding: '3px', width:'100%'}}>
+        (<Grid item xs={12} style={{gap: '1em', borderRadius: '20px', padding: '3px', width:'100%'}}>
             <Card elevation={6}>
               <Card>
                 <div style={{ width:'100%'}}>
@@ -83,11 +83,11 @@ const CommentsWithinReview = ({handleGetFriendData, comments, bookId, reviewId})
                         maxHeight: '150px',
                       }}
                     >
-                      {comment.comment_body}
+                      {comment.reported_comment === false ? comment.comment_body : "This comment has been reported and is under review."}
                     </p>
                     <HelpfulAndReport>
                       <Helpful onClick={(e) => {handleHelpful(e, comment._id)}}>
-                        Helpful ({comment.helpful_comment})
+                          Helpful ({comment.reported_comment === false ? comment.helpful_comment : 0})
                       </Helpful>
                       <Divider orientation="vertical" />
                           <Report onClick={(e) => {handleReport(e, comment._id)}}>

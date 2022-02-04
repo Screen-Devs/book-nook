@@ -20,13 +20,13 @@ const DropdownComments = ({reviewId, bookId, goToReviews, username}) => {
   const handleHelpful = (e) => {
     e.preventDefault();
     markReview(bookId, reviewId, 'helpful')
-      .then((success) => {console.log(`successfully marked ${reviewId} helpful`)})
+      .then((success) => { goToReviews(bookId) })
   }
 
   const handleReport = (e) => {
     e.preventDefault();
     markReview(bookId, reviewId, 'report')
-      .then((success) => { console.log(`successfully reported ${reviewId}`) })
+      .then((success) => { goToReviews(bookId) })
   }
 
   return (

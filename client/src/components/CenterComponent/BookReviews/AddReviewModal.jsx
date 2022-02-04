@@ -48,7 +48,7 @@ const AddReviewModal = ({ username, bookId, goToReviews }) => {
     addBookReview(bookId, review)
       .then(() => {
         goToReviews(bookId);
-        setReview({ rating: 0, username, review: '' })
+        setReview({ rating: 0, username, review_body: '' })
         handleModal()
       })
   }

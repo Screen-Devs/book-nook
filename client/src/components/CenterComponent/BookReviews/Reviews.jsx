@@ -64,7 +64,7 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
     <CommentWrapper className='hideScroll'>
       {allReviews.map((review, index) => {
         let datum = review.username
-        return (
+          return (
           <Grid>
             <Card className=' hideScroll' elevation={6}>
               <TopWrapper>
@@ -89,10 +89,16 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
                 />
               </TopWrapper>
               <div className='aReview hideScroll' style={{ paddingTop: 10 }}>
-                {review.review_body}
+                {review.reported_review === false ? review.review_body : "This review has been reported and is under...review."}
               </div>
               <Helpful>Helpful ({review.helpful_review})</Helpful>
-              <CommentAccordian handleGetFriendData={handleGetFriendData} reviewId={review._id} bookId={bookId} comments={review.comments} />
+              <CommentAccordian
+                goToReviews={goToReviews}
+                handleGetFriendData={handleGetFriendData}
+                reviewId={review._id}
+                bookId={bookId}
+                comments={review.comments}
+              />
             </Card>
           </Grid>
         );
