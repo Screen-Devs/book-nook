@@ -289,6 +289,11 @@ body::-webkit-scrollbar-thumb {
   background-size: cover;
 }
 
+.headerUsername {
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
+}
 
 
 

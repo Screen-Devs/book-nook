@@ -50,7 +50,7 @@ const Right = styled.div`
   margin-top: 8px;
 `;
 
-export default function Header({ authenticate, handleSearch }) {
+export default function Header({ authenticate, handleSearch, currentUserData }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentBook, setCurrentBook] = useState('');
   const open = Boolean(anchorEl);
@@ -92,6 +92,9 @@ export default function Header({ authenticate, handleSearch }) {
           </Paper>
         </Center>
         <Right>
+          <div className='headerUsername'>
+            {currentUserData && `Hello, ${currentUserData}!`}
+          </div>
           <Button style={buttonStyle} onClick={handleMenu}>
             <AccountCircleIcon style={{ color: 'white' }} />
           </Button>
