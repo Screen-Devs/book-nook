@@ -188,6 +188,7 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setCurrentUserView(user)
     getUser(user)
       .then((response) => {
+
         setAppLayout({
             ...profileLayout,
             view: 'friend',
@@ -267,19 +268,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       })
   }
 
-  const handleGetFriendDatad = (user) => {
-    // make get request and give username to the server
-    setCurrentUserView(user)
-    getUser(user)
-      .then((response) => {
-        setAppLayout({
-            ...profileLayout,
-            view: 'friend',
-            payload: response,
-        })
-        handleCreateLists(response[0].userBooks);
-      })
-  };
 
   let navigate;
   return (
