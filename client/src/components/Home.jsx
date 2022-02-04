@@ -264,7 +264,11 @@ export default function Home({ authStatus, authenticate, currentUser }) {
           ...bookLayout,
           payload: appLayout.payload,
         })
-        setBookMeta(response.data[0].reviews);
+        if (response.data[0] !== undefined) {
+          setBookMeta(response.data[0].reviews);
+        } else {
+          setBookMeta([])
+        }
       })
   }
 
