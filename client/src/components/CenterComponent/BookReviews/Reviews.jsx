@@ -64,13 +64,13 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
     <CommentWrapper className='hideScroll'>
       {allReviews.map((review, index) => {
         let datum = review.username
-        return (
+          return (
           <Grid>
             <Card className=' hideScroll' elevation={6}>
               <TopWrapper>
                 <UsernamdAndTitle>
                   <div style={{display: 'flex'}}onClick={e => handleGetFriendData(review.username)}>
-                    <div>Written by </div><Username>{review.username}</Username>
+                      <div>Written by </div><Username>{review.reported_review === false ? review.username : "N/A"}</Username>
                   </div>
                   <Rating
                     size='small'
@@ -86,13 +86,20 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
                   username={username}
                   goToReviews={goToReviews}
                   bookId={bookId}
+                  review={review}
                 />
               </TopWrapper>
               <div className='aReview hideScroll' style={{ paddingTop: 10 }}>
-                {review.review_body}
+                {review.reported_review === false ? review.review_body : "(This review has been reported and is under review.)"}
               </div>
-              <Helpful>Helpful ({review.helpful_review})</Helpful>
-              <CommentAccordian handleGetFriendData={handleGetFriendData} reviewId={review._id} bookId={bookId} comments={review.comments} />
+                <Helpful>Helpful ({review.reported_review === false ? review.helpful_review : "N/A"})</Helpful>
+              <CommentAccordian
+                goToReviews={goToReviews}
+                handleGetFriendData={handleGetFriendData}
+                reviewId={review._id}
+                bookId={bookId}
+                comments={review.comments}
+              />
             </Card>
           </Grid>
         );
