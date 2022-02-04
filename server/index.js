@@ -34,5 +34,5 @@ app.use(router);
 app.use(morgan('dev')); // TODO: change in production
 
 app.listen(port, () => {
-  console.log(`Listening on localhost:${port}`)
+  console.log(`Listening on localhost:${port}`);
 });

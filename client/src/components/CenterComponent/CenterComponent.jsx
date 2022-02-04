@@ -16,6 +16,7 @@ export default function CenterComponent({
   setUserFriends,
   // Search Component
   searchedBooks,
+  setSearchedBooks,
   currentUserData,
   //To reviews
   goToReviews,
@@ -25,16 +26,15 @@ export default function CenterComponent({
   bookMeta,
 }) {
 
-  const addNewFriend = () => {
 
+
+  const addNewFriend = () => {
     const friendToAdd = {
       username: currentUserData,
       friend: currentUserView,
       action: 'add',
     }
-
     const updatedFriendsList = [...currentFriends, currentUserView,];
-
     addFriend(friendToAdd)
       .then((response) => {
         setUserFriends(updatedFriendsList);
@@ -42,49 +42,125 @@ export default function CenterComponent({
       .catch(err => console.error(err));
   }
 
-  let component;
-  if (currentLayout === 'search') {
-    component = <Search searchedBooks={searchedBooks} currentUserData={currentUserData} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
-  } else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
-    // TODO: differentiate between bookMeta and userData
-    component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta}/>;
+  const clearFilters = () => {
+    const unfilteredBooks = searchedBooks.map((book) => {
+      book.isVisible = true;
+      return book;
+    })
+    setSearchedBooks(unfilteredBooks);
   }
 
-  // If not a friend or profile, just conditionally render
-  return (
-    <div className="centerComponent">
-      {currentLayout === "profileComments" && userData ? (
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProfileComments
-                addNewFriend={addNewFriend}
-                currentFriends={currentFriends}
-                currentUserData={currentUserData}
-                setUserFriends={setUserFriends}
-                currentUserView={currentUserView}
-                userData={userData}
-              />
-            }
-          />
-          <Route
-            path={`friend/${currentUserView}`}
-            element={
-              <ProfileComments
-                addNewFriend={addNewFriend}
-                currentFriends={currentFriends}
-                currentUserData={currentUserData}
-                setUserFriends={setUserFriends}
-                currentUserView={currentUserView}
-                userData={userData}
-              />
-            }
-          />
-        </Routes>
-      ) : (
-        component
-      )}
-    </div>
-  );
+  const filterByAuthor = (term) => {
+    if (term.length >= 3) {
+      const filteredBooks = searchedBooks.map((book) => {
+        //for each book if there are authours
+        if (book.volumeInfo.authors) {
+          //declare a check if some authhors match our term
+          const containsTargetAuthor = book.volumeInfo.authors.some((author) => {
+            if (author.toLowerCase().includes(term.toLowerCase()))
+              return true;
+          })
+          //if containers make that book visible
+          if (!containsTargetAuthor) {
+            book.isVisible = false;
+          }
+        }
+        return book;
+      })
+      setSearchedBooks(filteredBooks);
+    }
+  }
+
+  const filterByPublisher = (targetPublisher) => {
+    if (targetPublisher.length >= 3) {
+      const filteredBooks = searchedBooks.map((book) => {
+        if (book.volumeInfo.publisher) {
+          const containsTargetPublisher = book.volumeInfo.publisher
+          .toLowerCase().includes(targetPublisher.toLowerCase());
+          if (!containsTargetPublisher) {
+            book.isVisible = false;
+          }
+        }
+        return book;
+      })
+      setSearchedBooks(filteredBooks);
+    }
+  }
+
+  const filterByGenre = (targetGenre) => {
+    if (targetGenre.length >= 3) {
+      const filteredBooks = searchedBooks.map((book) => {
+        if (book.volumeInfo.categories) {
+          const containsTargetGenre = book.volumeInfo.categories
+          .some((genre) => {
+            if (genre.toLowerCase().includes(targetGenre.toLowerCase()))
+              return true;
+          })
+          if (!containsTargetGenre) {
+            book.isVisible = false;
+          }
+        }
+        return book;
+      })
+      setSearchedBooks(filteredBooks);
+    }
+}
+
+let component;
+if (currentLayout === 'search') {
+  component = <Search
+    filterByAuthor={filterByAuthor}
+    filterByPublisher={filterByPublisher}
+    filterByGenre={filterByGenre}
+    clearFilters={clearFilters}
+    searchedBooks={searchedBooks}
+    currentUserData={currentUserData}
+    goToReviews={goToReviews}
+    handleSearchToResults={handleSearchToResults}
+  />;
+} else if (currentLayout === 'reviews' && Object.keys(searchToResult).length >= 1) {
+  // TODO: differentiate between bookMeta and userData
+  component = <BookReviews
+    username={currentUserData}
+    searchToResult={searchToResult}
+    goToReviews={goToReviews}
+    bookMeta={bookMeta} />;
+}
+// If not a friend or profile, just conditionally render
+return (
+  <div className="centerComponent">
+    {currentLayout === "profileComments" && userData ? (
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProfileComments
+              addNewFriend={addNewFriend}
+              currentFriends={currentFriends}
+              currentUserData={currentUserData}
+              setUserFriends={setUserFriends}
+              currentUserView={currentUserView}
+              userData={userData}
+            />
+          }
+        />
+        <Route
+          path={`friend/${currentUserView}`}
+          element={
+            <ProfileComments
+              addNewFriend={addNewFriend}
+              currentFriends={currentFriends}
+              currentUserData={currentUserData}
+              setUserFriends={setUserFriends}
+              currentUserView={currentUserView}
+              userData={userData}
+            />
+          }
+        />
+      </Routes>
+    ) : (
+      component
+    )}
+  </div>
+);
 }

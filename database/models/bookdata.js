@@ -20,15 +20,17 @@ const getAllBookData = async (book_id) => {
 }
 
 const findBookMeta = async (book_id) => {
-  let metaData = await BookData.find({
+  let metadata = await BookData.find({
     lookup_id: book_id
   });
-  if (metaData.length === 0) {
-    metaData = await BookData.create({lookup_id: book_id});
-    return metaData;
-  } else {
-    return metaData;
-  };
+  if (metadata.length === 0) {
+    metadata = await BookData.create({ lookup_id: book_id })
+  }
+  return metadata;
+}
+
+const getTopTen = async () => {
+  const top_ten = await BookData.aggregate([{$group: {lookup_id: "$lookup_id", $avg: "reviews.rating"}}])
 }
 
 const addBookReview = async (book_id, review) => {
