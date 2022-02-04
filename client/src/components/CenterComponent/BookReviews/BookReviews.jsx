@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import BookDetails from './BookDetails/BookDetails.jsx';
 import Reviews from './Reviews.jsx';
 import TopReviews from './TopReviews.jsx';
+import 'animate.css';
 
 
 export default function BookReviews({ searchToResult, bookMeta, username, goToReviews }) {
@@ -13,11 +14,11 @@ export default function BookReviews({ searchToResult, bookMeta, username, goToRe
 
   return (
     <div>
-      <div className='bookDetailsTopComponent'>
+      <div className='bookDetailsTopComponent animate__animated animate__fadeInDown'>
         <BookDetails searchToResult={searchToResult} />
       </div>
       <div
-        className='bookDetailsCenterComponent'
+        className='bookDetailsCenterComponent animate__animated animate__fadeInUp'
       >
           <TopReviews
             // setAllReviews={setAllReviews}
