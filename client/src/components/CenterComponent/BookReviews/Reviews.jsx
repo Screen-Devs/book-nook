@@ -86,6 +86,7 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
                   username={username}
                   goToReviews={goToReviews}
                   bookId={bookId}
+                  review={review}
                 />
               </TopWrapper>
               <div className='aReview hideScroll' style={{ paddingTop: 10 }}>
