@@ -256,8 +256,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     setSearchToResult(book)
   }
 
-  const goToReviews = (gBookId) => {
-    getBookMeta(gBookId)
+  const goToReviews = (gBookId, title) => {
+    getBookMeta(gBookId, title)
       .then((response) => {
         setAppLayout({
           ...bookLayout,

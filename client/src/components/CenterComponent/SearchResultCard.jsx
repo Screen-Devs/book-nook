@@ -26,7 +26,7 @@ export default function searchResult({ book, goToReviews, handleSearchToResults 
 
   const setToReviews = () => {
     hdleSearchToResults()
-    goToReviews(book.id)
+    goToReviews(book.id, book.volumeInfo.title)
   }
 
   return (
