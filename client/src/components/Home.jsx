@@ -218,20 +218,21 @@ export default function Home({ authStatus, authenticate, currentUser }) {
     //this route can take a page and count and they can be change, max count is 40
     searchGoogle(query, 40)
       .then((res) => {
-
-        const searchResults = res.map((book) => {
-
+        const mappedVisible = res.map((book) => {
           const { authors, categories, publisher } = book.volumeInfo;
-
           if (authors && categories && publisher) {
             book.isVisible = true;
-          } else {
-            book.isVisible = true;
+            return book;
           }
-          return book;
         })
 
-        setSearchedBooks(searchResults);
+        const validSearchResults = mappedVisible.filter(book => {
+          if (book) {
+            return true;
+          }
+        });
+
+        setSearchedBooks(validSearchResults);
         setAppLayout({
           ...searchLayout,
           payload: appLayout.payload,

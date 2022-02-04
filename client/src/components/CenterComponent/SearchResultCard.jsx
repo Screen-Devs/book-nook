@@ -48,10 +48,10 @@ export default function searchResult({ book, goToReviews, handleSearchToResults 
         </div>
       </div>
       <div className="bookSearchDetails hideScroll" style={{ display: 'flex', flexDirection: 'column', overflow: 'scroll', backgroundColor: "#212529", color: 'white', borderRadius: "0px 0px 20px 0px", padding: '10px', }}>
-        <b>Author:</b> {info.authors ? info.authors.join(', ') : 'Looks like this needs a authors!'}<p />
-        <b>Publisher: </b>{info.publisher ? info.publisher : 'Looks like this needs a Publisher!'}<p />
-        <b>Genre:</b> {info.categories ? info.categories.join(', ') : 'Looks like this needs a category!'}<p />
-        <b>Published:</b> {info.publishedDate ? info.publishedDate : 'Looks like this needs a publishing date!'}<p />
+        <b>Author:</b> {info.authors ? info.authors.join(', ') : null }<p />
+        <b>Publisher: </b>{info.publisher ? info.publisher : null }<p />
+        <b>Genre:</b> {info.categories ? info.categories.join(', ') : null }<p />
+        <b>Published:</b> {info.publishedDate ? info.publishedDate : null}<p />
       </div>
       {/* </div> */}
     </div>
