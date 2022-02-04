@@ -10,7 +10,6 @@ import {
   TableBody,
 
 } from '@material-ui/core';
-import sample from './sample.js';
 import Dropdown from './Dropdown.jsx';
 
 
@@ -36,16 +35,7 @@ const scrolling = {
   marginLeft: '20px',
 }
 
-const HighestRatedBooksModal = () => {
-  let data = sample.results.books;
-
-  const createData = (rank, title, author, description) => {
-    return { rank, title, author, description };
-  };
-
-  const rows = data.map((datum) => {
-    return createData(`${datum.rank}`, `${datum.title}`, `${datum.author}`, `${datum.description}`);
-  });
+const HighestRatedBooksModal = ({topRatedBookData}) => {
 
   return (
     <>
@@ -59,18 +49,18 @@ const HighestRatedBooksModal = () => {
                   <TableCell style={{fontWeight: 'bold',}}>Title</TableCell>
                   <TableCell style={{fontWeight: 'bold',}}>Author</TableCell>
                   <TableCell style={{fontWeight: 'bold',}}>Description</TableCell>
-                  <TableCell align='center'></TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               </div>
               <div className="hideScroll" style={scrolling}>
               <TableBody >
-                {rows.map((row, index) => {
+                {topRatedBookData.map((row, index) => {
                   return (
                     <TableRow key={index}>
-                      <TableCell >{row.rank}</TableCell>
+                      <TableCell>{index + 1}</TableCell>
                       <TableCell>{row.title}</TableCell>
-                      <TableCell>{row.author}</TableCell>
+                      <TableCell>{row.authors.join(', ')}</TableCell>
                       <TableCell>{row.description}</TableCell>
                       <TableCell>
                         <Dropdown />
