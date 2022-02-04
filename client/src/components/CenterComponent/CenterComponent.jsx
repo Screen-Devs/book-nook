@@ -43,14 +43,6 @@ export default function CenterComponent({
   }
 
   const clearFilters = () => {
-    const publisherFilter = document.querySelector('#publisher-filter').value;
-    const authorFilter = document.querySelector('#author-filter').value;
-    const genreFilter = document.querySelector('#genre-filter').value;
-
-    publisherFilter.innerHTML = '';
-    authorFilter.innerHTML = '';
-    genreFilter.innerHTML='';
-
     const unfilteredBooks = searchedBooks.map((book) => {
       book.isVisible = true;
       return book;
@@ -82,13 +74,9 @@ export default function CenterComponent({
   const filterByPublisher = (targetPublisher) => {
     if (targetPublisher.length >= 3) {
       const filteredBooks = searchedBooks.map((book) => {
-        //for each book if there are authours
         if (book.volumeInfo.publisher) {
-          //declare a check if some authhors match our term
           const containsTargetPublisher = book.volumeInfo.publisher
           .includes(targetPublisher)
-
-          //if containers make that book visible
           if (!containsTargetPublisher) {
             book.isVisible = false;
           }
@@ -102,14 +90,12 @@ export default function CenterComponent({
   const filterByGenre = (targetGenre) => {
     if (targetGenre.length >= 3) {
       const filteredBooks = searchedBooks.map((book) => {
-        //for each book if there are authours
         if (book.volumeInfo.categories) {
-          //declare a check if some authhors match our term
-          const containsTargetGenre = book.volumeInfo.categories.some((genre) => {
+          const containsTargetGenre = book.volumeInfo.categories
+          .some((genre) => {
             if (genre.toLowerCase().includes(targetGenre.toLowerCase()))
               return true;
           })
-          //if containers make that book visible
           if (!containsTargetGenre) {
             book.isVisible = false;
           }

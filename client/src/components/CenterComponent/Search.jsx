@@ -18,7 +18,6 @@ export default function Search({
       return true;
     }
   })
-  console.log('These are the filtered books ', filteredBooks)
 
   return (
     <div className='centerComponent'>
@@ -59,11 +58,15 @@ export default function Search({
         <button onClick={() => { clearFilters() }}> Clear Filters </button>
       </div>
       <div className='searchResults hideScroll animate__animated animate__fadeInUp'>
-        {searchedBooks
-          ? filteredBooks.map((book, idx) => {
-            return <SearchResult key={idx} book={book} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
-          })
-          : null}
+        {
+          (filteredBooks) ?
+            filteredBooks.map((book, idx) => {
+              return <SearchResult key={idx} book={book} goToReviews={goToReviews} handleSearchToResults={handleSearchToResults} />;
+            }) :
+            <div>
+              <h1> No Books by that name </h1>
+            </div>
+        }
       </div>
     </div>
   );

@@ -220,11 +220,16 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       .then((res) => {
 
         const searchResults = res.map((book) => {
-          book.isVisible = true;
+
+          const { authors, categories, publisher } = book.volumeInfo;
+
+          if (authors && categories && publisher) {
+            book.isVisible = true;
+          } else {
+            book.isVisible = true;
+          }
           return book;
         })
-
-        console.log(searchResults)
 
         setSearchedBooks(searchResults);
         setAppLayout({
