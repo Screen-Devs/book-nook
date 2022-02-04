@@ -23,7 +23,7 @@ const cardStyle = {
   // marginTop: 1,
   position: 'relative',
   boxShadow: '0px 0px 32px 1px #000000',
-  borderRadius: '5%',
+  borderRadius: '20px',
   margin: '20px 20px 20px 20px',
   // padding: '10px',
 }
@@ -76,7 +76,7 @@ const ModalCards = ({info}) => {
             </CardContent>
             <CardActions style={{position: 'absolute', bottom: 0}}>
               {/* TODO: ADD functionality to button*/}
-              <Button variant='dark' style={{fontSize:10, marginLeft: '14style={{fontSize:10}}px'}}>Add to Read List</Button>
+              <Button className="sideComponentTitle" variant='dark' style={{fontSize:10, marginLeft: '12px', }}>Add to Read List</Button>
             </CardActions>
         </Card>
       ))}

@@ -116,7 +116,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
                 return (
                   <ListItem key={idx} style={{ height: 42 }}>
                     <ListItemAvatar>
-                      <Avatar alt=' ' src='./bnLogoSmall.png' className='bnLogoSmall' />
+                      <Avatar alt=' ' src='./transparent.png' sx={{ width: 0, height: 0 }} className='bnLogoSmall' />
                       {/* <AccountCircleIcon /> */}
                       {/* </Avatar> */}
                     </ListItemAvatar>

@@ -53,7 +53,7 @@ const FriendsModal = ({ friendsList, set, removeFriend, handleGetFriendData, cur
             return (
               <ListItem  key={idx} style={{ height: 60, width: 400 }}>
                 <ListItemAvatar>
-                  <Avatar alt=" " src="./bnLogoSmall.png" className='bnLogoSmall'>
+                  <Avatar alt=" " src="./transparent.png" sx={{ width: 0, height: 0 }} className='bnLogoSmall'>
                     {/* <AccountCircleIcon /> */}
                     {/* <img src={url('./bnLogoSmall.png')}/> */}
                     {/* <div className='bnLogoSmall'/> */}
