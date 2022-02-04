@@ -78,7 +78,7 @@ const Reviews = ({ allReviews, username, goToReviews, bookId }) => {
               </TopWrapper>
               <div className='aReview hideScroll' style={{paddingTop: 10}}>{review.review_body}</div>
               <Helpful>Helpful ({review.helpful_review})</Helpful>
-              <CommentAccordian comments={review.comments} />
+              <CommentAccordian reviewId={review._id} bookId={bookId} comments={review.comments} />
             </Card>
           </Grid>
         );

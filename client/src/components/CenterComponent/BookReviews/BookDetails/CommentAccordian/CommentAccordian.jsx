@@ -3,7 +3,7 @@ import { ExpandMore } from '@material-ui/icons';
 import React from 'react';
 import CommentsWithinReview from '../../CommentsWithinReview.jsx';
 
-const CommentAccordian = ({comments}) => {
+const CommentAccordian = ({comments, bookId, reviewId}) => {
   return (
     <div>
       <Accordion style={{minWidth: 550, marginBottom: 0, width: '100%'}}>
@@ -14,7 +14,11 @@ const CommentAccordian = ({comments}) => {
         </AccordionSummary>
         <AccordionDetails style={{minWidth: 550, marginBottom: 0, width: '100%'}}>
           <Typography className="none" style={{overflow: 'auto', maxHeight: '220px', width: '100%'}}>
-            <CommentsWithinReview comments={comments}/>
+            <CommentsWithinReview
+              comments={comments}
+              bookId={bookId}
+              reviewId={reviewId}
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>
