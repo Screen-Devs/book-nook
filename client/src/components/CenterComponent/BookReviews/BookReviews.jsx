@@ -5,16 +5,17 @@ import Reviews from './Reviews.jsx';
 import TopReviews from './TopReviews.jsx';
 
 
-export default function BookReviews({ searchToResult, bookMeta, username, goToReviews }) {
+export default function BookReviews({ searchToResult, bookMeta, username, goToReviews, queue, setQueue }) {
   console.log('current user logged in ', username);
   console.log('Search result ', searchToResult);
   console.log('Book Meta Data being passed in ', bookMeta);
   // const [allReviews, setAllReviews] = useState([]);
+  console.log('this 2', queue)
 
   return (
     <div>
       <div className='bookDetailsTopComponent'>
-        <BookDetails searchToResult={searchToResult} />
+        <BookDetails searchToResult={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
       </div>
       <div
         className='bookDetailsCenterComponent'

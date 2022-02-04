@@ -296,6 +296,8 @@ export default function Home({ authStatus, authenticate, currentUser }) {
               handleSearchToResults={handleSearchToResults}
               searchToResult={searchToResult}
               bookMeta={bookMeta}
+              queue={queue}
+              setQueue={setQueue}
             />
             <RightComponent
               currentLayout={appLayout.right}

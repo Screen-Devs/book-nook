@@ -15,7 +15,7 @@ import { MoreVert } from '@material-ui/icons';
 import React, { useState} from 'react';
 import BookDetailsDropdown from './BookDetailsDropdown.jsx';
 
-const BookDetails = ({searchToResult}) => {
+const BookDetails = ({searchToResult, queue, setQueue, username}) => {
 
   return (
     <Container style={{ height: '100%', padding: 0 }}>
@@ -52,7 +52,7 @@ const BookDetails = ({searchToResult}) => {
           </Container>
         </Grid>
         <Grid item xs={1}>
-          <BookDetailsDropdown/>
+          <BookDetailsDropdown bookData={searchToResult} queue={queue} setQueue={setQueue} username={username}/>
         </Grid>
       </Grid>
     </Container>
