@@ -38,7 +38,7 @@ router.get('/books', controller.book.getTotalBookData);
 
 router.get('/topten', controller.book.getTopTen);
 
-router.get('/books/meta', controller.book.getBookMetaData);
+router.post('/books/meta', controller.book.getBookMetaData);
 
 router.post('/books/reviews', controller.book.addReview);
 
