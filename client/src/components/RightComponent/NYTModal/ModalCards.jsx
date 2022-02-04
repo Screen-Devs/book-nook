@@ -6,12 +6,12 @@ import Button from 'react-bootstrap/Button';
 import { getNYTimesCategory } from '../../../requests/index.js';
 
 const BookDescription = styled.p`
-  font-size: 7px;
+  font-size: 10px;
   flex: 2;
   padding: 3px;
 `;
 const BookTitle = styled.p`
-  font-size: 9px;
+  font-size: 12px;
   height: 10px;
   padding: 3px;
 `;
@@ -74,10 +74,6 @@ const ModalCards = ({info}) => {
                 {book.description}
               </BookDescription>
             </CardContent>
-            <CardActions style={{position: 'absolute', bottom: 0}}>
-              {/* TODO: ADD functionality to button*/}
-              <Button className="sideComponentTitle" variant='dark' style={{fontSize:10, marginLeft: '12px', }}>Add to Read List</Button>
-            </CardActions>
         </Card>
       ))}
     </Carousel>

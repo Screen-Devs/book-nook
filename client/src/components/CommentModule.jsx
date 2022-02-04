@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import 'animate.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -17,7 +18,13 @@ export default function CommentModule({ comment, handleGetFriendData }) {
     <div className='commentModule'>
       <Card className='text-center commentModuleBody'>
         <Card.Header>
-          <User onClick={(e) => handleGetFriendData(comment.commenter)}>{comment.commenter}</User>
+          <Link
+          to={`../friend/${comment.commenter}`}
+          className='link'>
+            <User className='link' onClick={()=>{
+              handleGetFriendData(comment.commenter)
+            }}>{comment.commenter}</User>
+          </Link>
         </Card.Header>
         <Card.Body>
           <Card.Text>{comment.message}</Card.Text>

@@ -10,7 +10,6 @@ import {
   TableBody,
 
 } from '@material-ui/core';
-import sample from './sample.js';
 import Dropdown from './Dropdown.jsx';
 
 //'background.paper'
@@ -36,16 +35,7 @@ const scrolling = {
   borderRadius: '20px',
 }
 
-const HighestRatedBooksModal = () => {
-  let data = sample.results.books;
-
-  const createData = (rank, title, author, description) => {
-    return { rank, title, author, description };
-  };
-
-  const rows = data.map((datum) => {
-    return createData(`${datum.rank}`, `${datum.title}`, `${datum.author}`, `${datum.description}`);
-  });
+const HighestRatedBooksModal = ({topRatedBookData}) => {
 
   return (
     <>
@@ -57,20 +47,20 @@ const HighestRatedBooksModal = () => {
                 <TableRow >
                   <TableCell style={{fontWeight: 'bold',}}>Rank</TableCell>
                   <TableCell style={{fontWeight: 'bold', }}>Title</TableCell>
-                  <TableCell style={{fontWeight: 'bold', paddingLeft: '180px', }}>Author</TableCell>
-                  <TableCell style={{fontWeight: 'bold', paddingLeft: '60px',}}>Description</TableCell>
+                  <TableCell style={{fontWeight: 'bold', paddingLeft: '80px', }}>Author</TableCell>
+                  <TableCell style={{fontWeight: 'bold', paddingLeft: '62px',}}>Description</TableCell>
                   <TableCell style={{width: '100%',}}></TableCell>
                 </TableRow>
               </TableHead>
               </div>
               <div className="hideScroll" style={scrolling}>
               <TableBody style={{borderRadius: '20px',}}>
-                {rows.map((row, index) => {
+                {topRatedBookData.map((row, index) => {
                   return (
                     <TableRow key={index}>
-                      <TableCell style={{paddingLeft: '28px',}}>{row.rank}</TableCell>
+                      <TableCell style={{paddingLeft: '28px',}}>{index + 1}</TableCell>
                       <TableCell style={{paddingLeft: '28px',}}>{row.title}</TableCell>
-                      <TableCell style={{paddingLeft: '28px',}}>{row.author}</TableCell>
+                      <TableCell style={{paddingLeft: '28px',}}>{row.authors.join(', ')}</TableCell>
                       <TableCell style={{paddingLeft: '18px',}}>{row.description}</TableCell>
                       <TableCell>
                         <Dropdown />
