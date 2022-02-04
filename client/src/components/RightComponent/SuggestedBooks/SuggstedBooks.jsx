@@ -40,15 +40,18 @@ const SuggstedBooks = ({currentUserData}) => {
   return (
     <Wrapper>
       <Title>
-        <Button
+      <div style={{color: 'white', backgroundColor: '#212529', width: 290, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '40px', paddingTop: '8px',}}>
+        <div style={{ fontWeight: 800 }}>Suggested Books</div>
+      </div>
+        {/* <Button
           className='sideComponentTitle2'
           style={{ display: 'flex', justifyContent: 'center'}}
           variant='dark'
         >
           Suggested Books
-        </Button>
+        </Button> */}
       </Title>
-      <Content>
+      <Content style={{height: 216, paddingTop: '25px',}}>
         <SuggestedCarousel suggestedBooks={suggestedBooks}/>
       </Content>
     </Wrapper>

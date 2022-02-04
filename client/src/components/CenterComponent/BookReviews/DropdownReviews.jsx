@@ -45,7 +45,7 @@ const DropdownReviews = ({ username, bookId, goToReviews}) => {
         <AddReviewModal username={username} goToReviews={goToReviews} bookId={bookId}/>
       </MenuItem>
       <MenuItem onClick={handleClose}>
-        <Button variant='text' style={{color: 'black', paddingLeft: 5}}>Join Club</Button>
+        <Button variant='text' style={{color: 'black', paddingLeft: '41px'}}>Join Club</Button>
       </MenuItem>
     </Menu>
     </div>
