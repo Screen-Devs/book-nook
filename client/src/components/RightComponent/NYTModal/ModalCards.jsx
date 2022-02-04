@@ -80,7 +80,6 @@ const ModalCards = ({info}) => {
             </CardActions>
         </Card>
       ))}
-
     </Carousel>
     </div>
   );
