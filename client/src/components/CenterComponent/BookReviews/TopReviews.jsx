@@ -34,14 +34,13 @@ const TopReviews = ({ allReviews, username, bookId, goToReviews }) => {
       <Container>
         <LeftSide>
           <Typography
-            variant='h4'
+            variant='h3'
             component='div'
             gutterBottom
             style={{ margin: 0, padding: '5px 10px 0px' }}
           >
-            Book Title
+            Reviews
           </Typography>
-          <p style={{ paddingLeft: 11, marginBottom: 7 }}>Author</p>
           <div style={{ display: 'flex' }}>
             <Rating
               size='large'
