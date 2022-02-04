@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Paper,
   Box,
@@ -11,9 +11,9 @@ import {
   // Button,
   Modal,
 } from '@material-ui/core';
-import sample from './sample.js';
 import HighestRatedBooksModal from './HighestRatedBooksModal.jsx';
 import Button from 'react-bootstrap/Button';
+import { getHighestAvgRating, searchGoogle } from '../../../requests/index.js';
 
 const boxStyle = {
   height: 250,
@@ -46,20 +46,45 @@ const boxStyle = {
 
 const HighestRatedBooks = () => {
   const [show, setShow] = useState(false);
+  const [topRated, setTopRated] = useState([]);
 
   const handleModal = () => {
     setShow((prev) => !prev);
   };
 
-  let data = sample.results.books;
+  const fetchTopRated = () => {
+    getHighestAvgRating()
+      .then((topRated) => {
+        const promisedResults = topRated.data.map(book => {
+          return searchGoogle(book._id.id);
+        });
 
-  const createData = (title) => {
-    return { title };
+        Promise.all(promisedResults)
+          .then((googleBookData) => {
+              const refinedBookData = googleBookData.map((book, rank) => {
+                return {
+                  rank: rank,
+                  title: book[0].volumeInfo.title,
+                  authors: book[0].volumeInfo.authors,
+                  description: book[0].volumeInfo.description,
+                  gBookId: book[0].id,
+                };
+              });
+              setTopRated(refinedBookData);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const rows = data.slice(0,5).map((datum) => {
-    return createData(`${datum.title}`);
-  });
+  useEffect(() => {
+    fetchTopRated();
+  }, []);
+
   return (
     <Paper style={boxStyle} className='placeHolderContainerRight animate__animated animate__fadeInRight' elevation={6}>
       {/* <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '35px', paddingTop: '5px',}}> */}
@@ -78,7 +103,7 @@ const HighestRatedBooks = () => {
               </TableRow>
             </TableHead>
             <TableBody style={{height: '120px', width: '150px',}}>
-              {rows.map((row, index) => {
+              {topRated.slice(0,5).map((row, index) => {
                 return (
                   <TableRow
                     key={index}
@@ -94,7 +119,7 @@ const HighestRatedBooks = () => {
       </Box>
       {/* <Button onClick={handleModal} style={{marginTop: 0.5, fontSize:8, marginBottom: 5}} variant='contained' color='inherit' size='small'>Show More</Button> */}
       <Modal open={show} onClose={handleModal}>
-        <HighestRatedBooksModal/>
+        <HighestRatedBooksModal topRatedBookData={topRated}/>
       </Modal>
     </Paper>
   );

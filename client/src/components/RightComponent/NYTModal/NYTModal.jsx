@@ -20,7 +20,7 @@ const style = {
   height: 580,
   bgcolor: 'background.paper',
   boxShadow: '0px 0px 32px 4px #000000',
-  borderRadius: '5%',
+  borderRadius: '20px',
   p: 4,
   padding: '20px',
 };
@@ -81,7 +81,7 @@ const NYTModal = () => {
               width: 1100,
               display: 'flex',
               justifyContent: 'center',
-              borderRadius: '22px 22px 0px 0px',
+              borderRadius: '18px 18px 0px 0px',
               height: '70px',
               paddingTop: '2px',
             }}

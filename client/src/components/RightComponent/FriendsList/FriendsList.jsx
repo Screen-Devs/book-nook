@@ -119,7 +119,7 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
                   <ListItem key={idx} style={{ height: 42, minWidth: '100%' }}>
                     <Wrapper className='a'>
                       <ListItemAvatar className='b'>
-                        <Avatar alt=' ' src='./bnLogoSmall.png' className='bnLogoSmall' />
+                        <Avatar alt=' ' src='./transparent.png' sx={{ width: 0, height: 0 }} className='bnLogoSmall' />
                       </ListItemAvatar>
                       <Link className='link' to={`friend/${datum}`}>
                         <ListItemText primary={datum} onClick={(e) => handleGetFriendData(datum)} />
