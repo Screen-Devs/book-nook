@@ -80,9 +80,6 @@ export default function SiteData({
           })}
         </Carousel>
       </div>
-      <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard currentUserData={currentUserData}/>
-      </div>
     </div>
   );
 }

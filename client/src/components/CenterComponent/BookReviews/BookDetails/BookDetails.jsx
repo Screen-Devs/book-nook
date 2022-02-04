@@ -23,6 +23,7 @@ const BookDetails = ({searchToResult}) => {
       <Grid container style={{ display: 'flex' }}>
         <Grid item xs={4}>
           <CardMedia
+          style={{borderRadius: '20px',}}
             component='img'
             height='265'
             image={(searchToResult.volumeInfo.imageLinks) ? searchToResult.volumeInfo.imageLinks.smallThumbnail : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}
