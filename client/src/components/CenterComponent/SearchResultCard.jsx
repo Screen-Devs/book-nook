@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Divider } from '@material-ui/core';
 import styled from "styled-components";
+import * as timeago from 'timeago.js';
 // import 'animate.css';
 // import CommentModule from '../CommentModule.jsx';
 
