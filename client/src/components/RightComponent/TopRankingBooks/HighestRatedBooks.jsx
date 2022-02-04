@@ -55,51 +55,37 @@ const HighestRatedBooks = () => {
 
   const fetchTopRated = () => {
     getHighestAvgRating()
-      .then((topRatedData) => {
-
-        const promisedResults = topRatedData.map(book => {
+      .then((topRated) => {
+        const promisedResults = topRated.data.map(book => {
           return searchGoogle(book._id.id);
         });
 
-        Promise.All(promisedResults)
-          .then((res) => {
-            console.log(res);
-            //setTopRated(res);
+        Promise.all(promisedResults)
+          .then((googleBookData) => {
+              const refinedBookData = googleBookData.map((book, rank) => {
+                return {
+                  rank: rank,
+                  title: book[0].volumeInfo.title,
+                  authors: book[0].volumeInfo.authors,
+                  description: book[0].volumeInfo.description,
+                  gBookId: book[0].id,
+                };
+              });
+              setTopRated(refinedBookData);
           })
-
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const createData = (title, rank) => {
-    return { title, rank, gBookId };
-  };
-
-  const rows = topRated.slice(0,5).map((datum) => {
-    return createData(`${datum.title}`);
-  });
-
   useEffect(() => {
-    fetchTopRated(currentUserData);
+    fetchTopRated();
   }, []);
 
-
-  [
-    {
-        "_id": {
-            "id": "yoZGEAAAQBAJ"
-        },
-        "avg_rating": 5
-    },
-    {
-        "_id": {
-            "id": "B2tBEAAAQBAJ"
-        },
-        "avg_rating": 4.666666666666667
-    },
-]
   return (
     <Paper style={boxStyle} className='placeHolderContainerRight animate__animated animate__fadeInRight' elevation={6}>
       {/* <div style={{color: 'white', backgroundColor: '#212529', width: 300, display: 'flex', justifyContent: 'center', borderRadius: '10px 10px 0px 0px', height: '35px', paddingTop: '5px',}}> */}
@@ -118,7 +104,7 @@ const HighestRatedBooks = () => {
               </TableRow>
             </TableHead>
             <TableBody style={{height: '120px', width: '150px',}}>
-              {rows.map((row, index) => {
+              {topRated.map((row, index) => {
                 return (
                   <TableRow
                     key={index}
@@ -134,7 +120,7 @@ const HighestRatedBooks = () => {
       </Box>
       {/* <Button onClick={handleModal} style={{marginTop: 0.5, fontSize:8, marginBottom: 5}} variant='contained' color='inherit' size='small'>Show More</Button> */}
       <Modal open={show} onClose={handleModal}>
-        <HighestRatedBooksModal/>
+        <HighestRatedBooksModal topRatedBookData={topRated}/>
       </Modal>
     </Paper>
   );
