@@ -7,8 +7,6 @@ const BookDetailsDropdown = ({bookData, queue, setQueue, username}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  console.log(bookData)
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

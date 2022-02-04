@@ -49,7 +49,7 @@ export default function SiteData({
         />
       </div>
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard />
+        <Leaderboard currentUserData={currentUserData}/>
       </div>
 
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>

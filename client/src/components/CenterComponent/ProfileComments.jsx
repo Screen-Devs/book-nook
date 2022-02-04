@@ -12,12 +12,14 @@ export default function ProfileComments({
   currentUserView,
   currentFriends,
   addNewFriend,
+  handleSearchToResults,
+  handleGetFriendData
 }) {
 
   const [canvas, setCanvasList] = useState([]);
   const [commentText, setCommentText] = useState('');
   const [showBtn, setRenderBtn] = useState(false)
-  const { username, friends, } = userData[0];
+  const { username } = userData[0];
 
   const onInput = (e) => setCommentText(e.target.value);
   //  onInput = ({target:{commentText}}) => setCommentText(commentText),
@@ -127,6 +129,7 @@ export default function ProfileComments({
                   <CommentModule
                     key={idx}
                     comment={comment}
+                    handleGetFriendData={handleGetFriendData}
                   />
                 );
               })
