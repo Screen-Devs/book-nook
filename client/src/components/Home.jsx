@@ -281,8 +281,6 @@ export default function Home({ authStatus, authenticate, currentUser }) {
       })
   };
 
-  console.log('cur', currentUserView)
-
   let navigate;
   return (
     <div>
