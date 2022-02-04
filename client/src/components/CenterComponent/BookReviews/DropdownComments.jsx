@@ -4,7 +4,7 @@ import { MoreVertOutlined } from '@material-ui/icons';
 import AddCommentModal from './AddCommentModal.jsx';
 import { markReview } from '../../../requests'
 
-const DropdownComments = ({reviewId, bookId, goToReviews, username}) => {
+const DropdownComments = ({review, reviewId, bookId, goToReviews, username}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -49,10 +49,10 @@ const DropdownComments = ({reviewId, bookId, goToReviews, username}) => {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <Button onClick={(e) => { handleHelpful(e) }}>Helpful</Button>
+          {review.reported_review === false ? <Button onClick={(e) => { handleHelpful(e) }}>Helpful</Button> : null}
         </MenuItem>
         <MenuItem onClick={handleClose} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <Button onClick={(e) => { handleReport(e) }}>Report</Button>
+          <Button onClick={(e) => { handleReport(e) }}>{review.reported_review === false ? "Report" : "Reported"}</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <AddCommentModal

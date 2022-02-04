@@ -70,7 +70,7 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
               <TopWrapper>
                 <UsernamdAndTitle>
                   <div style={{display: 'flex'}}onClick={e => handleGetFriendData(review.username)}>
-                    <div>Written by </div><Username>{review.username}</Username>
+                      <div>Written by </div><Username>{review.reported_review === false ? review.username : "N/A"}</Username>
                   </div>
                   <Rating
                     size='small'
@@ -90,9 +90,9 @@ const Reviews = ({ allReviews, username, goToReviews, bookId, handleGetFriendDat
                 />
               </TopWrapper>
               <div className='aReview hideScroll' style={{ paddingTop: 10 }}>
-                {review.reported_review === false ? review.review_body : "This review has been reported and is under...review."}
+                {review.reported_review === false ? review.review_body : "(This review has been reported and is under review.)"}
               </div>
-              <Helpful>Helpful ({review.helpful_review})</Helpful>
+                <Helpful>Helpful ({review.reported_review === false ? review.helpful_review : "N/A"})</Helpful>
               <CommentAccordian
                 goToReviews={goToReviews}
                 handleGetFriendData={handleGetFriendData}
