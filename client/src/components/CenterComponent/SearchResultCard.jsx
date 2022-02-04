@@ -51,7 +51,7 @@ export default function searchResult ({book, goToReviews, handleSearchToResults}
         <b>Author:</b> {info.authors ? info.authors.join(', ') : null}<p/>
         <b>Publisher: </b>{info.publisher ? info.publisher : null}<p/>
             <b>Genre:</b> {info.categories ? info.categories.join(', ') : null }<p/>
-            <b>Published:</b> {info.publishedDate ? info.publishedData : null}<p/>
+            <b>Published:</b> {info.publishedDate ? info.publishedDate : null}<p/>
             </div>
             {/* </div> */}
       </div>
