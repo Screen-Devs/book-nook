@@ -720,6 +720,17 @@ body::-webkit-scrollbar-thumb {
 
 .bookSearchDetails { grid-area: bookSearchDetails; }
 
+.bookSearchFilterText {
+  width: 183px;
+  height: 30px;
+  border: inset;
+  border-radius: 20px;
+  /* display: flex; */
+  /* flex-direction: column;
+  align-self: center; */
+  margin: 10px 0px 5px 0px;
+}
+
 
 
 

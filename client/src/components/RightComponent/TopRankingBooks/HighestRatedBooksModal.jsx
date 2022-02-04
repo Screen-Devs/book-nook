@@ -13,7 +13,7 @@ import {
 import sample from './sample.js';
 import Dropdown from './Dropdown.jsx';
 
-
+//'background.paper'
 const styleM = {
   position: 'absolute',
   top: '50%',
@@ -21,19 +21,23 @@ const styleM = {
   transform: 'translate(-50%, -50%)',
   width: '950px',
   height: 500,
-  bgcolor: 'background.paper',
-  border: '0.5px solid lightgrey',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: '5%',
+  backgroundColor: 'none',
+  opacity: '1',
+  color: 'white',
+  // border: '0.5px solid lightgrey',
+  // boxShadow: 24,
+  // p: 4,
+  borderRadius: '20px',
   boxShadow: '0px 0px 32px 4px #000000',
 };
 
 const scrolling = {
   overflow: 'scroll',
-  width: '905px',
-  height: '500px',
-  marginLeft: '20px',
+  width: '950px',
+  height: 400,
+  // marginLeft: '20px',
+  borderRadius: '20px',
+  boxShadow: '0px 0px 32px 4px #000000',
 }
 
 const HighestRatedBooksModal = () => {
