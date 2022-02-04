@@ -29,8 +29,12 @@ const findBookMeta = async (book_id) => {
   return metadata;
 }
 
-const getTopTen = async () => {
-  const top_ten = await BookData.aggregate([{$group: {lookup_id: "$lookup_id", $avg: "reviews.rating"}}])
+const findHighestAvgRating = async () => {
+  const highestAvgRating = await BookData.aggregate([
+    { $unwind: "$reviews" },
+    { $group: { _id: "$lookup_id", avg_rating: { $avg: "$reviews.rating" } } }
+  ]).sort({"avg_rating": -1});
+  return highestAvgRating;
 }
 
 const addBookReview = async (book_id, review) => {
@@ -104,5 +108,5 @@ const markReviewComment = async (book_id, review_id, comment_id, mark_type) => {
 
 
 module.exports = {
-  markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta, markReviewComment
+  markBookReview, addBookComment, addBookReview, getAllBookData, findBookMeta, markReviewComment, findHighestAvgRating
 }
