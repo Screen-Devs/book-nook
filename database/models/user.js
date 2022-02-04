@@ -199,6 +199,7 @@ const buildSuggestedBookList =  async ( username ) => {
           gBookId: bookResult.id,
           title: bookResult.volumeInfo.title,
           authors: bookResult.volumeInfo.authors,
+          publisher: bookResult.volumeInfo.publisher,
           isbn10: bookResult.volumeInfo.industryIdentifiers.primary_isbn10,
           isbn13: bookResult.volumeInfo.industryIdentifiers.primary_isbn13,
           description: bookResult.volumeInfo.description,
