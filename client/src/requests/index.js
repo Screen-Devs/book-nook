@@ -105,23 +105,24 @@ const getNYTimesCategory = (list_name_encoded) => {
 // note: all 'book_id' parameters refer to the google api's book id
 
 // get back a book's reviews/comments data (if any)
-const getBookMeta = (book_id) => {
+const getBookMeta = (book_id, title) => {
   return new Promise((resolve, reject) => {
     axios({
       url: '/books/meta',
       method: 'post',
-      data: { book_id }
+      data: { book_id, title }
     })
       .then(response => resolve(response))
       .catch(err => reject(err));
   });
 }
 
-// get back an array of the top rated books based on all books' metadata
-const getTopTen = () => {
+// get back an array of the top rated books based on all books' metadata;
+// response is in the form: {_id: {id: (gBookId), title: (title)}, avg_rating: (average rating)}
+const getHighestAvgRating = () => {
   return new Promise((resolve, reject) => {
     axios({
-      url: '/books/topten',
+      url: '/books/highestAvgRating',
       method: 'get'
     })
       .then(response => resolve(response))
@@ -189,7 +190,7 @@ const markReviewComment = (book_id, review_id, comment_id, mark_type) => {
 
 export {
   getBookMeta,
-  getTopTen,
+  getHighestAvgRating,
   addBookReview,
   addReviewComment,
   markReview,
