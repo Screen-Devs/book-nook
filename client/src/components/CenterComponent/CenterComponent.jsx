@@ -126,9 +126,6 @@ let component;
   // TODO: differentiate between bookMeta and userData
   component = <BookReviews username={currentUserData} searchToResult={searchToResult} goToReviews={goToReviews} bookMeta={bookMeta} queue={queue} setQueue={setQueue} handleGetFriendData={handleGetFriendData}/>;
 }
-// If not a friend or profile, just conditionally render
-console.log('This is user data ', userData);
-      console.log('This is userView ', currentUserView)
 return (
   <div className="centerComponent">
     {currentLayout === "profileComments" && userData ? (
