@@ -9,14 +9,6 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 
-const sample = [
-  { username: 'Matt', books: 5 },
-  { username: 'Pete', books: 2 },
-  { username: 'Diane', books: 4 },
-  { username: 'Hannah', books: 10 },
-  { username: 'John', books: 4 },
-];
-
 const MostCompleted = ({leaderboardData}) => {
   const createData = (username, books) => {
     return { username, books };
@@ -51,7 +43,7 @@ const MostCompleted = ({leaderboardData}) => {
             <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
               Friend
             </TableCell>
-            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px' }}>
+            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 5px 0px' }}>
               Books
             </TableCell>
           </TableRow>
@@ -60,7 +52,7 @@ const MostCompleted = ({leaderboardData}) => {
           {rows.length === 0 &&
             <TableRow>
               <TableCell></TableCell>
-              <TableCell align="center" style={{ fontSize: 10 }}>
+              <TableCell align="center" style={{ fontSize: 10, height: 150 }}>
                 {noFriendDataMsg}
               </TableCell>
               <TableCell></TableCell>
