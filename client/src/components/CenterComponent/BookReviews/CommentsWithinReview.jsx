@@ -1,9 +1,14 @@
 import { Grid, Paper, Card, Typography, Divider, Button } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+
+dayjs.extend(localizedFormat)
 
 const HelpfulAndReport = styled.div`
   display: flex;
+  padding-left: 3px;
 `
 
 const Helpful = styled.div`
@@ -45,7 +50,7 @@ const CommentsWithinReview = ({comments}) => {
                     <p style={{ marginBottom: 0, padding: 1.5, fontSize: 13, boxShadow: '0 4px 2px -2px gray', backgroundColor: '#212529', color: 'white', borderRadius:'20px', paddingLeft: '3px'}}>
                       <b><u>From:</u> {comment.commenter}</b>
                     </p>
-                    <div>Written at: {comment.comment_time}</div>
+                    <div style={{fontSize: 12, paddingTop: 5, paddingLeft: 1, marginLeft: 1}}>Written at: {dayjs(comment.comment_time).format('LL')}</div>
                     <div>
                     <p
                       className="hideScroll"
