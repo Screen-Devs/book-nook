@@ -47,6 +47,9 @@ export default function SiteData({
           userData={userData}
         />
       </div>
+      <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
+        <Leaderboard />
+      </div>
 
       <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
         <h4>Suggested Books</h4>
@@ -75,9 +78,6 @@ export default function SiteData({
             );
           })}
         </Carousel>
-      </div>
-      <div className='placeHolderContainerRight animate__animated animate__fadeInRight'>
-        <Leaderboard />
       </div>
     </div>
   );

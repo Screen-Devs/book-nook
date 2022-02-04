@@ -45,13 +45,13 @@ const MostCompleted = ({leaderboardData}) => {
       <Table size='small'>
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px' }}>
+            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px' }}>
               Rank
             </TableCell>
-            <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
+            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px ' }}>
               Friend
             </TableCell>
-            <TableCell align="center" style={{ fontSize: 10, fontWeight: 'bold', padding: '2px 0px 0px' }}>
+            <TableCell align="center" style={{ fontSize: 12, fontWeight: 'bold', padding: '2px 0px 0px' }}>
               Books
             </TableCell>
           </TableRow>
