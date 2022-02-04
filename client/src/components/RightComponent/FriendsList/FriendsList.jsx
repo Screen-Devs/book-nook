@@ -11,6 +11,7 @@ import {
   IconButton,
   Container,
   ListItemSecondaryAction,
+  Typography,
 } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -80,6 +81,10 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
       .catch((err) => console.error(err));
   };
 
+  const NoFriendsQuote = styled.div`
+    padding: 25px 10px;
+  `
+
   // onClick={}
 
   return (
@@ -97,10 +102,14 @@ const FriendsList = ({ handleGetFriendData, userData, currentUserData, currentUs
         <FriendsListContent>
           {/* <h5 style={{position:'absolute', top: 5, marginBottom: 15}}>Friends Lists</h5> */}
           {friendsList.length === 0 ? (
-            <div style={{paddingTop: 80}}>
-              {' '}
-              No friends :({' '}
-            </div>
+            <NoFriendsQuote>
+              <Typography variant="h5">
+                Books, like friends, should be few and well chosen
+              </Typography>
+              <Typography variant="h6">
+                -Anonymous
+              </Typography>
+            </NoFriendsQuote>
           ) : (
             <List style={{ width: '100%', paddingTop: 20 }}>
               {friendsList.slice(0, 4).map((datum, idx) => {
