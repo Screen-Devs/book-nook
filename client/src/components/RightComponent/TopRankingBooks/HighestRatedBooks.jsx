@@ -11,7 +11,6 @@ import {
   // Button,
   Modal,
 } from '@material-ui/core';
-import sample from './sample.js';
 import HighestRatedBooksModal from './HighestRatedBooksModal.jsx';
 import Button from 'react-bootstrap/Button';
 import { getHighestAvgRating, searchGoogle } from '../../../requests/index.js';
@@ -104,7 +103,7 @@ const HighestRatedBooks = () => {
               </TableRow>
             </TableHead>
             <TableBody style={{height: '120px', width: '150px',}}>
-              {topRated.map((row, index) => {
+              {topRated.slice(0,5).map((row, index) => {
                 return (
                   <TableRow
                     key={index}
