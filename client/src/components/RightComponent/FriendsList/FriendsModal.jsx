@@ -75,14 +75,7 @@ const FriendsModal = ({
             return (
               <ListItem key={idx} style={{ height: 60, width: 400 }}>
                 <ListItemAvatar>
-                  <Avatar
-                    alt=" "
-                    src="./bnLogoSmall.png"
-                    className="bnLogoSmall"
-                  >
-                    {/* <AccountCircleIcon /> */}
-                    {/* <img src={url('./bnLogoSmall.png')}/> */}
-                    {/* <div className='bnLogoSmall'/> */}
+                  <Avatar alt=" " src="./transparent.png" sx={{ width: 0, height: 0 }} className='bnLogoSmall'>
                   </Avatar>
                 </ListItemAvatar>
                 <Link className="link" to={`friend/${datum}`}>

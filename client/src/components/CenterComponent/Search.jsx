@@ -74,6 +74,8 @@ export default function Search({
             onClick={() => {
               clearFilters();
             }}
+            variant="dark"
+            style={{width: '160px', alignSelf: 'center',}}
           >
             Clear Filters
           </Button>

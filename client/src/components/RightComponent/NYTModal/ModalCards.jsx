@@ -23,7 +23,7 @@ const cardStyle = {
   // marginTop: 1,
   position: 'relative',
   boxShadow: '0px 0px 32px 1px #000000',
-  borderRadius: '5%',
+  borderRadius: '20px',
   margin: '20px 20px 20px 20px',
   // padding: '10px',
 }

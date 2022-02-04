@@ -11,6 +11,7 @@ import {
   Paper,
   InputBase,
   Divider,
+  Avatar,
 } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
@@ -95,9 +96,11 @@ export default function Header({ authenticate, handleSearch, currentUserData }) 
           <div className='headerUsername'>
             {currentUserData && `Hello, ${currentUserData}!`}
           </div>
-          <Button style={buttonStyle} onClick={handleMenu}>
-            <AccountCircleIcon style={{ color: 'white' }} />
-          </Button>
+          {/* <Button style={buttonStyle} onClick={handleMenu}> */}
+          <Avatar alt=' ' src='./transparent.png' className='bnLogoSmall hoverLogo' sx={{ width: 0, height: 0 }} onClick={handleMenu}/>
+            {/* <img src='./bnLogoSmall.png' className='bnLogoSmall'/> */}
+            {/* <AccountCircleIcon style={{ color: 'white' }} /> */}
+          {/* </Button> */}
           <Menu
             anchorEl={anchorEl}
             anchorOrigin={{
@@ -113,7 +116,6 @@ export default function Header({ authenticate, handleSearch, currentUserData }) 
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Settings</MenuItem>
             <Logout authenticate={authenticate} />
           </Menu>
         </Right>
