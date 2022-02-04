@@ -47,8 +47,8 @@ const HighestRatedBooksModal = ({topRatedBookData}) => {
                 <TableRow >
                   <TableCell style={{fontWeight: 'bold',}}>Rank</TableCell>
                   <TableCell style={{fontWeight: 'bold', }}>Title</TableCell>
-                  <TableCell style={{fontWeight: 'bold', paddingLeft: '180px', }}>Author</TableCell>
-                  <TableCell style={{fontWeight: 'bold', paddingLeft: '60px',}}>Description</TableCell>
+                  <TableCell style={{fontWeight: 'bold', paddingLeft: '80px', }}>Author</TableCell>
+                  <TableCell style={{fontWeight: 'bold', paddingLeft: '62px',}}>Description</TableCell>
                   <TableCell style={{width: '100%',}}></TableCell>
                 </TableRow>
               </TableHead>
