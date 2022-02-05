@@ -46,9 +46,8 @@ export default function Footer() {
       <Card>
       <Wrapper>
         Developed by
-        {devs.map((dev) => {
-          console.log(dev.linkedIn)
-          return <a target="_blank" style={{padding: 3, textDecoration: 'none'}} href={dev.linkedIn}>{dev.name}</a>
+        {devs.map((dev, i) => {
+          return <a key={i} target="_blank" style={{padding: 3, textDecoration: 'none'}} href={dev.linkedIn}>{dev.name}</a>
         })}
       </Wrapper>
       </Card>

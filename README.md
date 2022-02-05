@@ -48,14 +48,19 @@ This application was created to cultivate a place where users could catalog and 
   * Ability to report a comment
 ---
 ## Demo
-Placeholder -> Put in Video and/or gifs
+Click to watch the live demo of Book Nook:
+[![Book Nook demo](./resources/bnthumb.png)](https://www.youtube.com/watch?v=h0llB4F2Fs8 "Book Nook Live Demo")
 
 ### User Profile
-Placeholder -> Put in Video and/or gifs
-### Search Page
-Placeholder -> Put in Video and/or gifs
-### Book Details
-Placeholder -> Put in Video and/or gifs
+![User profile demo gif](./resources/userprofile.gif)
+
+### Friend Interactions
+![Friends demo gif](./resources/friends.gif)
+
+
+### Search Page & Book Details
+![Search and Book detail demo gi](./resources/booksearch.gif)
+
 
 ---
 ## API Services
