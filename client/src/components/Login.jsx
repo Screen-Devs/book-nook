@@ -66,6 +66,7 @@ export default function Login ({ authStatus, authenticate, currentUser }) {
 
   const wasLoaded = () => {
     if (loading === "loginBackground") {
+      // console.log('was loaded')
       loaded("loginBackgroundTransition")
         }
   };
