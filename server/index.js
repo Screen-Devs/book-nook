@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session);
+const cors = require('cors');
 // module
 const router = require('./routes');
 
@@ -31,7 +32,8 @@ app.use(session({
   store,
 }))
 app.use(router);
-app.use(morgan('dev')); // TODO: change in production
+app.use(morgan('dev'));
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Listening on localhost:${port}`);
