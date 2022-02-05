@@ -4,7 +4,7 @@ import axios from 'axios';
 // AUTHENTICATE
 const authenticateUser = () => {
   return new Promise((resolve, reject) => {
-    axios.get('http://localhost:3010/authenticate')
+    axios.get('/authenticate')
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   })
@@ -15,7 +15,7 @@ const authenticateUser = () => {
 
 const getUser = (username) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/users?username=${username}`)
+    axios.get(`/users?username=${username}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   });
@@ -23,7 +23,7 @@ const getUser = (username) => {
 
 const addFriend = (action) => {
   return new Promise((resolve, reject) => {
-    axios.put('http://localhost:3010/users/friends', action)
+    axios.put('/users/friends', action)
       .then(res => resolve(res.data))
       .catch(err => reject(err))
   })
@@ -31,7 +31,7 @@ const addFriend = (action) => {
 
 const dumpFriend = (action) => {
   return new Promise((resolve, reject) => {
-    axios.put('http://localhost:3010/users/friends', action)
+    axios.put('/users/friends', action)
       .then(res => resolve(res.data))
       .catch(err => reject(err))
   })
@@ -39,7 +39,7 @@ const dumpFriend = (action) => {
 
 const commentOnCanvas = (comment) => {
   return new Promise((resolve, reject) => {
-    axios.post('http://localhost:3010/users/canvas', comment)
+    axios.post('/users/canvas', comment)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   })
@@ -47,7 +47,7 @@ const commentOnCanvas = (comment) => {
 
 const putUserBook = (book) => {
   return new Promise((resolve, reject) => {
-    axios.put('http://localhost:3010/users/books', book)
+    axios.put('/users/books', book)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   })
@@ -55,7 +55,7 @@ const putUserBook = (book) => {
 
 const getLeaderboardData = (username) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/users/leaderboards?username=${username}`)
+    axios.get(`/users/leaderboards?username=${username}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   })
@@ -63,7 +63,7 @@ const getLeaderboardData = (username) => {
 
 const getSuggestedBooks = (username) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/users/suggested?username=${username}`)
+    axios.get(`/users/suggested?username=${username}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   })
@@ -76,7 +76,7 @@ const getSuggestedBooks = (username) => {
 
 const searchGoogle = (query, count = 10, page = 1) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/search?q=${query}&count=${count}&page=${page}`)
+    axios.get(`/search?q=${query}&count=${count}&page=${page}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   });
@@ -84,7 +84,7 @@ const searchGoogle = (query, count = 10, page = 1) => {
 
 const getNYTimesList = () => {
   return new Promise((resolve, reject) => {
-    axios.get('http://localhost:3010/nytimeslists')
+    axios.get('/nytimeslists')
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   });
@@ -92,7 +92,7 @@ const getNYTimesList = () => {
 
 const getNYTimesCategory = (list_name_encoded) => {
   return new Promise((resolve, reject) => {
-    axios.get(`http://localhost:3010/nytimeslists/list?category=${list_name_encoded}`)
+    axios.get(`/nytimeslists/list?category=${list_name_encoded}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err));
   });
