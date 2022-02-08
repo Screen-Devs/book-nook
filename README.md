@@ -372,19 +372,124 @@ Example:
 
 ## Books
 
-### **GET /books**
-
 ### **GET /books/highestAvgRating**
+
+Get a list of the books with the highest average internal user rating
+
+Example:
+
+`/books/highestAvgRating`
+
+- Response: `200 OK`
+
+  ```json
+  [
+    {
+      "lookup_id": "L8oC0c7Pn_8C",
+      "title": "Hamlet",
+      "avg_rating": 4.3
+    },
+    {
+      "lookup_id": "L6eD0v4Ks_NM",
+      "title": "The Fellowship of the Ring",
+      "avg_rating": 4.2
+    },
+    {
+      ...
+    }
+  ]
+  ```
 
 ### **POST /books/meta**
 
+Check if a book has reviews/comments metadata, or else create a blank slate if non-existent.
+
+| Data | Type          | Description                                              | Notes    |
+| --------- | ------------- | -------------------------------------------------------- | -------- |
+| book_id   | string | ID returned from Google API query for given book | required |
+| title   | string | book's given title | must match Google API data |
+
+Example:
+
+`/books/meta`
+
+- Response: `200 OK`
+
+  ```json
+  {
+    "lookup_id": "L8oC0c7Pn_8C",
+    "_id": "6201ba8eb98beac47bea349a",
+    "title": "Hamlet",
+    "reviews": [
+      {
+        "username": "Dave",
+        "review_date": Date.now(),
+        "rating": 5,
+        "review_body": "I liked this book so much I named my band after it!",
+        "reported_review": false,
+        "helpful_review": 2,
+        "comments": [{
+          "commenter": "Ben",
+          "comment_time": Date.now(),
+          "comment_body": "Yeah, and he didn't consult the drummer! Typical Dave...also, I agree that this book was good. However, Shakespeare's best works were his sonnets. Prove me wrong.",
+          "reported_comment": true,
+          "helpful_comment": 0,
+        }]
+      },
+    ],
+    "__v": 0
+  }
+  ```
+
 ### **POST /books/reviews**
+
+Post a review for a specific book to the website's internal metadata.
+
+| Data | Type          | Description                                              | Notes    |
+| --------- | ------------- | -------------------------------------------------------- | -------- |
+| book_id   | string | ID returned from Google API query for given book | required |
+| review   | object | `{ username: STR, rating: 1-5, review_body: STR }` | required |
+
+
+- Response: `201 OK`
 
 ### **POST /books/reviews/comments**
 
+Post a comment on a given review for a specific book to the website's internal metadata.
+
+| Data | Type          | Description                                              | Notes    |
+| --------- | ------------- | -------------------------------------------------------- | -------- |
+| book_id   | string | ID returned from Google API query for given book | required |
+| review_id   | string | MongoDB Object ID created on POST of review | required |
+| comment  | object | `{ commenter: STR, comment_body: STR }` | required |
+
+
+- Response: `201 OK`
+
 ### **PUT /books/reviews**
 
+Mark a review as helpful or else report it.
+
+| Data | Type          | Description                                              | Notes    |
+| --------- | ------------- | -------------------------------------------------------- | -------- |
+| book_id   | string | ID returned from Google API query for given book | required |
+| review_id   | string | MongoDB Object ID created on POST of review | required |
+| mark_type   | string | Either `'helpful'` or `'report'` | required |
+
+- Response: `200 OK`
+
 ### **PUT /books/reviews/comments**
+
+Mark a comment (on a particular review) as helpful or else report it.
+
+| Data | Type          | Description                                              | Notes    |
+| --------- | ------------- | -------------------------------------------------------- | -------- |
+| book_id   | string | ID returned from Google API query for given book | required |
+| review_id   | string | MongoDB Object ID created on POST of review | required |
+| comment_id   | string | MongoDB Object ID created on POST of comment | required |
+| mark_type   | string | Either `'helpful'` or `'report'` | required |
+
+- Response: `200 OK`
 
 ## External API(s)
 
