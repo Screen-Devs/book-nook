@@ -91,14 +91,14 @@ Example:
 
 `/authenticate`
 
-- Response: 200 OK
+```json
+{
+  "isAuthenticated": true,
+  "username": "aneroB"
+}
 
-  ```json
-  {
-    "isAuthenticated": true,
-    "username": "aneroB"
-  }
-  ```
+Response: 200 OK
+```
 
 ### **POST /authenticate/login**
 
@@ -113,12 +113,13 @@ Example:
 
 `/authenticate/login` - Request body:
 
-    ```json
-    {
-      username: "aneroC",
-      password: "123",
-    }
-    ```
+```json
+{
+  username: "aneroC",
+  password: "123",
+}
+Response: 201 OK
+```
 
 ### **POST /authenticate/logout**
 
@@ -147,12 +148,14 @@ Example:
 
 `/authenticate/signup` - Request body:
 
-    ```json
-    {
-      username: "aneroC",
-      password: "123",
-    }
-    ```
+```json
+{
+  username: "aneroC",
+  password: "123",
+}
+
+Response: 201 OK
+```
 
 ## Users
 
@@ -168,40 +171,40 @@ Example:
 
 `/users?username=aneroB`
 
-- Response: 200 OK
+```json
+[
+  {
+    _id: ObjectId("61f86952932001460b7431a5"),
+    username: 'aneroB',
+    userBooks: [
+      {
+        gBookId: '1289713',
+        title: 'Hamlet',
+        authors: [ 'William Shakespeare' ],
+        clubbed: { status: true, date: '2022-01-31T22:58:31.531Z' },
+        current: { status: false, date: null },
+        past: { status: false, date: null },
+        queued: { status: false, date: null },
+        _id: ObjectId("61f8699771cea99199ec610a")
+      }
+    ],
+    friends: [ 'aFriend', 'anotherFriend' ],
+    canvas: [
+      {
+        message: 'Posting on your wall!',
+        commenter: 'dewey',
+        date: 2021-02-22T05:33:30.792Z,
+      }
+    ],
+    settings: { theme: 'light' },
+    createdAt: ISODate("2022-01-31T22:57:22.031Z"),
+    updatedAt: ISODate("2022-01-31T22:58:31.566Z"),
+    __v: 0
+  }
+]
 
-  ```json
-  [
-    {
-      _id: ObjectId("61f86952932001460b7431a5"),
-      username: 'aneroB',
-      userBooks: [
-        {
-          gBookId: '1289713',
-          title: 'Hamlet',
-          authors: [ 'William Shakespeare' ],
-          clubbed: { status: true, date: '2022-01-31T22:58:31.531Z' },
-          current: { status: false, date: null },
-          past: { status: false, date: null },
-          queued: { status: false, date: null },
-          _id: ObjectId("61f8699771cea99199ec610a")
-        }
-      ],
-      friends: [ 'aFriend', 'anotherFriend' ],
-      canvas: [
-  			{
-  				message: 'Posting on your wall!',
-  				commenter: 'dewey',
-  				date: 2021-02-22T05:33:30.792Z,
-  			}
-  		],
-      settings: { theme: 'light' },
-      createdAt: ISODate("2022-01-31T22:57:22.031Z"),
-      updatedAt: ISODate("2022-01-31T22:58:31.566Z"),
-      __v: 0
-    }
-  ]
-  ```
+Response: 200 OK
+```
 
 ---
 
@@ -222,18 +225,18 @@ Example: Add Hamlet to user Sunny’s Book Club list
 
 - `/users/books` Request body:
 
-  ```json
-  {
-  	username: 'sunny',
-  	gBookId: 'I8mezgEACAAJ',
-  	title: 'Hamlet',
-  	authors: [ 'William Shakespeare' ],
-  	list: clubbed,
-  	status: true
-  }
+```json
+{
+  username: 'sunny',
+  gBookId: 'I8mezgEACAAJ',
+  title: 'Hamlet',
+  authors: [ 'William Shakespeare' ],
+  list: clubbed,
+  status: true
+}
 
-  Response: 204 OK
-  ```
+Response: 204 OK
+```
 
 ---
 
@@ -251,15 +254,15 @@ Example: Add the user ‘Bryan’ to user ‘Andrew’ ‘s friends:
 
 - `/users/friends` Request body:
 
-  ```json
-  {
-  	username: 'Bryan',
-  	friend: 'Andrew',
-  	action: 'add'
-  }
+```json
+{
+  username: 'Bryan',
+  friend: 'Andrew',
+  action: 'add'
+}
 
-  Response: 204 OK
-  ```
+Response: 204 OK
+```
 
 ### **POST /users/canvas**
 
@@ -275,15 +278,15 @@ Example: Add a post to user ‘anero’s page from user ‘allyamber’:
 
 - `/users/canvas` Request body:
 
-  ```json
-  {
-    username: 'anero',
-    message: 'I'm commenting on your page!',
-    commenter: 'allyamber'
-  }
+```json
+{
+  username: 'anero',
+  message: 'I'm commenting on your page!',
+  commenter: 'allyamber'
+}
 
-  Response: 201 OK
-  ```
+Response: 201 OK
+```
 
 ### **GET /users/leaderboards**
 
@@ -297,37 +300,37 @@ Example:
 
 `/users/leaderboards?username=aneroC`
 
-- Response: 200 OK
+```json
+[
+  {
+    friend: "Salvador3",
+    clubbedCount: 1,
+    completedCount: 5,
+  },
+  {
+    friend: "Dariana.Schowalter72",
+    clubbedCount: 3,
+    completedCount: 6,
+  },
+  {
+    friend: "Arnoldo_Kilback40",
+    clubbedCount: 2,
+    completedCount: 2,
+  },
+  {
+    friend: "Margarett.Lehner52",
+    clubbedCount: 1,
+    completedCount: 3,
+  },
+  {
+    friend: "Salvatore.Sporer",
+    clubbedCount: 2,
+    completedCount: 3,
+  },
+];
 
-  ```jsx
-  [
-    {
-      friend: "Salvador3",
-      clubbedCount: 1,
-      completedCount: 5,
-    },
-    {
-      friend: "Dariana.Schowalter72",
-      clubbedCount: 3,
-      completedCount: 6,
-    },
-    {
-      friend: "Arnoldo_Kilback40",
-      clubbedCount: 2,
-      completedCount: 2,
-    },
-    {
-      friend: "Margarett.Lehner52",
-      clubbedCount: 1,
-      completedCount: 3,
-    },
-    {
-      friend: "Salvatore.Sporer",
-      clubbedCount: 2,
-      completedCount: 3,
-    },
-  ];
-  ```
+Response: 200 OK
+```
 
 ### **GET /users/suggested**
 
@@ -341,34 +344,34 @@ Example:
 
 `/users/suggested?username=aneroC`
 
-- Response: 200 OK
+```json
+// PLEASE NOTE: gBookId MAY BE NULL - when search defaults
+//   to using NYT Best Selling List there is NO gBookId!
 
-  ```jsx
-  // PLEASE NOTE: gBookId MAY BE NULL - when search defaults
-  //   to using NYT Best Selling List there is NO gBookId!
-
-  [
-  	{
-        gBookId: "Jbv0Gfdiq8gC",
-        title: "The Poems and Sonnets of William Shakespeare",
-        authors: [
-            "William Shakespeare"
-        ],
-        description: "The sonnets in this collection divide into two parts; the first 126 are addressed to a fair youth for whom the poet has an obsessive love and the second chronicles his love for the notorious \"Dark Lady\". In addition to the sonnets, this volume includes two lengthy poems on classical themes.",
-        imageUrl: "http://books.google.com/books/content?id=Jbv0Gfdiq8gC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+[
+  {
+      gBookId: "Jbv0Gfdiq8gC",
+      title: "The Poems and Sonnets of William Shakespeare",
+      authors: [
+          "William Shakespeare"
+      ],
+      description: "The sonnets in this collection divide into two parts; the first 126 are addressed to a fair youth for whom the poet has an obsessive love and the second chronicles his love for the notorious \"Dark Lady\". In addition to the sonnets, this volume includes two lengthy poems on classical themes.",
+      imageUrl: "http://books.google.com/books/content?id=Jbv0Gfdiq8gC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+  },
+  {
+      gBookId: "miSeN4lkDbsC",
+      title: "William Shakespeare",
+      authors: [
+          "William Baker"
+      ],
+      description: "A concise, accessible introduction to Shakespeare's life and work which focuses on what we know, assessing the differing theories and avoiding speculation.",
+      imageUrl: "http://books.google.com/books/content?id=miSeN4lkDbsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
     },
-    {
-        gBookId: "miSeN4lkDbsC",
-        title: "William Shakespeare",
-        authors: [
-            "William Baker"
-        ],
-        description: "A concise, accessible introduction to Shakespeare's life and work which focuses on what we know, assessing the differing theories and avoiding speculation.",
-        imageUrl: "http://books.google.com/books/content?id=miSeN4lkDbsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
-      },
-  	...
-  ]
-  ```
+  ...
+]
+
+Response: 200 OK
+```
 
 ## Books
 
